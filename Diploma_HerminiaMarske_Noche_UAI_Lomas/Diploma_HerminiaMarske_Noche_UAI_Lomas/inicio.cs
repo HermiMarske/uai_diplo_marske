@@ -16,5 +16,10 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
         {
             InitializeComponent();
         }
+
+        private void actividadesToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
