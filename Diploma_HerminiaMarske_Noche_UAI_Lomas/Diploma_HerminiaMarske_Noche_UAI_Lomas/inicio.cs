@@ -21,5 +21,10 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
         {
 
         }
+
+        private void groupAltaCliente_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }
