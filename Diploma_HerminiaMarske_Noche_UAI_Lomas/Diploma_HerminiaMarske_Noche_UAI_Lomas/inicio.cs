@@ -26,5 +26,10 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
         {
 
         }
+
+        private void nuevoClienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            tableLayoutPanelAltaCliente.Visible = true;
+        }
     }
 }
