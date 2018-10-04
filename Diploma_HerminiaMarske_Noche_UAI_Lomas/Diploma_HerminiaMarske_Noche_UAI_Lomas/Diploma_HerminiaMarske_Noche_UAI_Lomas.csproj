@@ -46,16 +46,39 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="altaCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="altaCliente.Designer.cs">
+      <DependentUpon>altaCliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="inicio.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="inicio.Designer.cs">
       <DependentUpon>inicio.cs</DependentUpon>
     </Compile>
+    <Compile Include="modificarCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modificarCliente.Designer.cs">
+      <DependentUpon>modificarCliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UAI_GESTION_AGUILADataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UAI_GESTION_AGUILADataSet.xsd</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="altaCliente.resx">
+      <DependentUpon>altaCliente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="inicio.resx">
       <DependentUpon>inicio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modificarCliente.resx">
+      <DependentUpon>modificarCliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -75,6 +98,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="UAI_GESTION_AGUILADataSet.xsc">
+      <DependentUpon>UAI_GESTION_AGUILADataSet.xsd</DependentUpon>
+    </None>
+    <None Include="UAI_GESTION_AGUILADataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>UAI_GESTION_AGUILADataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="UAI_GESTION_AGUILADataSet.xss">
+      <DependentUpon>UAI_GESTION_AGUILADataSet.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

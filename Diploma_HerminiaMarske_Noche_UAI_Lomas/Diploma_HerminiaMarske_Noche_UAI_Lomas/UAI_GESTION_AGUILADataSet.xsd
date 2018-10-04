@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="UAI_GESTION_AGUILADataSet" targetNamespace="http://tempuri.org/UAI_GESTION_AGUILADataSet.xsd" xmlns:mstns="http://tempuri.org/UAI_GESTION_AGUILADataSet.xsd" xmlns="http://tempuri.org/UAI_GESTION_AGUILADataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="UAI_GESTION_AGUILAConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="UAI_GESTION_AGUILAConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Diploma_HerminiaMarske_Noche_UAI_Lomas.Properties.Settings.GlobalReference.Default.UAI_GESTION_AGUILAConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ClientesTableAdapter" GeneratorDataComponentClassName="ClientesTableAdapter" Name="Clientes" UserDataComponentName="ClientesTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="UAI_GESTION_AGUILAConnectionString (Settings)" DbObjectName="UAI_GESTION_AGUILA.dbo.Clientes" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT razonSocial, cuil, tipoClienteFK FROM dbo.Clientes</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="razonSocial" DataSetColumn="razonSocial" />
+              <Mapping SourceColumn="cuil" DataSetColumn="cuil" />
+              <Mapping SourceColumn="tipoClienteFK" DataSetColumn="tipoClienteFK" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="PersonasTableAdapter" GeneratorDataComponentClassName="PersonasTableAdapter" Name="Personas" UserDataComponentName="PersonasTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="UAI_GESTION_AGUILAConnectionString (Settings)" DbObjectName="UAI_GESTION_AGUILA.dbo.Personas" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT nombre, apellido FROM dbo.Personas</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="nombre" DataSetColumn="nombre" />
+              <Mapping SourceColumn="apellido" DataSetColumn="apellido" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="UAI_GESTION_AGUILADataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="UAI_GESTION_AGUILADataSet" msprop:Generator_UserDSName="UAI_GESTION_AGUILADataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Clientes" msprop:Generator_TableClassName="ClientesDataTable" msprop:Generator_TableVarName="tableClientes" msprop:Generator_TablePropName="Clientes" msprop:Generator_RowDeletingName="ClientesRowDeleting" msprop:Generator_RowChangingName="ClientesRowChanging" msprop:Generator_RowEvHandlerName="ClientesRowChangeEventHandler" msprop:Generator_RowDeletedName="ClientesRowDeleted" msprop:Generator_UserTableName="Clientes" msprop:Generator_RowChangedName="ClientesRowChanged" msprop:Generator_RowEvArgName="ClientesRowChangeEvent" msprop:Generator_RowClassName="ClientesRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="razonSocial" msprop:Generator_ColumnVarNameInTable="columnrazonSocial" msprop:Generator_ColumnPropNameInRow="razonSocial" msprop:Generator_ColumnPropNameInTable="razonSocialColumn" msprop:Generator_UserColumnName="razonSocial" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="cuil" msprop:Generator_ColumnVarNameInTable="columncuil" msprop:Generator_ColumnPropNameInRow="cuil" msprop:Generator_ColumnPropNameInTable="cuilColumn" msprop:Generator_UserColumnName="cuil" type="xs:long" minOccurs="0" />
+              <xs:element name="tipoClienteFK" msprop:Generator_ColumnVarNameInTable="columntipoClienteFK" msprop:Generator_ColumnPropNameInRow="tipoClienteFK" msprop:Generator_ColumnPropNameInTable="tipoClienteFKColumn" msprop:Generator_UserColumnName="tipoClienteFK" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Personas" msprop:Generator_TableClassName="PersonasDataTable" msprop:Generator_TableVarName="tablePersonas" msprop:Generator_TablePropName="Personas" msprop:Generator_RowDeletingName="PersonasRowDeleting" msprop:Generator_RowChangingName="PersonasRowChanging" msprop:Generator_RowEvHandlerName="PersonasRowChangeEventHandler" msprop:Generator_RowDeletedName="PersonasRowDeleted" msprop:Generator_UserTableName="Personas" msprop:Generator_RowChangedName="PersonasRowChanged" msprop:Generator_RowEvArgName="PersonasRowChangeEvent" msprop:Generator_RowClassName="PersonasRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="nombre" msprop:Generator_ColumnVarNameInTable="columnnombre" msprop:Generator_ColumnPropNameInRow="nombre" msprop:Generator_ColumnPropNameInTable="nombreColumn" msprop:Generator_UserColumnName="nombre" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="apellido" msprop:Generator_ColumnVarNameInTable="columnapellido" msprop:Generator_ColumnPropNameInRow="apellido" msprop:Generator_ColumnPropNameInTable="apellidoColumn" msprop:Generator_UserColumnName="apellido" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
