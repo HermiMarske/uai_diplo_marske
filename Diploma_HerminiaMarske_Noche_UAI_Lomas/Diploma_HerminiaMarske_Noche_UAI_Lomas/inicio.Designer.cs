@@ -53,12 +53,11 @@
             this.clientesBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.personasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.personasTableAdapter = new Diploma_HerminiaMarske_Noche_UAI_Lomas.UAI_GESTION_AGUILADataSetTableAdapters.PersonasTableAdapter();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanelListaClientes.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -68,7 +67,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.personasBindingSource)).BeginInit();
-            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -99,19 +97,19 @@
             // actividadesToolStripMenuItem
             // 
             this.actividadesToolStripMenuItem.Name = "actividadesToolStripMenuItem";
-            this.actividadesToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.actividadesToolStripMenuItem.Size = new System.Drawing.Size(161, 26);
             this.actividadesToolStripMenuItem.Text = "Actividades";
             // 
             // pilotosToolStripMenuItem
             // 
             this.pilotosToolStripMenuItem.Name = "pilotosToolStripMenuItem";
-            this.pilotosToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.pilotosToolStripMenuItem.Size = new System.Drawing.Size(161, 26);
             this.pilotosToolStripMenuItem.Text = "Pilotos";
             // 
             // actividadesToolStripMenuItem1
             // 
             this.actividadesToolStripMenuItem1.Name = "actividadesToolStripMenuItem1";
-            this.actividadesToolStripMenuItem1.Size = new System.Drawing.Size(216, 26);
+            this.actividadesToolStripMenuItem1.Size = new System.Drawing.Size(161, 26);
             this.actividadesToolStripMenuItem1.Text = "Aviones";
             this.actividadesToolStripMenuItem1.Click += new System.EventHandler(this.actividadesToolStripMenuItem1_Click);
             // 
@@ -124,36 +122,36 @@
             this.toolStripMenuItem3,
             this.toolStripMenuItem4});
             this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
-            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(161, 26);
             this.clientesToolStripMenuItem.Text = "Clientes";
             // 
             // nuevoClienteToolStripMenuItem
             // 
             this.nuevoClienteToolStripMenuItem.Name = "nuevoClienteToolStripMenuItem";
-            this.nuevoClienteToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.nuevoClienteToolStripMenuItem.Size = new System.Drawing.Size(191, 26);
             this.nuevoClienteToolStripMenuItem.Text = "Nuevo Cliente";
             this.nuevoClienteToolStripMenuItem.Click += new System.EventHandler(this.nuevoClienteToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(213, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(188, 6);
             // 
             // busquedaToolStripMenuItem
             // 
             this.busquedaToolStripMenuItem.Name = "busquedaToolStripMenuItem";
-            this.busquedaToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.busquedaToolStripMenuItem.Size = new System.Drawing.Size(191, 26);
             this.busquedaToolStripMenuItem.Text = "Lista de Clientes";
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(213, 6);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(188, 6);
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(213, 6);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(188, 6);
             // 
             // seguridadToolStripMenuItem
             // 
@@ -180,21 +178,30 @@
             // tableLayoutPanelListaClientes
             // 
             this.tableLayoutPanelListaClientes.AutoSize = true;
-            this.tableLayoutPanelListaClientes.ColumnCount = 1;
-            this.tableLayoutPanelListaClientes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanelListaClientes.ColumnCount = 5;
+            this.tableLayoutPanelListaClientes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanelListaClientes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanelListaClientes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanelListaClientes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanelListaClientes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanelListaClientes.Controls.Add(this.button5, 0, 1);
+            this.tableLayoutPanelListaClientes.Controls.Add(this.button4, 0, 1);
+            this.tableLayoutPanelListaClientes.Controls.Add(this.button3, 0, 1);
+            this.tableLayoutPanelListaClientes.Controls.Add(this.button2, 0, 1);
+            this.tableLayoutPanelListaClientes.Controls.Add(this.button1, 0, 1);
             this.tableLayoutPanelListaClientes.Controls.Add(this.groupBox1, 0, 0);
-            this.tableLayoutPanelListaClientes.Controls.Add(this.groupBox2, 0, 1);
             this.tableLayoutPanelListaClientes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelListaClientes.Location = new System.Drawing.Point(0, 28);
             this.tableLayoutPanelListaClientes.Name = "tableLayoutPanelListaClientes";
             this.tableLayoutPanelListaClientes.RowCount = 2;
-            this.tableLayoutPanelListaClientes.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanelListaClientes.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelListaClientes.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 73F));
             this.tableLayoutPanelListaClientes.Size = new System.Drawing.Size(1304, 656);
             this.tableLayoutPanelListaClientes.TabIndex = 2;
             // 
             // groupBox1
             // 
+            this.tableLayoutPanelListaClientes.SetColumnSpan(this.groupBox1, 5);
             this.groupBox1.Controls.Add(this.dataGridView1);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
@@ -247,67 +254,50 @@
             // 
             this.personasTableAdapter.ClearBeforeFill = true;
             // 
-            // groupBox2
+            // button5
             // 
-            this.groupBox2.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox2.Controls.Add(this.button5);
-            this.groupBox2.Controls.Add(this.button4);
-            this.groupBox2.Controls.Add(this.button3);
-            this.groupBox2.Controls.Add(this.button2);
-            this.groupBox2.Controls.Add(this.button1);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.groupBox2.ForeColor = System.Drawing.Color.Black;
-            this.groupBox2.Location = new System.Drawing.Point(3, 586);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1298, 67);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(822, 21);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(194, 40);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Nuevo Cliente";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(280, 21);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(194, 40);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Modificar Cliente";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(9, 21);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(194, 40);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Eliminar Cliente";
-            this.button3.UseVisualStyleBackColor = true;
+            this.button5.Location = new System.Drawing.Point(263, 586);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(194, 40);
+            this.button5.TabIndex = 9;
+            this.button5.Text = "Salir";
+            this.button5.UseVisualStyleBackColor = true;
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(551, 21);
+            this.button4.Location = new System.Drawing.Point(783, 586);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(194, 40);
-            this.button4.TabIndex = 3;
+            this.button4.TabIndex = 8;
             this.button4.Text = "Ver detalles";
             this.button4.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // button3
             // 
-            this.button5.Location = new System.Drawing.Point(1093, 21);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(194, 40);
-            this.button5.TabIndex = 4;
-            this.button5.Text = "Salir";
-            this.button5.UseVisualStyleBackColor = true;
+            this.button3.Location = new System.Drawing.Point(1043, 586);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(194, 40);
+            this.button3.TabIndex = 7;
+            this.button3.Text = "Eliminar Cliente";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(523, 586);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(194, 40);
+            this.button2.TabIndex = 6;
+            this.button2.Text = "Modificar Cliente";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(3, 586);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(194, 40);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Nuevo Cliente";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // formInicio
             // 
@@ -334,7 +324,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.personasBindingSource)).EndInit();
-            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -366,7 +355,6 @@
         private System.Windows.Forms.BindingSource clientesBindingSource1;
         private System.Windows.Forms.BindingSource personasBindingSource;
         private UAI_GESTION_AGUILADataSetTableAdapters.PersonasTableAdapter personasTableAdapter;
-        private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
