@@ -38,12 +38,15 @@
             this.nuevoClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.busquedaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
             this.seguridadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.opcionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tableLayoutPanelListaClientes = new System.Windows.Forms.TableLayoutPanel();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.uAI_GESTION_AGUILADataSet = new Diploma_HerminiaMarske_Noche_UAI_Lomas.UAI_GESTION_AGUILADataSet();
@@ -53,11 +56,6 @@
             this.clientesBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.personasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.personasTableAdapter = new Diploma_HerminiaMarske_Noche_UAI_Lomas.UAI_GESTION_AGUILADataSetTableAdapters.PersonasTableAdapter();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanelListaClientes.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -79,7 +77,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1304, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1305, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -118,12 +116,11 @@
             this.clientesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.nuevoClienteToolStripMenuItem,
             this.toolStripMenuItem1,
-            this.busquedaToolStripMenuItem,
-            this.toolStripMenuItem3,
-            this.toolStripMenuItem4});
+            this.busquedaToolStripMenuItem});
             this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
-            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(161, 26);
+            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.clientesToolStripMenuItem.Text = "Clientes";
+            this.clientesToolStripMenuItem.Click += new System.EventHandler(this.clientesToolStripMenuItem_Click);
             // 
             // nuevoClienteToolStripMenuItem
             // 
@@ -140,18 +137,9 @@
             // busquedaToolStripMenuItem
             // 
             this.busquedaToolStripMenuItem.Name = "busquedaToolStripMenuItem";
-            this.busquedaToolStripMenuItem.Size = new System.Drawing.Size(191, 26);
+            this.busquedaToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.busquedaToolStripMenuItem.Text = "Lista de Clientes";
-            // 
-            // toolStripMenuItem3
-            // 
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(188, 6);
-            // 
-            // toolStripMenuItem4
-            // 
-            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(188, 6);
+            this.busquedaToolStripMenuItem.Click += new System.EventHandler(this.busquedaToolStripMenuItem_Click);
             // 
             // seguridadToolStripMenuItem
             // 
@@ -171,7 +159,7 @@
             this.statusStrip1.Location = new System.Drawing.Point(0, 684);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 13, 0);
-            this.statusStrip1.Size = new System.Drawing.Size(1304, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1305, 22);
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -196,8 +184,55 @@
             this.tableLayoutPanelListaClientes.RowCount = 2;
             this.tableLayoutPanelListaClientes.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelListaClientes.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 73F));
-            this.tableLayoutPanelListaClientes.Size = new System.Drawing.Size(1304, 656);
+            this.tableLayoutPanelListaClientes.Size = new System.Drawing.Size(1305, 656);
             this.tableLayoutPanelListaClientes.TabIndex = 2;
+            this.tableLayoutPanelListaClientes.Visible = false;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(263, 586);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(194, 40);
+            this.button5.TabIndex = 9;
+            this.button5.Text = "Salir";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(783, 586);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(194, 40);
+            this.button4.TabIndex = 8;
+            this.button4.Text = "Ver detalles";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(1043, 586);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(194, 40);
+            this.button3.TabIndex = 7;
+            this.button3.Text = "Eliminar Cliente";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(523, 586);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(194, 40);
+            this.button2.TabIndex = 6;
+            this.button2.Text = "Modificar Cliente";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(3, 586);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(194, 40);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Nuevo Cliente";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // groupBox1
             // 
@@ -254,57 +289,12 @@
             // 
             this.personasTableAdapter.ClearBeforeFill = true;
             // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(263, 586);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(194, 40);
-            this.button5.TabIndex = 9;
-            this.button5.Text = "Salir";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(783, 586);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(194, 40);
-            this.button4.TabIndex = 8;
-            this.button4.Text = "Ver detalles";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(1043, 586);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(194, 40);
-            this.button3.TabIndex = 7;
-            this.button3.Text = "Eliminar Cliente";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(523, 586);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(194, 40);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Modificar Cliente";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(3, 586);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(194, 40);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Nuevo Cliente";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // formInicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1304, 706);
+            this.ClientSize = new System.Drawing.Size(1305, 706);
             this.Controls.Add(this.tableLayoutPanelListaClientes);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
@@ -312,7 +302,9 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "formInicio";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Inicio";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.formInicio_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -343,8 +335,6 @@
         private System.Windows.Forms.ToolStripMenuItem nuevoClienteToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem busquedaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem4;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelListaClientes;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dataGridView1;
