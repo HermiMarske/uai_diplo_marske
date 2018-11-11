@@ -58,12 +58,12 @@
             this.comboBox6 = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.txtRazonSocial = new System.Windows.Forms.TextBox();
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.txtCuit = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -325,12 +325,12 @@
             this.datosClienteGroup.Controls.Add(this.comboBox6);
             this.datosClienteGroup.Controls.Add(this.label8);
             this.datosClienteGroup.Controls.Add(this.checkBox1);
-            this.datosClienteGroup.Controls.Add(this.textBox12);
+            this.datosClienteGroup.Controls.Add(this.txtRazonSocial);
             this.datosClienteGroup.Controls.Add(this.textBox11);
             this.datosClienteGroup.Controls.Add(this.label10);
             this.datosClienteGroup.Controls.Add(this.label9);
             this.datosClienteGroup.Controls.Add(this.textBox9);
-            this.datosClienteGroup.Controls.Add(this.textBox8);
+            this.datosClienteGroup.Controls.Add(this.txtCuit);
             this.datosClienteGroup.Controls.Add(this.label7);
             this.datosClienteGroup.Controls.Add(this.textBox7);
             this.datosClienteGroup.Controls.Add(this.label6);
@@ -396,12 +396,12 @@
             this.checkBox1.Text = "Es empresa?";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
-            // textBox12
+            // txtRazonSocial
             // 
-            this.textBox12.Location = new System.Drawing.Point(107, 157);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(711, 22);
-            this.textBox12.TabIndex = 10;
+            this.txtRazonSocial.Location = new System.Drawing.Point(107, 157);
+            this.txtRazonSocial.Name = "txtRazonSocial";
+            this.txtRazonSocial.Size = new System.Drawing.Size(711, 22);
+            this.txtRazonSocial.TabIndex = 10;
             // 
             // textBox11
             // 
@@ -435,12 +435,12 @@
             this.textBox9.Size = new System.Drawing.Size(347, 22);
             this.textBox9.TabIndex = 5;
             // 
-            // textBox8
+            // txtCuit
             // 
-            this.textBox8.Location = new System.Drawing.Point(54, 201);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(764, 22);
-            this.textBox8.TabIndex = 3;
+            this.txtCuit.Location = new System.Drawing.Point(54, 201);
+            this.txtCuit.Name = "txtCuit";
+            this.txtCuit.Size = new System.Drawing.Size(764, 22);
+            this.txtCuit.TabIndex = 3;
             // 
             // label7
             // 
@@ -583,6 +583,7 @@
             this.button5.TabIndex = 0;
             this.button5.Text = "Agregar";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // altaCliente
             // 
@@ -624,12 +625,12 @@
         private System.Windows.Forms.ComboBox comboBox6;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.TextBox textBox12;
+        private System.Windows.Forms.TextBox txtRazonSocial;
         private System.Windows.Forms.TextBox textBox11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox txtCuit;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.Label label6;

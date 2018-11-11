@@ -49,18 +49,18 @@
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.uAI_GESTION_AGUILADataSet = new Diploma_HerminiaMarske_Noche_UAI_Lomas.UAI_GESTION_AGUILADataSet();
+           
             this.uAIGESTIONAGUILADataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.clientesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.clientesTableAdapter = new Diploma_HerminiaMarske_Noche_UAI_Lomas.UAI_GESTION_AGUILADataSetTableAdapters.ClientesTableAdapter();
+            
             this.clientesBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.personasBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.personasTableAdapter = new Diploma_HerminiaMarske_Noche_UAI_Lomas.UAI_GESTION_AGUILADataSetTableAdapters.PersonasTableAdapter();
+            
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanelListaClientes.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.uAI_GESTION_AGUILADataSet)).BeginInit();
+           
             ((System.ComponentModel.ISupportInitialize)(this.uAIGESTIONAGUILADataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource1)).BeginInit();
@@ -257,14 +257,11 @@
             this.dataGridView1.TabIndex = 0;
             // 
             // uAI_GESTION_AGUILADataSet
-            // 
-            this.uAI_GESTION_AGUILADataSet.DataSetName = "UAI_GESTION_AGUILADataSet";
-            this.uAI_GESTION_AGUILADataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+           
             // 
             // uAIGESTIONAGUILADataSetBindingSource
             // 
-            this.uAIGESTIONAGUILADataSetBindingSource.DataSource = this.uAI_GESTION_AGUILADataSet;
-            this.uAIGESTIONAGUILADataSetBindingSource.Position = 0;
+
             // 
             // clientesBindingSource
             // 
@@ -273,7 +270,7 @@
             // 
             // clientesTableAdapter
             // 
-            this.clientesTableAdapter.ClearBeforeFill = true;
+          
             // 
             // clientesBindingSource1
             // 
@@ -287,7 +284,7 @@
             // 
             // personasTableAdapter
             // 
-            this.personasTableAdapter.ClearBeforeFill = true;
+     
             // 
             // formInicio
             // 
@@ -311,11 +308,7 @@
             this.tableLayoutPanelListaClientes.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.uAI_GESTION_AGUILADataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.uAIGESTIONAGUILADataSetBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.personasBindingSource)).EndInit();
+
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -339,12 +332,12 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.BindingSource uAIGESTIONAGUILADataSetBindingSource;
-        private UAI_GESTION_AGUILADataSet uAI_GESTION_AGUILADataSet;
+       
         private System.Windows.Forms.BindingSource clientesBindingSource;
-        private UAI_GESTION_AGUILADataSetTableAdapters.ClientesTableAdapter clientesTableAdapter;
+        
         private System.Windows.Forms.BindingSource clientesBindingSource1;
         private System.Windows.Forms.BindingSource personasBindingSource;
-        private UAI_GESTION_AGUILADataSetTableAdapters.PersonasTableAdapter personasTableAdapter;
+       
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;

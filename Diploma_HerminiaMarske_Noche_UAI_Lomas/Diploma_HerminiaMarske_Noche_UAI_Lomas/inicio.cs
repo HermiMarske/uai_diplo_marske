@@ -38,10 +38,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
 
         private void formInicio_Load(object sender, EventArgs e)
         {
-            // TODO: esta línea de código carga datos en la tabla 'uAI_GESTION_AGUILADataSet.Personas' Puede moverla o quitarla según sea necesario.
-            this.personasTableAdapter.Fill(this.uAI_GESTION_AGUILADataSet.Personas);
-            // TODO: esta línea de código carga datos en la tabla 'uAI_GESTION_AGUILADataSet.Clientes' Puede moverla o quitarla según sea necesario.
-            this.clientesTableAdapter.Fill(this.uAI_GESTION_AGUILADataSet.Clientes);
+          
 
         }
 

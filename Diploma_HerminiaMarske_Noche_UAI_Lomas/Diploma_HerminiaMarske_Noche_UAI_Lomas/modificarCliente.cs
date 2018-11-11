@@ -16,5 +16,10 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
         {
             InitializeComponent();
         }
+
+        private void textBox12_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
