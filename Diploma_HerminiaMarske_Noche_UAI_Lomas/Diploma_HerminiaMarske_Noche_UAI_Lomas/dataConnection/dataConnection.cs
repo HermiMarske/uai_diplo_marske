@@ -25,7 +25,7 @@ namespace DataConnection
             command.CommandType = CommandType.StoredProcedure;
             command.CommandText = storedProcedureName;
             command.Parameters.AddRange(pms);
-
+            command.ExecuteNonQuery();
          
         }
 

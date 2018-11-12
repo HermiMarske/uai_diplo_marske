@@ -55,17 +55,17 @@
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.comboBox6 = new System.Windows.Forms.ComboBox();
+            this.comboSexo = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.txtRazonSocial = new System.Windows.Forms.TextBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.txtDni = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.txtApellido = new System.Windows.Forms.TextBox();
             this.txtCuit = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.txtNombre = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button3 = new System.Windows.Forms.Button();
@@ -322,17 +322,17 @@
             this.datosClienteGroup.Controls.Add(this.dateTimePicker1);
             this.datosClienteGroup.Controls.Add(this.label12);
             this.datosClienteGroup.Controls.Add(this.label11);
-            this.datosClienteGroup.Controls.Add(this.comboBox6);
+            this.datosClienteGroup.Controls.Add(this.comboSexo);
             this.datosClienteGroup.Controls.Add(this.label8);
             this.datosClienteGroup.Controls.Add(this.checkBox1);
             this.datosClienteGroup.Controls.Add(this.txtRazonSocial);
-            this.datosClienteGroup.Controls.Add(this.textBox11);
+            this.datosClienteGroup.Controls.Add(this.txtDni);
             this.datosClienteGroup.Controls.Add(this.label10);
             this.datosClienteGroup.Controls.Add(this.label9);
-            this.datosClienteGroup.Controls.Add(this.textBox9);
+            this.datosClienteGroup.Controls.Add(this.txtApellido);
             this.datosClienteGroup.Controls.Add(this.txtCuit);
             this.datosClienteGroup.Controls.Add(this.label7);
-            this.datosClienteGroup.Controls.Add(this.textBox7);
+            this.datosClienteGroup.Controls.Add(this.txtNombre);
             this.datosClienteGroup.Controls.Add(this.label6);
             this.datosClienteGroup.Dock = System.Windows.Forms.DockStyle.Fill;
             this.datosClienteGroup.Location = new System.Drawing.Point(4, 4);
@@ -369,13 +369,16 @@
             this.label11.TabIndex = 14;
             this.label11.Text = "Razon Social";
             // 
-            // comboBox6
+            // comboSexo
             // 
-            this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Location = new System.Drawing.Point(452, 74);
-            this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(366, 24);
-            this.comboBox6.TabIndex = 13;
+            this.comboSexo.FormattingEnabled = true;
+            this.comboSexo.Items.AddRange(new object[] {
+            "Femenino",
+            "Masculino"});
+            this.comboSexo.Location = new System.Drawing.Point(452, 74);
+            this.comboSexo.Name = "comboSexo";
+            this.comboSexo.Size = new System.Drawing.Size(366, 24);
+            this.comboSexo.TabIndex = 13;
             // 
             // label8
             // 
@@ -403,12 +406,12 @@
             this.txtRazonSocial.Size = new System.Drawing.Size(711, 22);
             this.txtRazonSocial.TabIndex = 10;
             // 
-            // textBox11
+            // txtDni
             // 
-            this.textBox11.Location = new System.Drawing.Point(45, 74);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(339, 22);
-            this.textBox11.TabIndex = 9;
+            this.txtDni.Location = new System.Drawing.Point(45, 74);
+            this.txtDni.Name = "txtDni";
+            this.txtDni.Size = new System.Drawing.Size(339, 22);
+            this.txtDni.TabIndex = 9;
             // 
             // label10
             // 
@@ -428,12 +431,12 @@
             this.label9.TabIndex = 6;
             this.label9.Text = "Apellido";
             // 
-            // textBox9
+            // txtApellido
             // 
-            this.textBox9.Location = new System.Drawing.Point(473, 34);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(347, 22);
-            this.textBox9.TabIndex = 5;
+            this.txtApellido.Location = new System.Drawing.Point(473, 34);
+            this.txtApellido.Name = "txtApellido";
+            this.txtApellido.Size = new System.Drawing.Size(347, 22);
+            this.txtApellido.TabIndex = 5;
             // 
             // txtCuit
             // 
@@ -451,12 +454,12 @@
             this.label7.TabIndex = 2;
             this.label7.Text = "CUIT";
             // 
-            // textBox7
+            // txtNombre
             // 
-            this.textBox7.Location = new System.Drawing.Point(72, 32);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(312, 22);
-            this.textBox7.TabIndex = 1;
+            this.txtNombre.Location = new System.Drawing.Point(72, 32);
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Size = new System.Drawing.Size(312, 22);
+            this.txtNombre.TabIndex = 1;
             // 
             // label6
             // 
@@ -622,17 +625,17 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.ComboBox comboBox6;
+        private System.Windows.Forms.ComboBox comboSexo;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.TextBox txtRazonSocial;
-        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.TextBox txtDni;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox txtApellido;
         private System.Windows.Forms.TextBox txtCuit;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button button2;

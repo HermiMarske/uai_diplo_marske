@@ -43,15 +43,29 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
 
             DataConnection.DataConnection dataConnection = new DataConnection.DataConnection();
 
-            SqlParameter[] pms = new SqlParameter[2];
+            SqlParameter[] pms = new SqlParameter[6];
             pms[0] = new SqlParameter("@razonSocial", SqlDbType.VarChar);
             pms[0].Value = txtRazonSocial.Text;
 
             pms[1] = new SqlParameter("@cuil", SqlDbType.VarChar);
             pms[1].Value = txtCuit.Text;
 
+            pms[2] = new SqlParameter("@dni", SqlDbType.VarChar);
+            pms[2].Value = txtDni.Text;
+
+            pms[3] = new SqlParameter("@nombre", SqlDbType.VarChar);
+            pms[3].Value = txtNombre.Text;
+
+            pms[4] = new SqlParameter("@apellido", SqlDbType.VarChar);
+            pms[4].Value = txtApellido.Text;
+
+            pms[5] = new SqlParameter("@sexo", SqlDbType.VarChar);
+            pms[5].Value = comboSexo.SelectedItem.ToString();
+
             dataConnection.databaseInsert(pms, "AltaCliente");
 
         }
+
+    
     }
 }
