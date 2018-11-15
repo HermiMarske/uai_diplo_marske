@@ -15,7 +15,7 @@ namespace DataConnection
 
         
 
-        public void databaseInsert(SqlParameter[] pms, string storedProcedureName)
+        public int databaseInsert(SqlParameter[] pms, string storedProcedureName)
         {
       
             SqlConnection connection = new SqlConnection("Data Source=HERMI-PC;Initial Catalog=UAI_GESTION_AGUILA;Integrated Security=True");
@@ -25,8 +25,10 @@ namespace DataConnection
             command.CommandType = CommandType.StoredProcedure;
             command.CommandText = storedProcedureName;
             command.Parameters.AddRange(pms);
-            command.ExecuteNonQuery();
-         
+
+            int fk = (int)command.ExecuteScalar();
+            connection.Close(); 
+            return fk;
         }
 
     }

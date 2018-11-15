@@ -62,7 +62,21 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             pms[5] = new SqlParameter("@sexo", SqlDbType.VarChar);
             pms[5].Value = comboSexo.SelectedItem.ToString();
 
-            dataConnection.databaseInsert(pms, "AltaCliente");
+            int fk = dataConnection.databaseInsert(pms, "AltaCliente");
+
+            if (fk > 0)
+            {
+                /*
+                 * for (int i; i < addresses.length; i++) {
+                 *   SqlParameter[] addresses = new SqlParameter[X]
+                 *   pms[0] = new SqlParameter("@field", SqlDbType.FieldType);
+                 *   pms[0].Value = txtField.Text;
+                 *   ...
+                 *   dataConnection.insertAddress(addresses, fk, "AltaClienteDireccion");
+                 * }
+                 * 
+                */
+            }
 
         }
 
