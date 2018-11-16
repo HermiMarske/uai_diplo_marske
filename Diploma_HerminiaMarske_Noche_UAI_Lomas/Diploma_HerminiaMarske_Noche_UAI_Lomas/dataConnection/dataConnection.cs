@@ -13,8 +13,6 @@ namespace DataConnection
     {
        
 
-        
-
         public int databaseInsert(SqlParameter[] pms, string storedProcedureName)
         {
       

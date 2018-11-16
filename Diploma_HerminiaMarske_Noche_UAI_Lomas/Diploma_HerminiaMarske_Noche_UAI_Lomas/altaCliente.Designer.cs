@@ -104,7 +104,7 @@
             this.tableLayoutPanelAltaCliente.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 344F));
             this.tableLayoutPanelAltaCliente.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 58F));
             this.tableLayoutPanelAltaCliente.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelAltaCliente.Size = new System.Drawing.Size(842, 866);
+            this.tableLayoutPanelAltaCliente.Size = new System.Drawing.Size(828, 866);
             this.tableLayoutPanelAltaCliente.TabIndex = 2;
             this.tableLayoutPanelAltaCliente.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanelAltaCliente_Paint);
             // 
@@ -136,7 +136,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(834, 336);
+            this.groupBox1.Size = new System.Drawing.Size(820, 336);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Domicilios";
@@ -339,7 +339,7 @@
             this.datosClienteGroup.Margin = new System.Windows.Forms.Padding(4);
             this.datosClienteGroup.Name = "datosClienteGroup";
             this.datosClienteGroup.Padding = new System.Windows.Forms.Padding(4);
-            this.datosClienteGroup.Size = new System.Drawing.Size(834, 242);
+            this.datosClienteGroup.Size = new System.Drawing.Size(820, 242);
             this.datosClienteGroup.TabIndex = 6;
             this.datosClienteGroup.TabStop = false;
             this.datosClienteGroup.Text = "Datos de Persona y Empresa";
@@ -484,7 +484,7 @@
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Size = new System.Drawing.Size(834, 206);
+            this.groupBox2.Size = new System.Drawing.Size(820, 206);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Telefonos";
@@ -556,7 +556,7 @@
             this.groupBox3.Controls.Add(this.button5);
             this.groupBox3.Location = new System.Drawing.Point(3, 811);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(836, 52);
+            this.groupBox3.Size = new System.Drawing.Size(822, 52);
             this.groupBox3.TabIndex = 9;
             this.groupBox3.TabStop = false;
             // 
@@ -592,7 +592,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(842, 866);
+            this.ClientSize = new System.Drawing.Size(828, 866);
             this.Controls.Add(this.tableLayoutPanelAltaCliente);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
