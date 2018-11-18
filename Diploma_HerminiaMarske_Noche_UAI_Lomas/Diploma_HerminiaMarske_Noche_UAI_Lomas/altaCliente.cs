@@ -75,6 +75,22 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
 
             if (fk > 0)
             {
+                SqlParameter[] pmsTelefono = new SqlParameter[3];
+
+                for (int i =0 ; i <dataGridTelefonos.Rows.Count ; i++)
+                {
+                    pmsTelefono[0] = new SqlParameter("@tipo", SqlDbType.VarChar);
+                    pmsTelefono[0].Value = dataGridTelefonos.RowsAdded(i).ColumnaTipo.value();
+
+                    pmsTelefono[1] = new SqlParameter("@numero", SqlDbType.VarChar);
+                    pmsTelefono[1].Value = dataGridTelefonos.Rows(i).ColumnaNumero.value();
+
+                    pmsTelefono[2] = new SqlParameter("@fk_persona", SqlDbType.Int);
+                    pmsTelefono[2].Value = fk;
+
+                    dataConnection.databaseInsert(pmsTelefono, "AltaTelefono");
+                }
+         
                 /*
                  * for (int i; i < addresses.length; i++) {
                  *   SqlParameter[] addresses = new SqlParameter[X]
