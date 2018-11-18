@@ -53,15 +53,27 @@
             this.label10 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.dataGridTelefonos = new System.Windows.Forms.DataGridView();
             this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.buttonAddTelefono = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
+            this.comboTipoTelefono = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.textBoxNumero = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.dataGridDomicilios = new System.Windows.Forms.DataGridView();
+            this.Calle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Piso = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DPTO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Localidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Provincia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Pais = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Comentarios = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -85,8 +97,8 @@
             this.labelCodigo = new System.Windows.Forms.Label();
             this.labelNumero = new System.Windows.Forms.Label();
             this.labelCalle = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TipoTelefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanelAltaCliente.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -94,12 +106,12 @@
             this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridTelefonos)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.groupBox6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridDomicilios)).BeginInit();
             this.groupBox5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanelAltaCliente
@@ -158,7 +170,7 @@
             this.button5.TabIndex = 0;
             this.button5.Text = "Agregar";
             this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.button5.Click += new System.EventHandler(this.buttonAddCliente_Click);
             // 
             // tabControl1
             // 
@@ -346,15 +358,28 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.dataGridView1);
+            this.groupBox4.Controls.Add(this.dataGridTelefonos);
             this.groupBox4.Controls.Add(this.button3);
-            this.groupBox4.Controls.Add(this.button4);
+            this.groupBox4.Controls.Add(this.buttonAddTelefono);
             this.groupBox4.Location = new System.Drawing.Point(6, 191);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(814, 402);
             this.groupBox4.TabIndex = 1;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Lista de Telefonos";
+            // 
+            // dataGridTelefonos
+            // 
+            this.dataGridTelefonos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridTelefonos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Telefono,
+            this.TipoTelefono});
+            this.dataGridTelefonos.Location = new System.Drawing.Point(9, 40);
+            this.dataGridTelefonos.Name = "dataGridTelefonos";
+            this.dataGridTelefonos.RowHeadersWidth = 45;
+            this.dataGridTelefonos.RowTemplate.Height = 24;
+            this.dataGridTelefonos.Size = new System.Drawing.Size(799, 275);
+            this.dataGridTelefonos.TabIndex = 34;
             // 
             // button3
             // 
@@ -365,21 +390,21 @@
             this.button3.Text = "Borrar";
             this.button3.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // buttonAddTelefono
             // 
-            this.button4.Location = new System.Drawing.Point(6, 343);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(201, 31);
-            this.button4.TabIndex = 32;
-            this.button4.Text = "Agregar al Listado";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.buttonAddTelefono.Location = new System.Drawing.Point(6, 343);
+            this.buttonAddTelefono.Name = "buttonAddTelefono";
+            this.buttonAddTelefono.Size = new System.Drawing.Size(201, 31);
+            this.buttonAddTelefono.TabIndex = 32;
+            this.buttonAddTelefono.Text = "Agregar al Listado";
+            this.buttonAddTelefono.UseVisualStyleBackColor = true;
+            this.buttonAddTelefono.Click += new System.EventHandler(this.buttonAddTelefono_Click);
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.comboBox5);
+            this.groupBox2.Controls.Add(this.comboTipoTelefono);
             this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.textBox6);
+            this.groupBox2.Controls.Add(this.textBoxNumero);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Location = new System.Drawing.Point(5, 6);
             this.groupBox2.Name = "groupBox2";
@@ -388,13 +413,16 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Datos de Telefonos del Cliente";
             // 
-            // comboBox5
+            // comboTipoTelefono
             // 
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(70, 106);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(738, 24);
-            this.comboBox5.TabIndex = 34;
+            this.comboTipoTelefono.FormattingEnabled = true;
+            this.comboTipoTelefono.Items.AddRange(new object[] {
+            "Particular",
+            "Laboral"});
+            this.comboTipoTelefono.Location = new System.Drawing.Point(70, 106);
+            this.comboTipoTelefono.Name = "comboTipoTelefono";
+            this.comboTipoTelefono.Size = new System.Drawing.Size(738, 24);
+            this.comboTipoTelefono.TabIndex = 34;
             // 
             // label5
             // 
@@ -405,12 +433,12 @@
             this.label5.TabIndex = 33;
             this.label5.Text = "Tipo";
             // 
-            // textBox6
+            // textBoxNumero
             // 
-            this.textBox6.Location = new System.Drawing.Point(70, 51);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(738, 22);
-            this.textBox6.TabIndex = 32;
+            this.textBoxNumero.Location = new System.Drawing.Point(70, 51);
+            this.textBoxNumero.Name = "textBoxNumero";
+            this.textBoxNumero.Size = new System.Drawing.Size(738, 22);
+            this.textBoxNumero.TabIndex = 32;
             // 
             // label4
             // 
@@ -435,7 +463,7 @@
             // 
             // groupBox6
             // 
-            this.groupBox6.Controls.Add(this.dataGridView2);
+            this.groupBox6.Controls.Add(this.dataGridDomicilios);
             this.groupBox6.Controls.Add(this.button2);
             this.groupBox6.Controls.Add(this.button1);
             this.groupBox6.Location = new System.Drawing.Point(3, 334);
@@ -444,6 +472,88 @@
             this.groupBox6.TabIndex = 1;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Lista de Domicilios";
+            // 
+            // dataGridDomicilios
+            // 
+            this.dataGridDomicilios.AllowUserToAddRows = false;
+            this.dataGridDomicilios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridDomicilios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Calle,
+            this.Numero,
+            this.Piso,
+            this.DPTO,
+            this.Localidad,
+            this.Provincia,
+            this.Pais,
+            this.CP,
+            this.Tipo,
+            this.Comentarios});
+            this.dataGridDomicilios.Location = new System.Drawing.Point(6, 38);
+            this.dataGridDomicilios.Name = "dataGridDomicilios";
+            this.dataGridDomicilios.ReadOnly = true;
+            this.dataGridDomicilios.RowTemplate.Height = 24;
+            this.dataGridDomicilios.Size = new System.Drawing.Size(800, 150);
+            this.dataGridDomicilios.TabIndex = 55;
+            // 
+            // Calle
+            // 
+            this.Calle.HeaderText = "Calle";
+            this.Calle.Name = "Calle";
+            this.Calle.ReadOnly = true;
+            // 
+            // Numero
+            // 
+            this.Numero.HeaderText = "Numero";
+            this.Numero.Name = "Numero";
+            this.Numero.ReadOnly = true;
+            // 
+            // Piso
+            // 
+            this.Piso.HeaderText = "Piso";
+            this.Piso.Name = "Piso";
+            this.Piso.ReadOnly = true;
+            // 
+            // DPTO
+            // 
+            this.DPTO.HeaderText = "DPTO";
+            this.DPTO.Name = "DPTO";
+            this.DPTO.ReadOnly = true;
+            // 
+            // Localidad
+            // 
+            this.Localidad.HeaderText = "Localidad";
+            this.Localidad.Name = "Localidad";
+            this.Localidad.ReadOnly = true;
+            // 
+            // Provincia
+            // 
+            this.Provincia.HeaderText = "Provincia";
+            this.Provincia.Name = "Provincia";
+            this.Provincia.ReadOnly = true;
+            // 
+            // Pais
+            // 
+            this.Pais.HeaderText = "Pais";
+            this.Pais.Name = "Pais";
+            this.Pais.ReadOnly = true;
+            // 
+            // CP
+            // 
+            this.CP.HeaderText = "CP";
+            this.CP.Name = "CP";
+            this.CP.ReadOnly = true;
+            // 
+            // Tipo
+            // 
+            this.Tipo.HeaderText = "Tipo";
+            this.Tipo.Name = "Tipo";
+            this.Tipo.ReadOnly = true;
+            // 
+            // Comentarios
+            // 
+            this.Comentarios.HeaderText = "Comentarios";
+            this.Comentarios.Name = "Comentarios";
+            this.Comentarios.ReadOnly = true;
             // 
             // button2
             // 
@@ -656,23 +766,19 @@
             this.labelCalle.TabIndex = 50;
             this.labelCalle.Text = "Calle";
             // 
-            // dataGridView1
+            // Telefono
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(8, 39);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(799, 275);
-            this.dataGridView1.TabIndex = 34;
+            this.Telefono.HeaderText = "Telefono";
+            this.Telefono.Name = "Telefono";
+            this.Telefono.ReadOnly = true;
+            this.Telefono.Width = 300;
             // 
-            // dataGridView2
+            // TipoTelefono
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(9, 34);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(800, 150);
-            this.dataGridView2.TabIndex = 55;
+            this.TipoTelefono.HeaderText = "Tipo";
+            this.TipoTelefono.Name = "TipoTelefono";
+            this.TipoTelefono.ReadOnly = true;
+            this.TipoTelefono.Width = 300;
             // 
             // altaCliente
             // 
@@ -693,14 +799,14 @@
             this.groupBox1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridTelefonos)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridDomicilios)).EndInit();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -733,13 +839,13 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.ComboBox comboBox5;
+        private System.Windows.Forms.ComboBox comboTipoTelefono;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox textBoxNumero;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button buttonAddTelefono;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.TextBox textBox7;
@@ -764,7 +870,19 @@
         private System.Windows.Forms.Label labelCalle;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView dataGridTelefonos;
+        private System.Windows.Forms.DataGridView dataGridDomicilios;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Calle;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Numero;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Piso;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DPTO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Localidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Provincia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Pais;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Tipo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Comentarios;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Telefono;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TipoTelefono;
     }
 }

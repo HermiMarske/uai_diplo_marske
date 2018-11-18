@@ -20,6 +20,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
         public altaCliente()
         {
             InitializeComponent();
+         
         }
 
         private void tableLayoutPanelAltaCliente_Paint(object sender, PaintEventArgs e)
@@ -33,12 +34,20 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
 
         }
 
-        
+        private void buttonAddTelefono_Click(object sender, EventArgs e)
+        {
        
-        
-        
+            addTelefonosToGrid(textBoxNumero.Text, comboTipoTelefono.SelectedItem.ToString());
 
-        private void button5_Click(object sender, EventArgs e)
+        }
+
+        private void addTelefonosToGrid(string numero, string tipo)
+        {
+            String[] dataRow = { numero, tipo };
+            dataGridTelefonos.Rows.Add(dataRow);
+        }
+
+        private void buttonAddCliente_Click(object sender, EventArgs e)
         {
 
             DataConnection.DataConnection dataConnection = new DataConnection.DataConnection();
@@ -81,11 +90,6 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
 
         }
 
-        
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-
-        }
+    
     }
 }
