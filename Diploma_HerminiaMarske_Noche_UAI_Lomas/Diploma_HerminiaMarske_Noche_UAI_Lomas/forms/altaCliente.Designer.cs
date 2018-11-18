@@ -97,7 +97,7 @@
             this.labelCodigo = new System.Windows.Forms.Label();
             this.labelNumero = new System.Windows.Forms.Label();
             this.labelCalle = new System.Windows.Forms.Label();
-            this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NumeroTelefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TipoTelefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanelAltaCliente.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -372,7 +372,7 @@
             // 
             this.dataGridTelefonos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridTelefonos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Telefono,
+            this.NumeroTelefono,
             this.TipoTelefono});
             this.dataGridTelefonos.Location = new System.Drawing.Point(9, 40);
             this.dataGridTelefonos.Name = "dataGridTelefonos";
@@ -766,19 +766,15 @@
             this.labelCalle.TabIndex = 50;
             this.labelCalle.Text = "Calle";
             // 
-            // Telefono
+            // NumeroTelefono
             // 
-            this.Telefono.HeaderText = "Telefono";
-            this.Telefono.Name = "Telefono";
-            this.Telefono.ReadOnly = true;
-            this.Telefono.Width = 300;
+            this.NumeroTelefono.HeaderText = "Telefono";
+            this.NumeroTelefono.Name = "NumeroTelefono";
             // 
             // TipoTelefono
             // 
             this.TipoTelefono.HeaderText = "Tipo";
             this.TipoTelefono.Name = "TipoTelefono";
-            this.TipoTelefono.ReadOnly = true;
-            this.TipoTelefono.Width = 300;
             // 
             // altaCliente
             // 
@@ -882,7 +878,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CP;
         private System.Windows.Forms.DataGridViewTextBoxColumn Tipo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Comentarios;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Telefono;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NumeroTelefono;
         private System.Windows.Forms.DataGridViewTextBoxColumn TipoTelefono;
     }
 }

@@ -29,5 +29,20 @@ namespace DataConnection
             return fk;
         }
 
+        public void databaseInsertAditionalData(SqlParameter[] pms, string storedProcedureName)
+        {
+
+            SqlConnection connection = new SqlConnection("Data Source=HERMI-PC;Initial Catalog=UAI_GESTION_AGUILA;Integrated Security=True");
+            SqlCommand command = new SqlCommand();
+            connection.Open();
+            command.Connection = connection;
+            command.CommandType = CommandType.StoredProcedure;
+            command.CommandText = storedProcedureName;
+            command.Parameters.AddRange(pms);
+            command.ExecuteNonQuery();
+            connection.Close();
+            
+        }
+
     }
 }

@@ -20,6 +20,8 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
         public altaCliente()
         {
             InitializeComponent();
+            dataGridDomicilios.Columns[0].Name = "Numero";
+            dataGridDomicilios.Columns[1].Name = "Tipo";
          
         }
 
@@ -77,18 +79,23 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             {
                 SqlParameter[] pmsTelefono = new SqlParameter[3];
 
-                for (int i =0 ; i <dataGridTelefonos.Rows.Count ; i++)
+                for (int i =0 ; i < (dataGridTelefonos.Rows.Count)-1 ; i++)
                 {
+
+                    string telefono = (string)dataGridTelefonos.Rows.SharedRow(i).Cells[0].Value;
+                    string tipo = (string)dataGridTelefonos.Rows.SharedRow(i).Cells[1].Value;
+
                     pmsTelefono[0] = new SqlParameter("@tipo", SqlDbType.VarChar);
-                    pmsTelefono[0].Value = dataGridTelefonos.RowsAdded(i).ColumnaTipo.value();
+                    pmsTelefono[0].Value = tipo;
 
                     pmsTelefono[1] = new SqlParameter("@numero", SqlDbType.VarChar);
-                    pmsTelefono[1].Value = dataGridTelefonos.Rows(i).ColumnaNumero.value();
+                    pmsTelefono[1].Value = telefono;
 
                     pmsTelefono[2] = new SqlParameter("@fk_persona", SqlDbType.Int);
                     pmsTelefono[2].Value = fk;
 
-                    dataConnection.databaseInsert(pmsTelefono, "AltaTelefono");
+                    dataConnection.databaseInsertAditionalData(pmsTelefono, "AltaTelefono");
+                    
                 }
          
                 /*
