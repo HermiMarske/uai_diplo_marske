@@ -53,22 +53,22 @@
       <DependentUpon>altaCliente.cs</DependentUpon>
     </Compile>
     <Compile Include="dataConnection\DataConnection.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="forms\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
+    <Compile Include="forms\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="inicio.cs">
+    <Compile Include="forms\inicio.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="inicio.Designer.cs">
+    <Compile Include="forms\inicio.Designer.cs">
       <DependentUpon>inicio.cs</DependentUpon>
     </Compile>
-    <Compile Include="modificarCliente.cs">
+    <Compile Include="forms\modificarCliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="modificarCliente.Designer.cs">
+    <Compile Include="forms\modificarCliente.Designer.cs">
       <DependentUpon>modificarCliente.cs</DependentUpon>
     </Compile>
     <Compile Include="objetos\Domicilio.cs" />
@@ -78,13 +78,13 @@
     <EmbeddedResource Include="forms\altaCliente.resx">
       <DependentUpon>altaCliente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
+    <EmbeddedResource Include="forms\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="inicio.resx">
+    <EmbeddedResource Include="forms\inicio.resx">
       <DependentUpon>inicio.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="modificarCliente.resx">
+    <EmbeddedResource Include="forms\modificarCliente.resx">
       <DependentUpon>modificarCliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

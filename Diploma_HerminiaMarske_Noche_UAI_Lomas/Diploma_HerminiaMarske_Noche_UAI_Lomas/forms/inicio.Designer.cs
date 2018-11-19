@@ -49,18 +49,18 @@
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-           
             this.uAIGESTIONAGUILADataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.clientesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            
             this.clientesBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.personasBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            
+            this.regionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gestionDePaisesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.provinciasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.localidadesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanelListaClientes.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-           
             ((System.ComponentModel.ISupportInitialize)(this.uAIGESTIONAGUILADataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource1)).BeginInit();
@@ -87,7 +87,8 @@
             this.actividadesToolStripMenuItem,
             this.pilotosToolStripMenuItem,
             this.actividadesToolStripMenuItem1,
-            this.clientesToolStripMenuItem});
+            this.clientesToolStripMenuItem,
+            this.regionesToolStripMenuItem});
             this.gestionToolStripMenuItem.Name = "gestionToolStripMenuItem";
             this.gestionToolStripMenuItem.Size = new System.Drawing.Size(71, 24);
             this.gestionToolStripMenuItem.Text = "Gestion";
@@ -95,19 +96,19 @@
             // actividadesToolStripMenuItem
             // 
             this.actividadesToolStripMenuItem.Name = "actividadesToolStripMenuItem";
-            this.actividadesToolStripMenuItem.Size = new System.Drawing.Size(161, 26);
+            this.actividadesToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.actividadesToolStripMenuItem.Text = "Actividades";
             // 
             // pilotosToolStripMenuItem
             // 
             this.pilotosToolStripMenuItem.Name = "pilotosToolStripMenuItem";
-            this.pilotosToolStripMenuItem.Size = new System.Drawing.Size(161, 26);
+            this.pilotosToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.pilotosToolStripMenuItem.Text = "Pilotos";
             // 
             // actividadesToolStripMenuItem1
             // 
             this.actividadesToolStripMenuItem1.Name = "actividadesToolStripMenuItem1";
-            this.actividadesToolStripMenuItem1.Size = new System.Drawing.Size(161, 26);
+            this.actividadesToolStripMenuItem1.Size = new System.Drawing.Size(216, 26);
             this.actividadesToolStripMenuItem1.Text = "Aviones";
             this.actividadesToolStripMenuItem1.Click += new System.EventHandler(this.actividadesToolStripMenuItem1_Click);
             // 
@@ -125,14 +126,14 @@
             // nuevoClienteToolStripMenuItem
             // 
             this.nuevoClienteToolStripMenuItem.Name = "nuevoClienteToolStripMenuItem";
-            this.nuevoClienteToolStripMenuItem.Size = new System.Drawing.Size(191, 26);
+            this.nuevoClienteToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.nuevoClienteToolStripMenuItem.Text = "Nuevo Cliente";
             this.nuevoClienteToolStripMenuItem.Click += new System.EventHandler(this.nuevoClienteToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(188, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(213, 6);
             // 
             // busquedaToolStripMenuItem
             // 
@@ -190,7 +191,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(263, 586);
+            this.button5.Location = new System.Drawing.Point(264, 586);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(194, 40);
             this.button5.TabIndex = 9;
@@ -199,7 +200,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(783, 586);
+            this.button4.Location = new System.Drawing.Point(786, 586);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(194, 40);
             this.button4.TabIndex = 8;
@@ -208,7 +209,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(1043, 586);
+            this.button3.Location = new System.Drawing.Point(1047, 586);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(194, 40);
             this.button3.TabIndex = 7;
@@ -217,7 +218,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(523, 586);
+            this.button2.Location = new System.Drawing.Point(525, 586);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(194, 40);
             this.button2.TabIndex = 6;
@@ -241,7 +242,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1298, 577);
+            this.groupBox1.Size = new System.Drawing.Size(1299, 577);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Listado de Clientes";
@@ -253,24 +254,13 @@
             this.dataGridView1.Location = new System.Drawing.Point(3, 18);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1292, 556);
+            this.dataGridView1.Size = new System.Drawing.Size(1293, 556);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // uAI_GESTION_AGUILADataSet
-           
-            // 
-            // uAIGESTIONAGUILADataSetBindingSource
-            // 
-
             // 
             // clientesBindingSource
             // 
             this.clientesBindingSource.DataMember = "Clientes";
             this.clientesBindingSource.DataSource = this.uAIGESTIONAGUILADataSetBindingSource;
-            // 
-            // clientesTableAdapter
-            // 
-          
             // 
             // clientesBindingSource1
             // 
@@ -282,9 +272,33 @@
             this.personasBindingSource.DataMember = "Personas";
             this.personasBindingSource.DataSource = this.uAIGESTIONAGUILADataSetBindingSource;
             // 
-            // personasTableAdapter
+            // regionesToolStripMenuItem
             // 
-     
+            this.regionesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.gestionDePaisesToolStripMenuItem,
+            this.provinciasToolStripMenuItem,
+            this.localidadesToolStripMenuItem});
+            this.regionesToolStripMenuItem.Name = "regionesToolStripMenuItem";
+            this.regionesToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.regionesToolStripMenuItem.Text = "Regiones";
+            // 
+            // gestionDePaisesToolStripMenuItem
+            // 
+            this.gestionDePaisesToolStripMenuItem.Name = "gestionDePaisesToolStripMenuItem";
+            this.gestionDePaisesToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.gestionDePaisesToolStripMenuItem.Text = "Paises";
+            // 
+            // provinciasToolStripMenuItem
+            // 
+            this.provinciasToolStripMenuItem.Name = "provinciasToolStripMenuItem";
+            this.provinciasToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.provinciasToolStripMenuItem.Text = "Provincias";
+            // 
+            // localidadesToolStripMenuItem
+            // 
+            this.localidadesToolStripMenuItem.Name = "localidadesToolStripMenuItem";
+            this.localidadesToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.localidadesToolStripMenuItem.Text = "Localidades";
             // 
             // formInicio
             // 
@@ -308,7 +322,6 @@
             this.tableLayoutPanelListaClientes.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -343,6 +356,10 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ToolStripMenuItem regionesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gestionDePaisesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem provinciasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem localidadesToolStripMenuItem;
     }
 }
 
