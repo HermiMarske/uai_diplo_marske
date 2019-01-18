@@ -54,6 +54,8 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.dataGridTelefonos = new System.Windows.Forms.DataGridView();
+            this.NumeroTelefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TipoTelefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button3 = new System.Windows.Forms.Button();
             this.buttonAddTelefono = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -83,7 +85,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.comboPais = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.labelLocalidad = new System.Windows.Forms.Label();
@@ -97,8 +99,6 @@
             this.labelCodigo = new System.Windows.Forms.Label();
             this.labelNumero = new System.Windows.Forms.Label();
             this.labelCalle = new System.Windows.Forms.Label();
-            this.NumeroTelefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TipoTelefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanelAltaCliente.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -381,6 +381,16 @@
             this.dataGridTelefonos.Size = new System.Drawing.Size(799, 275);
             this.dataGridTelefonos.TabIndex = 34;
             // 
+            // NumeroTelefono
+            // 
+            this.NumeroTelefono.HeaderText = "Telefono";
+            this.NumeroTelefono.Name = "NumeroTelefono";
+            // 
+            // TipoTelefono
+            // 
+            this.TipoTelefono.HeaderText = "Tipo";
+            this.TipoTelefono.Name = "TipoTelefono";
+            // 
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(602, 343);
@@ -581,7 +591,7 @@
             this.groupBox5.Controls.Add(this.label3);
             this.groupBox5.Controls.Add(this.comboBox3);
             this.groupBox5.Controls.Add(this.label2);
-            this.groupBox5.Controls.Add(this.comboBox2);
+            this.groupBox5.Controls.Add(this.comboPais);
             this.groupBox5.Controls.Add(this.label1);
             this.groupBox5.Controls.Add(this.comboBox1);
             this.groupBox5.Controls.Add(this.labelLocalidad);
@@ -652,13 +662,13 @@
             this.label2.TabIndex = 64;
             this.label2.Text = "Provincia";
             // 
-            // comboBox2
+            // comboPais
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(110, 96);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(266, 24);
-            this.comboBox2.TabIndex = 63;
+            this.comboPais.FormattingEnabled = true;
+            this.comboPais.Location = new System.Drawing.Point(110, 96);
+            this.comboPais.Name = "comboPais";
+            this.comboPais.Size = new System.Drawing.Size(266, 24);
+            this.comboPais.TabIndex = 63;
             // 
             // label1
             // 
@@ -766,16 +776,6 @@
             this.labelCalle.TabIndex = 50;
             this.labelCalle.Text = "Calle";
             // 
-            // NumeroTelefono
-            // 
-            this.NumeroTelefono.HeaderText = "Telefono";
-            this.NumeroTelefono.Name = "NumeroTelefono";
-            // 
-            // TipoTelefono
-            // 
-            this.TipoTelefono.HeaderText = "Tipo";
-            this.TipoTelefono.Name = "TipoTelefono";
-            // 
             // altaCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -787,6 +787,7 @@
             this.MinimizeBox = false;
             this.Name = "altaCliente";
             this.Text = "Alta de Cliente";
+            this.Load += new System.EventHandler(this.altaCliente_Load);
             this.tableLayoutPanelAltaCliente.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
@@ -850,7 +851,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox comboPais;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label labelLocalidad;

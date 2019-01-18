@@ -113,6 +113,10 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
 
         }
 
-    
+        private void altaCliente_Load(object sender, EventArgs e)
+        {
+            DataConnection.DataConnection dataConnection = new DataConnection.DataConnection();
+            dataConnection.getList("ListarPaises");
+        }
     }
 }

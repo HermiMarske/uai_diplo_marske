@@ -44,5 +44,24 @@ namespace DataConnection
             
         }
 
+        public SqlDataAdapter getList(String storedProcedureName)
+        {
+            SqlConnection connection = new SqlConnection("Data Source=HERMI-PC;Initial Catalog=UAI_GESTION_AGUILA;Integrated Security=True");
+            SqlCommand command = new SqlCommand();
+            DataTable dt = new DataTable();
+          
+     
+            connection.Open();
+            command.Connection = connection;
+            command.CommandType = CommandType.StoredProcedure;
+            command.CommandText = storedProcedureName;
+            SqlDataAdapter da = new SqlDataAdapter(command);
+            da.Fill(dt);
+        
+            connection.Close();
+            return da;
+        }
+       
+
     }
 }
