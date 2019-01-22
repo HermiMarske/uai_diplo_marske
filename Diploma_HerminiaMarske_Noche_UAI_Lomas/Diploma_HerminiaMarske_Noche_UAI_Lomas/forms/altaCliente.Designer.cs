@@ -38,7 +38,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.pickerFechaNacimiento = new System.Windows.Forms.DateTimePicker();
             this.txtRazonSocial = new System.Windows.Forms.TextBox();
             this.txtCuit = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -198,7 +198,7 @@
             // 
             this.groupBox1.Controls.Add(this.txtNombre);
             this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Controls.Add(this.dateTimePicker1);
+            this.groupBox1.Controls.Add(this.pickerFechaNacimiento);
             this.groupBox1.Controls.Add(this.txtRazonSocial);
             this.groupBox1.Controls.Add(this.txtCuit);
             this.groupBox1.Controls.Add(this.label12);
@@ -234,12 +234,13 @@
             this.label11.TabIndex = 29;
             this.label11.Text = "Razon Social";
             // 
-            // dateTimePicker1
+            // pickerFechaNacimiento
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(161, 321);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(646, 22);
-            this.dateTimePicker1.TabIndex = 31;
+            this.pickerFechaNacimiento.Location = new System.Drawing.Point(161, 321);
+            this.pickerFechaNacimiento.Name = "pickerFechaNacimiento";
+            this.pickerFechaNacimiento.Size = new System.Drawing.Size(646, 22);
+            this.pickerFechaNacimiento.TabIndex = 31;
+            this.pickerFechaNacimiento.Value = new System.DateTime(2019, 1, 21, 0, 0, 0, 0);
             // 
             // txtRazonSocial
             // 
@@ -819,7 +820,7 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker pickerFechaNacimiento;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ComboBox comboSexo;

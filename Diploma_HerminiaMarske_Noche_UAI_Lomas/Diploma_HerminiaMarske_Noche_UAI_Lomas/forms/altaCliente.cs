@@ -54,7 +54,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
 
             DataConnection.DataConnection dataConnection = new DataConnection.DataConnection();
 
-            SqlParameter[] pms = new SqlParameter[6];
+            SqlParameter[] pms = new SqlParameter[7];
             pms[0] = new SqlParameter("@razonSocial", SqlDbType.VarChar);
             pms[0].Value = txtRazonSocial.Text;
 
@@ -72,6 +72,9 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
 
             pms[5] = new SqlParameter("@sexo", SqlDbType.VarChar);
             pms[5].Value = comboSexo.SelectedItem.ToString();
+
+            pms[6] = new SqlParameter("@fechaNacimiento", SqlDbType.Date);
+            pms[6].Value = pickerFechaNacimiento.Value;
 
             int fk = dataConnection.databaseInsert(pms, "AltaCliente");
 
