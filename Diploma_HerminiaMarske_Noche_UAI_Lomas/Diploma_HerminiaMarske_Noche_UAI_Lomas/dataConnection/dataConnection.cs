@@ -11,12 +11,12 @@ namespace DataConnection
 {
     class DataConnection
     {
-       
+        static private string Sql = "Data Source=HERMI-PC;Initial Catalog=UAI_GESTION_AGUILA;Integrated Security=True";
 
         public int databaseInsert(SqlParameter[] pms, string storedProcedureName)
         {
       
-            SqlConnection connection = new SqlConnection("Data Source=HERMI-PC;Initial Catalog=UAI_GESTION_AGUILA;Integrated Security=True");
+            SqlConnection connection = new SqlConnection(Sql);
             SqlCommand command = new SqlCommand();
             connection.Open();
             command.Connection = connection;
@@ -32,7 +32,7 @@ namespace DataConnection
         public void databaseInsertAditionalData(SqlParameter[] pms, string storedProcedureName)
         {
 
-            SqlConnection connection = new SqlConnection("Data Source=HERMI-PC;Initial Catalog=UAI_GESTION_AGUILA;Integrated Security=True");
+            SqlConnection connection = new SqlConnection(Sql);
             SqlCommand command = new SqlCommand();
             connection.Open();
             command.Connection = connection;
@@ -46,7 +46,7 @@ namespace DataConnection
 
         public SqlDataAdapter getList(String storedProcedureName)
         {
-            SqlConnection connection = new SqlConnection("Data Source=HERMI-PC;Initial Catalog=UAI_GESTION_AGUILA;Integrated Security=True");
+            SqlConnection connection = new SqlConnection(Sql);
             SqlCommand command = new SqlCommand();
             DataTable dt = new DataTable();
           
