@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Data.Sql;
 using System.Data.SqlClient;
 using DataConnection;
+using Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos;
 
 
 
@@ -119,7 +120,21 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
         private void altaCliente_Load(object sender, EventArgs e)
         {
             DataConnection.DataConnection dataConnection = new DataConnection.DataConnection();
-            dataConnection.getList("ListarPaises");
+            SqlDataAdapter da = new SqlDataAdapter();
+            DataTable dt = new DataTable();
+            List<Pais> paises = new List<Pais>();
+            da = dataConnection.getList("ListarPaises");
+            da.Fill(dt);
+            foreach (DataRow dr in dt.Rows)
+            {
+                Pais pais = new Pais((int) dr[0], (string) dr[1]);
+                paises.Add(pais);
+            }
+            foreach(Pais pais in paises)
+            {
+                comboPais.Items.Add(pais.GetNombre());
+            }
+            
         }
     }
 }
