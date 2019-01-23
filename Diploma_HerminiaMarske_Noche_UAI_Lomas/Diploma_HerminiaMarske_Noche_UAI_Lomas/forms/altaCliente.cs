@@ -117,12 +117,14 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
 
         }
 
+        List<Pais> paises = new List<Pais>();
         private void altaCliente_Load(object sender, EventArgs e)
         {
+
+            //LLenado de combo de paises
             DataConnection.DataConnection dataConnection = new DataConnection.DataConnection();
             SqlDataAdapter da = new SqlDataAdapter();
             DataTable dt = new DataTable();
-            List<Pais> paises = new List<Pais>();
             da = dataConnection.getList("ListarPaises");
             da.Fill(dt);
             foreach (DataRow dr in dt.Rows)
