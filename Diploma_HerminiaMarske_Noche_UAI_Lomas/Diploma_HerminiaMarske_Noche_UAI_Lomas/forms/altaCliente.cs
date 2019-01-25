@@ -117,10 +117,10 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
 
         }
 
-        List<Pais> paises = new List<Pais>();
         private void altaCliente_Load(object sender, EventArgs e)
         {
 
+            List<Pais> paises = new List<Pais>();
             //LLenado de combo de paises
             DataConnection.DataConnection dataConnection = new DataConnection.DataConnection();
             SqlDataAdapter da = new SqlDataAdapter();
@@ -132,11 +132,32 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
                 Pais pais = new Pais((int) dr[0], (string) dr[1]);
                 paises.Add(pais);
             }
-            foreach(Pais pais in paises)
-            {
-                comboPais.Items.Add(pais.GetNombre());
-            }
+            comboPais.DataSource = paises;
+
+        }
+
+        private void comboPais_SelectedIndexChanged(object sender, EventArgs e)
+        {
             
+            List<Provincia> provincias = new List<Provincia>();
+            DataConnection.DataConnection dataConnection = new DataConnection.DataConnection();
+            SqlDataAdapter da = new SqlDataAdapter();
+            DataTable dt = new DataTable();
+            Pais p = new Pais();
+            p = (Pais)this.comboPais.SelectedItem;
+            SqlParameter[] fkPais = new SqlParameter[1];
+            fkPais[0] = new SqlParameter("@pais", SqlDbType.Int);
+            fkPais[0].Value = p.GetId();
+
+            da = dataConnection.getListParams("ListarProvincias", fkPais);
+            da.Fill(dt);
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                Provincia provincia = new Provincia((int)dr[0], (string)dr[1]);
+                provincias.Add(provincia);
+            }
+            comboProvincias.DataSource = provincias;
         }
     }
 }

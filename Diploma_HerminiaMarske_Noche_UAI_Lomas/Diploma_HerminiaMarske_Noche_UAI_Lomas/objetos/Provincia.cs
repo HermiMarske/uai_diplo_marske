@@ -1,16 +1,22 @@
-﻿namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos
 {
-    internal class Pais
+    class Provincia
     {
         private string nombre;
         private int id;
 
-        public Pais()
+        public Provincia()
         {
 
         }
 
-        public Pais(int id, string nombre)
+        public Provincia(int id, string nombre)
         {
             this.id = id;
             this.nombre = nombre;

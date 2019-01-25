@@ -87,7 +87,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.comboPais = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboProvincias = new System.Windows.Forms.ComboBox();
             this.labelLocalidad = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.labelDpto = new System.Windows.Forms.Label();
@@ -594,7 +594,7 @@
             this.groupBox5.Controls.Add(this.label2);
             this.groupBox5.Controls.Add(this.comboPais);
             this.groupBox5.Controls.Add(this.label1);
-            this.groupBox5.Controls.Add(this.comboBox1);
+            this.groupBox5.Controls.Add(this.comboProvincias);
             this.groupBox5.Controls.Add(this.labelLocalidad);
             this.groupBox5.Controls.Add(this.textBox5);
             this.groupBox5.Controls.Add(this.labelDpto);
@@ -657,7 +657,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(5, 215);
+            this.label2.Location = new System.Drawing.Point(5, 157);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(66, 17);
             this.label2.TabIndex = 64;
@@ -670,6 +670,7 @@
             this.comboPais.Name = "comboPais";
             this.comboPais.Size = new System.Drawing.Size(266, 24);
             this.comboPais.TabIndex = 63;
+            this.comboPais.SelectedIndexChanged += new System.EventHandler(this.comboPais_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -680,18 +681,18 @@
             this.label1.TabIndex = 62;
             this.label1.Text = "Pais";
             // 
-            // comboBox1
+            // comboProvincias
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(110, 154);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(266, 24);
-            this.comboBox1.TabIndex = 61;
+            this.comboProvincias.FormattingEnabled = true;
+            this.comboProvincias.Location = new System.Drawing.Point(110, 154);
+            this.comboProvincias.Name = "comboProvincias";
+            this.comboProvincias.Size = new System.Drawing.Size(266, 24);
+            this.comboProvincias.TabIndex = 61;
             // 
             // labelLocalidad
             // 
             this.labelLocalidad.AutoSize = true;
-            this.labelLocalidad.Location = new System.Drawing.Point(5, 157);
+            this.labelLocalidad.Location = new System.Drawing.Point(6, 215);
             this.labelLocalidad.Name = "labelLocalidad";
             this.labelLocalidad.Size = new System.Drawing.Size(69, 17);
             this.labelLocalidad.TabIndex = 60;
@@ -854,7 +855,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox comboPais;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboProvincias;
         private System.Windows.Forms.Label labelLocalidad;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Label labelDpto;

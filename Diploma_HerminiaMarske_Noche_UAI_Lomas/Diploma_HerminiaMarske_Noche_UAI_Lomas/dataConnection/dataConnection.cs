@@ -61,7 +61,26 @@ namespace DataConnection
             connection.Close();
             return da;
         }
-       
+
+        public SqlDataAdapter getListParams(String storedProcedureName, SqlParameter[] pms)
+        {
+            SqlConnection connection = new SqlConnection(Sql);
+            SqlCommand command = new SqlCommand();
+            DataTable dt = new DataTable();
+
+
+            connection.Open();
+            command.Connection = connection;
+            command.CommandType = CommandType.StoredProcedure;
+            command.CommandText = storedProcedureName;
+            command.Parameters.AddRange(pms);
+            SqlDataAdapter da = new SqlDataAdapter(command);
+            da.Fill(dt);
+
+            connection.Close();
+            return da;
+        }
+
 
     }
 }
