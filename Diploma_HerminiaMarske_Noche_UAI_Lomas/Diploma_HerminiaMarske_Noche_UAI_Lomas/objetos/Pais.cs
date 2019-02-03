@@ -1,6 +1,6 @@
 ﻿namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos
 {
-    internal class Pais
+    public class Pais
     {
         private string nombre;
         private int id;
@@ -35,10 +35,10 @@
         {
             id = value;
         }
-
+        
         public override string ToString()
         {
-            return this.nombre;
+            return nombre;
         }
     }
 }

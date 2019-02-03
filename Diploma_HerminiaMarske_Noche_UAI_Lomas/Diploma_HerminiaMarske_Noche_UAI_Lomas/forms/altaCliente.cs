@@ -119,13 +119,12 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
 
         private void altaCliente_Load(object sender, EventArgs e)
         {
-
+            //Llenado de combo de paises
             List<Pais> paises = new List<Pais>();
-            //LLenado de combo de paises
-            DataConnection.DataConnection dataConnection = new DataConnection.DataConnection();
+            DataConnection.DataConnection dataQuery = new DataConnection.DataConnection();
             SqlDataAdapter da = new SqlDataAdapter();
             DataTable dt = new DataTable();
-            da = dataConnection.getList("ListarPaises");
+            da = dataQuery.getList("ListarPaises", null);
             da.Fill(dt);
             foreach (DataRow dr in dt.Rows)
             {
@@ -133,31 +132,37 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
                 paises.Add(pais);
             }
             comboPais.DataSource = paises;
+        }
 
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            DialogResult result = Dialogo.LimpiarCampos();
+            Console.Out.WriteLine(result);
         }
 
         private void comboPais_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
             List<Provincia> provincias = new List<Provincia>();
-            DataConnection.DataConnection dataConnection = new DataConnection.DataConnection();
+            Pais pais = (Pais) comboPais.SelectedItem;
+            DataConnection.DataConnection dataQuery = new DataConnection.DataConnection();
             SqlDataAdapter da = new SqlDataAdapter();
             DataTable dt = new DataTable();
-            Pais p = new Pais();
-            p = (Pais)this.comboPais.SelectedItem;
-            SqlParameter[] fkPais = new SqlParameter[1];
-            fkPais[0] = new SqlParameter("@pais", SqlDbType.Int);
-            fkPais[0].Value = p.GetId();
-
-            da = dataConnection.getListParams("ListarProvincias", fkPais);
+            SqlParameter[] pmsProvincias = new SqlParameter[1];
+            pmsProvincias[0] = new SqlParameter("@pais", SqlDbType.Int);
+            pmsProvincias[0].Value = pais.GetId();
+            da = dataQuery.getList("ListarProvincias", pmsProvincias);
             da.Fill(dt);
-
             foreach (DataRow dr in dt.Rows)
             {
-                Provincia provincia = new Provincia((int)dr[0], (string)dr[1]);
+                Provincia provincia = new Provincia((string) dr[0], (int) dr[1], (int) dr[2]);
                 provincias.Add(provincia);
             }
-            comboProvincias.DataSource = provincias;
+            combo.DataSource = provincias;
         }
     }
 }

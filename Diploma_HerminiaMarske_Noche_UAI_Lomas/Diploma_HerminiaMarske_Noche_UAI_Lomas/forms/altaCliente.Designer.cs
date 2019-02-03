@@ -152,6 +152,7 @@
             this.button7.TabIndex = 2;
             this.button7.Text = "Limpiar Formulario";
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // button6
             // 
@@ -161,6 +162,7 @@
             this.button6.TabIndex = 1;
             this.button6.Text = "Cancelar";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button5
             // 
@@ -813,38 +815,39 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelAltaCliente;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
         private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.DateTimePicker pickerFechaNacimiento;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox txtNombre;
+        private System.Windows.Forms.TextBox txtApellido;
+        private System.Windows.Forms.TextBox txtDni;
         private System.Windows.Forms.ComboBox comboSexo;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.DateTimePicker pickerFechaNacimiento;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.TextBox txtRazonSocial;
-        private System.Windows.Forms.TextBox txtDni;
+        private System.Windows.Forms.TextBox txtCuit;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox txtApellido;
-        private System.Windows.Forms.TextBox txtCuit;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.ComboBox comboTipoTelefono;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBoxNumero;
+        private System.Windows.Forms.ComboBox comboTipoTelefono;
+        private System.Windows.Forms.DataGridView dataGridTelefonos;
+        private System.Windows.Forms.Button buttonAddTelefono;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button buttonAddTelefono;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.TextBox textBox7;
@@ -869,7 +872,6 @@
         private System.Windows.Forms.Label labelCalle;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataGridView dataGridTelefonos;
         private System.Windows.Forms.DataGridView dataGridDomicilios;
         private System.Windows.Forms.DataGridViewTextBoxColumn Calle;
         private System.Windows.Forms.DataGridViewTextBoxColumn Numero;

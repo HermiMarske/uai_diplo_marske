@@ -11,7 +11,7 @@ namespace DataConnection
 {
     class DataConnection
     {
-        static private string Sql = "Data Source=HERMI-PC;Initial Catalog=UAI_GESTION_AGUILA;Integrated Security=True";
+        static private string Sql = "Data Source=CHARLOTTE-PC;Initial Catalog=UAI_GESTION_AGUILA;Integrated Security=True";
 
         public int databaseInsert(SqlParameter[] pms, string storedProcedureName)
         {
@@ -44,7 +44,7 @@ namespace DataConnection
             
         }
 
-        public SqlDataAdapter getList(String storedProcedureName)
+        public SqlDataAdapter getList(string storedProcedureName, SqlParameter[] pms)
         {
             SqlConnection connection = new SqlConnection(Sql);
             SqlCommand command = new SqlCommand();
@@ -55,6 +55,9 @@ namespace DataConnection
             command.Connection = connection;
             command.CommandType = CommandType.StoredProcedure;
             command.CommandText = storedProcedureName;
+            if (pms != null) {
+                command.Parameters.AddRange(pms);
+            }
             SqlDataAdapter da = new SqlDataAdapter(command);
             da.Fill(dt);
         
