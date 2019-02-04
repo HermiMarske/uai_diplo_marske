@@ -6,20 +6,24 @@ using System.Threading.Tasks;
 
 namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos
 {
-    class Provincia
+    class Localidad
     {
-        private string nombre;
         private int id;
+        private int referencia;
+        private string nombre;
 
-        public Provincia()
+
+
+        public Localidad()
         {
 
         }
 
-        public Provincia(string nombre, int id)
+        public Localidad(string nombre, int id, int referencia)
         {
             this.nombre = nombre;
             this.id = id;
+            this.referencia = referencia;
         }
 
         public string GetNombre()
@@ -37,14 +41,27 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos
             return id;
         }
 
+        public void SetReferencia(int value)
+        {
+            referencia = value;
+        }
+
+
+        public int GetReferencia()
+        {
+            return referencia;
+        }
+
         public void SetId(int value)
         {
             id = value;
         }
 
+
         public override string ToString()
         {
             return this.nombre;
         }
+
     }
 }

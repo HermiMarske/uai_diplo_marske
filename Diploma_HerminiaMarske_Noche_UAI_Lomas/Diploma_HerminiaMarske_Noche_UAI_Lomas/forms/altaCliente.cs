@@ -37,11 +37,17 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
 
         }
 
+        List<Domicilio> domicilios = new List<Domicilio>();
+        List<Telefono> telefonos = new List<Telefono>();
+
         private void buttonAddTelefono_Click(object sender, EventArgs e)
         {
-       
-            addTelefonosToGrid(textBoxNumero.Text, comboTipoTelefono.SelectedItem.ToString());
+            Telefono tel = new Telefono();
+            tel.SetNumero(textBoxNumero.Text);
+            tel.SetTipo(comboTipoTelefono.SelectedItem.ToString());
 
+            String[] dataRow = { tel.GetNumero(), tel.GetTipo()};
+            dataGridTelefonos.Rows.Add(dataRow);
         }
 
         private void addTelefonosToGrid(string numero, string tipo)
@@ -82,18 +88,24 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             if (fk > 0)
             {
                 SqlParameter[] pmsTelefono = new SqlParameter[3];
+                SqlParameter[] pmsDomicilio = new SqlParameter[9];
 
                 for (int i =0 ; i < (dataGridTelefonos.Rows.Count)-1 ; i++)
                 {
+                    Telefono t = new Telefono();
 
-                    string telefono = (string)dataGridTelefonos.Rows.SharedRow(i).Cells[0].Value;
-                    string tipo = (string)dataGridTelefonos.Rows.SharedRow(i).Cells[1].Value;
+                    t.SetNumero((string)dataGridTelefonos.Rows.SharedRow(i).Cells[0].Value);
+                    t.SetTipo((string)dataGridTelefonos.Rows.SharedRow(i).Cells[1].Value);
+                    telefonos.Add(t);
+
+                    //string telefono = (string)dataGridTelefonos.Rows.SharedRow(i).Cells[0].Value;
+                    //string tipo = (string)dataGridTelefonos.Rows.SharedRow(i).Cells[1].Value;
 
                     pmsTelefono[0] = new SqlParameter("@tipo", SqlDbType.VarChar);
-                    pmsTelefono[0].Value = tipo;
+                    pmsTelefono[0].Value = t.GetTipo();
 
                     pmsTelefono[1] = new SqlParameter("@numero", SqlDbType.VarChar);
-                    pmsTelefono[1].Value = telefono;
+                    pmsTelefono[1].Value = t.GetNumero();
 
                     pmsTelefono[2] = new SqlParameter("@fk_persona", SqlDbType.Int);
                     pmsTelefono[2].Value = fk;
@@ -101,18 +113,55 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
                     dataConnection.databaseInsertAditionalData(pmsTelefono, "AltaTelefono");
                     
                 }
-         
-                /*
-                 * for (int i; i < addresses.length; i++) {
-                 *   SqlParameter[] addresses = new SqlParameter[X]
-                 *   pms[0] = new SqlParameter("@field", SqlDbType.FieldType);
-                 *   pms[0].Value = txtField.Text;
-                 *   ...
-                 *   dataConnection.insertAddress(addresses, fk, "AltaClienteDireccion");
-                 * }
-                 * 
-                */
 
+                for (int i = 0; i < dataGridDomicilios.Rows.Count; i++)
+                {
+                    Domicilio dom = new Domicilio();
+                    dom.SetTipoDomicilio((String)dataGridDomicilios.Rows.SharedRow(i).Cells[0].Value);
+                    dom.SetComentario((String)dataGridDomicilios.Rows.SharedRow(i).Cells[1].Value);
+                    dom.SetCalle((String)dataGridDomicilios.Rows.SharedRow(i).Cells[2].Value);
+                    dom.SetNumero((String)dataGridDomicilios.Rows.SharedRow(i).Cells[3].Value);
+                    dom.SetPiso((Int32)dataGridDomicilios.Rows.SharedRow(i).Cells[4].Value);
+                    dom.SetDpto((String)dataGridDomicilios.Rows.SharedRow(i).Cells[5].Value);
+                    dom.SetCodigoPostal((String)dataGridDomicilios.Rows.SharedRow(i).Cells[6].Value);
+                    dom.SetLocalidad((Localidad)dataGridDomicilios.Rows.SharedRow(i).Cells[7].Value);
+
+                    domicilios.Add(dom);
+                }
+
+                foreach(Domicilio d in domicilios)
+                {
+                    pmsDomicilio[0] = new SqlParameter("@calle", SqlDbType.VarChar);
+                    pmsDomicilio[0].Value = d.GetCalle();
+
+                    pmsDomicilio[1] = new SqlParameter("@numero", SqlDbType.VarChar);
+                    pmsDomicilio[1].Value = d.GetNumero();
+
+                    pmsDomicilio[2] = new SqlParameter("@piso", SqlDbType.Int);
+                    pmsDomicilio[2].Value = (object) d.GetPiso() ?? DBNull.Value;
+
+                    pmsDomicilio[3] = new SqlParameter("@dpto", SqlDbType.VarChar);
+                    pmsDomicilio[3].Value = d.GetDpto();
+
+                    pmsDomicilio[4] = new SqlParameter("@comentarios", SqlDbType.VarChar);
+                    pmsDomicilio[4].Value = d.GetComentario();
+
+                    pmsDomicilio[5] = new SqlParameter("@codPostal", SqlDbType.VarChar);
+                    pmsDomicilio[5].Value = d.GetCodigoPostal();
+
+                    pmsDomicilio[6] = new SqlParameter("@tipoDomicilio", SqlDbType.VarChar);
+                    pmsDomicilio[6].Value = d.GetTipoDomicilio();
+
+                    pmsDomicilio[7] = new SqlParameter("@fk_localidad", SqlDbType.Int);
+                    pmsDomicilio[7].Value = d.GetLocalidad().GetId();
+
+                    pmsDomicilio[8] = new SqlParameter("@fk_persona", SqlDbType.Int);
+                    pmsDomicilio[8].Value = fk;
+
+                    dataConnection.databaseInsertAditionalData(pmsDomicilio, "AltaDomicilio");
+
+                }
+         
             }
 
         }
@@ -159,10 +208,53 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             da.Fill(dt);
             foreach (DataRow dr in dt.Rows)
             {
-                Provincia provincia = new Provincia((string) dr[0], (int) dr[1], (int) dr[2]);
+                Provincia provincia = new Provincia((string) dr[0], (int) dr[1]);
                 provincias.Add(provincia);
             }
-            combo.DataSource = provincias;
+            comboProvincias.DataSource = provincias;
+        }
+
+        private void comboProvincias_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            List<Localidad> localidades= new List<Localidad>();
+            Provincia provincia  = (Provincia)comboProvincias.SelectedItem;
+            DataConnection.DataConnection dataQuery = new DataConnection.DataConnection();
+            SqlDataAdapter da = new SqlDataAdapter();
+            DataTable dt = new DataTable();
+            SqlParameter[] pmsLocalidades = new SqlParameter[1];
+            pmsLocalidades[0] = new SqlParameter("@provincia", SqlDbType.Int);
+            pmsLocalidades[0].Value = provincia.GetId();
+            da = dataQuery.getList("ListarLocalidades", pmsLocalidades);
+            da.Fill(dt);
+            foreach (DataRow dr in dt.Rows)
+            {
+                Localidad localidad = new Localidad((string)dr[0], (int)dr[1], (int)dr[2]);
+                localidades.Add(localidad);
+            } 
+            comboLocalidades.DataSource = localidades;
+        }
+
+        private void btnAgregarDireccion_Click(object sender, EventArgs e)
+        {
+            Domicilio dom = new Domicilio();
+            dom.SetNumero(txtNumero.Text);
+            dom.SetCalle(txtCalle.Text);
+            dom.SetCodigoPostal(txtCodigoPostal.Text);
+            dom.SetDpto(txtDpto.Text);
+            try
+            {
+            dom.SetPiso(Convert.ToInt32(txtPiso.Text));
+            } catch (Exception)
+            {
+               
+            } 
+            dom.SetTipoDomicilio(comboTipo.SelectedItem.ToString());
+            dom.SetComentario(txtComentario.Text);
+            dom.SetLocalidad((Localidad)comboLocalidades.SelectedItem);
+
+            Object[] dataRow = {dom.GetTipoDomicilio(), dom.GetComentario(), dom.GetCalle(), dom.GetNumero(), dom.GetPiso(), dom.GetDpto(), dom.GetCodigoPostal(), dom.GetLocalidad() };
+            dataGridDomicilios.Rows.Add(dataRow);
+          
         }
     }
 }
