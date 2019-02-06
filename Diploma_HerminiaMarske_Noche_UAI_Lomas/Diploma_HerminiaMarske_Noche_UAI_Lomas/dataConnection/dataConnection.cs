@@ -11,7 +11,7 @@ namespace DataConnection
 {
     class DataConnection
     {
-        static private string Sql = "Data Source=CHARLOTTE-PC;Initial Catalog=UAI_GESTION_AGUILA;Integrated Security=True";
+        static private string Sql = "Data Source=HERMI-PC;Initial Catalog=UAI_GESTION_AGUILA;Integrated Security=True";
 
         public int databaseInsert(SqlParameter[] pms, string storedProcedureName)
         {
