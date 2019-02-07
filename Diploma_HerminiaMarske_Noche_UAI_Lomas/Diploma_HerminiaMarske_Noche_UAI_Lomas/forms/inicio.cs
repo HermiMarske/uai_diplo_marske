@@ -2,16 +2,30 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos;
 
 namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
 {
     public partial class formInicio : Form
     {
+        List<Cliente> clientes = new List<Cliente>();
+
+        private void listarClientes()
+        {
+
+            DataConnection.DataConnection dataQuery = new DataConnection.DataConnection();
+            SqlDataAdapter da = new SqlDataAdapter();
+            DataTable dt = new DataTable();
+            da = dataQuery.getList("ListarClientes", null);
+            da.Fill(dt);
+        } 
+
         public formInicio()
         {
             InitializeComponent();
@@ -38,7 +52,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
 
         private void formInicio_Load(object sender, EventArgs e)
         {
-          
+            listarClientes();
 
         }
 
@@ -57,5 +71,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
         {
             tableLayoutPanelListaClientes.Show();
         }
+
+
     }
 }

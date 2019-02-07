@@ -71,7 +71,9 @@
     <Compile Include="forms\modificarCliente.Designer.cs">
       <DependentUpon>modificarCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="objetos\Cliente.cs" />
     <Compile Include="objetos\Localidad.cs" />
+    <Compile Include="objetos\Persona.cs" />
     <Compile Include="objetos\Provincia.cs" />
     <Compile Include="objetos\Dialogo.cs" />
     <Compile Include="objetos\Domicilio.cs" />
