@@ -57,7 +57,7 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnNuevoCliente = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridClientes = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -259,7 +259,7 @@
             this.tableLayoutPanelListaClientes.Controls.Add(this.button4, 0, 1);
             this.tableLayoutPanelListaClientes.Controls.Add(this.button3, 0, 1);
             this.tableLayoutPanelListaClientes.Controls.Add(this.button2, 0, 1);
-            this.tableLayoutPanelListaClientes.Controls.Add(this.button1, 0, 1);
+            this.tableLayoutPanelListaClientes.Controls.Add(this.btnNuevoCliente, 0, 1);
             this.tableLayoutPanelListaClientes.Controls.Add(this.groupBox1, 0, 0);
             this.tableLayoutPanelListaClientes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelListaClientes.Location = new System.Drawing.Point(3, 3);
@@ -306,14 +306,15 @@
             this.button2.Text = "Modificar Cliente";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btnNuevoCliente
             // 
-            this.button1.Location = new System.Drawing.Point(3, 586);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(194, 40);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Nuevo Cliente";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnNuevoCliente.Location = new System.Drawing.Point(3, 586);
+            this.btnNuevoCliente.Name = "btnNuevoCliente";
+            this.btnNuevoCliente.Size = new System.Drawing.Size(194, 40);
+            this.btnNuevoCliente.TabIndex = 5;
+            this.btnNuevoCliente.Text = "Nuevo Cliente";
+            this.btnNuevoCliente.UseVisualStyleBackColor = true;
+            this.btnNuevoCliente.Click += new System.EventHandler(this.btnNuevoCliente_Click);
             // 
             // groupBox1
             // 
@@ -336,7 +337,6 @@
             this.dataGridClientes.RowTemplate.Height = 24;
             this.dataGridClientes.Size = new System.Drawing.Size(1279, 556);
             this.dataGridClientes.TabIndex = 0;
-           
             // 
             // tabPage2
             // 
@@ -368,7 +368,9 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uAIGESTIONAGUILADataSetBindingSource)).EndInit();
-
+            ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.personasBindingSource)).EndInit();
             this.panel1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -413,7 +415,7 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnNuevoCliente;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dataGridClientes;
         private System.Windows.Forms.TabPage tabPage2;

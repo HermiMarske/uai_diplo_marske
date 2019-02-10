@@ -46,7 +46,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.txtApellido = new System.Windows.Forms.TextBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label9 = new System.Windows.Forms.Label();
             this.comboSexo = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -67,6 +66,14 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.dataGridDomicilios = new System.Windows.Forms.DataGridView();
+            this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Comentario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Calle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Piso = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DPTO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Localidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button2 = new System.Windows.Forms.Button();
             this.btnAgregarDireccion = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -91,14 +98,8 @@
             this.labelNumero = new System.Windows.Forms.Label();
             this.labelCalle = new System.Windows.Forms.Label();
             this.telefonoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Comentario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Calle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Piso = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DPTO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Localidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.comboTipoCliente = new System.Windows.Forms.ComboBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.tableLayoutPanelAltaCliente.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -199,6 +200,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.comboTipoCliente);
+            this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.txtNombre);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.pickerFechaNacimiento);
@@ -208,7 +211,6 @@
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.txtApellido);
-            this.groupBox1.Controls.Add(this.checkBox1);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.comboSexo);
             this.groupBox1.Controls.Add(this.label8);
@@ -231,7 +233,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(7, 457);
+            this.label11.Location = new System.Drawing.Point(6, 458);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(91, 17);
             this.label11.TabIndex = 29;
@@ -247,16 +249,16 @@
             // 
             // txtRazonSocial
             // 
-            this.txtRazonSocial.Location = new System.Drawing.Point(104, 454);
+            this.txtRazonSocial.Location = new System.Drawing.Point(103, 455);
             this.txtRazonSocial.Name = "txtRazonSocial";
-            this.txtRazonSocial.Size = new System.Drawing.Size(699, 22);
+            this.txtRazonSocial.Size = new System.Drawing.Size(704, 22);
             this.txtRazonSocial.TabIndex = 25;
             // 
             // txtCuit
             // 
-            this.txtCuit.Location = new System.Drawing.Point(104, 520);
+            this.txtCuit.Location = new System.Drawing.Point(101, 521);
             this.txtCuit.Name = "txtCuit";
-            this.txtCuit.Size = new System.Drawing.Size(703, 22);
+            this.txtCuit.Size = new System.Drawing.Size(706, 22);
             this.txtCuit.TabIndex = 20;
             // 
             // label12
@@ -271,7 +273,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(9, 523);
+            this.label7.Location = new System.Drawing.Point(6, 524);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(73, 17);
             this.label7.TabIndex = 19;
@@ -292,16 +294,6 @@
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(734, 22);
             this.txtApellido.TabIndex = 21;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(9, 387);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(113, 21);
-            this.checkBox1.TabIndex = 26;
-            this.checkBox1.Text = "Es empresa?";
-            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // label9
             // 
@@ -506,6 +498,56 @@
             this.dataGridDomicilios.RowTemplate.Height = 24;
             this.dataGridDomicilios.Size = new System.Drawing.Size(800, 150);
             this.dataGridDomicilios.TabIndex = 55;
+            // 
+            // Tipo
+            // 
+            this.Tipo.HeaderText = "Tipo";
+            this.Tipo.Name = "Tipo";
+            this.Tipo.ReadOnly = true;
+            // 
+            // Comentario
+            // 
+            this.Comentario.HeaderText = "Comentario";
+            this.Comentario.Name = "Comentario";
+            this.Comentario.ReadOnly = true;
+            this.Comentario.Visible = false;
+            // 
+            // Calle
+            // 
+            this.Calle.HeaderText = "Calle";
+            this.Calle.Name = "Calle";
+            this.Calle.ReadOnly = true;
+            // 
+            // Numero
+            // 
+            this.Numero.HeaderText = "Numero";
+            this.Numero.Name = "Numero";
+            this.Numero.ReadOnly = true;
+            // 
+            // Piso
+            // 
+            this.Piso.HeaderText = "Piso";
+            this.Piso.Name = "Piso";
+            this.Piso.ReadOnly = true;
+            // 
+            // DPTO
+            // 
+            this.DPTO.HeaderText = "DPTO";
+            this.DPTO.Name = "DPTO";
+            this.DPTO.ReadOnly = true;
+            // 
+            // CP
+            // 
+            this.CP.HeaderText = "CP";
+            this.CP.Name = "CP";
+            this.CP.ReadOnly = true;
+            // 
+            // Localidad
+            // 
+            this.Localidad.HeaderText = "Localidad";
+            this.Localidad.Name = "Localidad";
+            this.Localidad.ReadOnly = true;
+            this.Localidad.Visible = false;
             // 
             // button2
             // 
@@ -728,55 +770,25 @@
             // 
             this.telefonoBindingSource.DataSource = typeof(Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos.Telefono);
             // 
-            // Tipo
+            // comboTipoCliente
             // 
-            this.Tipo.HeaderText = "Tipo";
-            this.Tipo.Name = "Tipo";
-            this.Tipo.ReadOnly = true;
+            this.comboTipoCliente.FormattingEnabled = true;
+            this.comboTipoCliente.Items.AddRange(new object[] {
+            "Fisico",
+            "Juridico"});
+            this.comboTipoCliente.Location = new System.Drawing.Point(161, 386);
+            this.comboTipoCliente.Name = "comboTipoCliente";
+            this.comboTipoCliente.Size = new System.Drawing.Size(646, 24);
+            this.comboTipoCliente.TabIndex = 33;
             // 
-            // Comentario
+            // label14
             // 
-            this.Comentario.HeaderText = "Comentario";
-            this.Comentario.Name = "Comentario";
-            this.Comentario.ReadOnly = true;
-            this.Comentario.Visible = false;
-            // 
-            // Calle
-            // 
-            this.Calle.HeaderText = "Calle";
-            this.Calle.Name = "Calle";
-            this.Calle.ReadOnly = true;
-            // 
-            // Numero
-            // 
-            this.Numero.HeaderText = "Numero";
-            this.Numero.Name = "Numero";
-            this.Numero.ReadOnly = true;
-            // 
-            // Piso
-            // 
-            this.Piso.HeaderText = "Piso";
-            this.Piso.Name = "Piso";
-            this.Piso.ReadOnly = true;
-            // 
-            // DPTO
-            // 
-            this.DPTO.HeaderText = "DPTO";
-            this.DPTO.Name = "DPTO";
-            this.DPTO.ReadOnly = true;
-            // 
-            // CP
-            // 
-            this.CP.HeaderText = "CP";
-            this.CP.Name = "CP";
-            this.CP.ReadOnly = true;
-            // 
-            // Localidad
-            // 
-            this.Localidad.HeaderText = "Localidad";
-            this.Localidad.Name = "Localidad";
-            this.Localidad.ReadOnly = true;
-            this.Localidad.Visible = false;
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(6, 389);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(103, 17);
+            this.label14.TabIndex = 32;
+            this.label14.Text = "Tipo de Cliente";
             // 
             // altaCliente
             // 
@@ -824,7 +836,6 @@
         private System.Windows.Forms.TextBox txtDni;
         private System.Windows.Forms.ComboBox comboSexo;
         private System.Windows.Forms.DateTimePicker pickerFechaNacimiento;
-        private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.TextBox txtRazonSocial;
         private System.Windows.Forms.TextBox txtCuit;
         private System.Windows.Forms.Button button5;
@@ -883,5 +894,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DPTO;
         private System.Windows.Forms.DataGridViewTextBoxColumn CP;
         private System.Windows.Forms.DataGridViewTextBoxColumn Localidad;
+        private System.Windows.Forms.ComboBox comboTipoCliente;
+        private System.Windows.Forms.Label label14;
     }
 }

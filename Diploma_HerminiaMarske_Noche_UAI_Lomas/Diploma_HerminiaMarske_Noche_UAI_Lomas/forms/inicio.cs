@@ -15,7 +15,10 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
     public partial class formInicio : Form
     {
         List<Cliente> clientes = new List<Cliente>();
+        altaCliente formAltaCliente = new altaCliente();
 
+       
+        /** SOLAPA CLIENTES **/
         private void listarClientes()
         {
 
@@ -24,7 +27,20 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             DataTable dt = new DataTable();
             da = dataQuery.getList("ListarClientes", null);
             da.Fill(dt);
-        } 
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                Persona persona = new Persona((int)dr[4], (string)dr[5], (string)dr[6], (string)dr[7], (string)dr[8]);
+                Cliente cliente = new Cliente((int)dr[0], (string)dr[1], (string)dr[2], (string)dr[3], persona);
+                clientes.Add(cliente);
+            }
+        }
+
+        private void btnNuevoCliente_Click(object sender, EventArgs e)
+        {
+            formAltaCliente.Show();
+        }
+        /** FIN SOLAPA CLIENTES **/
 
         public formInicio()
         {
@@ -44,7 +60,6 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
         private void nuevoClienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            altaCliente formAltaCliente = new altaCliente();
 
             formAltaCliente.Show();
 
@@ -72,6 +87,6 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             tableLayoutPanelListaClientes.Show();
         }
 
-
+     
     }
 }

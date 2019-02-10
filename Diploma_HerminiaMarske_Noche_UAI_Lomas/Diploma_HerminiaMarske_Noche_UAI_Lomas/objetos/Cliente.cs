@@ -8,10 +8,30 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos
 {
     class Cliente
     {
-        private int idPersona;
+        private int id;
         private string razonSocial;
         private string cuit;
+        private string tipoCliente;
         private Persona persona;
+
+        public Cliente(int id, string razonSocial, string cuit, string tipoCliente, Persona persona)
+        {
+            this.id = id;
+            this.razonSocial = razonSocial;
+            this.cuit = cuit;
+            this.SetTipoCliente(tipoCliente);
+            this.persona = persona;
+        }
+
+        public string GetTipoCliente()
+        {
+            return tipoCliente;
+        }
+
+        public void SetTipoCliente(string value)
+        {
+            tipoCliente = value;
+        }
 
         public string GetCuit()
         {
@@ -43,14 +63,14 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos
             razonSocial = value;
         }
 
-        public int GetIdPersona()
+        public int GetId()
         {
-            return idPersona;
+            return id;
         }
 
-        public void SetIdPersona(int value)
+        public void SetId(int value)
         {
-            idPersona = value;
+            id = value;
         }
     }
 }

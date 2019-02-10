@@ -53,12 +53,6 @@
       <DependentUpon>altaCliente.cs</DependentUpon>
     </Compile>
     <Compile Include="dataConnection\DataConnection.cs" />
-    <Compile Include="forms\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="forms\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="forms\inicio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,9 +78,6 @@
     <Compile Include="servicio\ProcesosSeguridad.cs" />
     <EmbeddedResource Include="forms\altaCliente.resx">
       <DependentUpon>altaCliente.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="forms\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\inicio.resx">
       <DependentUpon>inicio.cs</DependentUpon>
