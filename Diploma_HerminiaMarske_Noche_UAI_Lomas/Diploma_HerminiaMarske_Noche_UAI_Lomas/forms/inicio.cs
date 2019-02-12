@@ -34,7 +34,12 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
                 Cliente cliente = new Cliente((int)dr[0], (string)dr[1], (string)dr[2], (string)dr[3], persona);
                 clientes.Add(cliente);
             }
+
+
+            dataGridClientes.DataSource = clientes;
+
         }
+        
 
         private void btnNuevoCliente_Click(object sender, EventArgs e)
         {
@@ -87,6 +92,9 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             tableLayoutPanelListaClientes.Show();
         }
 
-     
+        private void dataGridClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

@@ -337,6 +337,7 @@
             this.dataGridClientes.RowTemplate.Height = 24;
             this.dataGridClientes.Size = new System.Drawing.Size(1279, 556);
             this.dataGridClientes.TabIndex = 0;
+            this.dataGridClientes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridClientes_CellContentClick);
             // 
             // tabPage2
             // 
@@ -368,9 +369,7 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uAIGESTIONAGUILADataSetBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.personasBindingSource)).EndInit();
+        
             this.panel1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
