@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
+namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
 {
     public partial class modificarCliente : Form
     {
@@ -17,7 +17,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             InitializeComponent();
         }
 
-        private void textBox12_TextChanged(object sender, EventArgs e)
+        private void modificarCliente_Load(object sender, EventArgs e)
         {
 
         }
