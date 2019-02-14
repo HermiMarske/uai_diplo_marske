@@ -14,14 +14,17 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
 {
     public partial class formInicio : Form
     {
-        List<Cliente> clientes = new List<Cliente>();
         altaCliente formAltaCliente = new altaCliente();
+        DataConnection.DataConnection dataConnection = new DataConnection.DataConnection();
 
-       
+
         /** SOLAPA CLIENTES **/
-        private void listarClientes()
+        public void listarClientes()
         {
-
+            List<Cliente> clientes = new List<Cliente>();
+            dataGridClientes.Rows.Clear();
+            clientes.Clear();
+            
             DataConnection.DataConnection dataQuery = new DataConnection.DataConnection();
             SqlDataAdapter da = new SqlDataAdapter();
             DataTable dt = new DataTable();
@@ -35,9 +38,12 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
                 clientes.Add(cliente);
             }
 
-
-            dataGridClientes.DataSource = clientes;
-
+            foreach(Cliente c in clientes)
+            {
+                String[] dataRow = { c.GetId().ToString(), c.GetCuit(), c.GetRazonSocial(), c.GetPersona().GetNombre(), c.GetPersona().GetApellido(), c.GetPersona().GetDni()};
+                dataGridClientes.Rows.Add(dataRow);
+            }
+            
         }
         
 
@@ -45,6 +51,54 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
         {
             formAltaCliente.Show();
         }
+
+
+        private void nuevoClienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+
+            formAltaCliente.Show();
+
+        }
+
+        private void formInicio_Load(object sender, EventArgs e)
+        {
+            listarClientes();
+
+        }
+
+        private void btnModificarCliente_Click(object sender, EventArgs e)
+        {
+            if (dataGridClientes.SelectedCells.Count > 0)
+            {
+                int rowIndex = dataGridClientes.SelectedCells[0].RowIndex;
+                Object idCliente = dataGridClientes.Rows[rowIndex].Cells[0].Value;
+            }
+        }
+
+        private void btnEliminarCliente_Click(object sender, EventArgs e)
+        {
+            if (dataGridClientes.SelectedCells.Count > 0)
+            {
+                int rowIndex = dataGridClientes.SelectedCells[0].RowIndex;
+                Object idCliente = dataGridClientes.Rows[rowIndex].Cells[0].Value;
+                SqlParameter[] pms = new SqlParameter[1];
+
+                pms[0] = new SqlParameter("@idCliente", SqlDbType.Int);
+                pms[0].Value = idCliente.ToString();
+
+                string respuesta = dataConnection.databaseDelete(pms, "BorrarCliente");
+
+                if (respuesta != null)
+                {
+                 
+                    MessageBox.Show(respuesta);
+                    listarClientes();
+                }
+            }
+        }
+
+
         /** FIN SOLAPA CLIENTES **/
 
         public formInicio()
@@ -62,19 +116,6 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
 
         }
 
-        private void nuevoClienteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-
-            formAltaCliente.Show();
-
-        }
-
-        private void formInicio_Load(object sender, EventArgs e)
-        {
-            listarClientes();
-
-        }
 
         private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -96,5 +137,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
         {
 
         }
+
+
     }
 }

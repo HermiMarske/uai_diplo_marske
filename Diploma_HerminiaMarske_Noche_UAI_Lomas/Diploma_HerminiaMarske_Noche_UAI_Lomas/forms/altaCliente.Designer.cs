@@ -37,6 +37,8 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.comboTipoCliente = new System.Windows.Forms.ComboBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.pickerFechaNacimiento = new System.Windows.Forms.DateTimePicker();
@@ -98,8 +100,6 @@
             this.labelNumero = new System.Windows.Forms.Label();
             this.labelCalle = new System.Windows.Forms.Label();
             this.telefonoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.comboTipoCliente = new System.Windows.Forms.ComboBox();
-            this.label14 = new System.Windows.Forms.Label();
             this.tableLayoutPanelAltaCliente.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -222,6 +222,26 @@
             this.groupBox1.TabIndex = 32;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos de Persona y/o Empresa";
+            // 
+            // comboTipoCliente
+            // 
+            this.comboTipoCliente.FormattingEnabled = true;
+            this.comboTipoCliente.Items.AddRange(new object[] {
+            "Fisico",
+            "Juridico"});
+            this.comboTipoCliente.Location = new System.Drawing.Point(161, 386);
+            this.comboTipoCliente.Name = "comboTipoCliente";
+            this.comboTipoCliente.Size = new System.Drawing.Size(646, 24);
+            this.comboTipoCliente.TabIndex = 33;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(6, 389);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(103, 17);
+            this.label14.TabIndex = 32;
+            this.label14.Text = "Tipo de Cliente";
             // 
             // txtNombre
             // 
@@ -366,12 +386,16 @@
             // 
             // dataGridTelefonos
             // 
+            this.dataGridTelefonos.AllowUserToAddRows = false;
+            this.dataGridTelefonos.AllowUserToDeleteRows = false;
+            this.dataGridTelefonos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridTelefonos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridTelefonos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NumeroTelefono,
             this.TipoTelefono});
             this.dataGridTelefonos.Location = new System.Drawing.Point(9, 40);
             this.dataGridTelefonos.Name = "dataGridTelefonos";
+            this.dataGridTelefonos.ReadOnly = true;
             this.dataGridTelefonos.RowHeadersWidth = 45;
             this.dataGridTelefonos.RowTemplate.Height = 24;
             this.dataGridTelefonos.Size = new System.Drawing.Size(799, 275);
@@ -381,11 +405,13 @@
             // 
             this.NumeroTelefono.HeaderText = "Telefono";
             this.NumeroTelefono.Name = "NumeroTelefono";
+            this.NumeroTelefono.ReadOnly = true;
             // 
             // TipoTelefono
             // 
             this.TipoTelefono.HeaderText = "Tipo";
             this.TipoTelefono.Name = "TipoTelefono";
+            this.TipoTelefono.ReadOnly = true;
             // 
             // button3
             // 
@@ -482,6 +508,8 @@
             // dataGridDomicilios
             // 
             this.dataGridDomicilios.AllowUserToAddRows = false;
+            this.dataGridDomicilios.AllowUserToDeleteRows = false;
+            this.dataGridDomicilios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridDomicilios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridDomicilios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Tipo,
@@ -769,26 +797,6 @@
             // telefonoBindingSource
             // 
             this.telefonoBindingSource.DataSource = typeof(Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos.Telefono);
-            // 
-            // comboTipoCliente
-            // 
-            this.comboTipoCliente.FormattingEnabled = true;
-            this.comboTipoCliente.Items.AddRange(new object[] {
-            "Fisico",
-            "Juridico"});
-            this.comboTipoCliente.Location = new System.Drawing.Point(161, 386);
-            this.comboTipoCliente.Name = "comboTipoCliente";
-            this.comboTipoCliente.Size = new System.Drawing.Size(646, 24);
-            this.comboTipoCliente.TabIndex = 33;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(6, 389);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(103, 17);
-            this.label14.TabIndex = 32;
-            this.label14.Text = "Tipo de Cliente";
             // 
             // altaCliente
             // 

@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.gestionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.actividadesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,27 +44,25 @@
             this.seguridadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.opcionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.uAIGESTIONAGUILADataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.clientesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.clientesBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.personasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanelListaClientes = new System.Windows.Forms.TableLayoutPanel();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnEliminarCliente = new System.Windows.Forms.Button();
+            this.btnModificarCliente = new System.Windows.Forms.Button();
             this.btnNuevoCliente = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridClientes = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cuit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.razonSocial = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.uAIGESTIONAGUILADataSetBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.personasBindingSource)).BeginInit();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -199,21 +196,6 @@
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // clientesBindingSource
-            // 
-            this.clientesBindingSource.DataMember = "Clientes";
-            this.clientesBindingSource.DataSource = this.uAIGESTIONAGUILADataSetBindingSource;
-            // 
-            // clientesBindingSource1
-            // 
-            this.clientesBindingSource1.DataMember = "Clientes";
-            this.clientesBindingSource1.DataSource = this.uAIGESTIONAGUILADataSetBindingSource;
-            // 
-            // personasBindingSource
-            // 
-            this.personasBindingSource.DataMember = "Personas";
-            this.personasBindingSource.DataSource = this.uAIGESTIONAGUILADataSetBindingSource;
-            // 
             // panel1
             // 
             this.panel1.AutoSize = true;
@@ -257,8 +239,8 @@
             this.tableLayoutPanelListaClientes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanelListaClientes.Controls.Add(this.button5, 0, 1);
             this.tableLayoutPanelListaClientes.Controls.Add(this.button4, 0, 1);
-            this.tableLayoutPanelListaClientes.Controls.Add(this.button3, 0, 1);
-            this.tableLayoutPanelListaClientes.Controls.Add(this.button2, 0, 1);
+            this.tableLayoutPanelListaClientes.Controls.Add(this.btnEliminarCliente, 0, 1);
+            this.tableLayoutPanelListaClientes.Controls.Add(this.btnModificarCliente, 0, 1);
             this.tableLayoutPanelListaClientes.Controls.Add(this.btnNuevoCliente, 0, 1);
             this.tableLayoutPanelListaClientes.Controls.Add(this.groupBox1, 0, 0);
             this.tableLayoutPanelListaClientes.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -288,23 +270,25 @@
             this.button4.Text = "Ver detalles";
             this.button4.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnEliminarCliente
             // 
-            this.button3.Location = new System.Drawing.Point(1035, 586);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(194, 40);
-            this.button3.TabIndex = 7;
-            this.button3.Text = "Eliminar Cliente";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnEliminarCliente.Location = new System.Drawing.Point(1035, 586);
+            this.btnEliminarCliente.Name = "btnEliminarCliente";
+            this.btnEliminarCliente.Size = new System.Drawing.Size(194, 40);
+            this.btnEliminarCliente.TabIndex = 7;
+            this.btnEliminarCliente.Text = "Eliminar Cliente";
+            this.btnEliminarCliente.UseVisualStyleBackColor = true;
+            this.btnEliminarCliente.Click += new System.EventHandler(this.btnEliminarCliente_Click);
             // 
-            // button2
+            // btnModificarCliente
             // 
-            this.button2.Location = new System.Drawing.Point(519, 586);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(194, 40);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Modificar Cliente";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnModificarCliente.Location = new System.Drawing.Point(519, 586);
+            this.btnModificarCliente.Name = "btnModificarCliente";
+            this.btnModificarCliente.Size = new System.Drawing.Size(194, 40);
+            this.btnModificarCliente.TabIndex = 6;
+            this.btnModificarCliente.Text = "Modificar Cliente";
+            this.btnModificarCliente.UseVisualStyleBackColor = true;
+            this.btnModificarCliente.Click += new System.EventHandler(this.btnModificarCliente_Click);
             // 
             // btnNuevoCliente
             // 
@@ -330,10 +314,21 @@
             // 
             // dataGridClientes
             // 
+            this.dataGridClientes.AllowUserToAddRows = false;
+            this.dataGridClientes.AllowUserToDeleteRows = false;
+            this.dataGridClientes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridClientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.id,
+            this.cuit,
+            this.razonSocial,
+            this.nombre,
+            this.apellido,
+            this.dni});
             this.dataGridClientes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridClientes.Location = new System.Drawing.Point(3, 18);
             this.dataGridClientes.Name = "dataGridClientes";
+            this.dataGridClientes.ReadOnly = true;
             this.dataGridClientes.RowTemplate.Height = 24;
             this.dataGridClientes.Size = new System.Drawing.Size(1279, 556);
             this.dataGridClientes.TabIndex = 0;
@@ -348,6 +343,43 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // id
+            // 
+            this.id.HeaderText = "id";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Visible = false;
+            // 
+            // cuit
+            // 
+            this.cuit.HeaderText = "CUIT";
+            this.cuit.Name = "cuit";
+            this.cuit.ReadOnly = true;
+            // 
+            // razonSocial
+            // 
+            this.razonSocial.HeaderText = "Razon Social";
+            this.razonSocial.Name = "razonSocial";
+            this.razonSocial.ReadOnly = true;
+            // 
+            // nombre
+            // 
+            this.nombre.HeaderText = "Nombre";
+            this.nombre.Name = "nombre";
+            this.nombre.ReadOnly = true;
+            // 
+            // apellido
+            // 
+            this.apellido.HeaderText = "Apellido";
+            this.apellido.Name = "apellido";
+            this.apellido.ReadOnly = true;
+            // 
+            // dni
+            // 
+            this.dni.HeaderText = "DNI";
+            this.dni.Name = "dni";
+            this.dni.ReadOnly = true;
             // 
             // formInicio
             // 
@@ -368,8 +400,6 @@
             this.Load += new System.EventHandler(this.formInicio_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.uAIGESTIONAGUILADataSetBindingSource)).EndInit();
-        
             this.panel1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -396,12 +426,6 @@
         private System.Windows.Forms.ToolStripMenuItem nuevoClienteToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem busquedaToolStripMenuItem;
-        private System.Windows.Forms.BindingSource uAIGESTIONAGUILADataSetBindingSource;
-       
-        private System.Windows.Forms.BindingSource clientesBindingSource;
-        
-        private System.Windows.Forms.BindingSource clientesBindingSource1;
-        private System.Windows.Forms.BindingSource personasBindingSource;
         private System.Windows.Forms.ToolStripMenuItem regionesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gestionDePaisesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem provinciasToolStripMenuItem;
@@ -412,12 +436,18 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelListaClientes;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnEliminarCliente;
+        private System.Windows.Forms.Button btnModificarCliente;
         private System.Windows.Forms.Button btnNuevoCliente;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dataGridClientes;
         private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cuit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn razonSocial;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn apellido;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dni;
     }
 }
 
