@@ -9,12 +9,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos;
+using Diploma_HerminiaMarske_Noche_UAI_Lomas.forms;
 
 namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
 {
+
     public partial class formInicio : Form
     {
+        public static Object idClienteModif;
+
         altaCliente formAltaCliente = new altaCliente();
+        modificarCliente formModifCliente = new modificarCliente();
+
         DataConnection.DataConnection dataConnection = new DataConnection.DataConnection();
 
 
@@ -72,7 +78,9 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             if (dataGridClientes.SelectedCells.Count > 0)
             {
                 int rowIndex = dataGridClientes.SelectedCells[0].RowIndex;
-                Object idCliente = dataGridClientes.Rows[rowIndex].Cells[0].Value;
+                idClienteModif = dataGridClientes.Rows[rowIndex].Cells[0].Value;
+                formModifCliente.Show();
+               
             }
         }
 
