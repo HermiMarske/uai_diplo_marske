@@ -79,9 +79,19 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             {
                 int rowIndex = dataGridClientes.SelectedCells[0].RowIndex;
                 idClienteModif = dataGridClientes.Rows[rowIndex].Cells[0].Value;
-                formModifCliente.Show();
+                try
+                {
+                    formModifCliente.Show();
+                }
+                catch
+                {
+                    modificarCliente formModifCliente = new modificarCliente();
+                    formModifCliente.Show();
+                }
+                
                
             }
+     
         }
 
         private void btnEliminarCliente_Click(object sender, EventArgs e)

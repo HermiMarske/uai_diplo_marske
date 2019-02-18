@@ -24,4 +24,4 @@ AS
 	  SELECT 'El cliente no existe'
     END;
 
-SELECT ID_Cliente, razonSocial, cuil, tipoCliente, FK_Persona, dni, nombre,apellido, sexo, fechaNacimiento FROM Cliente, Personas WHERE ID_Cliente = @idCliente;
+SELECT ID_Cliente, razonSocial, cuil, tipoCliente, FK_Persona, dni, nombre,apellido, sexo, fechaNacimiento FROM Cliente, Personas WHERE ID_Cliente = @idCliente AND (Personas.ID_Persona = FK_Persona);
