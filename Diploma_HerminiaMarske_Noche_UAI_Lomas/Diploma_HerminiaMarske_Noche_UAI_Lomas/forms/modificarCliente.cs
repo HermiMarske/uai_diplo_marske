@@ -51,7 +51,63 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             comboSexo.Text = persona.GetSexo();
             pickerFechaNacimiento.MinDate = persona.GetFechaNacimiento();
 
+
+            /** Lleno el grid de telefonos **/
+
+            int idPersona = persona.GetIdPersona();
+            DataTable dtTel = new DataTable();
+            pms[0] = new SqlParameter("@id", SqlDbType.Int);
+            pms[0].Value = idPersona;
            
+
+            da = dataQuery.getList("ObtenerTelefonos", pms);
+            da.Fill(dtTel);
+            List<Telefono> telList = new List<Telefono>();
+
+            foreach(DataRow drTel in dtTel.Rows)
+            {
+                Telefono tel = new Telefono();
+                tel.SetId((int)drTel[0]);
+                tel.SetTipo((string)drTel[1]);
+                tel.SetNumero((string)drTel[2]);
+                telList.Add(tel);
+            }
+
+            foreach (Telefono t in telList)
+            {
+                String[] dataRow = { t.GetNumero(), t.GetTipo() };
+                dataGridTelefonos.Rows.Add(dataRow);
+            }
+
+            /** Lleno lista de domicilios **/
+
+            DataTable dtDom = new DataTable();
+            pms[0] = new SqlParameter("@id", SqlDbType.Int);
+            pms[0].Value = idPersona;
+
+
+            da = dataQuery.getList("ObtenerDomicilios", pms);
+            da.Fill(dtTel);
+            List<Domicilio> domList = new List<Domicilio>();
+
+            foreach (DataRow drDom in dtDom.Rows)
+            {
+                /**
+                Domicilio dom = new Domicilio();
+                dom.SetId((int)drTel[0]);
+                tel.SetTipo((string)drTel[1]);
+                tel.SetNumero((string)drTel[2]);
+                telList.Add(tel);
+                **/
+            }
+             /*
+            foreach (Telefono t in telList)
+            {
+                String[] dataRow = { t.GetNumero(), t.GetTipo() };
+                dataGridTelefonos.Rows.Add(dataRow);
+            }
+            */
+
 
 
         }
