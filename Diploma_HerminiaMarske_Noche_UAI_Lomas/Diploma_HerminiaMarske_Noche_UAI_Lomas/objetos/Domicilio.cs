@@ -11,6 +11,61 @@
         private string codigoPostal;
         private string tipoDomicilio;
         private Localidad localidad;
+        private Pais pais;
+        private Provincia provincia;
+
+        public Domicilio()
+        {
+
+        }
+
+        public Domicilio(int id, string calle, string numero, int piso, string dpto, string comentario, string codigoPostal, string tipoDomicilio, Localidad localidad)
+        {
+            this.id = id;
+            this.calle = calle;
+            this.numero = numero;
+            this.piso = piso;
+            this.dpto = dpto;
+            this.comentario = comentario;
+            this.codigoPostal = codigoPostal;
+            this.tipoDomicilio = tipoDomicilio;
+            this.localidad = localidad;
+        }
+
+        public Domicilio(int id, string calle, string numero, int piso, string dpto, string comentario, string codigoPostal, string tipoDomicilio, Localidad localidad, Pais pais, Provincia provincia)
+        {
+            this.id = id;
+            this.calle = calle;
+            this.numero = numero;
+            this.piso = piso;
+            this.dpto = dpto;
+            this.comentario = comentario;
+            this.codigoPostal = codigoPostal;
+            this.tipoDomicilio = tipoDomicilio;
+            this.localidad = localidad;
+            this.pais = pais;
+            this.provincia = provincia;
+        }
+
+        public Pais GetPais()
+        {
+            return pais;
+        }
+
+        public void SetPais(Pais value)
+        {
+            pais = value;
+        }
+
+        internal Provincia GetProvincia()
+        {
+            return provincia;
+        }
+
+        internal void SetProvincia(Provincia value)
+        {
+            provincia = value;
+        }
 
         public int GetId()
         {

@@ -87,26 +87,24 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
 
 
             da = dataQuery.getList("ObtenerDomicilios", pms);
-            da.Fill(dtTel);
+            da.Fill(dtDom);
             List<Domicilio> domList = new List<Domicilio>();
 
             foreach (DataRow drDom in dtDom.Rows)
             {
-                /**
-                Domicilio dom = new Domicilio();
-                dom.SetId((int)drTel[0]);
-                tel.SetTipo((string)drTel[1]);
-                tel.SetNumero((string)drTel[2]);
-                telList.Add(tel);
-                **/
+                Localidad lc = new Localidad((string)drDom[10], (int)drDom[9], 0);
+                Provincia pv = new Provincia((string)drDom[12], (int)drDom[11]);
+                Pais p = new Pais((int)drDom[13], (string)drDom[14]);
+                Domicilio dom = new Domicilio((int)drDom[0], (string)drDom[1], (string)drDom[2], (int)drDom[3], (string)drDom[4], (string)drDom[5], (string)drDom[6], (string)drDom[7], lc, p, pv );
+
+                domList.Add(dom);
+           
             }
-             /*
-            foreach (Telefono t in telList)
+            foreach (Domicilio d in domList)
             {
-                String[] dataRow = { t.GetNumero(), t.GetTipo() };
-                dataGridTelefonos.Rows.Add(dataRow);
+                String[] dataRow = { d.GetTipoDomicilio(), d.GetComentario(), d.GetCalle(), d.GetNumero(), d.GetPiso().ToString(), d.GetDpto(), d.GetCodigoPostal(), d.GetLocalidad().GetNombre() };
+                dataGridDomicilios.Rows.Add(dataRow);
             }
-            */
 
 
 

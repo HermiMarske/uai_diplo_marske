@@ -41,5 +41,13 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos
         {
             tipo = value;
         }
+
+        /**
+        public Telefono(int id, string tipo, string numero)
+        {
+            this.id = id;
+            this.tipo = tipo;
+            this.numero = numero;
+        }**/
     }
 }
