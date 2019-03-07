@@ -67,16 +67,8 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.dataGridDomicilios = new System.Windows.Forms.DataGridView();
-            this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Comentario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Calle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Piso = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DPTO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Localidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button2 = new System.Windows.Forms.Button();
-            this.btnAgregarDireccion = new System.Windows.Forms.Button();
+            this.btnModificarDom = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.txtComentario = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -98,6 +90,18 @@
             this.labelCodigo = new System.Windows.Forms.Label();
             this.labelNumero = new System.Windows.Forms.Label();
             this.labelCalle = new System.Windows.Forms.Label();
+            this.btnModificarTel = new System.Windows.Forms.Button();
+            this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Comentario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Calle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Piso = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DPTO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Localidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Provincia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.País = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnAgregarDom = new System.Windows.Forms.Button();
             this.tableLayoutPanelAltaCliente.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -368,6 +372,7 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.btnModificarTel);
             this.groupBox4.Controls.Add(this.dataGridTelefonos);
             this.groupBox4.Controls.Add(this.button3);
             this.groupBox4.Controls.Add(this.buttonAddTelefono);
@@ -394,6 +399,7 @@
             this.dataGridTelefonos.RowTemplate.Height = 24;
             this.dataGridTelefonos.Size = new System.Drawing.Size(799, 275);
             this.dataGridTelefonos.TabIndex = 34;
+            this.dataGridTelefonos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridTelefonos_CellClick);
             // 
             // NumeroTelefono
             // 
@@ -488,9 +494,10 @@
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.btnAgregarDom);
             this.groupBox6.Controls.Add(this.dataGridDomicilios);
             this.groupBox6.Controls.Add(this.button2);
-            this.groupBox6.Controls.Add(this.btnAgregarDireccion);
+            this.groupBox6.Controls.Add(this.btnModificarDom);
             this.groupBox6.Location = new System.Drawing.Point(3, 334);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(816, 256);
@@ -512,63 +519,16 @@
             this.Piso,
             this.DPTO,
             this.CP,
-            this.Localidad});
+            this.Localidad,
+            this.Provincia,
+            this.País});
             this.dataGridDomicilios.Location = new System.Drawing.Point(6, 38);
             this.dataGridDomicilios.Name = "dataGridDomicilios";
             this.dataGridDomicilios.ReadOnly = true;
             this.dataGridDomicilios.RowTemplate.Height = 24;
             this.dataGridDomicilios.Size = new System.Drawing.Size(800, 150);
             this.dataGridDomicilios.TabIndex = 55;
-            // 
-            // Tipo
-            // 
-            this.Tipo.HeaderText = "Tipo";
-            this.Tipo.Name = "Tipo";
-            this.Tipo.ReadOnly = true;
-            // 
-            // Comentario
-            // 
-            this.Comentario.HeaderText = "Comentario";
-            this.Comentario.Name = "Comentario";
-            this.Comentario.ReadOnly = true;
-            this.Comentario.Visible = false;
-            // 
-            // Calle
-            // 
-            this.Calle.HeaderText = "Calle";
-            this.Calle.Name = "Calle";
-            this.Calle.ReadOnly = true;
-            // 
-            // Numero
-            // 
-            this.Numero.HeaderText = "Numero";
-            this.Numero.Name = "Numero";
-            this.Numero.ReadOnly = true;
-            // 
-            // Piso
-            // 
-            this.Piso.HeaderText = "Piso";
-            this.Piso.Name = "Piso";
-            this.Piso.ReadOnly = true;
-            // 
-            // DPTO
-            // 
-            this.DPTO.HeaderText = "DPTO";
-            this.DPTO.Name = "DPTO";
-            this.DPTO.ReadOnly = true;
-            // 
-            // CP
-            // 
-            this.CP.HeaderText = "CP";
-            this.CP.Name = "CP";
-            this.CP.ReadOnly = true;
-            // 
-            // Localidad
-            // 
-            this.Localidad.HeaderText = "Localidad";
-            this.Localidad.Name = "Localidad";
-            this.Localidad.ReadOnly = true;
-            this.Localidad.Visible = false;
+            this.dataGridDomicilios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridDomicilios_CellClick);
             // 
             // button2
             // 
@@ -579,14 +539,15 @@
             this.button2.Text = "Borrar";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // btnAgregarDireccion
+            // btnModificarDom
             // 
-            this.btnAgregarDireccion.Location = new System.Drawing.Point(9, 207);
-            this.btnAgregarDireccion.Name = "btnAgregarDireccion";
-            this.btnAgregarDireccion.Size = new System.Drawing.Size(201, 31);
-            this.btnAgregarDireccion.TabIndex = 53;
-            this.btnAgregarDireccion.Text = "Modificar Seleccionado";
-            this.btnAgregarDireccion.UseVisualStyleBackColor = true;
+            this.btnModificarDom.Location = new System.Drawing.Point(9, 207);
+            this.btnModificarDom.Name = "btnModificarDom";
+            this.btnModificarDom.Size = new System.Drawing.Size(201, 31);
+            this.btnModificarDom.TabIndex = 53;
+            this.btnModificarDom.Text = "Modificar Seleccionado";
+            this.btnModificarDom.UseVisualStyleBackColor = true;
+            this.btnModificarDom.Click += new System.EventHandler(this.btnModificarDom_Click);
             // 
             // groupBox5
             // 
@@ -677,6 +638,7 @@
             this.comboPais.Name = "comboPais";
             this.comboPais.Size = new System.Drawing.Size(266, 24);
             this.comboPais.TabIndex = 63;
+            this.comboPais.SelectedIndexChanged += new System.EventHandler(this.comboPais_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -694,6 +656,7 @@
             this.comboProvincias.Name = "comboProvincias";
             this.comboProvincias.Size = new System.Drawing.Size(266, 24);
             this.comboProvincias.TabIndex = 61;
+            this.comboProvincias.SelectedIndexChanged += new System.EventHandler(this.comboProvincias_SelectedIndexChanged);
             // 
             // labelLocalidad
             // 
@@ -784,6 +747,89 @@
             this.labelCalle.TabIndex = 50;
             this.labelCalle.Text = "Calle";
             // 
+            // btnModificarTel
+            // 
+            this.btnModificarTel.Location = new System.Drawing.Point(311, 343);
+            this.btnModificarTel.Name = "btnModificarTel";
+            this.btnModificarTel.Size = new System.Drawing.Size(201, 31);
+            this.btnModificarTel.TabIndex = 35;
+            this.btnModificarTel.Text = "Modificar";
+            this.btnModificarTel.UseVisualStyleBackColor = true;
+            this.btnModificarTel.Click += new System.EventHandler(this.btnModificarTel_Click);
+            // 
+            // Tipo
+            // 
+            this.Tipo.HeaderText = "Tipo";
+            this.Tipo.Name = "Tipo";
+            this.Tipo.ReadOnly = true;
+            // 
+            // Comentario
+            // 
+            this.Comentario.HeaderText = "Comentario";
+            this.Comentario.Name = "Comentario";
+            this.Comentario.ReadOnly = true;
+            this.Comentario.Visible = false;
+            // 
+            // Calle
+            // 
+            this.Calle.HeaderText = "Calle";
+            this.Calle.Name = "Calle";
+            this.Calle.ReadOnly = true;
+            // 
+            // Numero
+            // 
+            this.Numero.HeaderText = "Numero";
+            this.Numero.Name = "Numero";
+            this.Numero.ReadOnly = true;
+            // 
+            // Piso
+            // 
+            this.Piso.HeaderText = "Piso";
+            this.Piso.Name = "Piso";
+            this.Piso.ReadOnly = true;
+            // 
+            // DPTO
+            // 
+            this.DPTO.HeaderText = "DPTO";
+            this.DPTO.Name = "DPTO";
+            this.DPTO.ReadOnly = true;
+            // 
+            // CP
+            // 
+            this.CP.HeaderText = "CP";
+            this.CP.Name = "CP";
+            this.CP.ReadOnly = true;
+            // 
+            // Localidad
+            // 
+            this.Localidad.HeaderText = "Localidad";
+            this.Localidad.Name = "Localidad";
+            this.Localidad.ReadOnly = true;
+            this.Localidad.Visible = false;
+            // 
+            // Provincia
+            // 
+            this.Provincia.HeaderText = "Provincia";
+            this.Provincia.Name = "Provincia";
+            this.Provincia.ReadOnly = true;
+            this.Provincia.Visible = false;
+            // 
+            // País
+            // 
+            this.País.HeaderText = "País";
+            this.País.Name = "País";
+            this.País.ReadOnly = true;
+            this.País.Visible = false;
+            // 
+            // btnAgregarDom
+            // 
+            this.btnAgregarDom.Location = new System.Drawing.Point(310, 207);
+            this.btnAgregarDom.Name = "btnAgregarDom";
+            this.btnAgregarDom.Size = new System.Drawing.Size(201, 31);
+            this.btnAgregarDom.TabIndex = 56;
+            this.btnAgregarDom.Text = "Agregar";
+            this.btnAgregarDom.UseVisualStyleBackColor = true;
+            // 
             // modificarCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -856,16 +902,8 @@
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.DataGridView dataGridDomicilios;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Tipo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Comentario;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Calle;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Numero;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Piso;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DPTO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CP;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Localidad;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button btnAgregarDireccion;
+        private System.Windows.Forms.Button btnModificarDom;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.TextBox txtComentario;
         private System.Windows.Forms.Label label13;
@@ -887,5 +925,17 @@
         private System.Windows.Forms.Label labelCodigo;
         private System.Windows.Forms.Label labelNumero;
         private System.Windows.Forms.Label labelCalle;
+        private System.Windows.Forms.Button btnModificarTel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Tipo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Comentario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Calle;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Numero;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Piso;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DPTO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Localidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Provincia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn País;
+        private System.Windows.Forms.Button btnAgregarDom;
     }
 }
