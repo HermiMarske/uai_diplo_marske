@@ -276,6 +276,54 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             pms[8].Value = pickerFechaNacimiento.Value;
 
             dataConnection.databaseModifyData(pms, "ModificarCliente");
+
+
+            SqlParameter[] pmsTel = new SqlParameter[1];
+           
+
+            pmsTel[0] = new SqlParameter("@idCliente", SqlDbType.Int);
+            pmsTel[0].Value = Int32.Parse((string)formInicio.idClienteModif);
+
+            dataConnection.databaseModifyData(pmsTel, "BorrarTelefonos");
+
+
+            SqlParameter[] pmsTelefono = new SqlParameter[3];
+            List<Telefono> telefonos = new List<Telefono>();
+
+            for (int i = 0; i < (dataGridTelefonos.Rows.Count); i++)
+            {
+                Telefono t = new Telefono();
+
+                t.SetNumero((string)dataGridTelefonos.Rows.SharedRow(i).Cells[0].Value);
+                t.SetTipo((string)dataGridTelefonos.Rows.SharedRow(i).Cells[1].Value);
+                telefonos.Add(t);
+
+                pmsTelefono[0] = new SqlParameter("@idCliente", SqlDbType.Int);
+                pmsTelefono[0].Value = Int32.Parse((string)formInicio.idClienteModif);
+
+                pmsTelefono[1] = new SqlParameter("@tipo", SqlDbType.VarChar);
+                pmsTelefono[1].Value = t.GetTipo();
+
+                pmsTelefono[2] = new SqlParameter("@numero", SqlDbType.VarChar);
+                pmsTelefono[2].Value = t.GetNumero();
+
+               
+
+                dataConnection.databaseInsertAditionalData(pmsTelefono, "ModificarTelefonos");
+
+            }
+
+
+        }
+
+        private void buttonAddTelefono_Click(object sender, EventArgs e)
+        {
+            Telefono tel = new Telefono();
+            tel.SetNumero(textBoxNumero.Text);
+            tel.SetTipo(comboTipoTelefono.SelectedItem.ToString());
+
+            String[] dataRow = { tel.GetNumero(), tel.GetTipo() };
+            dataGridTelefonos.Rows.Add(dataRow);
         }
     }
 }

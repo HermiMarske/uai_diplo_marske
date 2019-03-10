@@ -441,6 +441,7 @@
             this.buttonAddTelefono.TabIndex = 32;
             this.buttonAddTelefono.Text = "Agregar al Listado";
             this.buttonAddTelefono.UseVisualStyleBackColor = true;
+            this.buttonAddTelefono.Click += new System.EventHandler(this.buttonAddTelefono_Click);
             // 
             // groupBox2
             // 
@@ -518,11 +519,11 @@
             // 
             // btnAgregarDom
             // 
-            this.btnAgregarDom.Location = new System.Drawing.Point(310, 207);
+            this.btnAgregarDom.Location = new System.Drawing.Point(9, 207);
             this.btnAgregarDom.Name = "btnAgregarDom";
             this.btnAgregarDom.Size = new System.Drawing.Size(201, 31);
             this.btnAgregarDom.TabIndex = 56;
-            this.btnAgregarDom.Text = "Agregar";
+            this.btnAgregarDom.Text = "Agregar al listado";
             this.btnAgregarDom.UseVisualStyleBackColor = true;
             // 
             // dataGridDomicilios
@@ -625,7 +626,7 @@
             // 
             // btnModificarDom
             // 
-            this.btnModificarDom.Location = new System.Drawing.Point(9, 207);
+            this.btnModificarDom.Location = new System.Drawing.Point(310, 207);
             this.btnModificarDom.Name = "btnModificarDom";
             this.btnModificarDom.Size = new System.Drawing.Size(201, 31);
             this.btnModificarDom.TabIndex = 53;
