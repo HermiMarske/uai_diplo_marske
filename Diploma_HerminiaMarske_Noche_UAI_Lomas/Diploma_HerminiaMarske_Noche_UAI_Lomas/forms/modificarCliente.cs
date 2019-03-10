@@ -78,20 +78,28 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             da.Fill(dtTel);
             List<Telefono> telList = new List<Telefono>();
 
-            foreach(DataRow drTel in dtTel.Rows)
+            try
             {
-                Telefono tel = new Telefono();
-                tel.SetId((int)drTel[0]);
-                tel.SetTipo((string)drTel[1]);
-                tel.SetNumero((string)drTel[2]);
-                telList.Add(tel);
-            }
+                foreach (DataRow drTel in dtTel.Rows)
+                {
+                    Telefono tel = new Telefono();
+                    tel.SetId((int)drTel[0]);
+                    tel.SetTipo((string)drTel[1]);
+                    tel.SetNumero((string)drTel[2]);
+                    telList.Add(tel);
+                }
 
-            foreach (Telefono t in telList)
-            {
-                String[] dataRow = { t.GetNumero(), t.GetTipo() };
-                dataGridTelefonos.Rows.Add(dataRow);
+                foreach (Telefono t in telList)
+                {
+                    String[] dataRow = { t.GetNumero(), t.GetTipo() };
+                    dataGridTelefonos.Rows.Add(dataRow);
+                }
             }
+            catch
+            {
+                MessageBox.Show(dtTel.Rows[0].ItemArray[0].ToString());
+            }
+    
 
             /** Lleno lista de domicilios **/
 
@@ -232,6 +240,42 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
                 dataGridDomicilios.Rows[rowIndex].Cells[7].Value = comboLocalidades.SelectedItem;
 
             }
+        }
+
+        private void btnModificarCliente_Click(object sender, EventArgs e)
+        {
+            DataConnection.DataConnection dataConnection = new DataConnection.DataConnection();
+
+            SqlParameter[] pms = new SqlParameter[9];
+
+            pms[0] = new SqlParameter("@idCliente", SqlDbType.Int);
+            pms[0].Value = Int32.Parse((string)formInicio.idClienteModif);
+
+            pms[1] = new SqlParameter("@razonSocial", SqlDbType.VarChar);
+            pms[1].Value = txtRazonSocial.Text;
+
+            pms[2] = new SqlParameter("@cuil", SqlDbType.VarChar);
+            pms[2].Value = txtCuit.Text;
+
+            pms[3] = new SqlParameter("@tipoCliente", SqlDbType.VarChar);
+            pms[3].Value = comboTipoCliente.SelectedItem.ToString();
+
+            pms[4] = new SqlParameter("@dni", SqlDbType.VarChar);
+            pms[4].Value = txtDni.Text;
+
+            pms[5] = new SqlParameter("@nombre", SqlDbType.VarChar);
+            pms[5].Value = txtNombre.Text;
+
+            pms[6] = new SqlParameter("@apellido", SqlDbType.VarChar);
+            pms[6].Value = txtApellido.Text;
+
+            pms[7] = new SqlParameter("@sexo", SqlDbType.VarChar);
+            pms[7].Value = comboSexo.SelectedItem.ToString();
+
+            pms[8] = new SqlParameter("@fechaNacimiento", SqlDbType.Date);
+            pms[8].Value = pickerFechaNacimiento.Value;
+
+            dataConnection.databaseModifyData(pms, "ModificarCliente");
         }
     }
 }
