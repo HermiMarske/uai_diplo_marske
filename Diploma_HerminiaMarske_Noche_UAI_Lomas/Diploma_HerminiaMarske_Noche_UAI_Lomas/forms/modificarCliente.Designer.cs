@@ -525,6 +525,7 @@
             this.btnAgregarDom.TabIndex = 56;
             this.btnAgregarDom.Text = "Agregar al listado";
             this.btnAgregarDom.UseVisualStyleBackColor = true;
+            this.btnAgregarDom.Click += new System.EventHandler(this.btnAgregarDom_Click);
             // 
             // dataGridDomicilios
             // 

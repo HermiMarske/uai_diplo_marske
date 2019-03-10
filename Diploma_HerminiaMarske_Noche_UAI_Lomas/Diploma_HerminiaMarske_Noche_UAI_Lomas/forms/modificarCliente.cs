@@ -285,10 +285,12 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             pmsTel[0].Value = Int32.Parse((string)formInicio.idClienteModif);
 
             dataConnection.databaseModifyData(pmsTel, "BorrarTelefonos");
+            
 
 
             SqlParameter[] pmsTelefono = new SqlParameter[3];
             List<Telefono> telefonos = new List<Telefono>();
+            List<Domicilio> domicilios = new List<Domicilio>();
 
             for (int i = 0; i < (dataGridTelefonos.Rows.Count); i++)
             {
@@ -313,6 +315,64 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
 
             }
 
+            for (int i = 0; i < dataGridDomicilios.Rows.Count; i++)
+            {
+                Domicilio dom = new Domicilio();
+                dom.SetTipoDomicilio((String)dataGridDomicilios.Rows.SharedRow(i).Cells[0].Value);
+                dom.SetComentario((String)dataGridDomicilios.Rows.SharedRow(i).Cells[1].Value);
+                dom.SetCalle((String)dataGridDomicilios.Rows.SharedRow(i).Cells[2].Value);
+                dom.SetNumero((String)dataGridDomicilios.Rows.SharedRow(i).Cells[3].Value);
+                dom.SetPiso((Int32)dataGridDomicilios.Rows.SharedRow(i).Cells[4].Value);
+                dom.SetDpto((String)dataGridDomicilios.Rows.SharedRow(i).Cells[5].Value);
+                dom.SetCodigoPostal((String)dataGridDomicilios.Rows.SharedRow(i).Cells[6].Value);
+                dom.SetLocalidad((Localidad)dataGridDomicilios.Rows.SharedRow(i).Cells[7].Value);
+
+                domicilios.Add(dom);
+            }
+
+            SqlParameter[] pmsDom = new SqlParameter[1];
+
+
+            pmsDom[0] = new SqlParameter("@idCliente", SqlDbType.Int);
+            pmsDom[0].Value = Int32.Parse((string)formInicio.idClienteModif);
+            dataConnection.databaseModifyData(pmsDom, "BorrarDomicilios");
+
+            SqlParameter[] pmsDomicilio = new SqlParameter[9];
+
+            foreach (Domicilio d in domicilios)
+            {
+
+                pmsDomicilio[0] = new SqlParameter("@idCliente", SqlDbType.Int);
+                pmsDomicilio[0].Value = Int32.Parse((string)formInicio.idClienteModif);
+
+                pmsDomicilio[1] = new SqlParameter("@calle", SqlDbType.VarChar);
+                pmsDomicilio[1].Value = d.GetCalle();
+
+                pmsDomicilio[2] = new SqlParameter("@numero", SqlDbType.VarChar);
+                pmsDomicilio[2].Value = d.GetNumero();
+
+                pmsDomicilio[3] = new SqlParameter("@piso", SqlDbType.Int);
+                pmsDomicilio[3].Value = (object)d.GetPiso() ?? DBNull.Value;
+
+                pmsDomicilio[4] = new SqlParameter("@dpto", SqlDbType.VarChar);
+                pmsDomicilio[4].Value = d.GetDpto();
+
+                pmsDomicilio[5] = new SqlParameter("@comentarios", SqlDbType.VarChar);
+                pmsDomicilio[5].Value = d.GetComentario();
+
+                pmsDomicilio[6] = new SqlParameter("@codPostal", SqlDbType.VarChar);
+                pmsDomicilio[6].Value = d.GetCodigoPostal();
+
+                pmsDomicilio[7] = new SqlParameter("@tipoDomicilio", SqlDbType.VarChar);
+                pmsDomicilio[7].Value = d.GetTipoDomicilio();
+
+                pmsDomicilio[8] = new SqlParameter("@fk_localidad", SqlDbType.Int);
+                pmsDomicilio[8].Value = d.GetLocalidad().GetId();
+
+                dataConnection.databaseModifyData(pmsDomicilio, "ModificarDomicilios");
+
+            }
+
 
         }
 
@@ -324,6 +384,29 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
 
             String[] dataRow = { tel.GetNumero(), tel.GetTipo() };
             dataGridTelefonos.Rows.Add(dataRow);
+        }
+
+        private void btnAgregarDom_Click(object sender, EventArgs e)
+        {
+            Domicilio dom = new Domicilio();
+            dom.SetNumero(txtNumero.Text);
+            dom.SetCalle(txtCalle.Text);
+            dom.SetCodigoPostal(txtCodigoPostal.Text);
+            dom.SetDpto(txtDpto.Text);
+            try
+            {
+                dom.SetPiso(Convert.ToInt32(txtPiso.Text));
+            }
+            catch (Exception)
+            {
+
+            }
+            dom.SetTipoDomicilio(comboTipo.SelectedItem.ToString());
+            dom.SetComentario(txtComentario.Text);
+            dom.SetLocalidad((Localidad)comboLocalidades.SelectedItem);
+
+            Object[] dataRow = { dom.GetTipoDomicilio(), dom.GetComentario(), dom.GetCalle(), dom.GetNumero(), dom.GetPiso(), dom.GetDpto(), dom.GetCodigoPostal(), dom.GetLocalidad() };
+            dataGridDomicilios.Rows.Add(dataRow);
         }
     }
 }
