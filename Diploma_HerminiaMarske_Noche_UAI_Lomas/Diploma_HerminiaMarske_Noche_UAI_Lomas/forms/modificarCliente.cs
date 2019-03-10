@@ -317,12 +317,15 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
 
             for (int i = 0; i < dataGridDomicilios.Rows.Count; i++)
             {
+                string pisoString = (string)dataGridDomicilios.Rows.SharedRow(i).Cells[4].Value;
+                int piso = Convert.ToInt32(pisoString);
+
                 Domicilio dom = new Domicilio();
                 dom.SetTipoDomicilio((String)dataGridDomicilios.Rows.SharedRow(i).Cells[0].Value);
                 dom.SetComentario((String)dataGridDomicilios.Rows.SharedRow(i).Cells[1].Value);
                 dom.SetCalle((String)dataGridDomicilios.Rows.SharedRow(i).Cells[2].Value);
                 dom.SetNumero((String)dataGridDomicilios.Rows.SharedRow(i).Cells[3].Value);
-                dom.SetPiso((Int32)dataGridDomicilios.Rows.SharedRow(i).Cells[4].Value);
+                dom.SetPiso(piso);
                 dom.SetDpto((String)dataGridDomicilios.Rows.SharedRow(i).Cells[5].Value);
                 dom.SetCodigoPostal((String)dataGridDomicilios.Rows.SharedRow(i).Cells[6].Value);
                 dom.SetLocalidad((Localidad)dataGridDomicilios.Rows.SharedRow(i).Cells[7].Value);
