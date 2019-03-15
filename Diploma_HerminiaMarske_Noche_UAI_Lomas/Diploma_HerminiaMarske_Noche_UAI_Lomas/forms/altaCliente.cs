@@ -21,20 +21,6 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
         public altaCliente()
         {
             InitializeComponent();
-            dataGridDomicilios.Columns[0].Name = "Numero";
-            dataGridDomicilios.Columns[1].Name = "Tipo";
-         
-        }
-
-        private void tableLayoutPanelAltaCliente_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
         }
 
         List<Domicilio> domicilios = new List<Domicilio>();
@@ -46,19 +32,12 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             tel.SetNumero(textBoxNumero.Text);
             tel.SetTipo(comboTipoTelefono.SelectedItem.ToString());
 
-            String[] dataRow = { tel.GetNumero(), tel.GetTipo()};
-            dataGridTelefonos.Rows.Add(dataRow);
-        }
-
-        private void addTelefonosToGrid(string numero, string tipo)
-        {
-            String[] dataRow = { numero, tipo };
+            String[] dataRow = { tel.GetTipo(), tel.GetNumero() };
             dataGridTelefonos.Rows.Add(dataRow);
         }
 
         private void buttonAddCliente_Click(object sender, EventArgs e)
         {
-
             DataConnection.DataConnection dataConnection = new DataConnection.DataConnection();
 
             SqlParameter[] pms = new SqlParameter[8];
@@ -97,8 +76,8 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
                 {
                     Telefono t = new Telefono();
 
-                    t.SetNumero((string)dataGridTelefonos.Rows.SharedRow(i).Cells[0].Value);
-                    t.SetTipo((string)dataGridTelefonos.Rows.SharedRow(i).Cells[1].Value);
+                    t.SetTipo((string)dataGridTelefonos.Rows.SharedRow(i).Cells[0].Value);
+                    t.SetNumero((string)dataGridTelefonos.Rows.SharedRow(i).Cells[1].Value);
                     telefonos.Add(t);
 
                     //string telefono = (string)dataGridTelefonos.Rows.SharedRow(i).Cells[0].Value;
@@ -113,8 +92,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
                     pmsTelefono[2] = new SqlParameter("@fk_persona", SqlDbType.Int);
                     pmsTelefono[2].Value = fk;
 
-                    dataConnection.databaseInsertAditionalData(pmsTelefono, "AltaTelefono");
-                    
+                    dataConnection.databaseInsertAditionalData(pmsTelefono, "AltaTelefono");           
                 }
 
                 for (int i = 0; i < dataGridDomicilios.Rows.Count; i++)
@@ -162,11 +140,8 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
                     pmsDomicilio[8].Value = fk;
 
                     dataConnection.databaseInsertAditionalData(pmsDomicilio, "AltaDomicilio");
-
                 }
-         
             }
-
         }
 
         private void altaCliente_Load(object sender, EventArgs e)
@@ -246,7 +221,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             dom.SetDpto(txtDpto.Text);
             try
             {
-            dom.SetPiso(Convert.ToInt32(txtPiso.Text));
+                dom.SetPiso(Convert.ToInt32(txtPiso.Text));
             } catch (Exception)
             {
                
@@ -254,10 +229,67 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             dom.SetTipoDomicilio(comboTipo.SelectedItem.ToString());
             dom.SetComentario(txtComentario.Text);
             dom.SetLocalidad((Localidad)comboLocalidades.SelectedItem);
+            dom.SetProvincia((Provincia)comboProvincias.SelectedItem);
+            dom.SetPais((Pais)comboPais.SelectedItem);
 
             Object[] dataRow = {dom.GetTipoDomicilio(), dom.GetComentario(), dom.GetCalle(), dom.GetNumero(), dom.GetPiso(), dom.GetDpto(), dom.GetCodigoPostal(), dom.GetLocalidad() };
             dataGridDomicilios.Rows.Add(dataRow);
-          
+        }
+
+        private void dataGridTelefonos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                textBoxNumero.Text = (string)dataGridTelefonos.Rows[e.RowIndex].Cells[0].Value;
+                comboTipoTelefono.Text = (string)dataGridTelefonos.Rows[e.RowIndex].Cells[1].Value;
+            }
+        }
+
+        private void dataGridDomicilios_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                comboTipo.Text = (string)dataGridDomicilios.Rows[e.RowIndex].Cells[0].Value;
+                txtComentario.Text = (string)dataGridDomicilios.Rows[e.RowIndex].Cells[1].Value;
+                txtCalle.Text = (string)dataGridDomicilios.Rows[e.RowIndex].Cells[2].Value;
+                txtNumero.Text = (string)dataGridDomicilios.Rows[e.RowIndex].Cells[3].Value;
+                txtPiso.Text = (string)dataGridDomicilios.Rows[e.RowIndex].Cells[4].Value;
+                txtDpto.Text = (string)dataGridDomicilios.Rows[e.RowIndex].Cells[5].Value;
+                txtCodigoPostal.Text = (string)dataGridDomicilios.Rows[e.RowIndex].Cells[6].Value;
+                comboPais.SelectedIndex = comboPais.FindStringExact(dataGridDomicilios.Rows[e.RowIndex].Cells[9].Value.ToString());
+                comboPais_SelectedIndexChanged(sender, null);
+                comboProvincias.SelectedIndex = comboProvincias.FindStringExact(dataGridDomicilios.Rows[e.RowIndex].Cells[8].Value.ToString());
+                comboProvincias_SelectedIndexChanged(sender, null);
+                comboLocalidades.SelectedIndex = comboLocalidades.FindStringExact(dataGridDomicilios.Rows[e.RowIndex].Cells[7].Value.ToString());
+            }
+        }
+
+        private void btnModificarDom_Click(object sender, EventArgs e)
+        {
+            if (dataGridDomicilios.SelectedCells.Count > 0)
+            {
+                int rowIndex = dataGridDomicilios.SelectedCells[0].RowIndex;
+                dataGridDomicilios.Rows[rowIndex].Cells[0].Value = comboTipo.Text;
+                dataGridDomicilios.Rows[rowIndex].Cells[1].Value = txtComentario.Text;
+                dataGridDomicilios.Rows[rowIndex].Cells[2].Value = txtCalle.Text;
+                dataGridDomicilios.Rows[rowIndex].Cells[3].Value = txtNumero.Text;
+                dataGridDomicilios.Rows[rowIndex].Cells[4].Value = txtPiso.Text;
+                dataGridDomicilios.Rows[rowIndex].Cells[5].Value = txtDpto.Text;
+                dataGridDomicilios.Rows[rowIndex].Cells[6].Value = txtCodigoPostal.Text;
+                dataGridDomicilios.Rows[rowIndex].Cells[7].Value = comboLocalidades.SelectedItem;
+                dataGridDomicilios.Rows[rowIndex].Cells[8].Value = comboProvincias.SelectedItem;
+                dataGridDomicilios.Rows[rowIndex].Cells[9].Value = comboPais.SelectedItem;
+            }
+        }
+
+        private void btnModificarTel_Click(object sender, EventArgs e)
+        {
+            if (dataGridTelefonos.SelectedCells.Count > 0)
+            {
+                int rowIndex = dataGridTelefonos.SelectedCells[0].RowIndex;
+                dataGridTelefonos.Rows[rowIndex].Cells[0].Value = textBoxNumero.Text;
+                dataGridTelefonos.Rows[rowIndex].Cells[1].Value = comboTipoTelefono.Text;
+            }
         }
     }
 }

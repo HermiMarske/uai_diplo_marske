@@ -65,9 +65,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             comboSexo.Text = persona.GetSexo();
             pickerFechaNacimiento.MinDate = persona.GetFechaNacimiento();
 
-
             /** Lleno el grid de telefonos **/
-
             int idPersona = persona.GetIdPersona();
             DataTable dtTel = new DataTable();
             pms[0] = new SqlParameter("@id", SqlDbType.Int);
@@ -100,9 +98,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
                 MessageBox.Show(dtTel.Rows[0].ItemArray[0].ToString());
             }
     
-
             /** Lleno lista de domicilios **/
-
             DataTable dtDom = new DataTable();
             pms[0] = new SqlParameter("@id", SqlDbType.Int);
             pms[0].Value = idPersona;
@@ -127,9 +123,6 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
                 object[] dataRow = { d.GetTipoDomicilio(), d.GetComentario(), d.GetCalle(), d.GetNumero(), d.GetPiso().ToString(), d.GetDpto(), d.GetCodigoPostal(), d.GetLocalidad(), d.GetProvincia(), d.GetPais()};
                 dataGridDomicilios.Rows.Add(dataRow);
             }
-
-
-
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -139,14 +132,12 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
 
         private void btnModificarTel_Click(object sender, EventArgs e)
         {
-
             if (dataGridTelefonos.SelectedCells.Count > 0)
             {
                 int rowIndex = dataGridTelefonos.SelectedCells[0].RowIndex;
                 dataGridTelefonos.Rows[rowIndex].Cells[0].Value = textBoxNumero.Text;
                 dataGridTelefonos.Rows[rowIndex].Cells[1].Value = comboTipoTelefono.Text;
             }
-
         }
 
         private void dataGridTelefonos_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -170,9 +161,9 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
                 txtDpto.Text = (string)dataGridDomicilios.Rows[e.RowIndex].Cells[5].Value;
                 txtCodigoPostal.Text = (string)dataGridDomicilios.Rows[e.RowIndex].Cells[6].Value;
                 comboPais.SelectedIndex = comboPais.FindStringExact(dataGridDomicilios.Rows[e.RowIndex].Cells[9].Value.ToString());
-                comboPais_SelectedIndexChanged(null,null);
+                comboPais_SelectedIndexChanged(sender, null);
                 comboProvincias.SelectedIndex = comboProvincias.FindStringExact(dataGridDomicilios.Rows[e.RowIndex].Cells[8].Value.ToString());
-                comboProvincias_SelectedIndexChanged(null,null);
+                comboProvincias_SelectedIndexChanged(sender, null);
                 comboLocalidades.SelectedIndex = comboLocalidades.FindStringExact(dataGridDomicilios.Rows[e.RowIndex].Cells[7].Value.ToString());
             }
         }
@@ -235,9 +226,9 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
                 dataGridDomicilios.Rows[rowIndex].Cells[4].Value = txtPiso.Text;
                 dataGridDomicilios.Rows[rowIndex].Cells[5].Value = txtDpto.Text;
                 dataGridDomicilios.Rows[rowIndex].Cells[6].Value = txtCodigoPostal.Text;
-                dataGridDomicilios.Rows[rowIndex].Cells[9].Value = comboPais.SelectedItem;
-                dataGridDomicilios.Rows[rowIndex].Cells[8].Value = comboProvincias.SelectedItem;
                 dataGridDomicilios.Rows[rowIndex].Cells[7].Value = comboLocalidades.SelectedItem;
+                dataGridDomicilios.Rows[rowIndex].Cells[8].Value = comboProvincias.SelectedItem;
+                dataGridDomicilios.Rows[rowIndex].Cells[9].Value = comboPais.SelectedItem;
 
             }
         }
@@ -277,7 +268,6 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
 
             dataConnection.databaseModifyData(pms, "ModificarCliente");
 
-
             SqlParameter[] pmsTel = new SqlParameter[1];
            
 
@@ -285,8 +275,6 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             pmsTel[0].Value = Int32.Parse((string)formInicio.idClienteModif);
 
             dataConnection.databaseModifyData(pmsTel, "BorrarTelefonos");
-            
-
 
             SqlParameter[] pmsTelefono = new SqlParameter[3];
             List<Telefono> telefonos = new List<Telefono>();
@@ -296,8 +284,8 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             {
                 Telefono t = new Telefono();
 
-                t.SetNumero((string)dataGridTelefonos.Rows.SharedRow(i).Cells[0].Value);
-                t.SetTipo((string)dataGridTelefonos.Rows.SharedRow(i).Cells[1].Value);
+                t.SetTipo((string)dataGridTelefonos.Rows.SharedRow(i).Cells[0].Value);
+                t.SetNumero((string)dataGridTelefonos.Rows.SharedRow(i).Cells[1].Value);
                 telefonos.Add(t);
 
                 pmsTelefono[0] = new SqlParameter("@idCliente", SqlDbType.Int);
@@ -308,8 +296,6 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
 
                 pmsTelefono[2] = new SqlParameter("@numero", SqlDbType.VarChar);
                 pmsTelefono[2].Value = t.GetNumero();
-
-               
 
                 dataConnection.databaseInsertAditionalData(pmsTelefono, "ModificarTelefonos");
 
@@ -335,7 +321,6 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
 
             SqlParameter[] pmsDom = new SqlParameter[1];
 
-
             pmsDom[0] = new SqlParameter("@idCliente", SqlDbType.Int);
             pmsDom[0].Value = Int32.Parse((string)formInicio.idClienteModif);
             dataConnection.databaseModifyData(pmsDom, "BorrarDomicilios");
@@ -344,7 +329,6 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
 
             foreach (Domicilio d in domicilios)
             {
-
                 pmsDomicilio[0] = new SqlParameter("@idCliente", SqlDbType.Int);
                 pmsDomicilio[0].Value = Int32.Parse((string)formInicio.idClienteModif);
 
@@ -373,10 +357,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
                 pmsDomicilio[8].Value = d.GetLocalidad().GetId();
 
                 dataConnection.databaseModifyData(pmsDomicilio, "ModificarDomicilios");
-
             }
-
-
         }
 
         private void buttonAddTelefono_Click(object sender, EventArgs e)
@@ -385,7 +366,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             tel.SetNumero(textBoxNumero.Text);
             tel.SetTipo(comboTipoTelefono.SelectedItem.ToString());
 
-            String[] dataRow = { tel.GetNumero(), tel.GetTipo() };
+            String[] dataRow = { tel.GetTipo(), tel.GetNumero() };
             dataGridTelefonos.Rows.Add(dataRow);
         }
 
@@ -407,6 +388,8 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             dom.SetTipoDomicilio(comboTipo.SelectedItem.ToString());
             dom.SetComentario(txtComentario.Text);
             dom.SetLocalidad((Localidad)comboLocalidades.SelectedItem);
+            dom.SetProvincia((Provincia)comboProvincias.SelectedItem);
+            dom.SetPais((Pais)comboPais.SelectedItem);
 
             Object[] dataRow = { dom.GetTipoDomicilio(), dom.GetComentario(), dom.GetCalle(), dom.GetNumero(), dom.GetPiso(), dom.GetDpto(), dom.GetCodigoPostal(), dom.GetLocalidad() };
             dataGridDomicilios.Rows.Add(dataRow);

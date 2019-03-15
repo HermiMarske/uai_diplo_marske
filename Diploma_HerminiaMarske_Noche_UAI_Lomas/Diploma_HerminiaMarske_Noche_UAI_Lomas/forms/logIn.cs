@@ -21,5 +21,10 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
         {
             this.Close();
         }
+
+        private void btnIngresar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

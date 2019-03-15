@@ -1,21 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.Sql;
 using System.Data.SqlClient;
 using System.Data;
+
+using System.Configuration;
 
 namespace DataConnection
 {
     class DataConnection
     {
-        static private string Sql = "Data Source=HERMI-PC;Initial Catalog=UAI_GESTION_AGUILA;Integrated Security=True";
+        private static string Sql = ConfigurationManager.ConnectionStrings["Diploma_HerminiaMarske_Noche_UAI_Lomas.Properties"].ConnectionString;
 
         public int databaseInsert(SqlParameter[] pms, string storedProcedureName)
         {
-      
             SqlConnection connection = new SqlConnection(Sql);
             SqlCommand command = new SqlCommand();
             connection.Open();
@@ -31,7 +27,6 @@ namespace DataConnection
 
         public void databaseInsertAditionalData(SqlParameter[] pms, string storedProcedureName)
         {
-
             SqlConnection connection = new SqlConnection(Sql);
             SqlCommand command = new SqlCommand();
             connection.Open();
@@ -40,13 +35,11 @@ namespace DataConnection
             command.CommandText = storedProcedureName;
             command.Parameters.AddRange(pms);
             command.ExecuteNonQuery();
-            connection.Close();
-            
+            connection.Close();   
         }
 
         public void databaseModifyData(SqlParameter[] pms, string storedProcedureName)
         {
-
             SqlConnection connection = new SqlConnection(Sql);
             SqlCommand command = new SqlCommand();
             connection.Open();
@@ -56,7 +49,6 @@ namespace DataConnection
             command.Parameters.AddRange(pms);
             command.ExecuteNonQuery();
             connection.Close();
-
         }
 
         public SqlDataAdapter getList(string storedProcedureName, SqlParameter[] pms)
@@ -64,7 +56,6 @@ namespace DataConnection
             SqlConnection connection = new SqlConnection(Sql);
             SqlCommand command = new SqlCommand();
             DataTable dt = new DataTable();
-          
      
             connection.Open();
             command.Connection = connection;
@@ -86,7 +77,6 @@ namespace DataConnection
             SqlCommand command = new SqlCommand();
             DataTable dt = new DataTable();
 
-
             connection.Open();
             command.Connection = connection;
             command.CommandType = CommandType.StoredProcedure;
@@ -101,7 +91,6 @@ namespace DataConnection
 
         public string databaseDelete(SqlParameter[] pms, string storedProcedureName)
         {
-
             SqlConnection connection = new SqlConnection(Sql);
             SqlCommand command = new SqlCommand();
             connection.Open();
@@ -114,7 +103,5 @@ namespace DataConnection
             connection.Close();
             return mensaje;
         }
-
-
     }
 }
