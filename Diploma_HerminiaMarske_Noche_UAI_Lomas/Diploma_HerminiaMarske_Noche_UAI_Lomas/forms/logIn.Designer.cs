@@ -48,14 +48,14 @@
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Location = new System.Drawing.Point(5, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(436, 284);
+            this.panel1.Size = new System.Drawing.Size(371, 284);
             this.panel1.TabIndex = 0;
             // 
             // btnIngresar
             // 
-            this.btnIngresar.Location = new System.Drawing.Point(220, 226);
+            this.btnIngresar.Location = new System.Drawing.Point(187, 224);
             this.btnIngresar.Name = "btnIngresar";
-            this.btnIngresar.Size = new System.Drawing.Size(207, 50);
+            this.btnIngresar.Size = new System.Drawing.Size(177, 50);
             this.btnIngresar.TabIndex = 2;
             this.btnIngresar.Text = "Ingresar";
             this.btnIngresar.UseVisualStyleBackColor = true;
@@ -63,9 +63,9 @@
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(6, 226);
+            this.btnSalir.Location = new System.Drawing.Point(7, 224);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(207, 50);
+            this.btnSalir.Size = new System.Drawing.Size(177, 50);
             this.btnSalir.TabIndex = 1;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
@@ -79,7 +79,7 @@
             this.groupBox1.Controls.Add(this.lblUsr);
             this.groupBox1.Location = new System.Drawing.Point(7, 7);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(420, 212);
+            this.groupBox1.Size = new System.Drawing.Size(357, 212);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos de Ingreso";
@@ -89,7 +89,8 @@
             // 
             this.txtPassword.Location = new System.Drawing.Point(10, 148);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(404, 22);
+            this.txtPassword.PasswordChar = '•';
+            this.txtPassword.Size = new System.Drawing.Size(336, 22);
             this.txtPassword.TabIndex = 3;
             // 
             // lblContra
@@ -105,7 +106,7 @@
             // 
             this.txtUsuario.Location = new System.Drawing.Point(10, 56);
             this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(404, 22);
+            this.txtUsuario.Size = new System.Drawing.Size(336, 22);
             this.txtUsuario.TabIndex = 1;
             // 
             // lblUsr
@@ -121,7 +122,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(449, 293);
+            this.ClientSize = new System.Drawing.Size(382, 293);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
