@@ -3,7 +3,7 @@ using System.Security.Cryptography;
 
 namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
 {
-    public static class ProcesosSeguridad
+    public static class ControladorEncriptacion
     {
         /// <summary>
         /// Salt única aleatoria

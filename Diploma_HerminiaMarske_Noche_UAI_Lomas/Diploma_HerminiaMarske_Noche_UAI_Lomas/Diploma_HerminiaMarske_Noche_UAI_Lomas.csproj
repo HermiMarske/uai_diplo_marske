@@ -102,6 +102,9 @@
     <EmbeddedResource Include="forms\altaCliente.resx">
       <DependentUpon>altaCliente.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="forms\altaUsuario.resx">
+      <DependentUpon>altaUsuario.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="forms\inicio.resx">
       <DependentUpon>inicio.cs</DependentUpon>
     </EmbeddedResource>
