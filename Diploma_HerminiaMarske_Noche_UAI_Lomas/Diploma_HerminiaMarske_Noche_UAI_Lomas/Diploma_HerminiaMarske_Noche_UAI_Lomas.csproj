@@ -88,7 +88,9 @@
       <DependentUpon>modificarUsuario.cs</DependentUpon>
     </Compile>
     <Compile Include="objetos\Cliente.cs" />
+    <Compile Include="objetos\Familia.cs" />
     <Compile Include="objetos\Localidad.cs" />
+    <Compile Include="objetos\Patente.cs" />
     <Compile Include="objetos\Persona.cs" />
     <Compile Include="objetos\Provincia.cs" />
     <Compile Include="objetos\Dialogo.cs" />
@@ -98,7 +100,8 @@
     <Compile Include="objetos\Usuario.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="servicio\ProcesosSeguridad.cs" />
+    <Compile Include="servicio\ControladorPermisos.cs" />
+    <Compile Include="servicio\ControladorEncriptacion.cs" />
     <EmbeddedResource Include="forms\altaCliente.resx">
       <DependentUpon>altaCliente.cs</DependentUpon>
     </EmbeddedResource>
@@ -113,6 +116,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="forms\modificarCliente.resx">
       <DependentUpon>modificarCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\modificarUsuario.resx">
+      <DependentUpon>modificarUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -135,7 +141,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Airplane-Landing.ico" />

@@ -49,7 +49,6 @@
             this.tabUsuarios = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanelListaClientes = new System.Windows.Forms.TableLayoutPanel();
-            this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.btnEliminarCliente = new System.Windows.Forms.Button();
             this.btnModificarCliente = new System.Windows.Forms.Button();
@@ -64,11 +63,10 @@
             this.dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnDetalleUsuario = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
+            this.btnModificarUsuario = new System.Windows.Forms.Button();
+            this.btnAltaUsuario = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -250,13 +248,12 @@
             // tableLayoutPanelListaClientes
             // 
             this.tableLayoutPanelListaClientes.AutoSize = true;
-            this.tableLayoutPanelListaClientes.ColumnCount = 5;
-            this.tableLayoutPanelListaClientes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanelListaClientes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanelListaClientes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanelListaClientes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanelListaClientes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanelListaClientes.Controls.Add(this.button5, 0, 1);
+            this.tableLayoutPanelListaClientes.ColumnCount = 4;
+            this.tableLayoutPanelListaClientes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanelListaClientes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanelListaClientes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanelListaClientes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanelListaClientes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelListaClientes.Controls.Add(this.button4, 0, 1);
             this.tableLayoutPanelListaClientes.Controls.Add(this.btnEliminarCliente, 0, 1);
             this.tableLayoutPanelListaClientes.Controls.Add(this.btnModificarCliente, 0, 1);
@@ -272,19 +269,9 @@
             this.tableLayoutPanelListaClientes.Size = new System.Drawing.Size(1454, 830);
             this.tableLayoutPanelListaClientes.TabIndex = 3;
             // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(293, 743);
-            this.button5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(218, 50);
-            this.button5.TabIndex = 9;
-            this.button5.Text = "Salir";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(873, 743);
+            this.button4.Location = new System.Drawing.Point(366, 743);
             this.button4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(218, 50);
@@ -294,7 +281,7 @@
             // 
             // btnEliminarCliente
             // 
-            this.btnEliminarCliente.Location = new System.Drawing.Point(1163, 743);
+            this.btnEliminarCliente.Location = new System.Drawing.Point(729, 743);
             this.btnEliminarCliente.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnEliminarCliente.Name = "btnEliminarCliente";
             this.btnEliminarCliente.Size = new System.Drawing.Size(218, 50);
@@ -305,7 +292,7 @@
             // 
             // btnModificarCliente
             // 
-            this.btnModificarCliente.Location = new System.Drawing.Point(583, 743);
+            this.btnModificarCliente.Location = new System.Drawing.Point(1092, 743);
             this.btnModificarCliente.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnModificarCliente.Name = "btnModificarCliente";
             this.btnModificarCliente.Size = new System.Drawing.Size(218, 50);
@@ -327,7 +314,7 @@
             // 
             // groupBox1
             // 
-            this.tableLayoutPanelListaClientes.SetColumnSpan(this.groupBox1, 5);
+            this.tableLayoutPanelListaClientes.SetColumnSpan(this.groupBox1, 4);
             this.groupBox1.Controls.Add(this.dataGridClientes);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(3, 4);
@@ -414,17 +401,16 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.AutoSize = true;
-            this.tableLayoutPanel1.ColumnCount = 5;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.Controls.Add(this.button1, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.button2, 0, 1);
+            this.tableLayoutPanel1.ColumnCount = 4;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Controls.Add(this.btnDetalleUsuario, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.button3, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.button6, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.button7, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.btnModificarUsuario, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.btnAltaUsuario, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.groupBox2, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 4);
@@ -436,29 +422,19 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1454, 830);
             this.tableLayoutPanel1.TabIndex = 4;
             // 
-            // button1
+            // btnDetalleUsuario
             // 
-            this.button1.Location = new System.Drawing.Point(293, 743);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(218, 50);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "Salir";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(873, 743);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(218, 50);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "Ver detalles";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnDetalleUsuario.Location = new System.Drawing.Point(366, 743);
+            this.btnDetalleUsuario.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnDetalleUsuario.Name = "btnDetalleUsuario";
+            this.btnDetalleUsuario.Size = new System.Drawing.Size(218, 50);
+            this.btnDetalleUsuario.TabIndex = 8;
+            this.btnDetalleUsuario.Text = "Ver detalles";
+            this.btnDetalleUsuario.UseVisualStyleBackColor = true;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(1163, 743);
+            this.button3.Location = new System.Drawing.Point(729, 743);
             this.button3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(218, 50);
@@ -466,29 +442,30 @@
             this.button3.Text = "Eliminar Usuario";
             this.button3.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // btnModificarUsuario
             // 
-            this.button6.Location = new System.Drawing.Point(583, 743);
-            this.button6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(218, 50);
-            this.button6.TabIndex = 6;
-            this.button6.Text = "Modificar Usuario";
-            this.button6.UseVisualStyleBackColor = true;
+            this.btnModificarUsuario.Location = new System.Drawing.Point(1092, 743);
+            this.btnModificarUsuario.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnModificarUsuario.Name = "btnModificarUsuario";
+            this.btnModificarUsuario.Size = new System.Drawing.Size(218, 50);
+            this.btnModificarUsuario.TabIndex = 6;
+            this.btnModificarUsuario.Text = "Modificar Usuario";
+            this.btnModificarUsuario.UseVisualStyleBackColor = true;
             // 
-            // button7
+            // btnAltaUsuario
             // 
-            this.button7.Location = new System.Drawing.Point(3, 743);
-            this.button7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(218, 50);
-            this.button7.TabIndex = 5;
-            this.button7.Text = "Nuevo Usuario";
-            this.button7.UseVisualStyleBackColor = true;
+            this.btnAltaUsuario.Location = new System.Drawing.Point(3, 743);
+            this.btnAltaUsuario.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnAltaUsuario.Name = "btnAltaUsuario";
+            this.btnAltaUsuario.Size = new System.Drawing.Size(218, 50);
+            this.btnAltaUsuario.TabIndex = 5;
+            this.btnAltaUsuario.Text = "Nuevo Usuario";
+            this.btnAltaUsuario.UseVisualStyleBackColor = true;
+            this.btnAltaUsuario.Click += new System.EventHandler(this.btnAltaUsuario_Click);
             // 
             // groupBox2
             // 
-            this.tableLayoutPanel1.SetColumnSpan(this.groupBox2, 5);
+            this.tableLayoutPanel1.SetColumnSpan(this.groupBox2, 4);
             this.groupBox2.Controls.Add(this.dataGridView1);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(3, 4);
@@ -604,7 +581,6 @@
         private System.Windows.Forms.TabControl tabUsuarios;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelListaClientes;
-        private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button btnEliminarCliente;
         private System.Windows.Forms.Button btnModificarCliente;
@@ -619,11 +595,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn apellido;
         private System.Windows.Forms.DataGridViewTextBoxColumn dni;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnDetalleUsuario;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button btnModificarUsuario;
+        private System.Windows.Forms.Button btnAltaUsuario;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;

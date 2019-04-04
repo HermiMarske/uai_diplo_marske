@@ -26,7 +26,8 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=HERMI-PC;Initial Catalog=UAI_GESTION_AGUILA;Integrated Security=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=CHARLOTTE-PC;Initial Catalog=UAI_GESTION_AGUILA;Integrated Security=T" +
+            "rue")]
         public string UAI_GESTION_AGUILAConnectionString {
             get {
                 return ((string)(this["UAI_GESTION_AGUILAConnectionString"]));

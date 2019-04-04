@@ -43,21 +43,21 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.txtNombre = new System.Windows.Forms.TextBox();
+            this.txtUsuario = new System.Windows.Forms.TextBox();
+            this.txtDni = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.pickerFechaNacimiento = new System.Windows.Forms.DateTimePicker();
-            this.txtRazonSocial = new System.Windows.Forms.TextBox();
-            this.txtCuit = new System.Windows.Forms.TextBox();
+            this.txtClave = new System.Windows.Forms.TextBox();
+            this.txtRptClave = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtApellido = new System.Windows.Forms.TextBox();
+            this.txtNombre = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.comboSexo = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.txtDni = new System.Windows.Forms.TextBox();
+            this.txtApellido = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -65,7 +65,7 @@
             this.dataGridTelefonos = new System.Windows.Forms.DataGridView();
             this.TipoTelefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NumeroTelefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnBorrarTel = new System.Windows.Forms.Button();
             this.buttonAddTelefono = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.comboTipoTelefono = new System.Windows.Forms.ComboBox();
@@ -86,7 +86,7 @@
             this.Localidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Provincia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Pais = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnBorrarDomicilio = new System.Windows.Forms.Button();
             this.btnAgregarDireccion = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.txtComentario = new System.Windows.Forms.TextBox();
@@ -110,15 +110,15 @@
             this.labelNumero = new System.Windows.Forms.Label();
             this.labelCalle = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
-            this.label16 = new System.Windows.Forms.Label();
             this.treeView1 = new System.Windows.Forms.TreeView();
+            this.label16 = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.tableLayoutPanelAltaCliente.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -133,8 +133,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridDomicilios)).BeginInit();
             this.groupBox5.SuspendLayout();
             this.tabPage4.SuspendLayout();
-            this.groupBox7.SuspendLayout();
             this.groupBox8.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanelAltaCliente
@@ -225,21 +225,21 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.txtNombre);
+            this.groupBox1.Controls.Add(this.txtUsuario);
+            this.groupBox1.Controls.Add(this.txtDni);
             this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.pickerFechaNacimiento);
-            this.groupBox1.Controls.Add(this.txtRazonSocial);
-            this.groupBox1.Controls.Add(this.txtCuit);
+            this.groupBox1.Controls.Add(this.txtClave);
+            this.groupBox1.Controls.Add(this.txtRptClave);
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.txtApellido);
+            this.groupBox1.Controls.Add(this.txtNombre);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.comboSexo);
             this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.txtDni);
+            this.groupBox1.Controls.Add(this.txtApellido);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Location = new System.Drawing.Point(7, 8);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -250,21 +250,24 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos de Persona";
             // 
-            // textBox1
+            // txtUsuario
             // 
-            this.textBox1.Location = new System.Drawing.Point(113, 483);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(794, 26);
-            this.textBox1.TabIndex = 33;
+            this.txtUsuario.Enabled = false;
+            this.txtUsuario.Location = new System.Drawing.Point(113, 480);
+            this.txtUsuario.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtUsuario.Name = "txtUsuario";
+            this.txtUsuario.Size = new System.Drawing.Size(794, 26);
+            this.txtUsuario.TabIndex = 33;
             // 
-            // txtNombre
+            // txtDni
             // 
-            this.txtNombre.Location = new System.Drawing.Point(80, 68);
-            this.txtNombre.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(828, 26);
-            this.txtNombre.TabIndex = 18;
+            this.txtDni.Location = new System.Drawing.Point(80, 68);
+            this.txtDni.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtDni.Name = "txtDni";
+            this.txtDni.Size = new System.Drawing.Size(828, 26);
+            this.txtDni.TabIndex = 18;
+            this.txtDni.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDni_KeyDown);
+            this.txtDni.Leave += new System.EventHandler(this.txtDni_Leave);
             // 
             // label14
             // 
@@ -287,6 +290,7 @@
             // 
             // pickerFechaNacimiento
             // 
+            this.pickerFechaNacimiento.Enabled = false;
             this.pickerFechaNacimiento.Location = new System.Drawing.Point(181, 401);
             this.pickerFechaNacimiento.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pickerFechaNacimiento.Name = "pickerFechaNacimiento";
@@ -294,21 +298,23 @@
             this.pickerFechaNacimiento.TabIndex = 26;
             this.pickerFechaNacimiento.Value = new System.DateTime(2019, 1, 21, 0, 0, 0, 0);
             // 
-            // txtRazonSocial
+            // txtClave
             // 
-            this.txtRazonSocial.Location = new System.Drawing.Point(114, 569);
-            this.txtRazonSocial.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtRazonSocial.Name = "txtRazonSocial";
-            this.txtRazonSocial.Size = new System.Drawing.Size(794, 26);
-            this.txtRazonSocial.TabIndex = 30;
+            this.txtClave.Enabled = false;
+            this.txtClave.Location = new System.Drawing.Point(114, 569);
+            this.txtClave.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtClave.Name = "txtClave";
+            this.txtClave.Size = new System.Drawing.Size(794, 26);
+            this.txtClave.TabIndex = 30;
             // 
-            // txtCuit
+            // txtRptClave
             // 
-            this.txtCuit.Location = new System.Drawing.Point(114, 651);
-            this.txtCuit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtCuit.Name = "txtCuit";
-            this.txtCuit.Size = new System.Drawing.Size(794, 26);
-            this.txtCuit.TabIndex = 32;
+            this.txtRptClave.Enabled = false;
+            this.txtRptClave.Location = new System.Drawing.Point(114, 651);
+            this.txtRptClave.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtRptClave.Name = "txtRptClave";
+            this.txtRptClave.Size = new System.Drawing.Size(794, 26);
+            this.txtRptClave.TabIndex = 32;
             // 
             // label12
             // 
@@ -331,24 +337,25 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(7, 71);
+            this.label6.Location = new System.Drawing.Point(7, 153);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(65, 20);
             this.label6.TabIndex = 17;
             this.label6.Text = "Nombre";
             // 
-            // txtApellido
+            // txtNombre
             // 
-            this.txtApellido.Location = new System.Drawing.Point(82, 150);
-            this.txtApellido.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtApellido.Name = "txtApellido";
-            this.txtApellido.Size = new System.Drawing.Size(825, 26);
-            this.txtApellido.TabIndex = 20;
+            this.txtNombre.Enabled = false;
+            this.txtNombre.Location = new System.Drawing.Point(82, 150);
+            this.txtNombre.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Size = new System.Drawing.Size(825, 26);
+            this.txtNombre.TabIndex = 20;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(7, 154);
+            this.label9.Location = new System.Drawing.Point(7, 235);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(65, 20);
             this.label9.TabIndex = 19;
@@ -356,6 +363,7 @@
             // 
             // comboSexo
             // 
+            this.comboSexo.Enabled = false;
             this.comboSexo.FormattingEnabled = true;
             this.comboSexo.Items.AddRange(new object[] {
             "Femenino",
@@ -375,18 +383,19 @@
             this.label8.TabIndex = 23;
             this.label8.Text = "Sexo";
             // 
-            // txtDni
+            // txtApellido
             // 
-            this.txtDni.Location = new System.Drawing.Point(82, 232);
-            this.txtDni.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtDni.Name = "txtDni";
-            this.txtDni.Size = new System.Drawing.Size(825, 26);
-            this.txtDni.TabIndex = 22;
+            this.txtApellido.Enabled = false;
+            this.txtApellido.Location = new System.Drawing.Point(82, 232);
+            this.txtApellido.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtApellido.Name = "txtApellido";
+            this.txtApellido.Size = new System.Drawing.Size(825, 26);
+            this.txtApellido.TabIndex = 22;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(7, 236);
+            this.label10.Location = new System.Drawing.Point(7, 71);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(37, 20);
             this.label10.TabIndex = 21;
@@ -409,7 +418,7 @@
             // 
             this.groupBox4.Controls.Add(this.btnModificarTel);
             this.groupBox4.Controls.Add(this.dataGridTelefonos);
-            this.groupBox4.Controls.Add(this.button3);
+            this.groupBox4.Controls.Add(this.btnBorrarTel);
             this.groupBox4.Controls.Add(this.buttonAddTelefono);
             this.groupBox4.Location = new System.Drawing.Point(7, 239);
             this.groupBox4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -447,6 +456,7 @@
             this.dataGridTelefonos.RowTemplate.Height = 24;
             this.dataGridTelefonos.Size = new System.Drawing.Size(606, 261);
             this.dataGridTelefonos.TabIndex = 37;
+            this.dataGridTelefonos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridTelefonos_CellClick);
             // 
             // TipoTelefono
             // 
@@ -463,15 +473,15 @@
             this.NumeroTelefono.Name = "NumeroTelefono";
             this.NumeroTelefono.ReadOnly = true;
             // 
-            // button3
+            // btnBorrarTel
             // 
-            this.button3.Location = new System.Drawing.Point(659, 291);
-            this.button3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(226, 39);
-            this.button3.TabIndex = 40;
-            this.button3.Text = "Borrar";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnBorrarTel.Location = new System.Drawing.Point(659, 291);
+            this.btnBorrarTel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnBorrarTel.Name = "btnBorrarTel";
+            this.btnBorrarTel.Size = new System.Drawing.Size(226, 39);
+            this.btnBorrarTel.TabIndex = 40;
+            this.btnBorrarTel.Text = "Borrar";
+            this.btnBorrarTel.UseVisualStyleBackColor = true;
             // 
             // buttonAddTelefono
             // 
@@ -553,7 +563,7 @@
             // 
             this.groupBox6.Controls.Add(this.btnModificarDom);
             this.groupBox6.Controls.Add(this.dataGridDomicilios);
-            this.groupBox6.Controls.Add(this.button2);
+            this.groupBox6.Controls.Add(this.btnBorrarDomicilio);
             this.groupBox6.Controls.Add(this.btnAgregarDireccion);
             this.groupBox6.Location = new System.Drawing.Point(3, 418);
             this.groupBox6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -599,6 +609,7 @@
             this.dataGridDomicilios.RowTemplate.Height = 24;
             this.dataGridDomicilios.Size = new System.Drawing.Size(900, 188);
             this.dataGridDomicilios.TabIndex = 57;
+            this.dataGridDomicilios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridDomicilios_CellClick);
             // 
             // Tipo
             // 
@@ -690,15 +701,15 @@
             this.Pais.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.Pais.Visible = false;
             // 
-            // button2
+            // btnBorrarDomicilio
             // 
-            this.button2.Location = new System.Drawing.Point(680, 259);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(231, 39);
-            this.button2.TabIndex = 59;
-            this.button2.Text = "Borrar";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnBorrarDomicilio.Location = new System.Drawing.Point(680, 259);
+            this.btnBorrarDomicilio.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnBorrarDomicilio.Name = "btnBorrarDomicilio";
+            this.btnBorrarDomicilio.Size = new System.Drawing.Size(231, 39);
+            this.btnBorrarDomicilio.TabIndex = 59;
+            this.btnBorrarDomicilio.Text = "Borrar";
+            this.btnBorrarDomicilio.UseVisualStyleBackColor = true;
             // 
             // btnAgregarDireccion
             // 
@@ -930,19 +941,6 @@
             this.tabPage4.Text = "Permisos";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // groupBox7
-            // 
-            this.groupBox7.Controls.Add(this.checkedListBox1);
-            this.groupBox7.Controls.Add(this.button1);
-            this.groupBox7.Controls.Add(this.comboBox1);
-            this.groupBox7.Controls.Add(this.label15);
-            this.groupBox7.Location = new System.Drawing.Point(-6, 3);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(463, 739);
-            this.groupBox7.TabIndex = 0;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Seleccionar Permisos";
-            // 
             // groupBox8
             // 
             this.groupBox8.Controls.Add(this.treeView1);
@@ -954,58 +952,6 @@
             this.groupBox8.TabIndex = 1;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Permisos Adquiridos";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(12, 38);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(150, 20);
-            this.label15.TabIndex = 0;
-            this.label15.Text = "Familia de Permisos";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(16, 61);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(441, 28);
-            this.comboBox1.TabIndex = 1;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(16, 676);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(441, 57);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Agregar >>";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(8, 676);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(441, 57);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "<< Quitar";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // checkedListBox1
-            // 
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(16, 103);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(441, 550);
-            this.checkedListBox1.TabIndex = 3;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(6, 38);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(78, 20);
-            this.label16.TabIndex = 5;
-            this.label16.Text = "Permisos ";
             // 
             // treeView1
             // 
@@ -1025,6 +971,71 @@
             this.treeView1.Size = new System.Drawing.Size(441, 592);
             this.treeView1.TabIndex = 6;
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(6, 38);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(78, 20);
+            this.label16.TabIndex = 5;
+            this.label16.Text = "Permisos ";
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(8, 676);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(441, 57);
+            this.button4.TabIndex = 3;
+            this.button4.Text = "<< Quitar";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.checkedListBox1);
+            this.groupBox7.Controls.Add(this.button1);
+            this.groupBox7.Controls.Add(this.comboBox1);
+            this.groupBox7.Controls.Add(this.label15);
+            this.groupBox7.Location = new System.Drawing.Point(-6, 3);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(463, 739);
+            this.groupBox7.TabIndex = 0;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Seleccionar Permisos";
+            // 
+            // checkedListBox1
+            // 
+            this.checkedListBox1.FormattingEnabled = true;
+            this.checkedListBox1.Location = new System.Drawing.Point(16, 103);
+            this.checkedListBox1.Name = "checkedListBox1";
+            this.checkedListBox1.Size = new System.Drawing.Size(441, 550);
+            this.checkedListBox1.TabIndex = 3;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(16, 676);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(441, 57);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Agregar >>";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(16, 61);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(441, 28);
+            this.comboBox1.TabIndex = 1;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(12, 38);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(150, 20);
+            this.label15.TabIndex = 0;
+            this.label15.Text = "Familia de Permisos";
+            // 
             // altaUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -1035,6 +1046,7 @@
             this.MinimizeBox = false;
             this.Name = "altaUsuario";
             this.Text = "Alta de Usuario";
+            this.Load += new System.EventHandler(this.altaUsuario_Load);
             this.tableLayoutPanelAltaCliente.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
@@ -1052,10 +1064,10 @@
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.tabPage4.ResumeLayout(false);
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox7.PerformLayout();
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1070,21 +1082,21 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox txtNombre;
+        private System.Windows.Forms.TextBox txtUsuario;
+        private System.Windows.Forms.TextBox txtDni;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.DateTimePicker pickerFechaNacimiento;
-        private System.Windows.Forms.TextBox txtRazonSocial;
-        private System.Windows.Forms.TextBox txtCuit;
+        private System.Windows.Forms.TextBox txtClave;
+        private System.Windows.Forms.TextBox txtRptClave;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtApellido;
+        private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox comboSexo;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox txtDni;
+        private System.Windows.Forms.TextBox txtApellido;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.GroupBox groupBox4;
@@ -1092,7 +1104,7 @@
         private System.Windows.Forms.DataGridView dataGridTelefonos;
         private System.Windows.Forms.DataGridViewTextBoxColumn TipoTelefono;
         private System.Windows.Forms.DataGridViewTextBoxColumn NumeroTelefono;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnBorrarTel;
         private System.Windows.Forms.Button buttonAddTelefono;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ComboBox comboTipoTelefono;
@@ -1113,7 +1125,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Localidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn Provincia;
         private System.Windows.Forms.DataGridViewTextBoxColumn Pais;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnBorrarDomicilio;
         private System.Windows.Forms.Button btnAgregarDireccion;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.TextBox txtComentario;

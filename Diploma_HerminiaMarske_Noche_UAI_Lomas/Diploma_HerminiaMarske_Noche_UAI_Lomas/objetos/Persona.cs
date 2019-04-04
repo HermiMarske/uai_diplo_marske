@@ -25,6 +25,16 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos
          
         }
 
+        public Persona(int idPersona, string dni, string nombre, string apellido, string sexo, DateTime fechaNacimiento)
+        {
+            this.idPersona = idPersona;
+            this.dni = dni;
+            this.nombre = nombre;
+            this.apellido = apellido;
+            this.sexo = sexo;
+            this.fechaNacimiento = fechaNacimiento;
+        }
+
         public int GetIdPersona()
         {
             return idPersona;

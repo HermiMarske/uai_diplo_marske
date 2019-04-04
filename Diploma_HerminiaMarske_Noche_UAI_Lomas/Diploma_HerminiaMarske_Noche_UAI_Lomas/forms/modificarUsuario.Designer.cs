@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Nodo1");
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Nodo2");
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Nodo3");
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Nodo0", new System.Windows.Forms.TreeNode[] {
-            treeNode5,
-            treeNode6,
-            treeNode7});
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Nodo1");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Nodo2");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Nodo3");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Nodo0", new System.Windows.Forms.TreeNode[] {
+            treeNode1,
+            treeNode2,
+            treeNode3});
             this.tableLayoutPanelAltaCliente = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.button7 = new System.Windows.Forms.Button();
@@ -187,6 +187,7 @@
             this.button6.TabIndex = 1;
             this.button6.Text = "Cancelar";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button5
             // 
@@ -947,16 +948,16 @@
             this.treeView1.CheckBoxes = true;
             this.treeView1.Location = new System.Drawing.Point(8, 61);
             this.treeView1.Name = "treeView1";
-            treeNode5.Name = "Nodo1";
-            treeNode5.Text = "Nodo1";
-            treeNode6.Name = "Nodo2";
-            treeNode6.Text = "Nodo2";
-            treeNode7.Name = "Nodo3";
-            treeNode7.Text = "Nodo3";
-            treeNode8.Name = "Nodo0";
-            treeNode8.Text = "Nodo0";
+            treeNode1.Name = "Nodo1";
+            treeNode1.Text = "Nodo1";
+            treeNode2.Name = "Nodo2";
+            treeNode2.Text = "Nodo2";
+            treeNode3.Name = "Nodo3";
+            treeNode3.Text = "Nodo3";
+            treeNode4.Name = "Nodo0";
+            treeNode4.Text = "Nodo0";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode8});
+            treeNode4});
             this.treeView1.Size = new System.Drawing.Size(441, 592);
             this.treeView1.TabIndex = 6;
             // 

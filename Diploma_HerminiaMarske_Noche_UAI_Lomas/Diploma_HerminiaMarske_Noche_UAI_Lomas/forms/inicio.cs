@@ -19,6 +19,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
         public static Object idClienteModif;
 
         altaCliente formAltaCliente = new altaCliente();
+        altaUsuario formAltaUsuario = new altaUsuario();
         modificarCliente formModifCliente = new modificarCliente();
 
         DataConnection.DataConnection dataConnection = new DataConnection.DataConnection();
@@ -157,5 +158,10 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
         }
 
 
+        private void btnAltaUsuario_Click(object sender, EventArgs e)
+        {
+            formAltaUsuario = new altaUsuario();
+            formAltaUsuario.Show();
+        }
     }
 }
