@@ -89,13 +89,45 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
 
                 foreach (Telefono t in telList)
                 {
-                    String[] dataRow = { t.GetNumero(), t.GetTipo() };
+                    String[] dataRow = { t.GetTipo(), t.GetNumero() };
                     dataGridTelefonos.Rows.Add(dataRow);
                 }
             }
             catch
             {
                 MessageBox.Show(dtTel.Rows[0].ItemArray[0].ToString());
+            }
+            
+            /** Lleno el grid de correos **/
+            DataTable dtMail = new DataTable();
+            pms[0] = new SqlParameter("@id", SqlDbType.Int);
+            pms[0].Value = idPersona;
+           
+
+            da = dataQuery.getList("ObtenerMails", pms);
+            da.Fill(dtMail);
+            List<Mail> mailList = new List<Mail>();
+
+            try
+            {
+                foreach (DataRow drMail in dtMail.Rows)
+                {
+                    Mail mail = new Mail();
+                    mail.SetId((int)drMail[0]);
+                    mail.SetTipo((string)drMail[1]);
+                    mail.SetMail((string)drMail[2]);
+                    mailList.Add(mail);
+                }
+
+                foreach (Mail m in mailList)
+                {
+                    String[] dataRow = { m.GetTipo(), m.GetMail() };
+                    dataGridMails.Rows.Add(dataRow);
+                }
+            }
+            catch
+            {
+                MessageBox.Show(dtMail.Rows[0].ItemArray[0].ToString());
             }
     
             /** Lleno lista de domicilios **/
@@ -271,8 +303,8 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             SqlParameter[] pmsTel = new SqlParameter[1];
            
 
-            pmsTel[0] = new SqlParameter("@idCliente", SqlDbType.Int);
-            pmsTel[0].Value = Int32.Parse((string)formInicio.idClienteModif);
+            pmsTel[0] = new SqlParameter("@idPersona", SqlDbType.Int);
+            pmsTel[0].Value = Int32.Parse((string)formInicio.fkPersonaModif);
 
             dataConnection.databaseModifyData(pmsTel, "BorrarTelefonos");
 
@@ -280,7 +312,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             List<Telefono> telefonos = new List<Telefono>();
             List<Domicilio> domicilios = new List<Domicilio>();
 
-            for (int i = 0; i < (dataGridTelefonos.Rows.Count); i++)
+            for (int i = 0; i < dataGridTelefonos.Rows.Count; i++)
             {
                 Telefono t = new Telefono();
 
@@ -288,16 +320,50 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
                 t.SetNumero((string)dataGridTelefonos.Rows.SharedRow(i).Cells[1].Value);
                 telefonos.Add(t);
 
-                pmsTelefono[0] = new SqlParameter("@idCliente", SqlDbType.Int);
-                pmsTelefono[0].Value = Int32.Parse((string)formInicio.idClienteModif);
+                pmsTelefono[0] = new SqlParameter("@tipo", SqlDbType.VarChar);
+                pmsTelefono[0].Value = t.GetTipo();
 
-                pmsTelefono[1] = new SqlParameter("@tipo", SqlDbType.VarChar);
-                pmsTelefono[1].Value = t.GetTipo();
+                pmsTelefono[1] = new SqlParameter("@numero", SqlDbType.VarChar);
+                pmsTelefono[1].Value = t.GetNumero();
 
-                pmsTelefono[2] = new SqlParameter("@numero", SqlDbType.VarChar);
-                pmsTelefono[2].Value = t.GetNumero();
+                pmsTelefono[2] = new SqlParameter("@fk_persona", SqlDbType.Int);
+                pmsTelefono[2].Value = Int32.Parse((string)formInicio.fkPersonaModif);
 
-                dataConnection.databaseInsertAditionalData(pmsTelefono, "ModificarTelefonos");
+                dataConnection.databaseInsertAditionalData(pmsTelefono, "AltaTelefono");
+
+            }
+
+
+            SqlParameter[] pmsMails = new SqlParameter[1];
+
+
+            pmsMails[0] = new SqlParameter("@idPersona", SqlDbType.Int);
+            pmsMails[0].Value = Int32.Parse((string)formInicio.fkPersonaModif);
+
+            dataConnection.databaseModifyData(pmsTel, "BorrarMails");
+
+            SqlParameter[] pmsEmails = new SqlParameter[3];
+            List<Mail> mails = new List<Mail>();
+        
+
+            for (int i = 0; i < dataGridMails.Rows.Count; i++)
+            {
+                Mail m = new Mail();
+
+                m.SetTipo((string)dataGridMails.Rows.SharedRow(i).Cells[0].Value);
+                m.SetMail((string)dataGridMails.Rows.SharedRow(i).Cells[1].Value);
+                mails.Add(m);
+
+                pmsEmails[0] = new SqlParameter("@tipo", SqlDbType.VarChar);
+                pmsEmails[0].Value = m.GetTipo();
+
+                pmsEmails[1] = new SqlParameter("@mail", SqlDbType.VarChar);
+                pmsEmails[1].Value = m.GetMail();
+
+                pmsEmails[2] = new SqlParameter("@fk_persona", SqlDbType.Int);
+                pmsEmails[2].Value = Int32.Parse((string)formInicio.fkPersonaModif);
+
+                dataConnection.databaseInsertAditionalData(pmsEmails, "AltaMail");
 
             }
 
@@ -321,42 +387,42 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
 
             SqlParameter[] pmsDom = new SqlParameter[1];
 
-            pmsDom[0] = new SqlParameter("@idCliente", SqlDbType.Int);
-            pmsDom[0].Value = Int32.Parse((string)formInicio.idClienteModif);
+            pmsDom[0] = new SqlParameter("@idPersona", SqlDbType.Int);
+            pmsDom[0].Value = Int32.Parse((string)formInicio.fkPersonaModif);
             dataConnection.databaseModifyData(pmsDom, "BorrarDomicilios");
 
             SqlParameter[] pmsDomicilio = new SqlParameter[9];
 
             foreach (Domicilio d in domicilios)
             {
-                pmsDomicilio[0] = new SqlParameter("@idCliente", SqlDbType.Int);
-                pmsDomicilio[0].Value = Int32.Parse((string)formInicio.idClienteModif);
+                pmsDomicilio[0] = new SqlParameter("@calle", SqlDbType.VarChar);
+                pmsDomicilio[0].Value = d.GetCalle();
 
-                pmsDomicilio[1] = new SqlParameter("@calle", SqlDbType.VarChar);
-                pmsDomicilio[1].Value = d.GetCalle();
+                pmsDomicilio[1] = new SqlParameter("@numero", SqlDbType.VarChar);
+                pmsDomicilio[1].Value = d.GetNumero();
 
-                pmsDomicilio[2] = new SqlParameter("@numero", SqlDbType.VarChar);
-                pmsDomicilio[2].Value = d.GetNumero();
+                pmsDomicilio[2] = new SqlParameter("@piso", SqlDbType.Int);
+                pmsDomicilio[2].Value = (object)d.GetPiso() ?? DBNull.Value;
 
-                pmsDomicilio[3] = new SqlParameter("@piso", SqlDbType.Int);
-                pmsDomicilio[3].Value = (object)d.GetPiso() ?? DBNull.Value;
+                pmsDomicilio[3] = new SqlParameter("@dpto", SqlDbType.VarChar);
+                pmsDomicilio[3].Value = d.GetDpto();
 
-                pmsDomicilio[4] = new SqlParameter("@dpto", SqlDbType.VarChar);
-                pmsDomicilio[4].Value = d.GetDpto();
+                pmsDomicilio[4] = new SqlParameter("@comentarios", SqlDbType.VarChar);
+                pmsDomicilio[4].Value = d.GetComentario();
 
-                pmsDomicilio[5] = new SqlParameter("@comentarios", SqlDbType.VarChar);
-                pmsDomicilio[5].Value = d.GetComentario();
+                pmsDomicilio[5] = new SqlParameter("@codPostal", SqlDbType.VarChar);
+                pmsDomicilio[5].Value = d.GetCodigoPostal();
 
-                pmsDomicilio[6] = new SqlParameter("@codPostal", SqlDbType.VarChar);
-                pmsDomicilio[6].Value = d.GetCodigoPostal();
+                pmsDomicilio[6] = new SqlParameter("@tipoDomicilio", SqlDbType.VarChar);
+                pmsDomicilio[6].Value = d.GetTipoDomicilio();
 
-                pmsDomicilio[7] = new SqlParameter("@tipoDomicilio", SqlDbType.VarChar);
-                pmsDomicilio[7].Value = d.GetTipoDomicilio();
+                pmsDomicilio[7] = new SqlParameter("@fk_localidad", SqlDbType.Int);
+                pmsDomicilio[7].Value = d.GetLocalidad().GetId();
 
-                pmsDomicilio[8] = new SqlParameter("@fk_localidad", SqlDbType.Int);
-                pmsDomicilio[8].Value = d.GetLocalidad().GetId();
+                pmsDomicilio[8] = new SqlParameter("@fk_persona", SqlDbType.Int);
+                pmsDomicilio[8].Value = Int32.Parse((string)formInicio.fkPersonaModif);
 
-                dataConnection.databaseModifyData(pmsDomicilio, "ModificarDomicilios");
+                dataConnection.databaseModifyData(pmsDomicilio, "AltaDomicilio");
             }
         }
 
@@ -393,6 +459,53 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
 
             Object[] dataRow = { dom.GetTipoDomicilio(), dom.GetComentario(), dom.GetCalle(), dom.GetNumero(), dom.GetPiso(), dom.GetDpto(), dom.GetCodigoPostal(), dom.GetLocalidad() };
             dataGridDomicilios.Rows.Add(dataRow);
+        }
+
+        private void btnAgregarMail_Click(object sender, EventArgs e)
+        {
+            Mail mail = new Mail();
+            mail.SetMail(textBoxMail.Text);
+            mail.SetTipo(comboTipoMails.SelectedItem.ToString());
+
+            String[] dataRow = { mail.GetTipo(), mail.GetMail() };
+            dataGridMails.Rows.Add(dataRow);
+        }
+
+        private void btnModificarMail_Click(object sender, EventArgs e)
+        {
+            if (dataGridMails.SelectedCells.Count > 0)
+            {
+                int rowIndex = dataGridMails.SelectedCells[0].RowIndex;
+                dataGridMails.Rows[rowIndex].Cells[0].Value = textBoxMail.Text;
+                dataGridMails.Rows[rowIndex].Cells[1].Value = comboTipoMails.Text;
+            }
+        }
+
+        private void dataGridMails_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                textBoxMail.Text = (string)dataGridMails.Rows[e.RowIndex].Cells[0].Value;
+                comboTipoMails.Text = (string)dataGridMails.Rows[e.RowIndex].Cells[1].Value;
+            }
+        }
+
+        private void btnBorrarMail_Click(object sender, EventArgs e)
+        {
+            if (dataGridMails.SelectedCells.Count > 0)
+            {
+                int rowIndex = dataGridMails.SelectedCells[0].RowIndex;
+                dataGridMails.Rows.RemoveAt(rowIndex);
+            }
+        }
+
+        private void btnBorrarTel_Click(object sender, EventArgs e)
+        {
+            if (dataGridTelefonos.SelectedCells.Count > 0)
+            {
+                int rowIndex = dataGridTelefonos.SelectedCells[0].RowIndex;
+                dataGridTelefonos.Rows.RemoveAt(rowIndex);
+            }
         }
     }
 }

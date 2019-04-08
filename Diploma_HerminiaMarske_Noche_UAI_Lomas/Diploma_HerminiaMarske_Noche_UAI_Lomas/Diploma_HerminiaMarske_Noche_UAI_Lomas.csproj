@@ -96,6 +96,7 @@
     <Compile Include="objetos\Dialogo.cs" />
     <Compile Include="objetos\Domicilio.cs" />
     <Compile Include="objetos\Pais.cs" />
+    <Compile Include="objetos\Mail.cs" />
     <Compile Include="objetos\Telefono.cs" />
     <Compile Include="objetos\Usuario.cs" />
     <Compile Include="Program.cs" />

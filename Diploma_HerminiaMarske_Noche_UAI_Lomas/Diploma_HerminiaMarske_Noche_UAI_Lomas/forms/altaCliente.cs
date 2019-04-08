@@ -25,6 +25,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
 
         List<Domicilio> domicilios = new List<Domicilio>();
         List<Telefono> telefonos = new List<Telefono>();
+        List<Mail> mails = new List<Mail>();
 
         private void buttonAddTelefono_Click(object sender, EventArgs e)
         {
@@ -70,18 +71,16 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             if (fk > 0)
             {
                 SqlParameter[] pmsTelefono = new SqlParameter[3];
+                SqlParameter[] pmsMail = new SqlParameter[3];
                 SqlParameter[] pmsDomicilio = new SqlParameter[9];
 
-                for (int i =0 ; i < (dataGridTelefonos.Rows.Count)-1 ; i++)
+                for (int i =0 ; i < dataGridTelefonos.Rows.Count; i++)
                 {
                     Telefono t = new Telefono();
 
                     t.SetTipo((string)dataGridTelefonos.Rows.SharedRow(i).Cells[0].Value);
                     t.SetNumero((string)dataGridTelefonos.Rows.SharedRow(i).Cells[1].Value);
                     telefonos.Add(t);
-
-                    //string telefono = (string)dataGridTelefonos.Rows.SharedRow(i).Cells[0].Value;
-                    //string tipo = (string)dataGridTelefonos.Rows.SharedRow(i).Cells[1].Value;
 
                     pmsTelefono[0] = new SqlParameter("@tipo", SqlDbType.VarChar);
                     pmsTelefono[0].Value = t.GetTipo();
@@ -93,6 +92,26 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
                     pmsTelefono[2].Value = fk;
 
                     dataConnection.databaseInsertAditionalData(pmsTelefono, "AltaTelefono");           
+                }
+
+                for (int i =0 ; i < dataGridMails.Rows.Count; i++)
+                {
+                    Mail m = new Mail();
+
+                    m.SetTipo((string)dataGridMails.Rows.SharedRow(i).Cells[0].Value);
+                    m.SetMail((string)dataGridMails.Rows.SharedRow(i).Cells[1].Value);
+                    mails.Add(m);
+
+                    pmsTelefono[0] = new SqlParameter("@tipo", SqlDbType.VarChar);
+                    pmsTelefono[0].Value = m.GetTipo();
+
+                    pmsTelefono[1] = new SqlParameter("@mail", SqlDbType.VarChar);
+                    pmsTelefono[1].Value = m.GetMail();
+
+                    pmsTelefono[2] = new SqlParameter("@fk_persona", SqlDbType.Int);
+                    pmsTelefono[2].Value = fk;
+
+                    dataConnection.databaseInsertAditionalData(pmsMail, "AltaMail");           
                 }
 
                 for (int i = 0; i < dataGridDomicilios.Rows.Count; i++)
@@ -289,6 +308,53 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
                 int rowIndex = dataGridTelefonos.SelectedCells[0].RowIndex;
                 dataGridTelefonos.Rows[rowIndex].Cells[0].Value = textBoxNumero.Text;
                 dataGridTelefonos.Rows[rowIndex].Cells[1].Value = comboTipoTelefono.Text;
+            }
+        }
+
+        private void btnAgregarMail_Click(object sender, EventArgs e)
+        {
+            Mail mail = new Mail();
+            mail.SetMail(textBoxMail.Text);
+            mail.SetTipo(comboTipoMails.SelectedItem.ToString());
+
+            String[] dataRow = { mail.GetTipo(), mail.GetMail() };
+            dataGridMails.Rows.Add(dataRow);
+        }
+
+        private void btnBorrarMail_Click(object sender, EventArgs e)
+        {
+            if (dataGridMails.SelectedCells.Count > 0)
+            {
+                int rowIndex = dataGridMails.SelectedCells[0].RowIndex;
+                dataGridMails.Rows.RemoveAt(rowIndex);
+            }
+        }
+
+        private void btnBorrarTel_Click(object sender, EventArgs e)
+        {
+            if (dataGridTelefonos.SelectedCells.Count > 0)
+            {
+                int rowIndex = dataGridTelefonos.SelectedCells[0].RowIndex;
+                dataGridTelefonos.Rows.RemoveAt(rowIndex);
+            }
+        }
+
+        private void btnModificarMail_Click(object sender, EventArgs e)
+        {
+            if (dataGridMails.SelectedCells.Count > 0)
+            {
+                int rowIndex = dataGridMails.SelectedCells[0].RowIndex;
+                dataGridMails.Rows[rowIndex].Cells[0].Value = textBoxMail.Text;
+                dataGridMails.Rows[rowIndex].Cells[1].Value = comboTipoMails.Text;
+            }
+        }
+
+        private void dataGridMails_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                textBoxMail.Text = (string)dataGridMails.Rows[e.RowIndex].Cells[0].Value;
+                comboTipoMails.Text = (string)dataGridMails.Rows[e.RowIndex].Cells[1].Value;
             }
         }
     }

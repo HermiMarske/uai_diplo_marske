@@ -56,17 +56,44 @@
             this.label10 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnModificarTel = new System.Windows.Forms.Button();
             this.dataGridTelefonos = new System.Windows.Forms.DataGridView();
-            this.button3 = new System.Windows.Forms.Button();
+            this.TipoTelefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NumeroTelefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnBorrarTel = new System.Windows.Forms.Button();
             this.buttonAddTelefono = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.comboTipoTelefono = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.textBoxNumero = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.btnModificarMail = new System.Windows.Forms.Button();
+            this.dataGridMails = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnBorrarMail = new System.Windows.Forms.Button();
+            this.btnAgregarMail = new System.Windows.Forms.Button();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.comboTipoMails = new System.Windows.Forms.ComboBox();
+            this.labelTipoEmail = new System.Windows.Forms.Label();
+            this.textBoxMail = new System.Windows.Forms.TextBox();
+            this.labelEmail = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.btnModificarDom = new System.Windows.Forms.Button();
             this.dataGridDomicilios = new System.Windows.Forms.DataGridView();
+            this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Comentario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Calle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Piso = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DPTO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Localidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Provincia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Pais = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button2 = new System.Windows.Forms.Button();
             this.btnAgregarDireccion = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -90,21 +117,7 @@
             this.labelCodigo = new System.Windows.Forms.Label();
             this.labelNumero = new System.Windows.Forms.Label();
             this.labelCalle = new System.Windows.Forms.Label();
-            this.TipoTelefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NumeroTelefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnModificarTel = new System.Windows.Forms.Button();
-            this.btnModificarDom = new System.Windows.Forms.Button();
             this.telefonoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Comentario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Calle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Piso = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DPTO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Localidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Provincia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Pais = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanelAltaCliente.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -114,6 +127,10 @@
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridTelefonos)).BeginInit();
             this.groupBox2.SuspendLayout();
+            this.tabPage4.SuspendLayout();
+            this.groupBox7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridMails)).BeginInit();
+            this.groupBox8.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridDomicilios)).BeginInit();
@@ -189,6 +206,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Location = new System.Drawing.Point(3, 4);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -398,7 +416,7 @@
             // 
             this.groupBox4.Controls.Add(this.btnModificarTel);
             this.groupBox4.Controls.Add(this.dataGridTelefonos);
-            this.groupBox4.Controls.Add(this.button3);
+            this.groupBox4.Controls.Add(this.btnBorrarTel);
             this.groupBox4.Controls.Add(this.buttonAddTelefono);
             this.groupBox4.Location = new System.Drawing.Point(7, 239);
             this.groupBox4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -408,6 +426,17 @@
             this.groupBox4.TabIndex = 9;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Lista de Telefonos";
+            // 
+            // btnModificarTel
+            // 
+            this.btnModificarTel.Location = new System.Drawing.Point(659, 222);
+            this.btnModificarTel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnModificarTel.Name = "btnModificarTel";
+            this.btnModificarTel.Size = new System.Drawing.Size(226, 39);
+            this.btnModificarTel.TabIndex = 39;
+            this.btnModificarTel.Text = "Modificar selección";
+            this.btnModificarTel.UseVisualStyleBackColor = true;
+            this.btnModificarTel.Click += new System.EventHandler(this.btnModificarTel_Click);
             // 
             // dataGridTelefonos
             // 
@@ -428,15 +457,31 @@
             this.dataGridTelefonos.TabIndex = 37;
             this.dataGridTelefonos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridTelefonos_CellClick);
             // 
-            // button3
+            // TipoTelefono
             // 
-            this.button3.Location = new System.Drawing.Point(659, 291);
-            this.button3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(226, 39);
-            this.button3.TabIndex = 40;
-            this.button3.Text = "Borrar";
-            this.button3.UseVisualStyleBackColor = true;
+            this.TipoTelefono.FillWeight = 30F;
+            this.TipoTelefono.HeaderText = "Tipo";
+            this.TipoTelefono.MaxInputLength = 20;
+            this.TipoTelefono.Name = "TipoTelefono";
+            this.TipoTelefono.ReadOnly = true;
+            // 
+            // NumeroTelefono
+            // 
+            this.NumeroTelefono.HeaderText = "Telefono";
+            this.NumeroTelefono.MaxInputLength = 20;
+            this.NumeroTelefono.Name = "NumeroTelefono";
+            this.NumeroTelefono.ReadOnly = true;
+            // 
+            // btnBorrarTel
+            // 
+            this.btnBorrarTel.Location = new System.Drawing.Point(659, 291);
+            this.btnBorrarTel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnBorrarTel.Name = "btnBorrarTel";
+            this.btnBorrarTel.Size = new System.Drawing.Size(226, 39);
+            this.btnBorrarTel.TabIndex = 40;
+            this.btnBorrarTel.Text = "Borrar";
+            this.btnBorrarTel.UseVisualStyleBackColor = true;
+            this.btnBorrarTel.Click += new System.EventHandler(this.btnBorrarTel_Click);
             // 
             // buttonAddTelefono
             // 
@@ -502,6 +547,153 @@
             this.label4.TabIndex = 33;
             this.label4.Text = "Numero";
             // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.groupBox7);
+            this.tabPage4.Controls.Add(this.groupBox8);
+            this.tabPage4.Location = new System.Drawing.Point(4, 29);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(929, 748);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Correos";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.btnModificarMail);
+            this.groupBox7.Controls.Add(this.dataGridMails);
+            this.groupBox7.Controls.Add(this.btnBorrarMail);
+            this.groupBox7.Controls.Add(this.btnAgregarMail);
+            this.groupBox7.Location = new System.Drawing.Point(7, 239);
+            this.groupBox7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox7.Size = new System.Drawing.Size(916, 502);
+            this.groupBox7.TabIndex = 13;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Lista de Mails";
+            // 
+            // btnModificarMail
+            // 
+            this.btnModificarMail.Location = new System.Drawing.Point(659, 222);
+            this.btnModificarMail.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnModificarMail.Name = "btnModificarMail";
+            this.btnModificarMail.Size = new System.Drawing.Size(226, 39);
+            this.btnModificarMail.TabIndex = 39;
+            this.btnModificarMail.Text = "Modificar selección";
+            this.btnModificarMail.UseVisualStyleBackColor = true;
+            this.btnModificarMail.Click += new System.EventHandler(this.btnModificarMail_Click);
+            // 
+            // dataGridMails
+            // 
+            this.dataGridMails.AllowUserToAddRows = false;
+            this.dataGridMails.AllowUserToDeleteRows = false;
+            this.dataGridMails.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridMails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridMails.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2});
+            this.dataGridMails.Location = new System.Drawing.Point(10, 100);
+            this.dataGridMails.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dataGridMails.Name = "dataGridMails";
+            this.dataGridMails.ReadOnly = true;
+            this.dataGridMails.RowHeadersWidth = 45;
+            this.dataGridMails.RowTemplate.Height = 24;
+            this.dataGridMails.Size = new System.Drawing.Size(606, 261);
+            this.dataGridMails.TabIndex = 37;
+            this.dataGridMails.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridMails_CellClick);
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.FillWeight = 30F;
+            this.dataGridViewTextBoxColumn1.HeaderText = "Tipo";
+            this.dataGridViewTextBoxColumn1.MaxInputLength = 20;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Mail";
+            this.dataGridViewTextBoxColumn2.MaxInputLength = 20;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // btnBorrarMail
+            // 
+            this.btnBorrarMail.Location = new System.Drawing.Point(659, 291);
+            this.btnBorrarMail.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnBorrarMail.Name = "btnBorrarMail";
+            this.btnBorrarMail.Size = new System.Drawing.Size(226, 39);
+            this.btnBorrarMail.TabIndex = 40;
+            this.btnBorrarMail.Text = "Borrar";
+            this.btnBorrarMail.UseVisualStyleBackColor = true;
+            this.btnBorrarMail.Click += new System.EventHandler(this.btnBorrarMail_Click);
+            // 
+            // btnAgregarMail
+            // 
+            this.btnAgregarMail.Location = new System.Drawing.Point(659, 154);
+            this.btnAgregarMail.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnAgregarMail.Name = "btnAgregarMail";
+            this.btnAgregarMail.Size = new System.Drawing.Size(226, 39);
+            this.btnAgregarMail.TabIndex = 38;
+            this.btnAgregarMail.Text = "Agregar al listado";
+            this.btnAgregarMail.UseVisualStyleBackColor = true;
+            this.btnAgregarMail.Click += new System.EventHandler(this.btnAgregarMail_Click);
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.comboTipoMails);
+            this.groupBox8.Controls.Add(this.labelTipoEmail);
+            this.groupBox8.Controls.Add(this.textBoxMail);
+            this.groupBox8.Controls.Add(this.labelEmail);
+            this.groupBox8.Location = new System.Drawing.Point(6, 8);
+            this.groupBox8.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox8.Size = new System.Drawing.Size(917, 224);
+            this.groupBox8.TabIndex = 12;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Datos de mail de cliente";
+            // 
+            // comboTipoMails
+            // 
+            this.comboTipoMails.FormattingEnabled = true;
+            this.comboTipoMails.Items.AddRange(new object[] {
+            "Personal",
+            "Laboral"});
+            this.comboTipoMails.Location = new System.Drawing.Point(79, 132);
+            this.comboTipoMails.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.comboTipoMails.Name = "comboTipoMails";
+            this.comboTipoMails.Size = new System.Drawing.Size(830, 28);
+            this.comboTipoMails.TabIndex = 36;
+            // 
+            // labelTipoEmail
+            // 
+            this.labelTipoEmail.AutoSize = true;
+            this.labelTipoEmail.Location = new System.Drawing.Point(7, 136);
+            this.labelTipoEmail.Name = "labelTipoEmail";
+            this.labelTipoEmail.Size = new System.Drawing.Size(39, 20);
+            this.labelTipoEmail.TabIndex = 35;
+            this.labelTipoEmail.Text = "Tipo";
+            // 
+            // textBoxMail
+            // 
+            this.textBoxMail.Location = new System.Drawing.Point(79, 64);
+            this.textBoxMail.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textBoxMail.Name = "textBoxMail";
+            this.textBoxMail.Size = new System.Drawing.Size(830, 26);
+            this.textBoxMail.TabIndex = 34;
+            // 
+            // labelEmail
+            // 
+            this.labelEmail.AutoSize = true;
+            this.labelEmail.Location = new System.Drawing.Point(7, 68);
+            this.labelEmail.Name = "labelEmail";
+            this.labelEmail.Size = new System.Drawing.Size(53, 20);
+            this.labelEmail.TabIndex = 33;
+            this.labelEmail.Text = "E-Mail";
+            // 
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.groupBox6);
@@ -530,6 +722,17 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Lista de Domicilios";
             // 
+            // btnModificarDom
+            // 
+            this.btnModificarDom.Location = new System.Drawing.Point(350, 259);
+            this.btnModificarDom.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnModificarDom.Name = "btnModificarDom";
+            this.btnModificarDom.Size = new System.Drawing.Size(226, 39);
+            this.btnModificarDom.TabIndex = 60;
+            this.btnModificarDom.Text = "Modificar selección";
+            this.btnModificarDom.UseVisualStyleBackColor = true;
+            this.btnModificarDom.Click += new System.EventHandler(this.btnModificarDom_Click);
+            // 
             // dataGridDomicilios
             // 
             this.dataGridDomicilios.AllowUserToAddRows = false;
@@ -556,6 +759,96 @@
             this.dataGridDomicilios.Size = new System.Drawing.Size(900, 188);
             this.dataGridDomicilios.TabIndex = 57;
             this.dataGridDomicilios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridDomicilios_CellClick);
+            // 
+            // Tipo
+            // 
+            this.Tipo.FillWeight = 50F;
+            this.Tipo.HeaderText = "Tipo";
+            this.Tipo.MaxInputLength = 20;
+            this.Tipo.Name = "Tipo";
+            this.Tipo.ReadOnly = true;
+            this.Tipo.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // Comentario
+            // 
+            this.Comentario.FillWeight = 60F;
+            this.Comentario.HeaderText = "Comentario";
+            this.Comentario.MaxInputLength = 255;
+            this.Comentario.Name = "Comentario";
+            this.Comentario.ReadOnly = true;
+            this.Comentario.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Comentario.Visible = false;
+            // 
+            // Calle
+            // 
+            this.Calle.HeaderText = "Calle";
+            this.Calle.MaxInputLength = 255;
+            this.Calle.Name = "Calle";
+            this.Calle.ReadOnly = true;
+            this.Calle.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // Numero
+            // 
+            this.Numero.FillWeight = 40F;
+            this.Numero.HeaderText = "Numero";
+            this.Numero.MaxInputLength = 10;
+            this.Numero.Name = "Numero";
+            this.Numero.ReadOnly = true;
+            this.Numero.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // Piso
+            // 
+            this.Piso.FillWeight = 30F;
+            this.Piso.HeaderText = "Piso";
+            this.Piso.MaxInputLength = 10;
+            this.Piso.Name = "Piso";
+            this.Piso.ReadOnly = true;
+            this.Piso.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // DPTO
+            // 
+            this.DPTO.FillWeight = 30F;
+            this.DPTO.HeaderText = "DPTO";
+            this.DPTO.MaxInputLength = 10;
+            this.DPTO.Name = "DPTO";
+            this.DPTO.ReadOnly = true;
+            this.DPTO.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // CP
+            // 
+            this.CP.FillWeight = 30F;
+            this.CP.HeaderText = "CP";
+            this.CP.MaxInputLength = 20;
+            this.CP.Name = "CP";
+            this.CP.ReadOnly = true;
+            this.CP.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // Localidad
+            // 
+            this.Localidad.HeaderText = "Localidad";
+            this.Localidad.MaxInputLength = 255;
+            this.Localidad.Name = "Localidad";
+            this.Localidad.ReadOnly = true;
+            this.Localidad.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Localidad.Visible = false;
+            // 
+            // Provincia
+            // 
+            this.Provincia.HeaderText = "Provincia";
+            this.Provincia.MaxInputLength = 255;
+            this.Provincia.Name = "Provincia";
+            this.Provincia.ReadOnly = true;
+            this.Provincia.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Provincia.Visible = false;
+            // 
+            // Pais
+            // 
+            this.Pais.HeaderText = "País";
+            this.Pais.MaxInputLength = 255;
+            this.Pais.Name = "Pais";
+            this.Pais.ReadOnly = true;
+            this.Pais.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Pais.Visible = false;
             // 
             // button2
             // 
@@ -788,136 +1081,9 @@
             this.labelCalle.TabIndex = 37;
             this.labelCalle.Text = "Calle";
             // 
-            // TipoTelefono
-            // 
-            this.TipoTelefono.FillWeight = 30F;
-            this.TipoTelefono.HeaderText = "Tipo";
-            this.TipoTelefono.MaxInputLength = 20;
-            this.TipoTelefono.Name = "TipoTelefono";
-            this.TipoTelefono.ReadOnly = true;
-            // 
-            // NumeroTelefono
-            // 
-            this.NumeroTelefono.HeaderText = "Telefono";
-            this.NumeroTelefono.MaxInputLength = 20;
-            this.NumeroTelefono.Name = "NumeroTelefono";
-            this.NumeroTelefono.ReadOnly = true;
-            // 
-            // btnModificarTel
-            // 
-            this.btnModificarTel.Location = new System.Drawing.Point(659, 222);
-            this.btnModificarTel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnModificarTel.Name = "btnModificarTel";
-            this.btnModificarTel.Size = new System.Drawing.Size(226, 39);
-            this.btnModificarTel.TabIndex = 39;
-            this.btnModificarTel.Text = "Modificar selección";
-            this.btnModificarTel.UseVisualStyleBackColor = true;
-            this.btnModificarTel.Click += new System.EventHandler(this.btnModificarTel_Click);
-            // 
-            // btnModificarDom
-            // 
-            this.btnModificarDom.Location = new System.Drawing.Point(350, 259);
-            this.btnModificarDom.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnModificarDom.Name = "btnModificarDom";
-            this.btnModificarDom.Size = new System.Drawing.Size(226, 39);
-            this.btnModificarDom.TabIndex = 60;
-            this.btnModificarDom.Text = "Modificar selección";
-            this.btnModificarDom.UseVisualStyleBackColor = true;
-            this.btnModificarDom.Click += new System.EventHandler(this.btnModificarDom_Click);
-            // 
             // telefonoBindingSource
             // 
             this.telefonoBindingSource.DataSource = typeof(Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos.Telefono);
-            // 
-            // Tipo
-            // 
-            this.Tipo.FillWeight = 50F;
-            this.Tipo.HeaderText = "Tipo";
-            this.Tipo.MaxInputLength = 20;
-            this.Tipo.Name = "Tipo";
-            this.Tipo.ReadOnly = true;
-            this.Tipo.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // Comentario
-            // 
-            this.Comentario.FillWeight = 60F;
-            this.Comentario.HeaderText = "Comentario";
-            this.Comentario.MaxInputLength = 255;
-            this.Comentario.Name = "Comentario";
-            this.Comentario.ReadOnly = true;
-            this.Comentario.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Comentario.Visible = false;
-            // 
-            // Calle
-            // 
-            this.Calle.HeaderText = "Calle";
-            this.Calle.MaxInputLength = 255;
-            this.Calle.Name = "Calle";
-            this.Calle.ReadOnly = true;
-            this.Calle.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // Numero
-            // 
-            this.Numero.FillWeight = 40F;
-            this.Numero.HeaderText = "Numero";
-            this.Numero.MaxInputLength = 10;
-            this.Numero.Name = "Numero";
-            this.Numero.ReadOnly = true;
-            this.Numero.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // Piso
-            // 
-            this.Piso.FillWeight = 30F;
-            this.Piso.HeaderText = "Piso";
-            this.Piso.MaxInputLength = 10;
-            this.Piso.Name = "Piso";
-            this.Piso.ReadOnly = true;
-            this.Piso.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // DPTO
-            // 
-            this.DPTO.FillWeight = 30F;
-            this.DPTO.HeaderText = "DPTO";
-            this.DPTO.MaxInputLength = 10;
-            this.DPTO.Name = "DPTO";
-            this.DPTO.ReadOnly = true;
-            this.DPTO.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // CP
-            // 
-            this.CP.FillWeight = 30F;
-            this.CP.HeaderText = "CP";
-            this.CP.MaxInputLength = 20;
-            this.CP.Name = "CP";
-            this.CP.ReadOnly = true;
-            this.CP.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // Localidad
-            // 
-            this.Localidad.HeaderText = "Localidad";
-            this.Localidad.MaxInputLength = 255;
-            this.Localidad.Name = "Localidad";
-            this.Localidad.ReadOnly = true;
-            this.Localidad.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Localidad.Visible = false;
-            // 
-            // Provincia
-            // 
-            this.Provincia.HeaderText = "Provincia";
-            this.Provincia.MaxInputLength = 255;
-            this.Provincia.Name = "Provincia";
-            this.Provincia.ReadOnly = true;
-            this.Provincia.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Provincia.Visible = false;
-            // 
-            // Pais
-            // 
-            this.Pais.HeaderText = "País";
-            this.Pais.MaxInputLength = 255;
-            this.Pais.Name = "Pais";
-            this.Pais.ReadOnly = true;
-            this.Pais.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Pais.Visible = false;
             // 
             // altaCliente
             // 
@@ -944,6 +1110,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridTelefonos)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.tabPage4.ResumeLayout(false);
+            this.groupBox7.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridMails)).EndInit();
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridDomicilios)).EndInit();
@@ -985,7 +1156,7 @@
         private System.Windows.Forms.ComboBox comboTipoTelefono;
         private System.Windows.Forms.DataGridView dataGridTelefonos;
         private System.Windows.Forms.Button buttonAddTelefono;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnBorrarTel;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox4;
@@ -1031,5 +1202,18 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Localidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn Provincia;
         private System.Windows.Forms.DataGridViewTextBoxColumn Pais;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.Button btnModificarMail;
+        private System.Windows.Forms.DataGridView dataGridMails;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.Button btnBorrarMail;
+        private System.Windows.Forms.Button btnAgregarMail;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.ComboBox comboTipoMails;
+        private System.Windows.Forms.Label labelTipoEmail;
+        private System.Windows.Forms.TextBox textBoxMail;
+        private System.Windows.Forms.Label labelEmail;
     }
 }

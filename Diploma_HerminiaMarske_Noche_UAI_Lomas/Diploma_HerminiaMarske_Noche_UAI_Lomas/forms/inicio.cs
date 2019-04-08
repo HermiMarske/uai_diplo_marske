@@ -16,6 +16,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
 
     public partial class formInicio : Form
     {
+        public static Object fkPersonaModif;
         public static Object idClienteModif;
 
         altaCliente formAltaCliente = new altaCliente();
@@ -47,7 +48,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
 
             foreach(Cliente c in clientes)
             {
-                String[] dataRow = { c.GetId().ToString(), c.GetCuit(), c.GetRazonSocial(), c.GetPersona().GetNombre(), c.GetPersona().GetApellido(), c.GetPersona().GetDni()};
+                String[] dataRow = { c.GetId().ToString(), c.GetPersona().GetIdPersona().ToString(), c.GetCuit(), c.GetRazonSocial(), c.GetPersona().GetNombre(), c.GetPersona().GetApellido(), c.GetPersona().GetDni()};
                 dataGridClientes.Rows.Add(dataRow);
             }
             
@@ -80,6 +81,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             {
                 int rowIndex = dataGridClientes.SelectedCells[0].RowIndex;
                 idClienteModif = dataGridClientes.Rows[rowIndex].Cells[0].Value;
+                fkPersonaModif = dataGridClientes.Rows[rowIndex].Cells[1].Value;
                 try
                 {
                     formModifCliente.Show();

@@ -115,13 +115,14 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             dap = dataConnection.getList("ObtenerPersona", pms);
             dap.Fill(dt);
 
-            if (dt != null)
+            Persona persona = null;
+            foreach (DataRow dr in dt.Rows)
             {
-                Persona persona = null;
-                foreach (DataRow dr in dt.Rows)
-                {
-                    persona = new Persona((int)dr[0], (string)dr[1], (string)dr[2], (string)dr[3], (string)dr[4], (DateTime)dr[5]);
-                }
+                persona = new Persona((int)dr[0], (string)dr[1], (string)dr[2], (string)dr[3], (string)dr[4], (DateTime)dr[5]);
+            }
+
+            if (persona != null)
+            {
                 txtNombre.Enabled = false;
                 txtNombre.Text = persona.GetNombre();
                 txtApellido.Enabled = false;
@@ -170,6 +171,41 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
                     MessageBox.Show(dtTel.Rows[0].ItemArray[0].ToString());
                 }
 
+                //Fill de correos
+
+                DataTable dtMail = new DataTable();
+                pms[0] = new SqlParameter("@id", SqlDbType.Int);
+                pms[0].Value = idPersona;
+
+                SqlDataAdapter daMails = new SqlDataAdapter();
+                DataConnection.DataConnection dataQueryMails = new DataConnection.DataConnection();
+
+                daMails = dataQuery.getList("ObtenerMails", pms);
+                da.Fill(dtTel);
+                List<Mail> mails = new List<Mail>();
+
+                try
+                {
+                    foreach (DataRow drMail in dtMail.Rows)
+                    {
+                        Mail mail= new Mail();
+                        mail.SetId((int)drMail[0]);
+                        mail.SetTipo((string)drMail[1]);
+                        mail.SetMail((string)drMail[2]);
+                        mails.Add(mail);
+                    }
+
+                    foreach (Mail m in mails)
+                    {
+                        String[] dataRow = { m.GetMail(), m.GetTipo() };
+                        dataGridMails.Rows.Add(dataRow);
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show(dtTel.Rows[0].ItemArray[0].ToString());
+                }
+
                 //deshabilitar todos los controles y mostrar los datos 
                 textBoxNumero.Enabled = false;
                 comboTipoTelefono.Enabled = false;
@@ -191,6 +227,13 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
                 btnModificarTel.Enabled = false;
                 btnBorrarTel.Enabled = false;
                 buttonAddTelefono.Enabled = false;
+
+                textBoxMail.Enabled = false;
+                comboTipoMails.Enabled = false;
+                btnAgregarMail.Enabled = false;
+                btnModificarMail.Enabled = false;
+                btnBorrarMail.Enabled = false;
+
                 
                 
           
@@ -235,6 +278,11 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             }
         }
 
+        private void funcionAltaUsuario()
+        {
+
+        }
+
         private void altaUsuario_Load(object sender, EventArgs e)
         {
             List<Pais> paises = new List<Pais>();
@@ -249,6 +297,11 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
                 paises.Add(pais);
             }
             comboPais.DataSource = paises;
+        }
+
+        private void btnBorrarDomicilio_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
