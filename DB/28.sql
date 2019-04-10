@@ -20,6 +20,47 @@ CREATE TABLE [dbo].[Mails](
 ) ON [PRIMARY]
 GO
 
+ALTER TABLE [dbo].[Usuarios] DROP CONSTRAINT [DF__Usuarios__habili__1A9EF37A]
+GO
+
+ALTER TABLE [dbo].[Usuarios] DROP CONSTRAINT [DF__Usuarios__CII__19AACF41]
+GO
+
+/****** Object:  Table [dbo].[Usuarios]    Script Date: 09/04/2019 21:42:24 ******/
+DROP TABLE [dbo].[Usuarios]
+GO
+
+/****** Object:  Table [dbo].[Usuarios]    Script Date: 09/04/2019 21:42:24 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Usuarios](
+	[ID_Usuario] [int] IDENTITY(1,1) NOT NULL,
+	[usuario] [varchar](20) NOT NULL,
+	[clave] [varchar](2000) NOT NULL,
+	[CII] [int] NOT NULL,
+	[habilitado] [bit] NOT NULL,
+	[DVH] [int] NULL,
+	[FK_Persona] [int] NULL,
+	[respuesta] [varchar](30) NULL,
+	[FK_Pregunta] [int] NULL,
+ CONSTRAINT [PK_Usuarios] PRIMARY KEY CLUSTERED 
+(
+	[ID_Usuario] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[Usuarios] ADD  DEFAULT ((0)) FOR [CII]
+GO
+
+ALTER TABLE [dbo].[Usuarios] ADD  DEFAULT ((1)) FOR [habilitado]
+GO
+
+
 /****** Object:  StoredProcedure [dbo].[AltaUsuarioPersExistente]    Script Date: 07/04/2019 23:42:47 ******/
 SET ANSI_NULLS ON
 GO
