@@ -507,5 +507,14 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
                 dataGridTelefonos.Rows.RemoveAt(rowIndex);
             }
         }
+
+        private void btnBorrarDomicilio_Click(object sender, EventArgs e)
+        {
+            if (dataGridDomicilios.SelectedCells.Count > 0)
+            {
+                int rowIndex = dataGridDomicilios.SelectedCells[0].RowIndex;
+                dataGridDomicilios.Rows.RemoveAt(rowIndex);
+            }
+        }
     }
 }

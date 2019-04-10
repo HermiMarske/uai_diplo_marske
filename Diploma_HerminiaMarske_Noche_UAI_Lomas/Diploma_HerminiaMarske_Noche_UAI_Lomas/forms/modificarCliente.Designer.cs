@@ -93,7 +93,7 @@
             this.Localidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Provincia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.País = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnBorrarDomicilio = new System.Windows.Forms.Button();
             this.btnModificarDom = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.txtComentario = new System.Windows.Forms.TextBox();
@@ -707,7 +707,7 @@
             // 
             this.groupBox6.Controls.Add(this.btnAgregarDom);
             this.groupBox6.Controls.Add(this.dataGridDomicilios);
-            this.groupBox6.Controls.Add(this.button2);
+            this.groupBox6.Controls.Add(this.btnBorrarDomicilio);
             this.groupBox6.Controls.Add(this.btnModificarDom);
             this.groupBox6.Location = new System.Drawing.Point(3, 418);
             this.groupBox6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -844,15 +844,16 @@
             this.País.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.País.Visible = false;
             // 
-            // button2
+            // btnBorrarDomicilio
             // 
-            this.button2.Location = new System.Drawing.Point(680, 259);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(231, 39);
-            this.button2.TabIndex = 60;
-            this.button2.Text = "Borrar";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnBorrarDomicilio.Location = new System.Drawing.Point(680, 259);
+            this.btnBorrarDomicilio.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnBorrarDomicilio.Name = "btnBorrarDomicilio";
+            this.btnBorrarDomicilio.Size = new System.Drawing.Size(231, 39);
+            this.btnBorrarDomicilio.TabIndex = 60;
+            this.btnBorrarDomicilio.Text = "Borrar";
+            this.btnBorrarDomicilio.UseVisualStyleBackColor = true;
+            this.btnBorrarDomicilio.Click += new System.EventHandler(this.btnBorrarDomicilio_Click);
             // 
             // btnModificarDom
             // 
@@ -1152,7 +1153,7 @@
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.DataGridView dataGridDomicilios;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnBorrarDomicilio;
         private System.Windows.Forms.Button btnModificarDom;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.TextBox txtComentario;

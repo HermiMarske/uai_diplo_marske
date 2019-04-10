@@ -357,5 +357,14 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
                 comboTipoMails.Text = (string)dataGridMails.Rows[e.RowIndex].Cells[1].Value;
             }
         }
+
+        private void btnBorrarDomicilio_Click(object sender, EventArgs e)
+        {
+            if (dataGridDomicilios.SelectedCells.Count > 0)
+            {
+                int rowIndex = dataGridDomicilios.SelectedCells[0].RowIndex;
+                dataGridDomicilios.Rows.RemoveAt(rowIndex);
+            }
+        }
     }
 }
