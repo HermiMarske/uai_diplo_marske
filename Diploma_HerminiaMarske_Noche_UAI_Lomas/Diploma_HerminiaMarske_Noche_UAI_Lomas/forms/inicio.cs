@@ -34,10 +34,8 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             clientes.Clear();
             
             DataConnection.DataConnection dataQuery = new DataConnection.DataConnection();
-            SqlDataAdapter da = new SqlDataAdapter();
             DataTable dt = new DataTable();
-            da = dataQuery.getList("ListarClientes", null);
-            da.Fill(dt);
+            dt = dataQuery.getList("ListarClientes", null);
 
             foreach (DataRow dr in dt.Rows)
             {
