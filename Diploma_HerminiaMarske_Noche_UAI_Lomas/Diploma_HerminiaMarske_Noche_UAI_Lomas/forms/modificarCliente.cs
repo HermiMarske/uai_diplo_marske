@@ -27,10 +27,8 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             //Llenado de combo de paises
             List<Pais> paises = new List<Pais>();
             DataConnection.DataConnection dataQueryPaises = new DataConnection.DataConnection();
-            SqlDataAdapter dap = new SqlDataAdapter();
             DataTable dtp = new DataTable();
-            dap = dataQueryPaises.getList("ListarPaises", null);
-            dap.Fill(dtp);
+            dtp = dataQueryPaises.getList("ListarPaises", null);
             foreach (DataRow drp in dtp.Rows)
             {
                 Pais pais = new Pais((int)drp[0], (string)drp[1]);
@@ -46,10 +44,8 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             pms[0].Value = idClienteSelec;
 
             DataConnection.DataConnection dataQuery = new DataConnection.DataConnection();
-            SqlDataAdapter da = new SqlDataAdapter();
             DataTable dt = new DataTable();
-            da = dataQuery.getList("ObtenerCliente", pms);
-            da.Fill(dt);
+            dt = dataQuery.getList("ObtenerCliente", pms);
 
             DataRow dr = dt.Rows[0];
            
@@ -70,10 +66,9 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             DataTable dtTel = new DataTable();
             pms[0] = new SqlParameter("@id", SqlDbType.Int);
             pms[0].Value = idPersona;
-           
 
-            da = dataQuery.getList("ObtenerTelefonos", pms);
-            da.Fill(dtTel);
+
+            dtTel = dataQuery.getList("ObtenerTelefonos", pms);
             List<Telefono> telList = new List<Telefono>();
 
             try
@@ -102,10 +97,9 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             DataTable dtMail = new DataTable();
             pms[0] = new SqlParameter("@id", SqlDbType.Int);
             pms[0].Value = idPersona;
-           
 
-            da = dataQuery.getList("ObtenerMails", pms);
-            da.Fill(dtMail);
+
+            dtMail = dataQuery.getList("ObtenerMails", pms);
             List<Mail> mailList = new List<Mail>();
 
             try
@@ -136,8 +130,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             pms[0].Value = idPersona;
 
 
-            da = dataQuery.getList("ObtenerDomicilios", pms);
-            da.Fill(dtDom);
+            dtDom = dataQuery.getList("ObtenerDomicilios", pms);
             List<Domicilio> domList = new List<Domicilio>();
 
             foreach (DataRow drDom in dtDom.Rows)
@@ -206,13 +199,11 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             List<Provincia> provincias = new List<Provincia>();
             Pais pais = (Pais)comboPais.SelectedItem;
             DataConnection.DataConnection dataQuery = new DataConnection.DataConnection();
-            SqlDataAdapter da = new SqlDataAdapter();
             DataTable dt = new DataTable();
             SqlParameter[] pmsProvincias = new SqlParameter[1];
             pmsProvincias[0] = new SqlParameter("@pais", SqlDbType.Int);
             pmsProvincias[0].Value = pais.GetId();
-            da = dataQuery.getList("ListarProvincias", pmsProvincias);
-            da.Fill(dt);
+            dt = dataQuery.getList("ListarProvincias", pmsProvincias);
             comboProvincias.Text = null;
             foreach (DataRow dr in dt.Rows)
             {
@@ -227,15 +218,13 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             List<Localidad> localidades = new List<Localidad>();
             Provincia provincia = (Provincia)comboProvincias.SelectedItem;
             DataConnection.DataConnection dataQuery = new DataConnection.DataConnection();
-            SqlDataAdapter da = new SqlDataAdapter();
             DataTable dt = new DataTable();
             SqlParameter[] pmsLocalidades = new SqlParameter[1];
             if (provincia != null)
             {
                 pmsLocalidades[0] = new SqlParameter("@provincia", SqlDbType.Int);
                 pmsLocalidades[0].Value = provincia.GetId();
-                da = dataQuery.getList("ListarLocalidades", pmsLocalidades);
-                da.Fill(dt);
+                dt = dataQuery.getList("ListarLocalidades", pmsLocalidades);
                 foreach (DataRow dr in dt.Rows)
                 {
                     Localidad localidad = new Localidad((string)dr[0], (int)dr[1], (int)dr[2]);

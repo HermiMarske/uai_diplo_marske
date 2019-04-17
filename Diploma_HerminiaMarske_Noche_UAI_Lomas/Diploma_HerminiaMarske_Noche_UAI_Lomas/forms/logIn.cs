@@ -42,10 +42,8 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
                 pms[1].Value = txtPassword.Text;
 
                 DataConnection.DataConnection dataQuery = new DataConnection.DataConnection();
-                SqlDataAdapter da = new SqlDataAdapter();
                 DataTable dt = new DataTable();
-                da = dataQuery.getList("LogIn", pms);
-                da.Fill(dt);
+                dt = dataQuery.getList("LogIn", pms);
             
             }
 

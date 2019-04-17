@@ -51,7 +51,7 @@ namespace DataConnection
             connection.Close();
         }
 
-        public SqlDataAdapter getList(string storedProcedureName, SqlParameter[] pms)
+        public DataTable getList(string storedProcedureName, SqlParameter[] pms)
         {
             SqlConnection connection = new SqlConnection(Sql);
             SqlCommand command = new SqlCommand();
@@ -68,7 +68,7 @@ namespace DataConnection
             da.Fill(dt);
         
             connection.Close();
-            return da;
+            return dt;
         }
 
         public SqlDataAdapter getListParams(String storedProcedureName, SqlParameter[] pms)

@@ -1,4 +1,5 @@
 ﻿using Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos;
+using Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,10 +15,11 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
 {
     public partial class altaUsuario : Form
     {
-        private static string USER_CREATED_EXISTING_PERSON = "USER_CREATED_EXISTING_PERSON";
-        private static string MISSING_DATA = "MISSING_DATA";
-        private static string USER_CREATED_PERSON_CREATED = "USER_CREATED_PERSON_CREATED";
-        private static string PERSON_HAS_USER = "PERSON_HAS_USER";
+        private const string USER_CREATED_EXISTING_PERSON = "USER_CREATED_EXISTING_PERSON";
+        private const string MISSING_DATA = "MISSING_DATA";
+        private const string USER_EXISTS = "USER_EXISTS";
+        private const string USER_CREATED_PERSON_CREATED = "USER_CREATED_PERSON_CREATED";
+        private const string PERSON_HAS_USER = "PERSON_HAS_USER";
 
         List<Domicilio> domicilios = new List<Domicilio>();
         List<Telefono> telefonos = new List<Telefono>();
@@ -193,13 +195,11 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             List<Provincia> provincias = new List<Provincia>();
             Pais pais = (Pais)comboPais.SelectedItem;
             DataConnection.DataConnection dataQuery = new DataConnection.DataConnection();
-            SqlDataAdapter da = new SqlDataAdapter();
             DataTable dt = new DataTable();
             SqlParameter[] pmsProvincias = new SqlParameter[1];
             pmsProvincias[0] = new SqlParameter("@pais", SqlDbType.Int);
             pmsProvincias[0].Value = pais.GetId();
-            da = dataQuery.getList("ListarProvincias", pmsProvincias);
-            da.Fill(dt);
+            dt = dataQuery.getList("ListarProvincias", pmsProvincias);
             foreach (DataRow dr in dt.Rows)
             {
                 Provincia provincia = new Provincia((string)dr[0], (int)dr[1]);
@@ -213,13 +213,11 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             List<Localidad> localidades = new List<Localidad>();
             Provincia provincia = (Provincia)comboProvincias.SelectedItem;
             DataConnection.DataConnection dataQuery = new DataConnection.DataConnection();
-            SqlDataAdapter da = new SqlDataAdapter();
             DataTable dt = new DataTable();
             SqlParameter[] pmsLocalidades = new SqlParameter[1];
             pmsLocalidades[0] = new SqlParameter("@provincia", SqlDbType.Int);
             pmsLocalidades[0].Value = provincia.GetId();
-            da = dataQuery.getList("ListarLocalidades", pmsLocalidades);
-            da.Fill(dt);
+            dt = dataQuery.getList("ListarLocalidades", pmsLocalidades);
             foreach (DataRow dr in dt.Rows)
             {
                 Localidad localidad = new Localidad((string)dr[0], (int)dr[1], (int)dr[2]);
@@ -236,7 +234,6 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
                 return;
             }
             DataConnection.DataConnection dataConnection = new DataConnection.DataConnection();
-            SqlDataAdapter dap = new SqlDataAdapter();
             DataTable dt = new DataTable();
 
             SqlParameter[] pms = new SqlParameter[1];
@@ -244,8 +241,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             pms[0] = new SqlParameter("@dniPersona", SqlDbType.VarChar);
             pms[0].Value = dni;
 
-            dap = dataConnection.getList("ObtenerPersona", pms);
-            dap.Fill(dt);
+            dt = dataConnection.getList("ObtenerPersona", pms);
 
             Persona persona = null;
             foreach (DataRow dr in dt.Rows)
@@ -266,6 +262,8 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
                 txtUsuario.Enabled = true;
                 txtClave.Enabled = true;
                 txtRptClave.Enabled = true;
+                comboPreguntas.Enabled = true;
+                txtRespuesta.Enabled = true;
 
                 // Fill de telefonos
 
@@ -274,11 +272,9 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
                 pms[0] = new SqlParameter("@id", SqlDbType.Int);
                 pms[0].Value = idPersona;
 
-                SqlDataAdapter da = new SqlDataAdapter();
                 DataConnection.DataConnection dataQuery = new DataConnection.DataConnection();
 
-                da = dataQuery.getList("ObtenerTelefonos", pms);
-                da.Fill(dtTel);
+                dtTel = dataQuery.getList("ObtenerTelefonos", pms);
                 List<Telefono> telList = new List<Telefono>();
 
                 try
@@ -308,12 +304,10 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
                 DataTable dtMail = new DataTable();
                 pms[0] = new SqlParameter("@id", SqlDbType.Int);
                 pms[0].Value = idPersona;
-
-                SqlDataAdapter daMails = new SqlDataAdapter();
+                
                 DataConnection.DataConnection dataQueryMails = new DataConnection.DataConnection();
 
-                daMails = dataQuery.getList("ObtenerMails", pms);
-                da.Fill(dtTel);
+                dtMail = dataQuery.getList("ObtenerMails", pms);
                 List<Mail> mails = new List<Mail>();
 
                 try
@@ -345,8 +339,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
                 pms[0].Value = idPersona;
 
 
-                da = dataQuery.getList("ObtenerDomicilios", pms);
-                da.Fill(dtDom);
+                dtDom = dataQuery.getList("ObtenerDomicilios", pms);
                 List<Domicilio> domList = new List<Domicilio>();
 
                 foreach (DataRow drDom in dtDom.Rows)
@@ -388,6 +381,8 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
                 txtUsuario.Enabled = true;
                 txtClave.Enabled = true;
                 txtRptClave.Enabled = true;
+                comboPreguntas.Enabled = true;
+                txtRespuesta.Enabled = true;
 
                 groupTelDatos.Enabled = true;
                 groupTelLista.Enabled = true;
@@ -402,10 +397,29 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
                 groupPermisosPatentes.Enabled = true;
             }
 
-            txtDni.TextChanged += TxtDni_TextChanged;
+            txtDni.TextChanged += txtDni_TextChanged;
         }
 
-        private void TxtDni_TextChanged(object sender, EventArgs e)
+        private void funcionAltaUsuario()
+        {
+
+        }
+
+        private void altaUsuario_Load(object sender, EventArgs e)
+        {
+            List<Pais> paises = new List<Pais>();
+            DataConnection.DataConnection dataQueryPaises = new DataConnection.DataConnection();
+            DataTable dtp = new DataTable();
+            dtp = dataQueryPaises.getList("ListarPaises", null);
+            foreach (DataRow drp in dtp.Rows)
+            {
+                Pais pais = new Pais((int)drp[0], (string)drp[1]);
+                paises.Add(pais);
+            }
+            comboPais.DataSource = paises;
+        }
+
+        private void txtDni_TextChanged(object sender, EventArgs e)
         {
             txtNombre.Enabled = false;
             txtApellido.Enabled = false;
@@ -417,6 +431,8 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             txtClave.Clear();
             txtRptClave.Enabled = false;
             txtRptClave.Clear();
+            comboPreguntas.Enabled = false;
+            txtRespuesta.Enabled = false;
 
             groupTelDatos.Enabled = false;
             txtNumero.Clear();
@@ -448,53 +464,6 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             groupPermisosPatentes.Enabled = false;
         }
 
-        private void funcionAltaUsuario()
-        {
-
-        }
-
-        private void altaUsuario_Load(object sender, EventArgs e)
-        {
-            List<Pais> paises = new List<Pais>();
-            DataConnection.DataConnection dataQueryPaises = new DataConnection.DataConnection();
-            SqlDataAdapter dap = new SqlDataAdapter();
-            DataTable dtp = new DataTable();
-            dap = dataQueryPaises.getList("ListarPaises", null);
-            dap.Fill(dtp);
-            foreach (DataRow drp in dtp.Rows)
-            {
-                Pais pais = new Pais((int)drp[0], (string)drp[1]);
-                paises.Add(pais);
-            }
-            comboPais.DataSource = paises;
-        }
-
-        private void txtDni_TextChanged(object sender, EventArgs e)
-        {
-            txtNombre.Enabled = false;
-            txtApellido.Enabled = false;
-            comboSexo.Enabled = false;
-            pickerFechaNacimiento.Enabled = false;
-            txtUsuario.Enabled = false;
-            txtUsuario.Clear();
-            txtClave.Enabled = false;
-            txtClave.Clear();
-            txtRptClave.Enabled = false;
-            txtRptClave.Clear();
-
-            groupTelDatos.Enabled = false;
-            groupTelLista.Enabled = false;
-
-            groupMailDatos.Enabled = false;
-            groupMailLista.Enabled = false;
-
-            groupDomicilioDatos.Enabled = false;
-            groupDomicilioLista.Enabled = false;
-
-            groupPermisosFamilia.Enabled = false;
-            groupPermisosPatentes.Enabled = false;
-        }
-
         private void btnAgregarUsuario_Click(object sender, EventArgs e)
         {
             DataConnection.DataConnection dataConnection = new DataConnection.DataConnection();
@@ -519,7 +488,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             pms[5].Value = txtUsuario.Text;
 
             pms[6] = new SqlParameter("@clave", SqlDbType.VarChar);
-            pms[6].Value = txtClave.Text;
+            pms[6].Value = ControladorEncriptacion.Hash(txtClave.Text);
 
             pms[7] = new SqlParameter("@respuesta", SqlDbType.VarChar);
             pms[7].Value = txtRespuesta.Text;
@@ -527,23 +496,30 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             pms[8] = new SqlParameter("@fk_pregunta", SqlDbType.Int);
             pms[8].Value = comboPreguntas.SelectedIndex + 1;
 
-            SqlDataAdapter da = new SqlDataAdapter();
-
-            da = dataConnection.getList( "AltaUsuario", pms);
-
             DataTable dtRespuesta = new DataTable();
 
-            da.Fill(dtRespuesta);
+            dtRespuesta = dataConnection.getList( "AltaUsuario", pms);
 
             string codigoError = dtRespuesta.Rows[0].ItemArray[0].ToString();
             Object valorRespuesta = dtRespuesta.Rows[0].ItemArray[1];
 
-            if(codigoError.Equals(PERSON_HAS_USER))
+            if(codigoError.Equals(MISSING_DATA))
             {
-                MessageBox.Show("El usuario " + valorRespuesta.ToString() + " ya existe.");
+                MessageBox.Show("Ocurrió un error inesperado");
             }
 
-            if(codigoError.Equals(USER_CREATED_PERSON_CREATED)) {
+            else if(codigoError.Equals(USER_EXISTS))
+            {
+                MessageBox.Show("El usuario seleccionado ya existe, intente de nuevo.");
+                txtUsuario.Focus();
+            }
+
+            else if (codigoError.Equals(PERSON_HAS_USER))
+            {
+                MessageBox.Show(String.Concat("La persona ya tiene un usuario: ", valorRespuesta));
+            }
+
+            else if(codigoError.Equals(USER_CREATED_PERSON_CREATED)) {
 
                 int id = Int32.Parse(valorRespuesta.ToString());
 
@@ -581,14 +557,14 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
                         m.SetMail((string)dataGridMails.Rows.SharedRow(i).Cells[1].Value);
                         mails.Add(m);
 
-                        pmsTelefono[0] = new SqlParameter("@tipo", SqlDbType.VarChar);
-                        pmsTelefono[0].Value = m.GetTipo();
+                        pmsMail[0] = new SqlParameter("@tipo", SqlDbType.VarChar);
+                        pmsMail[0].Value = m.GetTipo();
 
-                        pmsTelefono[1] = new SqlParameter("@mail", SqlDbType.VarChar);
-                        pmsTelefono[1].Value = m.GetMail();
+                        pmsMail[1] = new SqlParameter("@mail", SqlDbType.VarChar);
+                        pmsMail[1].Value = m.GetMail();
 
-                        pmsTelefono[2] = new SqlParameter("@fk_persona", SqlDbType.Int);
-                        pmsTelefono[2].Value = id;
+                        pmsMail[2] = new SqlParameter("@fk_persona", SqlDbType.Int);
+                        pmsMail[2].Value = id;
 
                         dataConnection.databaseInsertAditionalData(pmsMail, "AltaMail");
                     }
@@ -645,7 +621,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
 
             }
 
-            if (codigoError.Equals(USER_CREATED_EXISTING_PERSON)) {
+            else if (codigoError.Equals(USER_CREATED_EXISTING_PERSON)) {
 
                 MessageBox.Show("Usuario creado exitosamente.");
 

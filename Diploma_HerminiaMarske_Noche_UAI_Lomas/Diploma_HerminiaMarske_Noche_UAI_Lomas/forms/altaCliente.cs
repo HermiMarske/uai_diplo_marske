@@ -168,10 +168,8 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             //Llenado de combo de paises
             List<Pais> paises = new List<Pais>();
             DataConnection.DataConnection dataQuery = new DataConnection.DataConnection();
-            SqlDataAdapter da = new SqlDataAdapter();
             DataTable dt = new DataTable();
-            da = dataQuery.getList("ListarPaises", null);
-            da.Fill(dt);
+            dt = dataQuery.getList("ListarPaises", null);
             foreach (DataRow dr in dt.Rows)
             {
                 Pais pais = new Pais((int) dr[0], (string) dr[1]);
@@ -196,13 +194,11 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             List<Provincia> provincias = new List<Provincia>();
             Pais pais = (Pais) comboPais.SelectedItem;
             DataConnection.DataConnection dataQuery = new DataConnection.DataConnection();
-            SqlDataAdapter da = new SqlDataAdapter();
             DataTable dt = new DataTable();
             SqlParameter[] pmsProvincias = new SqlParameter[1];
             pmsProvincias[0] = new SqlParameter("@pais", SqlDbType.Int);
             pmsProvincias[0].Value = pais.GetId();
-            da = dataQuery.getList("ListarProvincias", pmsProvincias);
-            da.Fill(dt);
+            dt = dataQuery.getList("ListarProvincias", pmsProvincias);
             foreach (DataRow dr in dt.Rows)
             {
                 Provincia provincia = new Provincia((string) dr[0], (int) dr[1]);
@@ -216,13 +212,11 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             List<Localidad> localidades= new List<Localidad>();
             Provincia provincia  = (Provincia)comboProvincias.SelectedItem;
             DataConnection.DataConnection dataQuery = new DataConnection.DataConnection();
-            SqlDataAdapter da = new SqlDataAdapter();
             DataTable dt = new DataTable();
             SqlParameter[] pmsLocalidades = new SqlParameter[1];
             pmsLocalidades[0] = new SqlParameter("@provincia", SqlDbType.Int);
             pmsLocalidades[0].Value = provincia.GetId();
-            da = dataQuery.getList("ListarLocalidades", pmsLocalidades);
-            da.Fill(dt);
+            dt = dataQuery.getList("ListarLocalidades", pmsLocalidades);
             foreach (DataRow dr in dt.Rows)
             {
                 Localidad localidad = new Localidad((string)dr[0], (int)dr[1], (int)dr[2]);
