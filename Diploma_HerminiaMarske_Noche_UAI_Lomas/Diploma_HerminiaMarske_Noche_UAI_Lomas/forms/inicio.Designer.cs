@@ -65,7 +65,7 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btnDetalleUsuario = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnEliminarUsuario = new System.Windows.Forms.Button();
             this.btnModificarUsuario = new System.Windows.Forms.Button();
             this.btnAltaUsuario = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -417,7 +417,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Controls.Add(this.btnDetalleUsuario, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.button3, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.btnEliminarUsuario, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.btnModificarUsuario, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.btnAltaUsuario, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.groupBox2, 0, 0);
@@ -441,15 +441,16 @@
             this.btnDetalleUsuario.Text = "Ver detalles";
             this.btnDetalleUsuario.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnEliminarUsuario
             // 
-            this.button3.Location = new System.Drawing.Point(729, 743);
-            this.button3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(218, 50);
-            this.button3.TabIndex = 7;
-            this.button3.Text = "Eliminar Usuario";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnEliminarUsuario.Location = new System.Drawing.Point(729, 743);
+            this.btnEliminarUsuario.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnEliminarUsuario.Name = "btnEliminarUsuario";
+            this.btnEliminarUsuario.Size = new System.Drawing.Size(218, 50);
+            this.btnEliminarUsuario.TabIndex = 7;
+            this.btnEliminarUsuario.Text = "Eliminar Usuario";
+            this.btnEliminarUsuario.UseVisualStyleBackColor = true;
+            this.btnEliminarUsuario.Click += new System.EventHandler(this.btnEliminarUsuario_Click);
             // 
             // btnModificarUsuario
             // 
@@ -599,7 +600,7 @@
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button btnDetalleUsuario;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnEliminarUsuario;
         private System.Windows.Forms.Button btnModificarUsuario;
         private System.Windows.Forms.Button btnAltaUsuario;
         private System.Windows.Forms.GroupBox groupBox2;

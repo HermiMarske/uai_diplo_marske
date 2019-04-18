@@ -64,7 +64,6 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
 
             foreach (DataRow dr in dt.Rows)
             {
-          
                 Object[] dataRow = { (Int32)dr[0], (string)dr[1],(string)dr[3], (string)dr[4]};
                 datagridUsuarios.Rows.Add(dataRow);
             }
@@ -182,6 +181,27 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
         {
             formAltaUsuario = new altaUsuario();
             formAltaUsuario.Show();
+        }
+
+        private void btnEliminarUsuario_Click(object sender, EventArgs e)
+        {
+            if (datagridUsuarios.SelectedCells.Count > 0)
+            {
+                int rowIndex = datagridUsuarios.SelectedCells[0].RowIndex;
+                Object idUsuario = datagridUsuarios.Rows[rowIndex].Cells[0].Value;
+                SqlParameter[] pms = new SqlParameter[1];
+
+                pms[0] = new SqlParameter("@idUsuario", SqlDbType.Int);
+                pms[0].Value = idUsuario.ToString();
+
+                string respuesta = dataConnection.databaseDelete(pms, "BorrarUsuario");
+
+                if (respuesta != null)
+                {
+                    MessageBox.Show(respuesta);
+                    listarClientes();
+                }
+            }
         }
     }
 }
