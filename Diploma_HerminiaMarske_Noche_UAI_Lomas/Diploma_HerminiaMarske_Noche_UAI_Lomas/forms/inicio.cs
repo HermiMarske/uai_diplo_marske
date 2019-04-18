@@ -51,7 +51,26 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             }
             
         }
-        
+
+        /** SOLAPA USUARIOS **/
+        public void listarUsuarios()
+        {
+            
+            datagridUsuarios.Rows.Clear();
+
+            DataConnection.DataConnection dataQuery = new DataConnection.DataConnection();
+            DataTable dt = new DataTable();
+            dt = dataQuery.getList("ListarUsuarios", null);
+
+            foreach (DataRow dr in dt.Rows)
+            {
+          
+                Object[] dataRow = { (Int32)dr[0], (string)dr[1],(string)dr[3], (string)dr[4]};
+                datagridUsuarios.Rows.Add(dataRow);
+            }
+
+        }
+
 
         private void btnNuevoCliente_Click(object sender, EventArgs e)
         {
@@ -70,6 +89,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
         private void formInicio_Load(object sender, EventArgs e)
         {
             listarClientes();
+            listarUsuarios();
 
         }
 
