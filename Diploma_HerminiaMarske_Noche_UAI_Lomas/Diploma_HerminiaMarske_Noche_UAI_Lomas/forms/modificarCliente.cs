@@ -8,8 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Diploma_HerminiaMarske_Noche_UAI_Lomas.forms;
 using Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos;
+using ConstantesData;
 
 
 namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
@@ -28,7 +28,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             List<Pais> paises = new List<Pais>();
             DataConnection.DataConnection dataQueryPaises = new DataConnection.DataConnection();
             DataTable dtp = new DataTable();
-            dtp = dataQueryPaises.getList("ListarPaises", null);
+            dtp = dataQueryPaises.getList(SP.LISTAR_PAISES, null);
             foreach (DataRow drp in dtp.Rows)
             {
                 Pais pais = new Pais((int)drp[0], (string)drp[1]);
@@ -45,7 +45,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
 
             DataConnection.DataConnection dataQuery = new DataConnection.DataConnection();
             DataTable dt = new DataTable();
-            dt = dataQuery.getList("ObtenerCliente", pms);
+            dt = dataQuery.getList(SP.OBTENER_CLIENTE, pms);
 
             DataRow dr = dt.Rows[0];
            
@@ -68,7 +68,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             pms[0].Value = idPersona;
 
 
-            dtTel = dataQuery.getList("ObtenerTelefonos", pms);
+            dtTel = dataQuery.getList(SP.OBTENER_TELEFONOS, pms);
             List<Telefono> telList = new List<Telefono>();
 
             try
@@ -99,7 +99,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             pms[0].Value = idPersona;
 
 
-            dtMail = dataQuery.getList("ObtenerMails", pms);
+            dtMail = dataQuery.getList(SP.OBTENER_TELEFONOS, pms);
             List<Mail> mailList = new List<Mail>();
 
             try
@@ -130,7 +130,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             pms[0].Value = idPersona;
 
 
-            dtDom = dataQuery.getList("ObtenerDomicilios", pms);
+            dtDom = dataQuery.getList(SP.OBTENER_DOMICILIOS, pms);
             List<Domicilio> domList = new List<Domicilio>();
 
             foreach (DataRow drDom in dtDom.Rows)
@@ -203,7 +203,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             SqlParameter[] pmsProvincias = new SqlParameter[1];
             pmsProvincias[0] = new SqlParameter("@pais", SqlDbType.Int);
             pmsProvincias[0].Value = pais.GetId();
-            dt = dataQuery.getList("ListarProvincias", pmsProvincias);
+            dt = dataQuery.getList(SP.LISTAR_PROVINCIAS, pmsProvincias);
             comboProvincias.Text = null;
             foreach (DataRow dr in dt.Rows)
             {
@@ -224,7 +224,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             {
                 pmsLocalidades[0] = new SqlParameter("@provincia", SqlDbType.Int);
                 pmsLocalidades[0].Value = provincia.GetId();
-                dt = dataQuery.getList("ListarLocalidades", pmsLocalidades);
+                dt = dataQuery.getList(SP.LISTAR_LOCALIDADES, pmsLocalidades);
                 foreach (DataRow dr in dt.Rows)
                 {
                     Localidad localidad = new Localidad((string)dr[0], (int)dr[1], (int)dr[2]);
@@ -287,7 +287,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             pms[8] = new SqlParameter("@fechaNacimiento", SqlDbType.Date);
             pms[8].Value = pickerFechaNacimiento.Value;
 
-            dataConnection.databaseModifyData(pms, "ModificarCliente");
+            dataConnection.databaseModifyData(pms, SP.MODIFICAR_CLIENTE);
 
             SqlParameter[] pmsTel = new SqlParameter[1];
            
@@ -295,7 +295,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             pmsTel[0] = new SqlParameter("@idPersona", SqlDbType.Int);
             pmsTel[0].Value = Int32.Parse((string)formInicio.fkPersonaModif);
 
-            dataConnection.databaseModifyData(pmsTel, "BorrarTelefonos");
+            dataConnection.databaseModifyData(pmsTel, SP.BORRAR_TELEFONOS);
 
             SqlParameter[] pmsTelefono = new SqlParameter[3];
             List<Telefono> telefonos = new List<Telefono>();
@@ -318,7 +318,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
                 pmsTelefono[2] = new SqlParameter("@fk_persona", SqlDbType.Int);
                 pmsTelefono[2].Value = Int32.Parse((string)formInicio.fkPersonaModif);
 
-                dataConnection.databaseInsertAditionalData(pmsTelefono, "AltaTelefono");
+                dataConnection.databaseInsertAditionalData(pmsTelefono, SP.ALTA_TELEFONO);
 
             }
 
@@ -329,7 +329,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             pmsMails[0] = new SqlParameter("@idPersona", SqlDbType.Int);
             pmsMails[0].Value = Int32.Parse((string)formInicio.fkPersonaModif);
 
-            dataConnection.databaseModifyData(pmsTel, "BorrarMails");
+            dataConnection.databaseModifyData(pmsTel, SP.BORRAR_MAILS);
 
             SqlParameter[] pmsEmails = new SqlParameter[3];
             List<Mail> mails = new List<Mail>();
@@ -352,7 +352,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
                 pmsEmails[2] = new SqlParameter("@fk_persona", SqlDbType.Int);
                 pmsEmails[2].Value = Int32.Parse((string)formInicio.fkPersonaModif);
 
-                dataConnection.databaseInsertAditionalData(pmsEmails, "AltaMail");
+                dataConnection.databaseInsertAditionalData(pmsEmails, SP.ALTA_MAIL);
 
             }
 
@@ -378,7 +378,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
 
             pmsDom[0] = new SqlParameter("@idPersona", SqlDbType.Int);
             pmsDom[0].Value = Int32.Parse((string)formInicio.fkPersonaModif);
-            dataConnection.databaseModifyData(pmsDom, "BorrarDomicilios");
+            dataConnection.databaseModifyData(pmsDom, SP.BORRAR_DOMICILIOS);
 
             SqlParameter[] pmsDomicilio = new SqlParameter[9];
 
@@ -411,7 +411,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
                 pmsDomicilio[8] = new SqlParameter("@fk_persona", SqlDbType.Int);
                 pmsDomicilio[8].Value = Int32.Parse((string)formInicio.fkPersonaModif);
 
-                dataConnection.databaseModifyData(pmsDomicilio, "AltaDomicilio");
+                dataConnection.databaseModifyData(pmsDomicilio, SP.ALTA_DOMICILIO);
             }
         }
 

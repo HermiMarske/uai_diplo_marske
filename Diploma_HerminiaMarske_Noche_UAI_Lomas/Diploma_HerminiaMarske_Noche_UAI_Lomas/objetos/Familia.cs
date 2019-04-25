@@ -12,6 +12,12 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos
         private string descripcion;
         private List<Patente> patentes;
 
+        public Familia(int id, string descripcion)
+        {
+            this.id = id;
+            this.descripcion = descripcion;
+        }
+
         public int GetId()
         {
             return id;
@@ -40,6 +46,11 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos
         internal void SetPatentes(List<Patente> value)
         {
             patentes = value;
+        }
+
+        public override string ToString()
+        {
+            return descripcion;
         }
     }
 }

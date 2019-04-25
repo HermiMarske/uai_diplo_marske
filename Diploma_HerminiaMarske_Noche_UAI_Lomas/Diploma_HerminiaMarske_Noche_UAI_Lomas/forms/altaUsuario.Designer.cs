@@ -134,7 +134,7 @@
             this.groupPermisosFamilia = new System.Windows.Forms.GroupBox();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboFamilias = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
             this.tableLayoutPanelAltaCliente.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -1235,7 +1235,7 @@
             // 
             this.groupPermisosFamilia.Controls.Add(this.checkedListBox1);
             this.groupPermisosFamilia.Controls.Add(this.button1);
-            this.groupPermisosFamilia.Controls.Add(this.comboBox1);
+            this.groupPermisosFamilia.Controls.Add(this.comboFamilias);
             this.groupPermisosFamilia.Controls.Add(this.label15);
             this.groupPermisosFamilia.Location = new System.Drawing.Point(-6, 2);
             this.groupPermisosFamilia.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -1265,14 +1265,14 @@
             this.button1.Text = "Agregar >>";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // comboBox1
+            // comboFamilias
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(16, 61);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(440, 28);
-            this.comboBox1.TabIndex = 1;
+            this.comboFamilias.FormattingEnabled = true;
+            this.comboFamilias.Location = new System.Drawing.Point(16, 61);
+            this.comboFamilias.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.comboFamilias.Name = "comboFamilias";
+            this.comboFamilias.Size = new System.Drawing.Size(440, 28);
+            this.comboFamilias.TabIndex = 1;
             // 
             // label15
             // 
@@ -1393,7 +1393,7 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.CheckedListBox checkedListBox1;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboFamilias;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.GroupBox groupMailLista;

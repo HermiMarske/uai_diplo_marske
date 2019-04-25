@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-using Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos;
+using ConstantesData;
 
 namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
 {
@@ -43,8 +37,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
 
                 DataConnection.DataConnection dataQuery = new DataConnection.DataConnection();
                 DataTable dt = new DataTable();
-                dt = dataQuery.getList("LogIn", pms);
-            
+                dt = dataQuery.getList(SP.LOG_IN, pms);
             }
 
 

@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ConstantesData;
 
 namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
 {
@@ -199,7 +200,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             SqlParameter[] pmsProvincias = new SqlParameter[1];
             pmsProvincias[0] = new SqlParameter("@pais", SqlDbType.Int);
             pmsProvincias[0].Value = pais.GetId();
-            dt = dataQuery.getList("ListarProvincias", pmsProvincias);
+            dt = dataQuery.getList(SP.LISTAR_PROVINCIAS, pmsProvincias);
             foreach (DataRow dr in dt.Rows)
             {
                 Provincia provincia = new Provincia((string)dr[0], (int)dr[1]);
@@ -217,7 +218,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             SqlParameter[] pmsLocalidades = new SqlParameter[1];
             pmsLocalidades[0] = new SqlParameter("@provincia", SqlDbType.Int);
             pmsLocalidades[0].Value = provincia.GetId();
-            dt = dataQuery.getList("ListarLocalidades", pmsLocalidades);
+            dt = dataQuery.getList(SP.LISTAR_LOCALIDADES, pmsLocalidades);
             foreach (DataRow dr in dt.Rows)
             {
                 Localidad localidad = new Localidad((string)dr[0], (int)dr[1], (int)dr[2]);
@@ -241,7 +242,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             pms[0] = new SqlParameter("@dniPersona", SqlDbType.VarChar);
             pms[0].Value = dni;
 
-            dt = dataConnection.getList("ObtenerPersona", pms);
+            dt = dataConnection.getList(SP.OBTENER_PERSONA, pms);
 
             Persona persona = null;
             foreach (DataRow dr in dt.Rows)
@@ -274,7 +275,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
 
                 DataConnection.DataConnection dataQuery = new DataConnection.DataConnection();
 
-                dtTel = dataQuery.getList("ObtenerTelefonos", pms);
+                dtTel = dataQuery.getList(SP.OBTENER_TELEFONOS, pms);
                 List<Telefono> telList = new List<Telefono>();
 
                 try
@@ -307,7 +308,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
                 
                 DataConnection.DataConnection dataQueryMails = new DataConnection.DataConnection();
 
-                dtMail = dataQuery.getList("ObtenerMails", pms);
+                dtMail = dataQuery.getList(SP.OBTENER_MAILS, pms);
                 List<Mail> mails = new List<Mail>();
 
                 try
@@ -339,7 +340,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
                 pms[0].Value = idPersona;
 
 
-                dtDom = dataQuery.getList("ObtenerDomicilios", pms);
+                dtDom = dataQuery.getList(SP.OBTENER_DOMICILIOS, pms);
                 List<Domicilio> domList = new List<Domicilio>();
 
                 foreach (DataRow drDom in dtDom.Rows)
@@ -410,13 +411,26 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             List<Pais> paises = new List<Pais>();
             DataConnection.DataConnection dataQueryPaises = new DataConnection.DataConnection();
             DataTable dtp = new DataTable();
-            dtp = dataQueryPaises.getList("ListarPaises", null);
+            dtp = dataQueryPaises.getList(SP.LISTAR_PAISES, null);
             foreach (DataRow drp in dtp.Rows)
             {
                 Pais pais = new Pais((int)drp[0], (string)drp[1]);
                 paises.Add(pais);
             }
             comboPais.DataSource = paises;
+
+            //LLENADO DE COMBO DE FAMILIAS
+
+            List<Familia> familias = new List<Familia>();
+            DataConnection.DataConnection dataQueryFamilias = new DataConnection.DataConnection();
+            DataTable dtf = new DataTable();
+            dtf = dataQueryFamilias.getList(SP.LISTAR_FAMILIAS, null);
+            foreach (DataRow drf in dtf.Rows)
+            {
+                Familia familia = new Familia((int)drf[0], (string)drf[1]);
+                familias.Add(familia);
+            }
+            comboFamilias.DataSource = familias;
         }
 
         private void txtDni_TextChanged(object sender, EventArgs e)
@@ -498,7 +512,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
 
             DataTable dtRespuesta = new DataTable();
 
-            dtRespuesta = dataConnection.getList( "AltaUsuario", pms);
+            dtRespuesta = dataConnection.getList(SP.ALTA_USUARIO, pms);
 
             string codigoError = dtRespuesta.Rows[0].ItemArray[0].ToString();
             Object valorRespuesta = dtRespuesta.Rows[0].ItemArray[1];
@@ -546,7 +560,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
                         pmsTelefono[2] = new SqlParameter("@fk_persona", SqlDbType.Int);
                         pmsTelefono[2].Value = id;
 
-                        dataConnection.databaseInsertAditionalData(pmsTelefono, "AltaTelefono");
+                        dataConnection.databaseInsertAditionalData(pmsTelefono, SP.ALTA_TELEFONO);
                     }
 
                     for (int i = 0; i < dataGridMails.Rows.Count; i++)
@@ -566,7 +580,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
                         pmsMail[2] = new SqlParameter("@fk_persona", SqlDbType.Int);
                         pmsMail[2].Value = id;
 
-                        dataConnection.databaseInsertAditionalData(pmsMail, "AltaMail");
+                        dataConnection.databaseInsertAditionalData(pmsMail, SP.ALTA_MAIL);
                     }
 
                     for (int i = 0; i < dataGridDomicilios.Rows.Count; i++)
@@ -613,7 +627,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
                         pmsDomicilio[8] = new SqlParameter("@fk_persona", SqlDbType.Int);
                         pmsDomicilio[8].Value = id;
 
-                        dataConnection.databaseInsertAditionalData(pmsDomicilio, "AltaDomicilio");
+                        dataConnection.databaseInsertAditionalData(pmsDomicilio, SP.ALTA_DOMICILIO);
                     }
 
                     MessageBox.Show("Usuario creado exitosamente.");

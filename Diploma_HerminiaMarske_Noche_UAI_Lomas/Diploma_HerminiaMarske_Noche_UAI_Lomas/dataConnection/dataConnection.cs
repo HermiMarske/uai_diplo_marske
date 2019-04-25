@@ -103,5 +103,10 @@ namespace DataConnection
             connection.Close();
             return mensaje;
         }
+
+        internal string databaseDelete(SqlParameter[] pms, object bORRAR_USUARIO)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

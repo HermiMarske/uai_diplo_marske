@@ -11,6 +11,7 @@ using System.Data.Sql;
 using System.Data.SqlClient;
 using DataConnection;
 using Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos;
+using ConstantesData;
 
 
 
@@ -66,7 +67,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             pms[7] = new SqlParameter("@fechaNacimiento", SqlDbType.Date);
             pms[7].Value = pickerFechaNacimiento.Value;
 
-            int fk = dataConnection.databaseInsert(pms, "AltaCliente");
+            int fk = dataConnection.databaseInsert(pms, SP.ALTA_CLIENTE);
 
             if (fk > 0)
             {
@@ -91,7 +92,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
                     pmsTelefono[2] = new SqlParameter("@fk_persona", SqlDbType.Int);
                     pmsTelefono[2].Value = fk;
 
-                    dataConnection.databaseInsertAditionalData(pmsTelefono, "AltaTelefono");           
+                    dataConnection.databaseInsertAditionalData(pmsTelefono, SP.ALTA_TELEFONO);           
                 }
 
                 for (int i =0 ; i < dataGridMails.Rows.Count; i++)
@@ -111,7 +112,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
                     pmsTelefono[2] = new SqlParameter("@fk_persona", SqlDbType.Int);
                     pmsTelefono[2].Value = fk;
 
-                    dataConnection.databaseInsertAditionalData(pmsMail, "AltaMail");           
+                    dataConnection.databaseInsertAditionalData(pmsMail, SP.ALTA_MAIL);           
                 }
 
                 for (int i = 0; i < dataGridDomicilios.Rows.Count; i++)
@@ -158,7 +159,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
                     pmsDomicilio[8] = new SqlParameter("@fk_persona", SqlDbType.Int);
                     pmsDomicilio[8].Value = fk;
 
-                    dataConnection.databaseInsertAditionalData(pmsDomicilio, "AltaDomicilio");
+                    dataConnection.databaseInsertAditionalData(pmsDomicilio, SP.ALTA_DOMICILIO);
                 }
             }
         }
@@ -169,7 +170,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             List<Pais> paises = new List<Pais>();
             DataConnection.DataConnection dataQuery = new DataConnection.DataConnection();
             DataTable dt = new DataTable();
-            dt = dataQuery.getList("ListarPaises", null);
+            dt = dataQuery.getList(SP.LISTAR_PAISES, null);
             foreach (DataRow dr in dt.Rows)
             {
                 Pais pais = new Pais((int) dr[0], (string) dr[1]);
@@ -198,7 +199,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             SqlParameter[] pmsProvincias = new SqlParameter[1];
             pmsProvincias[0] = new SqlParameter("@pais", SqlDbType.Int);
             pmsProvincias[0].Value = pais.GetId();
-            dt = dataQuery.getList("ListarProvincias", pmsProvincias);
+            dt = dataQuery.getList(SP.LISTAR_PROVINCIAS, pmsProvincias);
             foreach (DataRow dr in dt.Rows)
             {
                 Provincia provincia = new Provincia((string) dr[0], (int) dr[1]);
@@ -216,7 +217,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             SqlParameter[] pmsLocalidades = new SqlParameter[1];
             pmsLocalidades[0] = new SqlParameter("@provincia", SqlDbType.Int);
             pmsLocalidades[0].Value = provincia.GetId();
-            dt = dataQuery.getList("ListarLocalidades", pmsLocalidades);
+            dt = dataQuery.getList(SP.LISTAR_LOCALIDADES, pmsLocalidades);
             foreach (DataRow dr in dt.Rows)
             {
                 Localidad localidad = new Localidad((string)dr[0], (int)dr[1], (int)dr[2]);

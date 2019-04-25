@@ -1,15 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos;
 using Diploma_HerminiaMarske_Noche_UAI_Lomas.forms;
+using ConstantesData;
 
 namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
 {
@@ -35,7 +31,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             
             DataConnection.DataConnection dataQuery = new DataConnection.DataConnection();
             DataTable dt = new DataTable();
-            dt = dataQuery.getList("ListarClientes", null);
+            dt = dataQuery.getList(SP.LISTAR_CLIENTES, null);
 
             foreach (DataRow dr in dt.Rows)
             {
@@ -60,7 +56,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
 
             DataConnection.DataConnection dataQuery = new DataConnection.DataConnection();
             DataTable dt = new DataTable();
-            dt = dataQuery.getList("ListarUsuarios", null);
+            dt = dataQuery.getList(SP.LISTAR_USUARIOS, null);
 
             foreach (DataRow dr in dt.Rows)
             {
@@ -125,7 +121,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
                 pms[0] = new SqlParameter("@idCliente", SqlDbType.Int);
                 pms[0].Value = idCliente.ToString();
 
-                string respuesta = dataConnection.databaseDelete(pms, "BorrarCliente");
+                string respuesta = dataConnection.databaseDelete(pms, SP.BORRAR_CLIENTE);
 
                 if (respuesta != null)
                 {
@@ -194,7 +190,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
                 pms[0] = new SqlParameter("@idUsuario", SqlDbType.Int);
                 pms[0].Value = idUsuario.ToString();
 
-                string respuesta = dataConnection.databaseDelete(pms, "BorrarUsuario");
+                string respuesta = dataConnection.databaseDelete(pms, SP.BORRAR_USUARIO);
 
                 if (respuesta != null)
                 {
