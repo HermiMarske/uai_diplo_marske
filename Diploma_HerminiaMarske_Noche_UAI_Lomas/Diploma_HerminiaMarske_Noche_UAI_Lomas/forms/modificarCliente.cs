@@ -99,7 +99,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             pms[0].Value = idPersona;
 
 
-            dtMail = dataQuery.getList(SP.OBTENER_TELEFONOS, pms);
+            dtMail = dataQuery.getList(SP.OBTENER_MAILS, pms);
             List<Mail> mailList = new List<Mail>();
 
             try

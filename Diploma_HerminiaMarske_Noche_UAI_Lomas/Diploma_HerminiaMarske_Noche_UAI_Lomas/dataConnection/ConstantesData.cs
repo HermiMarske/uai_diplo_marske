@@ -31,6 +31,7 @@ namespace ConstantesData
             OBTENER_MAILS = "ObtenerMails",
             OBTENER_PERSONA = "ObtenerPersona",
             OBTENER_TELEFONOS = "ObtenerTelefonos",
+            LISTAR_PATENTES = "ListarPatentes",
             LOG_IN = "LogIn";
     }
 }

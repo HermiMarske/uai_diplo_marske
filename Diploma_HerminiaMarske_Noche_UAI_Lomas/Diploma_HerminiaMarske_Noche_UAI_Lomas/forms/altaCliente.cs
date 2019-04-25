@@ -103,14 +103,14 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
                     m.SetMail((string)dataGridMails.Rows.SharedRow(i).Cells[1].Value);
                     mails.Add(m);
 
-                    pmsTelefono[0] = new SqlParameter("@tipo", SqlDbType.VarChar);
-                    pmsTelefono[0].Value = m.GetTipo();
+                    pmsMail[0] = new SqlParameter("@tipo", SqlDbType.VarChar);
+                    pmsMail[0].Value = m.GetTipo();
 
-                    pmsTelefono[1] = new SqlParameter("@mail", SqlDbType.VarChar);
-                    pmsTelefono[1].Value = m.GetMail();
+                    pmsMail[1] = new SqlParameter("@mail", SqlDbType.VarChar);
+                    pmsMail[1].Value = m.GetMail();
 
-                    pmsTelefono[2] = new SqlParameter("@fk_persona", SqlDbType.Int);
-                    pmsTelefono[2].Value = fk;
+                    pmsMail[2] = new SqlParameter("@fk_persona", SqlDbType.Int);
+                    pmsMail[2].Value = fk;
 
                     dataConnection.databaseInsertAditionalData(pmsMail, SP.ALTA_MAIL);           
                 }

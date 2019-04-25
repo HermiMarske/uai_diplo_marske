@@ -41,5 +41,17 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos
         {
             idFamilia = value;
         }
+
+        public Patente (int idPatente, string descripcion, int fkFamilia)
+        {
+            this.id = idPatente;
+            this.idFamilia = fkFamilia;
+            this.descripcion = descripcion;
+        }
+
+        public override string ToString()
+        {
+            return descripcion;
+        }
     }
 }
