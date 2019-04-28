@@ -104,6 +104,41 @@ namespace DataConnection
             return mensaje;
         }
 
+        public DataTable sqlExecute(string sqlQuery, SqlParameter[] pms)
+        {
+            SqlConnection connection = new SqlConnection(Sql);
+            SqlCommand command = new SqlCommand(sqlQuery, connection);
+            DataTable dt = new DataTable();
+
+            connection.Open();
+            if (pms != null)
+            {
+                command.Parameters.AddRange(pms);
+            }
+            SqlDataAdapter da = new SqlDataAdapter(command);
+            da.Fill(dt);
+
+            connection.Close();
+            return dt;
+        }
+
+        public int sqlUpsert(string sqlQuery, SqlParameter[] pms)
+        {
+            SqlConnection connection = new SqlConnection(Sql);
+            SqlCommand command = new SqlCommand(sqlQuery, connection);
+            DataTable dt = new DataTable();
+
+            connection.Open();
+            if (pms != null)
+            {
+                command.Parameters.AddRange(pms);
+            }
+            int response = (int)command.ExecuteNonQuery();
+
+            connection.Close();
+            return response;
+        }
+
         internal string databaseDelete(SqlParameter[] pms, object bORRAR_USUARIO)
         {
             throw new NotImplementedException();

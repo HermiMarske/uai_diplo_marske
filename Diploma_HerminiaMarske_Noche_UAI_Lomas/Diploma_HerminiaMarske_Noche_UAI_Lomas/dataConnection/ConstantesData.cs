@@ -23,6 +23,7 @@ namespace ConstantesData
             LISTAR_FAMILIAS = "ListarFamilias",
             LISTAR_LOCALIDADES = "ListarLocalidades",
             LISTAR_PAISES = "ListarPaises",
+            LISTAR_PATENTES = "ListarPatentes",
             LISTAR_PROVINCIAS = "ListarProvincias",
             LISTAR_USUARIOS = "ListarUsuarios",
             MODIFICAR_CLIENTE = "ModificarCliente",
@@ -31,7 +32,6 @@ namespace ConstantesData
             OBTENER_MAILS = "ObtenerMails",
             OBTENER_PERSONA = "ObtenerPersona",
             OBTENER_TELEFONOS = "ObtenerTelefonos",
-            LISTAR_PATENTES = "ListarPatentes",
-            LOG_IN = "LogIn";
+            ZERO = "0";
     }
 }

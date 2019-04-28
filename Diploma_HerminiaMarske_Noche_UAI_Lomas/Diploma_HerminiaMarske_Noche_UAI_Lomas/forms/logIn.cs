@@ -3,6 +3,8 @@ using System.Data;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using ConstantesData;
+using Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio;
+using Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos;
 
 namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
 {
@@ -29,15 +31,31 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
                 txtUsuario.Focus();
             } else
             {
-                SqlParameter[] pms = new SqlParameter[2];
-                pms[0] = new SqlParameter("@usuario", SqlDbType.VarChar);
-                pms[0].Value = txtUsuario.Text;
-                pms[1] = new SqlParameter("@password", SqlDbType.VarChar);
-                pms[1].Value = txtPassword.Text;
-
-                DataConnection.DataConnection dataQuery = new DataConnection.DataConnection();
-                DataTable dt = new DataTable();
-                dt = dataQuery.getList(SP.LOG_IN, pms);
+                try
+                {
+                    Persona persona = ControladorUsuario.logIn(user, clave);
+                    MessageBox.Show(String.Format("¡Bienvenido {0} {1}!", persona.GetNombre(), persona.GetApellido()));
+                } catch (Exception ex)
+                {
+                    switch (ex.Message.ToString())
+                    {
+                        case "AUTH_USR_NOT_EXISTS":
+                            MessageBox.Show("El usuario ingresado no existe.");
+                            txtUsuario.Focus();
+                            break;
+                        case "USR_BLOCKED":
+                            MessageBox.Show("El usuario se encuentra bloqueado.\nComuníquese con un administrador");
+                            txtUsuario.Focus();
+                            break;
+                        case "AUTH_USR_FAILED":
+                            MessageBox.Show("¡Contraseña incorrecta!");
+                            txtPassword.Focus();
+                            break;
+                        default:
+                            MessageBox.Show("Existe un problema con su contraseña y no se puede procesar.\nComuníquese con un administrador");
+                            break;
+                    }
+                }
             }
 
 
