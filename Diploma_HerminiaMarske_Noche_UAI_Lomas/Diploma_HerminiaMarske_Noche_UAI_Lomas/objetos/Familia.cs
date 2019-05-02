@@ -12,6 +12,8 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos
         private string descripcion;
         private List<Patente> patentes;
 
+        public Familia() { }
+
         public Familia(int id, string descripcion)
         {
             this.id = id;

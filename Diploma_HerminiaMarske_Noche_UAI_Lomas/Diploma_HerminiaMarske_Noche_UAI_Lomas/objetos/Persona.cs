@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos
 {
@@ -14,6 +11,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos
         private string apellido;
         private string sexo;
         private DateTime fechaNacimiento;
+        private List<Patente> patentes;
 
         public Persona(int idPersona, string dni, string nombre, string apellido, string sexo)
         {
@@ -22,7 +20,6 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos
             this.nombre = nombre;
             this.apellido = apellido;
             this.sexo = sexo;
-         
         }
 
         public Persona(int idPersona, string dni, string nombre, string apellido, string sexo, DateTime fechaNacimiento)
@@ -33,6 +30,17 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos
             this.apellido = apellido;
             this.sexo = sexo;
             this.fechaNacimiento = fechaNacimiento;
+        }
+
+        public Persona(int idPersona, string dni, string nombre, string apellido, string sexo, DateTime fechaNacimiento, List<Patente> patentes)
+        {
+            this.idPersona = idPersona;
+            this.dni = dni;
+            this.nombre = nombre;
+            this.apellido = apellido;
+            this.sexo = sexo;
+            this.fechaNacimiento = fechaNacimiento;
+            this.patentes = patentes;
         }
 
         public int GetIdPersona()

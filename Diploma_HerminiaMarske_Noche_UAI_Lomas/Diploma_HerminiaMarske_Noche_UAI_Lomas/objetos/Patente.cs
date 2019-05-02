@@ -1,16 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos
+﻿namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos
 {
     class Patente
     {
         private int id;
-        private string descripcion;
+        private string codigo;
         private int idFamilia;
+
+        public Patente(int id, string codigo, int idFamilia)
+        {
+            this.id = id;
+            this.idFamilia = idFamilia;
+            this.codigo = codigo;
+        }
+
+        public Patente(int id, string codigo)
+        {
+            this.id = id;
+            this.codigo = codigo;
+        }
+
+        public Patente()
+        {
+
+        }
 
         public int GetId()
         {
@@ -24,12 +36,12 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos
 
         public string GetDescripcion()
         {
-            return descripcion;
+            return codigo;
         }
 
         public void SetDescripcion(string value)
         {
-            descripcion = value;
+            codigo = value;
         }
 
         public int GetIdFamilia()
@@ -42,16 +54,9 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos
             idFamilia = value;
         }
 
-        public Patente (int idPatente, string descripcion, int fkFamilia)
-        {
-            this.id = idPatente;
-            this.idFamilia = fkFamilia;
-            this.descripcion = descripcion;
-        }
-
         public override string ToString()
         {
-            return descripcion;
+            return codigo;
         }
     }
 }
