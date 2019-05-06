@@ -406,6 +406,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
 
         }
 
+        List<Patente> patentes = new List<Patente>();
         private void altaUsuario_Load(object sender, EventArgs e)
         {
             List<Pais> paises = new List<Pais>();
@@ -428,9 +429,34 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             foreach (DataRow drf in dtf.Rows)
             {
                 Familia familia = new Familia((int)drf[0], (string)drf[1]);
+                DataConnection.DataConnection dataQueryFamiliasPatentes = new DataConnection.DataConnection();
+                DataTable dtfp = new DataTable();
+                dtfp = dataQueryFamiliasPatentes.getList(SP.LISTAR_PATENTES_FAMILIAS, null);
+                List<Patente> patentes = new List<Patente>();
+                foreach (DataRow drfp in dtfp.Rows) {
+                    if (familia.GetId() == (int)drfp[0])
+                    {
+                        Patente p = new Patente((int)drfp[2], (string)drfp[3], (int)drfp[0]);
+                        patentes.Add(p);
+                    }
+                }
+                familia.SetPatentes(patentes);
                 familias.Add(familia);
             }
-            comboFamilias.DataSource = familias;
+            checkedListFamilias.DataSource = familias;
+
+            //LLENADO DE CHECKEDLISTBOX DE PATENTES
+
+            DataConnection.DataConnection dataQueryPatentes = new DataConnection.DataConnection();
+            DataTable dtpat = new DataTable();
+            dtpat = dataQueryPatentes.getList(SP.LISTAR_TODAS_PATENTES, null);
+            foreach (DataRow drpat in dtpat.Rows)
+            {
+                Patente patente = new Patente((int)drpat[0], (string)drpat[1]);
+                patentes.Add(patente);
+            }
+            checkedListPatentes.DataSource = patentes;
+
         }
 
         private void txtDni_TextChanged(object sender, EventArgs e)
@@ -551,7 +577,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
                         t.SetNumero((string)dataGridTelefonos.Rows.SharedRow(i).Cells[1].Value);
                         telefonos.Add(t);
 
-                        pmsTelefono[0] = new SqlParameter("@tipo", SqlDbType.VarChar);
+                        pmsTelefono[0] = new SqlParameter("@tipo", SqlDbType.VarChar); 
                         pmsTelefono[0].Value = t.GetTipo();
 
                         pmsTelefono[1] = new SqlParameter("@numero", SqlDbType.VarChar);
@@ -571,7 +597,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
                         m.SetMail((string)dataGridMails.Rows.SharedRow(i).Cells[1].Value);
                         mails.Add(m);
 
-                        pmsMail[0] = new SqlParameter("@tipo", SqlDbType.VarChar);
+                        pmsMail[0] = new SqlParameter("@tipo", SqlDbType.VarChar); 
                         pmsMail[0].Value = m.GetTipo();
 
                         pmsMail[1] = new SqlParameter("@mail", SqlDbType.VarChar);
@@ -643,6 +669,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
 
         }
 
+        /*
         private void comboFamilias_SelectedIndexChanged(object sender, EventArgs e)
         {
             List<Patente> patentes = new List<Patente>();
@@ -658,7 +685,57 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
                 Patente patente = new Patente((int)dr[0], (string)dr[1], familia.GetId());
                 patentes.Add(patente);
             }
-            checkedListPatentes.DataSource = patentes;
+            checkedListFamilias.DataSource = patentes;
         }
+        */
+
+        private void checkedListPatentes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            List<Familia> familiasSeleccionadas = new List<Familia>();
+            string listarPatentes = "";
+
+            foreach (Familia f in checkedListFamilias.CheckedItems)
+            {
+                familiasSeleccionadas.Add(f);
+                listarPatentes += (!string.IsNullOrEmpty(listarPatentes) ? "," : "") + string.Join(",", f.GetPatentes().Select(n => n.GetId().ToString()).ToArray());
+            }
+
+            listBoxFamiliasAdquiridas.DataSource = familiasSeleccionadas;
+
+            List<Patente> patentes = new List<Patente>();
+            List<Patente> patentes2 = new List<Patente>();
+            DataConnection.DataConnection patentesHeredadas = new DataConnection.DataConnection();
+            DataTable ph = new DataTable();
+            if (!string.IsNullOrEmpty(listarPatentes))
+            {
+                string sql = string.Format("SELECT p.idPatente, p.codigo FROM Patente p WHERE p.idPatente IN ({0})", listarPatentes);
+                ph = patentesHeredadas.sqlExecute(sql, null);
+
+                foreach (DataRow dr in ph.Rows)
+                {
+                    Patente p = new Patente((int)dr[0], (string)dr[1]);
+                    patentes.Add(p);
+                }
+
+
+            }
+            string sql2 = "SELECT p.idPatente, p.codigo FROM Patente p" + (!string.IsNullOrEmpty(listarPatentes) ? string.Format(" WHERE p.idPatente NOT IN ({0})", listarPatentes) : "" );
+            ph = patentesHeredadas.sqlExecute(sql2, null);
+
+            foreach (DataRow dr in ph.Rows)
+            {
+                Patente p = new Patente((int)dr[0], (string)dr[1]);
+                patentes2.Add(p);
+            }
+
+            checkedListPatentesAdquiridas.DataSource = patentes;
+            for (int i = 0; i < checkedListPatentesAdquiridas.Items.Count; i++)
+            {
+                checkedListPatentesAdquiridas.SetItemChecked(i, true);
+            }
+            checkedListPatentes.DataSource = patentes2;
+        }
+        
+
     }
 }

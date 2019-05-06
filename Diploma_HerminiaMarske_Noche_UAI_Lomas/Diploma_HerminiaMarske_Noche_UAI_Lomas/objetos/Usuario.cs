@@ -13,7 +13,31 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos
         private string password;
         private int cii;
         private bool habilitado;
+        private string respuesta;
+        private int fkPregunta;
         private Persona persona;
+        private List<Patente> patentes;
+        private List<Familia> familias;
+
+        internal List<Familia> GetFamilias()
+        {
+            return familias;
+        }
+
+        internal void SetFamilias(List<Familia> value)
+        {
+            familias = value;
+        }
+
+        internal List<Patente> GetPatentes()
+        {
+            return patentes;
+        }
+
+        internal void SetPatentes(List<Patente> value)
+        {
+            patentes = value;
+        }
 
         public Usuario(int idUsuario, string nombreUsuario, string password, int cii, bool habilitado, Persona persona)
         {
@@ -22,6 +46,18 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos
             this.password = password;
             this.cii = cii;
             this.habilitado = habilitado;
+            this.persona = persona;
+        }
+
+        public Usuario(int idUsuario, string nombreUsuario, string password, int cii, bool habilitado, string respuesta, int fkPregunta, Persona persona)
+        {
+            this.idUsuario = idUsuario;
+            this.nombreUsuario = nombreUsuario;
+            this.password = password;
+            this.cii = cii;
+            this.habilitado = habilitado;
+            this.respuesta = respuesta;
+            this.fkPregunta = fkPregunta;
             this.persona = persona;
         }
 
@@ -83,6 +119,26 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos
         internal void SetPersona(Persona value)
         {
             persona = value;
+        }
+
+        public int GetFkPregunta()
+        {
+            return fkPregunta;
+        }
+
+        public void SetFkPregunta(int value)
+        {
+            fkPregunta = value;
+        }
+
+        public string GetRespuesta()
+        {
+            return respuesta;
+        }
+
+        public void SetRespuesta(string value)
+        {
+            respuesta = value;
         }
     }
 }

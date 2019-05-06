@@ -18,7 +18,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new formInicio());
-            // Application.Run(new logIn());
+            //Application.Run(new logIn());
         }
     }
 }

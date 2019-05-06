@@ -52,7 +52,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos
 
         public override string ToString()
         {
-            return descripcion;
+            return string.Concat(descripcion, " Nº Patentes(", patentes.Count, ")");
         }
     }
 }
