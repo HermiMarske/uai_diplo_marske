@@ -43,10 +43,6 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos
             this.patentes = patentes;
         }
 
-        public Persona()
-        {
-        }
-
         public int GetIdPersona()
         {
             return idPersona;

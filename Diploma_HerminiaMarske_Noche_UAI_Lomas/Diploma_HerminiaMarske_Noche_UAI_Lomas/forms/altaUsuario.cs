@@ -506,82 +506,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
 
         private void btnAgregarUsuario_Click(object sender, EventArgs e)
         {
-
-            for (int i = 0; i < dataGridDomicilios.Rows.Count; i++)
-            {
-                Domicilio dom = new Domicilio();
-                dom.SetTipoDomicilio((String)dataGridDomicilios.Rows.SharedRow(i).Cells[0].Value);
-                dom.SetComentario((String)dataGridDomicilios.Rows.SharedRow(i).Cells[1].Value);
-                dom.SetCalle((String)dataGridDomicilios.Rows.SharedRow(i).Cells[2].Value);
-                dom.SetNumero((String)dataGridDomicilios.Rows.SharedRow(i).Cells[3].Value);
-                dom.SetPiso((Int32)dataGridDomicilios.Rows.SharedRow(i).Cells[4].Value);
-                dom.SetDpto((String)dataGridDomicilios.Rows.SharedRow(i).Cells[5].Value);
-                dom.SetCodigoPostal((String)dataGridDomicilios.Rows.SharedRow(i).Cells[6].Value);
-                dom.SetLocalidad((Localidad)dataGridDomicilios.Rows.SharedRow(i).Cells[7].Value);
-
-                domicilios.Add(dom);
-            }
-
-            for (int i = 0; i < dataGridTelefonos.Rows.Count; i++)
-            {
-                Telefono t = new Telefono();
-
-                t.SetTipo((string)dataGridTelefonos.Rows.SharedRow(i).Cells[0].Value);
-                t.SetNumero((string)dataGridTelefonos.Rows.SharedRow(i).Cells[1].Value);
-                telefonos.Add(t);
-            }
-
-            for (int i = 0; i < dataGridMails.Rows.Count; i++)
-            {
-                Mail m = new Mail();
-
-                m.SetTipo((string)dataGridMails.Rows.SharedRow(i).Cells[0].Value);
-                m.SetMail((string)dataGridMails.Rows.SharedRow(i).Cells[1].Value);
-                mails.Add(m);
-            }
-
-            Persona persona = new Persona();
-            Usuario usuario = new Usuario();
-
-            persona.SetApellido(txtApellido.Text);
-            persona.SetDni(txtDni.Text);
-            persona.SetNombre(txtNombre.Text);
-            persona.SetSexo(comboSexo.SelectedItem.ToString());
-            persona.SetFechaNacimiento(pickerFechaNacimiento.Value);
-
-            usuario.SetNombreUsuario(txtUsuario.Text);
-            usuario.SetPassword(ControladorEncriptacion.Hash(txtClave.Text));
-            usuario.SetRespuesta(txtRespuesta.Text);
-            usuario.SetFkPregunta(comboPreguntas.SelectedIndex + 1);
-            usuario.SetPersona(persona);
-
-
-            string codigoError = ControladorABMUsuario.alta(usuario, domicilios, mails, telefonos);
-
-            if (codigoError.Equals(MISSING_DATA))
-            {
-                MessageBox.Show("Ocurrió un error inesperado");
-            }
-
-            else if (codigoError.Equals(USER_EXISTS))
-            {
-                MessageBox.Show("El usuario seleccionado ya existe, intente de nuevo.");
-                txtUsuario.Focus();
-            }
-
-            else if (codigoError.Equals(PERSON_HAS_USER))
-            {
-                MessageBox.Show(String.Concat("La persona ya tiene un usuario"));
-            }
-
-            else if (codigoError.Equals(USER_CREATED_PERSON_CREATED))
-            {
-                MessageBox.Show("El usuario fue creado de forma exitosa!");
-            }
-
-            /*
-
-                DataConnection.DataConnection dataConnection = new DataConnection.DataConnection();
+            DataConnection.DataConnection dataConnection = new DataConnection.DataConnection();
 
             SqlParameter[] pms = new SqlParameter[9];
             pms[0] = new SqlParameter("@dniPersona", SqlDbType.VarChar);
@@ -634,8 +559,6 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
                 MessageBox.Show(String.Concat("La persona ya tiene un usuario: ", valorRespuesta));
             }
 
-
-            
             else if(codigoError.Equals(USER_CREATED_PERSON_CREATED)) {
 
                 int id = Int32.Parse(valorRespuesta.ToString());
@@ -742,7 +665,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
 
                 MessageBox.Show("Usuario creado exitosamente.");
 
-            }*/
+            }
 
         }
 
@@ -763,9 +686,8 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
                 patentes.Add(patente);
             }
             checkedListFamilias.DataSource = patentes;
-            
-        }*/
-       
+        }
+        */
 
         private void checkedListPatentes_SelectedIndexChanged(object sender, EventArgs e)
         {
