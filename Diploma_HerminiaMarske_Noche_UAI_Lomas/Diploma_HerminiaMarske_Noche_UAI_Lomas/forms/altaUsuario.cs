@@ -16,16 +16,6 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
 {
     public partial class altaUsuario : Form
     {
-        private const string USER_CREATED_EXISTING_PERSON = "USER_CREATED_EXISTING_PERSON";
-        private const string MISSING_DATA = "MISSING_DATA";
-        private const string USER_EXISTS = "USER_EXISTS";
-        private const string USER_CREATED_PERSON_CREATED = "USER_CREATED_PERSON_CREATED";
-        private const string PERSON_HAS_USER = "PERSON_HAS_USER";
-
-        List<Domicilio> domicilios = new List<Domicilio>();
-        List<Telefono> telefonos = new List<Telefono>();
-        List<Mail> mails = new List<Mail>();
-
         public altaUsuario()
         {
             InitializeComponent();
@@ -506,165 +496,53 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
 
         private void btnAgregarUsuario_Click(object sender, EventArgs e)
         {
-            DataConnection.DataConnection dataConnection = new DataConnection.DataConnection();
-
-            SqlParameter[] pms = new SqlParameter[9];
-            pms[0] = new SqlParameter("@dniPersona", SqlDbType.VarChar);
-            pms[0].Value = txtDni.Text;
-
-            pms[1] = new SqlParameter("@nombre", SqlDbType.VarChar);
-            pms[1].Value = txtNombre.Text;
-
-            pms[2] = new SqlParameter("@apellido", SqlDbType.VarChar);
-            pms[2].Value = txtApellido.Text;
-
-            pms[3] = new SqlParameter("@sexo", SqlDbType.VarChar);
-            pms[3].Value = comboSexo.SelectedItem.ToString();
-
-            pms[4] = new SqlParameter("@fechaNacimiento", SqlDbType.Date);
-            pms[4].Value = pickerFechaNacimiento.Value;
-
-            pms[5] = new SqlParameter("@usuario", SqlDbType.VarChar);
-            pms[5].Value = txtUsuario.Text;
-
-            pms[6] = new SqlParameter("@clave", SqlDbType.VarChar);
-            pms[6].Value = ControladorEncriptacion.Hash(txtClave.Text);
-
-            pms[7] = new SqlParameter("@respuesta", SqlDbType.VarChar);
-            pms[7].Value = txtRespuesta.Text;
-
-            pms[8] = new SqlParameter("@fk_pregunta", SqlDbType.Int);
-            pms[8].Value = comboPreguntas.SelectedIndex + 1;
-
-            DataTable dtRespuesta = new DataTable();
-
-            dtRespuesta = dataConnection.getList(SP.ALTA_USUARIO, pms);
-
-            string codigoError = dtRespuesta.Rows[0].ItemArray[0].ToString();
-            Object valorRespuesta = dtRespuesta.Rows[0].ItemArray[1];
-
-            if(codigoError.Equals(MISSING_DATA))
+            Usuario usuario = new Usuario(0, txtUsuario.Text, txtClave.Text, 0, true, txtRespuesta.Text, comboPreguntas.SelectedIndex + 1, persona: 
+                new Persona(0, txtDni.Text, txtNombre.Text, txtApellido.Text, comboSexo.SelectedItem.ToString(), pickerFechaNacimiento.Value));
+            usuario.SetFamilias(new List<Familia>());
+            usuario.SetPatentes(new List<Patente>());
+            List<Domicilio> domicilios = new List<Domicilio>();
+            List<Telefono> telefonos = new List<Telefono>();
+            List<Mail> mails = new List<Mail>();
+            
+            for (int i = 0; i < checkedListFamilias.Items.Count; i++)
             {
-                MessageBox.Show("Ocurrió un error inesperado");
+                Familia familia = (Familia)checkedListFamilias.Items[i];
+                usuario.GetFamilias().Add(familia);
             }
-
-            else if(codigoError.Equals(USER_EXISTS))
+            for (int i = 0; i < checkedListPatentes.Items.Count; i++)
             {
-                MessageBox.Show("El usuario seleccionado ya existe, intente de nuevo.");
-                txtUsuario.Focus();
+                Patente patente = (Patente)checkedListPatentes.Items[i];
+                usuario.GetPatentes().Add(patente);
             }
 
-            else if (codigoError.Equals(PERSON_HAS_USER))
+            for (int i = 0; i < dataGridTelefonos.Rows.Count; i++)
             {
-                MessageBox.Show(String.Concat("La persona ya tiene un usuario: ", valorRespuesta));
+                Telefono t = new Telefono((string)dataGridTelefonos.Rows.SharedRow(i).Cells[0].Value, (string)dataGridTelefonos.Rows.SharedRow(i).Cells[1].Value);
+                telefonos.Add(t);
+            }
+            for (int i = 0; i < dataGridMails.Rows.Count; i++)
+            {
+                Mail m = new Mail((string)dataGridMails.Rows.SharedRow(i).Cells[0].Value, (string)dataGridMails.Rows.SharedRow(i).Cells[1].Value);
+                mails.Add(m);
             }
 
-            else if(codigoError.Equals(USER_CREATED_PERSON_CREATED)) {
+            for (int i = 0; i < dataGridDomicilios.Rows.Count; i++)
+            {
+                Domicilio dom = new Domicilio(0, (string)dataGridDomicilios.Rows.SharedRow(i).Cells[2].Value, 
+                    (string)dataGridDomicilios.Rows.SharedRow(i).Cells[3].Value, (int)dataGridDomicilios.Rows.SharedRow(i).Cells[4].Value,
+                    (string)dataGridDomicilios.Rows.SharedRow(i).Cells[5].Value, (string)dataGridDomicilios.Rows.SharedRow(i).Cells[1].Value,
+                    (string)dataGridDomicilios.Rows.SharedRow(i).Cells[6].Value, (string)dataGridDomicilios.Rows.SharedRow(i).Cells[0].Value,
+                    (Localidad)dataGridDomicilios.Rows.SharedRow(i).Cells[7].Value);
 
-                int id = Int32.Parse(valorRespuesta.ToString());
-
-                if (id > 0)
-                {
-                    SqlParameter[] pmsTelefono = new SqlParameter[3];
-                    SqlParameter[] pmsMail = new SqlParameter[3];
-                    SqlParameter[] pmsDomicilio = new SqlParameter[9];
-
-                    for (int i = 0; i < dataGridTelefonos.Rows.Count; i++)
-                    {
-                        Telefono t = new Telefono();
-
-                        t.SetTipo((string)dataGridTelefonos.Rows.SharedRow(i).Cells[0].Value);
-                        t.SetNumero((string)dataGridTelefonos.Rows.SharedRow(i).Cells[1].Value);
-                        telefonos.Add(t);
-
-                        pmsTelefono[0] = new SqlParameter("@tipo", SqlDbType.VarChar); 
-                        pmsTelefono[0].Value = t.GetTipo();
-
-                        pmsTelefono[1] = new SqlParameter("@numero", SqlDbType.VarChar);
-                        pmsTelefono[1].Value = t.GetNumero();
-
-                        pmsTelefono[2] = new SqlParameter("@fk_persona", SqlDbType.Int);
-                        pmsTelefono[2].Value = id;
-
-                        dataConnection.databaseInsertAditionalData(pmsTelefono, SP.ALTA_TELEFONO);
-                    }
-
-                    for (int i = 0; i < dataGridMails.Rows.Count; i++)
-                    {
-                        Mail m = new Mail();
-
-                        m.SetTipo((string)dataGridMails.Rows.SharedRow(i).Cells[0].Value);
-                        m.SetMail((string)dataGridMails.Rows.SharedRow(i).Cells[1].Value);
-                        mails.Add(m);
-
-                        pmsMail[0] = new SqlParameter("@tipo", SqlDbType.VarChar); 
-                        pmsMail[0].Value = m.GetTipo();
-
-                        pmsMail[1] = new SqlParameter("@mail", SqlDbType.VarChar);
-                        pmsMail[1].Value = m.GetMail();
-
-                        pmsMail[2] = new SqlParameter("@fk_persona", SqlDbType.Int);
-                        pmsMail[2].Value = id;
-
-                        dataConnection.databaseInsertAditionalData(pmsMail, SP.ALTA_MAIL);
-                    }
-
-                    for (int i = 0; i < dataGridDomicilios.Rows.Count; i++)
-                    {
-                        Domicilio dom = new Domicilio();
-                        dom.SetTipoDomicilio((String)dataGridDomicilios.Rows.SharedRow(i).Cells[0].Value);
-                        dom.SetComentario((String)dataGridDomicilios.Rows.SharedRow(i).Cells[1].Value);
-                        dom.SetCalle((String)dataGridDomicilios.Rows.SharedRow(i).Cells[2].Value);
-                        dom.SetNumero((String)dataGridDomicilios.Rows.SharedRow(i).Cells[3].Value);
-                        dom.SetPiso((Int32)dataGridDomicilios.Rows.SharedRow(i).Cells[4].Value);
-                        dom.SetDpto((String)dataGridDomicilios.Rows.SharedRow(i).Cells[5].Value);
-                        dom.SetCodigoPostal((String)dataGridDomicilios.Rows.SharedRow(i).Cells[6].Value);
-                        dom.SetLocalidad((Localidad)dataGridDomicilios.Rows.SharedRow(i).Cells[7].Value);
-
-                        domicilios.Add(dom);
-                    }
-
-                    foreach (Domicilio d in domicilios)
-                    {
-                        pmsDomicilio[0] = new SqlParameter("@calle", SqlDbType.VarChar);
-                        pmsDomicilio[0].Value = d.GetCalle();
-
-                        pmsDomicilio[1] = new SqlParameter("@numero", SqlDbType.VarChar);
-                        pmsDomicilio[1].Value = d.GetNumero();
-
-                        pmsDomicilio[2] = new SqlParameter("@piso", SqlDbType.Int);
-                        pmsDomicilio[2].Value = (object)d.GetPiso() ?? DBNull.Value;
-
-                        pmsDomicilio[3] = new SqlParameter("@dpto", SqlDbType.VarChar);
-                        pmsDomicilio[3].Value = d.GetDpto();
-
-                        pmsDomicilio[4] = new SqlParameter("@comentarios", SqlDbType.VarChar);
-                        pmsDomicilio[4].Value = d.GetComentario();
-
-                        pmsDomicilio[5] = new SqlParameter("@codPostal", SqlDbType.VarChar);
-                        pmsDomicilio[5].Value = d.GetCodigoPostal();
-
-                        pmsDomicilio[6] = new SqlParameter("@tipoDomicilio", SqlDbType.VarChar);
-                        pmsDomicilio[6].Value = d.GetTipoDomicilio();
-
-                        pmsDomicilio[7] = new SqlParameter("@fk_localidad", SqlDbType.Int);
-                        pmsDomicilio[7].Value = d.GetLocalidad().GetId();
-
-                        pmsDomicilio[8] = new SqlParameter("@fk_persona", SqlDbType.Int);
-                        pmsDomicilio[8].Value = id;
-
-                        dataConnection.databaseInsertAditionalData(pmsDomicilio, SP.ALTA_DOMICILIO);
-                    }
-
-                    MessageBox.Show("Usuario creado exitosamente.");
-                }
-
+                domicilios.Add(dom);
             }
 
-            else if (codigoError.Equals(USER_CREATED_EXISTING_PERSON)) {
-
-                MessageBox.Show("Usuario creado exitosamente.");
-
+            try
+            {
+                MessageBox.Show(ControladorABMUsuario.alta(usuario, domicilios, mails, telefonos));
+            } catch (Exception ex)
+            {
+                MessageBox.Show(ex.StackTrace);
             }
 
         }

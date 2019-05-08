@@ -42,5 +42,15 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos
             tipo = value;
         }
 
+        public Mail()
+        {
+
+        }
+
+        public Mail(string tipo, string mail)
+        {
+            this.tipo = tipo;
+            this.mail = mail;
+        }
     }
 }
