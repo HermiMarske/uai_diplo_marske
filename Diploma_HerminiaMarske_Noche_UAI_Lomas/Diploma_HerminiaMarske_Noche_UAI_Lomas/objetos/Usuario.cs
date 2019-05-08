@@ -61,6 +61,10 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos
             this.persona = persona;
         }
 
+        public Usuario()
+        {
+        }
+
         public int GetIdUsuario()
         {
             return idUsuario;
