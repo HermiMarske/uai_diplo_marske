@@ -5,12 +5,31 @@
         private int id;
         private string codigo;
         private int idFamilia;
+        private bool negado;
+
+        public bool GetNegado()
+        {
+            return negado;
+        }
+
+        public void SetNegado(bool value)
+        {
+            negado = value;
+        }
 
         public Patente(int id, string codigo, int idFamilia)
         {
             this.id = id;
             this.idFamilia = idFamilia;
             this.codigo = codigo;
+        }
+
+        public Patente(int id, string codigo, int idFamilia, bool negado)
+        {
+            this.id = id;
+            this.idFamilia = idFamilia;
+            this.codigo = codigo;
+            this.negado = negado;
         }
 
         public Patente(int id, string codigo)

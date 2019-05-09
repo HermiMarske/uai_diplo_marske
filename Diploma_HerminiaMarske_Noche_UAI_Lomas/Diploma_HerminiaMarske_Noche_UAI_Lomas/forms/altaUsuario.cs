@@ -504,16 +504,27 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             List<Telefono> telefonos = new List<Telefono>();
             List<Mail> mails = new List<Mail>();
             
-            for (int i = 0; i < checkedListFamilias.Items.Count; i++)
+            for (int i = 0; i < checkedListPatentesAdquiridas.Items.Count; i++)
             {
-                Familia familia = (Familia)checkedListFamilias.Items[i];
-                usuario.GetFamilias().Add(familia);
+                if (!checkedListPatentesAdquiridas.GetItemChecked(i))
+                {
+                    Patente patente = (Patente)checkedListPatentesAdquiridas.Items[i];
+                    patente.SetNegado(true);
+                    usuario.GetPatentes().Add(patente);
+                }
             }
-            for (int i = 0; i < checkedListPatentes.Items.Count; i++)
+
+            foreach(Patente p in checkedListPatentes.CheckedItems)
             {
-                Patente patente = (Patente)checkedListPatentes.Items[i];
-                usuario.GetPatentes().Add(patente);
+                p.SetNegado(false);
+                usuario.GetPatentes().Add(p);
             }
+
+            foreach (Familia f in checkedListFamilias.CheckedItems)
+            {
+                usuario.GetFamilias().Add(f);
+            }
+
 
             for (int i = 0; i < dataGridTelefonos.Rows.Count; i++)
             {

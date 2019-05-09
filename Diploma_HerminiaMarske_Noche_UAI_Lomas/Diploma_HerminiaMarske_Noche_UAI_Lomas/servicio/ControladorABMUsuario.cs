@@ -11,12 +11,58 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
 {
     class ControladorABMUsuario
     {
+        //TODO 
+        //hacer el control de encriptacion para que pueda encriptar y desencriptar el nombre de usuario
+
         private const string USER_CREATED_EXISTING_PERSON = "USER_CREATED_EXISTING_PERSON";
         private const string MISSING_DATA = "MISSING_DATA";
         private const string USER_EXISTS = "USER_EXISTS";
         private const string USER_CREATED_PERSON_CREATED = "USER_CREATED_PERSON_CREATED";
         private const string PERSON_HAS_USER = "PERSON_HAS_USER";
         private const string MISSING_INFO = "MISSING_INFO";
+
+        private static void crearUsuario(Usuario usuario, int persona, DataConnection.DataConnection dataQuery)
+        {
+            const string altaUsuario = "INSERT INTO Usuarios (usuario, clave, CII, habilitado, FK_Persona, respuesta, FK_Pregunta)" +
+                    " VALUES (@usuario, @clave, 0, 1, @fkPersona, @respuesta, @fkPregunta);" +
+                    " SELECT SCOPE_IDENTITY();";
+            const string insertarPatentes = "INSERT INTO Usuario_Patente (patenteFK, usuarioFK, negado) VALUES {0}";
+            const string insertarFamilia = "INSERT INTO Usuario_Familia (familiaFK, usuarioFK) VALUES {0}";
+
+            SqlParameter[] pms = new SqlParameter[5];
+            pms[0] = new SqlParameter("@usuario", SqlDbType.VarChar);
+            pms[0].Value = usuario.GetNombreUsuario();
+            pms[1] = new SqlParameter("@clave", SqlDbType.VarChar);
+            pms[1].Value = ControladorEncriptacion.Hash(usuario.GetPassword());
+            pms[2] = new SqlParameter("@fkPersona", SqlDbType.Int);
+            pms[2].Value = persona;
+            pms[3] = new SqlParameter("@respuesta", SqlDbType.VarChar);
+            pms[3].Value = usuario.GetRespuesta();
+            pms[4] = new SqlParameter("@fkPregunta", SqlDbType.Int);
+            pms[4].Value = usuario.GetFkPregunta();
+
+            DataTable dt = dataQuery.sqlExecute(altaUsuario, pms);
+            int uCreado = Decimal.ToInt32((decimal)dt.Rows[0][0]);
+
+            string valuesPatentes = "";
+            foreach (Patente pat in usuario.GetPatentes())
+            {
+                valuesPatentes += (!string.IsNullOrEmpty(valuesPatentes) ? "," : "");
+                valuesPatentes += new StringBuilder("(").Append(pat.GetId() + ",")
+                    .Append(uCreado + ",").Append(pat.GetNegado() ? 1 : 0).Append(")").ToString();
+            }
+
+            string valuesFamilias = "";
+            foreach (Familia fam in usuario.GetFamilias())
+            {
+                valuesFamilias += (!string.IsNullOrEmpty(valuesFamilias) ? "," : "");
+                valuesFamilias += new StringBuilder("(").Append(fam.GetId() + ",")
+                    .Append(uCreado).Append(")").ToString();
+            }
+
+            dataQuery.sqlUpsert(string.Format(insertarPatentes, valuesPatentes), null);
+            dataQuery.sqlUpsert(string.Format(insertarFamilia, valuesFamilias), null);
+        }
 
         static public string alta(Usuario usuario, List<Domicilio> domicilios, List<Mail> mails, List<Telefono> telefonos)
         {
@@ -33,9 +79,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
             {
                 string personaExiste = "SELECT TOP 1 ID_Persona FROM Personas WHERE dni = @dniPersona;";
                 string usuarioExiste = "SELECT TOP 1 ID_Usuario FROM Usuarios WHERE {0};";
-                string crearUsuario = "INSERT INTO Usuarios (usuario, clave, CII, habilitado, FK_Persona, respuesta, FK_Pregunta)" +
-                    " VALUES (@usuario, @clave, 0, 1, @fkPersona, @respuesta, @fkPregunta);";
-                string crearPersona = "INSERT INTO Personas (dni, nombre, apellido, sexo, fechaNacimiento)" +
+                string altaPersona = "INSERT INTO Personas (dni, nombre, apellido, sexo, fechaNacimiento)" +
                     " VALUES (@dni, @nombre, @apellido, @sexo, @fechaNacimiento);" +
                     " SELECT SCOPE_IDENTITY();";
                 string crearDomicilios = "INSERT INTO Domicilio(calle,numero,piso,dpto, comentarios, codPostal,tipoDomicilio, FK_Localidad, FK_Persona) " +
@@ -79,19 +123,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
                     }
                     else
                     {
-                        pms = new SqlParameter[5];
-                        pms[0] = new SqlParameter("@usuario", SqlDbType.VarChar);
-                        pms[0].Value = usuario.GetIdUsuario();
-                        pms[1] = new SqlParameter("@clave", SqlDbType.VarChar);
-                        pms[1].Value = ControladorEncriptacion.Hash(usuario.GetPassword());
-                        pms[2] = new SqlParameter("@fkPersona", SqlDbType.Int);
-                        pms[2].Value = pExiste;
-                        pms[3] = new SqlParameter("@respuesta", SqlDbType.VarChar);
-                        pms[3].Value = usuario.GetRespuesta();
-                        pms[4] = new SqlParameter("@fkPregunta", SqlDbType.Int);
-                        pms[4].Value = usuario.GetFkPregunta();
-
-                        dataQuery.sqlUpsert(crearUsuario, pms);
+                        crearUsuario(usuario, pExiste, dataQuery);
 
                         return USER_CREATED_EXISTING_PERSON;
                     }
@@ -111,7 +143,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
                     pms[4] = new SqlParameter("@fechaNacimiento", SqlDbType.Date);
                     pms[4].Value = p.GetFechaNacimiento();
 
-                    dt = dataQuery.sqlExecute(crearPersona, pms);
+                    dt = dataQuery.sqlExecute(altaPersona, pms);
                     int pCreada = Decimal.ToInt32((decimal)dt.Rows[0][0]);
 
                     string valuesDomicilios = "";
@@ -143,20 +175,8 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
                     dataQuery.sqlUpsert(string.Format(crearDomicilios, valuesDomicilios), null);
                     dataQuery.sqlUpsert(string.Format(crearMails, valuesMails), null);
                     dataQuery.sqlUpsert(string.Format(crearTelefonos, valuesTelefonos), null);
-    
-                    pms = new SqlParameter[5];
-                    pms[0] = new SqlParameter("@usuario", SqlDbType.VarChar);
-                    pms[0].Value = usuario.GetIdUsuario();
-                    pms[1] = new SqlParameter("@clave", SqlDbType.VarChar);
-                    pms[1].Value = ControladorEncriptacion.Hash(usuario.GetPassword());
-                    pms[2] = new SqlParameter("@fkPersona", SqlDbType.Int);
-                    pms[2].Value = pCreada;
-                    pms[3] = new SqlParameter("@respuesta", SqlDbType.VarChar);
-                    pms[3].Value = usuario.GetRespuesta();
-                    pms[4] = new SqlParameter("@fkPregunta", SqlDbType.Int);
-                    pms[4].Value = usuario.GetFkPregunta();
 
-                    dataQuery.sqlUpsert(crearUsuario, pms);
+                    crearUsuario(usuario, pCreada, dataQuery);
 
                     return USER_CREATED_PERSON_CREATED;
                 }
