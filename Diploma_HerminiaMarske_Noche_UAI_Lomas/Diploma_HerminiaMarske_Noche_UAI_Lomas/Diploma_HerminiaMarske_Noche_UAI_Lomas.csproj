@@ -58,6 +58,12 @@
       <DependentUpon>altaCliente.cs</DependentUpon>
     </Compile>
     <Compile Include="dataConnection\DataConnection.cs" />
+    <Compile Include="forms\altaFamilia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\altaFamilia.Designer.cs">
+      <DependentUpon>altaFamilia.cs</DependentUpon>
+    </Compile>
     <Compile Include="forms\altaUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,6 +114,9 @@
     <Compile Include="servicio\ControladorUsuario.cs" />
     <EmbeddedResource Include="forms\altaCliente.resx">
       <DependentUpon>altaCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\altaFamilia.resx">
+      <DependentUpon>altaFamilia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\altaUsuario.resx">
       <DependentUpon>altaUsuario.cs</DependentUpon>
