@@ -108,6 +108,7 @@
     <Compile Include="objetos\Usuario.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="servicio\controladorABMFamilia.cs" />
     <Compile Include="servicio\ControladorABMUsuario.cs" />
     <Compile Include="servicio\ControladorPermisos.cs" />
     <Compile Include="servicio\ControladorEncriptacion.cs" />

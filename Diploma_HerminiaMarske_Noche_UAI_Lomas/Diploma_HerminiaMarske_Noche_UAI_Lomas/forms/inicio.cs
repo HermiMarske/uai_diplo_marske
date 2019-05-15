@@ -17,6 +17,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
 
         altaCliente formAltaCliente = new altaCliente();
         altaUsuario formAltaUsuario = new altaUsuario();
+        altaFamilia formFamilias = new altaFamilia();
         modificarCliente formModifCliente = new modificarCliente();
 
         DataConnection.DataConnection dataConnection = new DataConnection.DataConnection();
@@ -198,6 +199,12 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
                     listarClientes();
                 }
             }
+        }
+
+        private void familiasYPermisosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            formFamilias = new altaFamilia();
+            formFamilias.Show();
         }
     }
 }
