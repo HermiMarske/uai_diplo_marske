@@ -40,6 +40,7 @@
             this.listboxFam = new System.Windows.Forms.ListBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnSeleccionar = new System.Windows.Forms.Button();
             this.btnCerrar = new System.Windows.Forms.Button();
             this.btnCrearFam = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
@@ -49,7 +50,16 @@
             this.label1 = new System.Windows.Forms.Label();
             this.checkedListPatentes = new System.Windows.Forms.CheckedListBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.btnSeleccionar = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.txtNombreFamModif = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btnPasarModif = new System.Windows.Forms.Button();
+            this.btnSalirModif = new System.Windows.Forms.Button();
+            this.btnModificar = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.listModifOtorgadas = new System.Windows.Forms.ListBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.checkedDisponibles = new System.Windows.Forms.CheckedListBox();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -57,6 +67,8 @@
             this.groupFams.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -203,6 +215,17 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Crear Familia";
             // 
+            // btnSeleccionar
+            // 
+            this.btnSeleccionar.Location = new System.Drawing.Point(9, 538);
+            this.btnSeleccionar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSeleccionar.Name = "btnSeleccionar";
+            this.btnSeleccionar.Size = new System.Drawing.Size(374, 38);
+            this.btnSeleccionar.TabIndex = 8;
+            this.btnSeleccionar.Text = "Pasar seleccionados a Otorgados >>";
+            this.btnSeleccionar.UseVisualStyleBackColor = true;
+            this.btnSeleccionar.Click += new System.EventHandler(this.btnSeleccionar_Click);
+            // 
             // btnCerrar
             // 
             this.btnCerrar.Location = new System.Drawing.Point(411, 586);
@@ -280,6 +303,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.groupBox3);
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
             this.tabPage3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage3.Name = "tabPage3";
@@ -288,16 +312,109 @@
             this.tabPage3.Text = "Modificar";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // btnSeleccionar
+            // groupBox3
             // 
-            this.btnSeleccionar.Location = new System.Drawing.Point(9, 538);
-            this.btnSeleccionar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnSeleccionar.Name = "btnSeleccionar";
-            this.btnSeleccionar.Size = new System.Drawing.Size(374, 38);
-            this.btnSeleccionar.TabIndex = 8;
-            this.btnSeleccionar.Text = "Pasar seleccionados a Otorgados >>";
-            this.btnSeleccionar.UseVisualStyleBackColor = true;
-            this.btnSeleccionar.Click += new System.EventHandler(this.btnSeleccionar_Click);
+            this.groupBox3.Controls.Add(this.btnPasarModif);
+            this.groupBox3.Controls.Add(this.btnSalirModif);
+            this.groupBox3.Controls.Add(this.btnModificar);
+            this.groupBox3.Controls.Add(this.label5);
+            this.groupBox3.Controls.Add(this.listModifOtorgadas);
+            this.groupBox3.Controls.Add(this.label6);
+            this.groupBox3.Controls.Add(this.checkedDisponibles);
+            this.groupBox3.Controls.Add(this.txtNombreFamModif);
+            this.groupBox3.Controls.Add(this.label4);
+            this.groupBox3.Location = new System.Drawing.Point(3, 3);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(792, 629);
+            this.groupBox3.TabIndex = 0;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Modificar Familia";
+            // 
+            // txtNombreFamModif
+            // 
+            this.txtNombreFamModif.Location = new System.Drawing.Point(145, 32);
+            this.txtNombreFamModif.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtNombreFamModif.Name = "txtNombreFamModif";
+            this.txtNombreFamModif.Size = new System.Drawing.Size(641, 22);
+            this.txtNombreFamModif.TabIndex = 4;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(5, 35);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(126, 17);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Nombre de Familia";
+            // 
+            // btnPasarModif
+            // 
+            this.btnPasarModif.Location = new System.Drawing.Point(8, 536);
+            this.btnPasarModif.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnPasarModif.Name = "btnPasarModif";
+            this.btnPasarModif.Size = new System.Drawing.Size(374, 38);
+            this.btnPasarModif.TabIndex = 15;
+            this.btnPasarModif.Text = "Pasar seleccionados a Otorgados >>";
+            this.btnPasarModif.UseVisualStyleBackColor = true;
+            this.btnPasarModif.Click += new System.EventHandler(this.btnPasarModif_Click);
+            // 
+            // btnSalirModif
+            // 
+            this.btnSalirModif.Location = new System.Drawing.Point(410, 584);
+            this.btnSalirModif.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSalirModif.Name = "btnSalirModif";
+            this.btnSalirModif.Size = new System.Drawing.Size(374, 38);
+            this.btnSalirModif.TabIndex = 14;
+            this.btnSalirModif.Text = "Salir";
+            this.btnSalirModif.UseVisualStyleBackColor = true;
+            // 
+            // btnModificar
+            // 
+            this.btnModificar.Location = new System.Drawing.Point(8, 584);
+            this.btnModificar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.Size = new System.Drawing.Size(374, 38);
+            this.btnModificar.TabIndex = 13;
+            this.btnModificar.Text = "Modificar";
+            this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(407, 71);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(132, 17);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "Patentes otorgadas";
+            // 
+            // listModifOtorgadas
+            // 
+            this.listModifOtorgadas.FormattingEnabled = true;
+            this.listModifOtorgadas.ItemHeight = 16;
+            this.listModifOtorgadas.Location = new System.Drawing.Point(410, 90);
+            this.listModifOtorgadas.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.listModifOtorgadas.Name = "listModifOtorgadas";
+            this.listModifOtorgadas.Size = new System.Drawing.Size(374, 484);
+            this.listModifOtorgadas.TabIndex = 11;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(4, 72);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(139, 17);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "Patentes disponibles";
+            // 
+            // checkedDisponibles
+            // 
+            this.checkedDisponibles.FormattingEnabled = true;
+            this.checkedDisponibles.Location = new System.Drawing.Point(8, 90);
+            this.checkedDisponibles.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.checkedDisponibles.Name = "checkedDisponibles";
+            this.checkedDisponibles.Size = new System.Drawing.Size(374, 429);
+            this.checkedDisponibles.TabIndex = 9;
             // 
             // altaFamilia
             // 
@@ -319,6 +436,9 @@
             this.tabPage2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -347,5 +467,15 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckedListBox checkedListPatentes;
         private System.Windows.Forms.Button btnSeleccionar;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button btnPasarModif;
+        private System.Windows.Forms.Button btnSalirModif;
+        private System.Windows.Forms.Button btnModificar;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ListBox listModifOtorgadas;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.CheckedListBox checkedDisponibles;
+        private System.Windows.Forms.TextBox txtNombreFamModif;
+        private System.Windows.Forms.Label label4;
     }
 }

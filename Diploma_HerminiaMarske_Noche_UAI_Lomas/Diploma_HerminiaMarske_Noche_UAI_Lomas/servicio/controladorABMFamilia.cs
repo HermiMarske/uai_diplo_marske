@@ -13,6 +13,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
     {
         private const string FAMILIA_CREADA = "FAMILIA_CREADA";
         private const string MISSING_DATA = "MISSING_DATA";
+        private const string FAMILIA_MODIFICADA = "FAMILIA_MODIFICADA";
 
 
         public static string altaFam(Familia familia)
@@ -51,6 +52,56 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
                 return FAMILIA_CREADA;
             }
 
+
+        }
+
+        public static string modificarFam(Familia familia)
+        {
+
+            DataConnection.DataConnection dataQuery = new DataConnection.DataConnection();
+
+            DataConnection.DataConnection dataQueryBP = new DataConnection.DataConnection();
+            if (string.IsNullOrEmpty(familia.GetDescripcion()))
+            {
+                return MISSING_DATA;
+            }
+            else
+            {
+                const string modifFam = "UPDATE Familia SET descripcion = @descNueva, dvh = @dvh WHERE idFamilia = @idFamilia";
+                const string borrarPat = "DELETE FROM Familia_Patente WHERE familiaFK = @idFamilia";
+                const string insertarFamPat = "INSERT INTO Familia_Patente (familiaFK, patenteFK, dvh) VALUES {0}";
+
+                SqlParameter[] pms = new SqlParameter[3];
+                pms[0] = new SqlParameter("@descNueva", SqlDbType.VarChar);
+                pms[0].Value = familia.GetDescripcion();
+                pms[1] = new SqlParameter("@dvh", SqlDbType.Int);
+                pms[1].Value = 1;
+                pms[2] = new SqlParameter("@idFamilia", SqlDbType.Int);
+                pms[2].Value = familia.GetId();
+
+                dataQuery.sqlUpsert(modifFam, pms);
+
+                SqlParameter[] pmsBP = new SqlParameter[1];
+                pmsBP[0] = new SqlParameter("@idFamilia", SqlDbType.Int);
+                pmsBP[0].Value = familia.GetId();
+
+                dataQuery.sqlUpsert(borrarPat, pmsBP);
+
+                string valuesPatentes = "";
+                foreach (Patente pat in familia.GetPatentes())
+                {
+                    valuesPatentes += (!string.IsNullOrEmpty(valuesPatentes) ? "," : "");
+                    valuesPatentes += new StringBuilder("(").Append(familia.GetId() + ",")
+                        .Append(pat.GetId() + ",").Append(123).Append(")").ToString();
+                }
+
+                dataQuery.sqlUpsert(string.Format(insertarFamPat, valuesPatentes), null);
+
+
+                return FAMILIA_MODIFICADA;
+
+
+            }
 
         }
     }

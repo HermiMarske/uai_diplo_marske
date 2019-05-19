@@ -18,7 +18,12 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
     {
         List<Patente> patentes = new List<Patente>();
         List<Patente> patentesSeleccionadas = new List<Patente>();
+        List<Patente> patentesSeleccionadasModif = new List<Patente>();
+
+        Familia familiaSeleccionada = new Familia();
+
         private const string FAMILIA_CREADA = "FAMILIA_CREADA";
+        private const string FAMILIA_MODIFICADA = "FAMILIA_MODIFICADA";
 
         public altaFamilia()
         {
@@ -62,31 +67,40 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
                 patentes.Add(patente);
             }
             checkedListPatentes.DataSource = patentes;
+            checkedDisponibles.DataSource = patentes;
+
+
         }
 
         private void listboxFam_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
-                List<Patente> patentes = new List<Patente>();
-                Familia familia = (Familia)listboxFam.SelectedItem;
-                DataConnection.DataConnection dataQuery = new DataConnection.DataConnection();
-                DataTable dt = new DataTable();
-                SqlParameter[] pmsPatentes = new SqlParameter[1];
-                pmsPatentes[0] = new SqlParameter("@idFamilia", SqlDbType.Int);
-                pmsPatentes[0].Value = familia.GetId();
-                dt = dataQuery.getList(SP.LISTAR_PATENTES, pmsPatentes);
-                foreach (DataRow dr in dt.Rows)
-                {
-                    Patente patente = new Patente((int)dr[0], (string)dr[1], familia.GetId());
-                    patentes.Add(patente);
-                }
-                listBoxPatXFam.DataSource = patentes;
-            
+
+            List<Patente> patentes = new List<Patente>();
+            Familia familia = (Familia)listboxFam.SelectedItem;
+            DataConnection.DataConnection dataQuery = new DataConnection.DataConnection();
+            DataTable dt = new DataTable();
+            SqlParameter[] pmsPatentes = new SqlParameter[1];
+            pmsPatentes[0] = new SqlParameter("@idFamilia", SqlDbType.Int);
+            pmsPatentes[0].Value = familia.GetId();
+            dt = dataQuery.getList(SP.LISTAR_PATENTES, pmsPatentes);
+            foreach (DataRow dr in dt.Rows)
+            {
+                Patente patente = new Patente((int)dr[0], (string)dr[1], familia.GetId());
+                patentes.Add(patente);
+            }
+            listBoxPatXFam.DataSource = patentes;
+
+
+            //OBTENER FAMILIA SELECCIONADA Y METERLA EN EL COSO DE MODIFICAR
+
+            familiaSeleccionada = (Familia)listboxFam.SelectedItem;
+            txtNombreFamModif.Text = familiaSeleccionada.GetDescripcion();
+
         }
 
         private void btnSeleccionar_Click(object sender, EventArgs e)
         {
-            foreach(Patente p in checkedListPatentes.CheckedItems)
+            foreach (Patente p in checkedListPatentes.CheckedItems)
             {
                 patentesSeleccionadas.Add(p);
             }
@@ -96,14 +110,18 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
         private void btnCrearFam_Click(object sender, EventArgs e)
         {
             string nombreFamilia = txtNombreFam.Text;
-            if(string.IsNullOrEmpty(nombreFamilia) || nombreFamilia.Length < 5 )
+            if (string.IsNullOrEmpty(nombreFamilia) || nombreFamilia.Length < 5)
             {
                 MessageBox.Show("Nombre de Familia no valido");
                 txtNombreFam.Focus();
-            } else if(listPatOtorgadas.Items.Count == 0)
+                txtNombreFam.Focus();
+                txtNombreFam.Focus();
+            }
+            else if (listPatOtorgadas.Items.Count == 0)
             {
                 MessageBox.Show("Lista de patentes vacia, seleccione patentes primero");
-            } else
+            }
+            else
             {
                 List<Patente> patentesOtorgadas = new List<Patente>();
                 foreach (Patente p in listPatOtorgadas.Items)
@@ -123,8 +141,55 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
                 }
 
             }
+
+
+        }
+
+        private void btnPasarModif_Click(object sender, EventArgs e)
+        {
+            foreach (Patente p in checkedDisponibles.CheckedItems)
+            {
+                patentesSeleccionadasModif.Add(p);
+            }
+            listModifOtorgadas.DataSource = patentesSeleccionadasModif;
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            string nombreFamilia = txtNombreFamModif.Text;
             
-              
+            familiaSeleccionada.SetDescripcion(nombreFamilia);
+
+
+            if (string.IsNullOrEmpty(nombreFamilia) || nombreFamilia.Length < 5)
+            {
+                MessageBox.Show("Nombre de Familia no valido");
+                txtNombreFamModif.Focus();
+            }
+            else if (listModifOtorgadas.Items.Count == 0)
+            {
+                MessageBox.Show("Lista de patentes vacia, seleccione patentes primero");
+            }
+            else
+            {
+                List<Patente> patentesOtorgadas = new List<Patente>();
+                foreach (Patente p in listModifOtorgadas.Items)
+                {
+                    patentesOtorgadas.Add(p);
+                }
+
+
+
+                familiaSeleccionada.SetPatentes(patentesOtorgadas);
+
+                string respuesta = controladorABMFamilia.modificarFam(familiaSeleccionada);
+
+                if (respuesta.Equals(FAMILIA_MODIFICADA))
+                {
+                    MessageBox.Show("Familia modificada exitosamente.");
+                }
+
+            }
         }
     }
 }
