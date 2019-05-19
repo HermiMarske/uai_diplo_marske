@@ -133,7 +133,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
                 familia.SetDescripcion(nombreFamilia);
                 familia.SetPatentes(patentesOtorgadas);
 
-                string respuesta = controladorABMFamilia.altaFam(familia);
+                string respuesta = ControladorABMFamilia.altaFam(familia);
 
                 if (respuesta.Equals(FAMILIA_CREADA))
                 {
@@ -182,7 +182,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
 
                 familiaSeleccionada.SetPatentes(patentesOtorgadas);
 
-                string respuesta = controladorABMFamilia.modificarFam(familiaSeleccionada);
+                string respuesta = ControladorABMFamilia.modificarFam(familiaSeleccionada);
 
                 if (respuesta.Equals(FAMILIA_MODIFICADA))
                 {

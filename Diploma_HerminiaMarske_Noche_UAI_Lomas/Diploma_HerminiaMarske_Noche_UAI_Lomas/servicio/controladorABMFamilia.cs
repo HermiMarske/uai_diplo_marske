@@ -9,7 +9,7 @@ using Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos;
 
 namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
 {
-    class controladorABMFamilia
+    class ControladorABMFamilia
     {
         private const string FAMILIA_CREADA = "FAMILIA_CREADA";
         private const string MISSING_DATA = "MISSING_DATA";
