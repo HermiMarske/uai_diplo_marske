@@ -43,6 +43,7 @@
             this.provinciasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.localidadesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.seguridadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.familiasYPermisosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.opcionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -74,7 +75,8 @@
             this.usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.familiasYPermisosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+            this.bitacoraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabUsuarios.SuspendLayout();
@@ -117,19 +119,19 @@
             // actividadesToolStripMenuItem
             // 
             this.actividadesToolStripMenuItem.Name = "actividadesToolStripMenuItem";
-            this.actividadesToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.actividadesToolStripMenuItem.Size = new System.Drawing.Size(161, 26);
             this.actividadesToolStripMenuItem.Text = "Actividades";
             // 
             // pilotosToolStripMenuItem
             // 
             this.pilotosToolStripMenuItem.Name = "pilotosToolStripMenuItem";
-            this.pilotosToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.pilotosToolStripMenuItem.Size = new System.Drawing.Size(161, 26);
             this.pilotosToolStripMenuItem.Text = "Pilotos";
             // 
             // actividadesToolStripMenuItem1
             // 
             this.actividadesToolStripMenuItem1.Name = "actividadesToolStripMenuItem1";
-            this.actividadesToolStripMenuItem1.Size = new System.Drawing.Size(216, 26);
+            this.actividadesToolStripMenuItem1.Size = new System.Drawing.Size(161, 26);
             this.actividadesToolStripMenuItem1.Text = "Aviones";
             this.actividadesToolStripMenuItem1.Click += new System.EventHandler(this.actividadesToolStripMenuItem1_Click);
             // 
@@ -140,7 +142,7 @@
             this.toolStripMenuItem1,
             this.busquedaToolStripMenuItem});
             this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
-            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(161, 26);
             this.clientesToolStripMenuItem.Text = "Clientes";
             this.clientesToolStripMenuItem.Click += new System.EventHandler(this.clientesToolStripMenuItem_Click);
             // 
@@ -170,7 +172,7 @@
             this.provinciasToolStripMenuItem,
             this.localidadesToolStripMenuItem});
             this.regionesToolStripMenuItem.Name = "regionesToolStripMenuItem";
-            this.regionesToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.regionesToolStripMenuItem.Size = new System.Drawing.Size(161, 26);
             this.regionesToolStripMenuItem.Text = "Regiones";
             // 
             // gestionDePaisesToolStripMenuItem
@@ -194,10 +196,19 @@
             // seguridadToolStripMenuItem
             // 
             this.seguridadToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.familiasYPermisosToolStripMenuItem});
+            this.familiasYPermisosToolStripMenuItem,
+            this.toolStripMenuItem2,
+            this.bitacoraToolStripMenuItem});
             this.seguridadToolStripMenuItem.Name = "seguridadToolStripMenuItem";
             this.seguridadToolStripMenuItem.Size = new System.Drawing.Size(89, 24);
             this.seguridadToolStripMenuItem.Text = "Seguridad";
+            // 
+            // familiasYPermisosToolStripMenuItem
+            // 
+            this.familiasYPermisosToolStripMenuItem.Name = "familiasYPermisosToolStripMenuItem";
+            this.familiasYPermisosToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.familiasYPermisosToolStripMenuItem.Text = "Familias y Permisos";
+            this.familiasYPermisosToolStripMenuItem.Click += new System.EventHandler(this.familiasYPermisosToolStripMenuItem_Click);
             // 
             // opcionesToolStripMenuItem
             // 
@@ -241,7 +252,7 @@
             this.tabPage1.Controls.Add(this.tableLayoutPanelListaClientes);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(1297, 662);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Clientes";
@@ -393,8 +404,8 @@
             this.tabPage2.Controls.Add(this.tableLayoutPanel1);
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPage2.Size = new System.Drawing.Size(1297, 668);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1297, 662);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Usuarios";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -419,12 +430,12 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 73F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1291, 662);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1291, 656);
             this.tableLayoutPanel1.TabIndex = 4;
             // 
             // btnDetalleUsuario
             // 
-            this.btnDetalleUsuario.Location = new System.Drawing.Point(325, 592);
+            this.btnDetalleUsuario.Location = new System.Drawing.Point(325, 586);
             this.btnDetalleUsuario.Name = "btnDetalleUsuario";
             this.btnDetalleUsuario.Size = new System.Drawing.Size(194, 40);
             this.btnDetalleUsuario.TabIndex = 8;
@@ -433,7 +444,7 @@
             // 
             // btnEliminarUsuario
             // 
-            this.btnEliminarUsuario.Location = new System.Drawing.Point(647, 592);
+            this.btnEliminarUsuario.Location = new System.Drawing.Point(647, 586);
             this.btnEliminarUsuario.Name = "btnEliminarUsuario";
             this.btnEliminarUsuario.Size = new System.Drawing.Size(194, 40);
             this.btnEliminarUsuario.TabIndex = 7;
@@ -443,7 +454,7 @@
             // 
             // btnModificarUsuario
             // 
-            this.btnModificarUsuario.Location = new System.Drawing.Point(969, 592);
+            this.btnModificarUsuario.Location = new System.Drawing.Point(969, 586);
             this.btnModificarUsuario.Name = "btnModificarUsuario";
             this.btnModificarUsuario.Size = new System.Drawing.Size(194, 40);
             this.btnModificarUsuario.TabIndex = 6;
@@ -452,7 +463,7 @@
             // 
             // btnAltaUsuario
             // 
-            this.btnAltaUsuario.Location = new System.Drawing.Point(3, 592);
+            this.btnAltaUsuario.Location = new System.Drawing.Point(3, 586);
             this.btnAltaUsuario.Name = "btnAltaUsuario";
             this.btnAltaUsuario.Size = new System.Drawing.Size(194, 40);
             this.btnAltaUsuario.TabIndex = 5;
@@ -467,7 +478,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(3, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1285, 583);
+            this.groupBox2.Size = new System.Drawing.Size(1285, 577);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Listado de Usuarios";
@@ -488,7 +499,7 @@
             this.datagridUsuarios.Name = "datagridUsuarios";
             this.datagridUsuarios.ReadOnly = true;
             this.datagridUsuarios.RowTemplate.Height = 24;
-            this.datagridUsuarios.Size = new System.Drawing.Size(1279, 562);
+            this.datagridUsuarios.Size = new System.Drawing.Size(1279, 556);
             this.datagridUsuarios.TabIndex = 0;
             // 
             // dataGridViewTextBoxColumn1
@@ -516,12 +527,16 @@
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
             // 
-            // familiasYPermisosToolStripMenuItem
+            // toolStripMenuItem2
             // 
-            this.familiasYPermisosToolStripMenuItem.Name = "familiasYPermisosToolStripMenuItem";
-            this.familiasYPermisosToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
-            this.familiasYPermisosToolStripMenuItem.Text = "Familias y Permisos";
-            this.familiasYPermisosToolStripMenuItem.Click += new System.EventHandler(this.familiasYPermisosToolStripMenuItem_Click);
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(213, 6);
+            // 
+            // bitacoraToolStripMenuItem
+            // 
+            this.bitacoraToolStripMenuItem.Name = "bitacoraToolStripMenuItem";
+            this.bitacoraToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.bitacoraToolStripMenuItem.Text = "Bitacora";
             // 
             // formInicio
             // 
@@ -608,6 +623,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn apellido;
         private System.Windows.Forms.DataGridViewTextBoxColumn dni;
         private System.Windows.Forms.ToolStripMenuItem familiasYPermisosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem bitacoraToolStripMenuItem;
     }
 }
 

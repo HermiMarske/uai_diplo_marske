@@ -70,6 +70,12 @@
     <Compile Include="forms\altaUsuario.Designer.cs">
       <DependentUpon>altaUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="forms\bitacora.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\bitacora.Designer.cs">
+      <DependentUpon>bitacora.cs</DependentUpon>
+    </Compile>
     <Compile Include="forms\inicio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,6 +129,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="forms\altaUsuario.resx">
       <DependentUpon>altaUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\bitacora.resx">
+      <DependentUpon>bitacora.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\inicio.resx">
       <DependentUpon>inicio.cs</DependentUpon>
