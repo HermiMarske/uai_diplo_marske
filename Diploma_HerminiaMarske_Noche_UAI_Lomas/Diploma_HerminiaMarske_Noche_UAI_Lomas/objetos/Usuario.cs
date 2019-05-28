@@ -49,6 +49,12 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos
             this.persona = persona;
         }
 
+        public Usuario(int id, string usuario)
+        {
+            this.idUsuario = id;
+            this.nombreUsuario = usuario;
+        }
+
         public Usuario(int idUsuario, string nombreUsuario, string password, int cii, bool habilitado, string respuesta, int fkPregunta, Persona persona)
         {
             this.idUsuario = idUsuario;

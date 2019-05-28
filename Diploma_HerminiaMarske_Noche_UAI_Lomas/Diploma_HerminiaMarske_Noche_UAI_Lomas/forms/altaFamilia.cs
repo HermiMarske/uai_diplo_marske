@@ -191,5 +191,10 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
 
             }
         }
+
+        private void btnModificarFam_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

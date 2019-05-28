@@ -17,6 +17,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
 
         altaCliente formAltaCliente = new altaCliente();
         altaUsuario formAltaUsuario = new altaUsuario();
+        bitacora formBitacora = new bitacora();
         altaFamilia formFamilias = new altaFamilia();
         modificarCliente formModifCliente = new modificarCliente();
 
@@ -205,6 +206,13 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
         {
             formFamilias = new altaFamilia();
             formFamilias.Show();
+        }
+
+        private void bitacoraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            formBitacora = new bitacora();
+            formBitacora.Show();
+
         }
     }
 }
