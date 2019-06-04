@@ -51,6 +51,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="dataConnection\ConstantesData.cs" />
+    <Compile Include="forms\altaActividad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\altaActividad.Designer.cs">
+      <DependentUpon>altaActividad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\altaAvion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\altaAvion.Designer.cs">
+      <DependentUpon>altaAvion.cs</DependentUpon>
+    </Compile>
     <Compile Include="forms\altaCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -63,6 +75,12 @@
     </Compile>
     <Compile Include="forms\altaFamilia.Designer.cs">
       <DependentUpon>altaFamilia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\altaPilotos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\altaPilotos.Designer.cs">
+      <DependentUpon>altaPilotos.cs</DependentUpon>
     </Compile>
     <Compile Include="forms\altaUsuario.cs">
       <SubType>Form</SubType>
@@ -87,6 +105,24 @@
     </Compile>
     <Compile Include="forms\logIn.Designer.cs">
       <DependentUpon>logIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\modificacionPiloto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\modificacionPiloto.Designer.cs">
+      <DependentUpon>modificacionPiloto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\modificarActividad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\modificarActividad.Designer.cs">
+      <DependentUpon>modificarActividad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\modificarAvion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\modificarAvion.Designer.cs">
+      <DependentUpon>modificarAvion.cs</DependentUpon>
     </Compile>
     <Compile Include="forms\modificarCliente.cs">
       <SubType>Form</SubType>
