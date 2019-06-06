@@ -30,7 +30,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
             pms[3] = new SqlParameter("@idUsuario", SqlDbType.Int);
             pms[3].Value = row.GetUsuario().GetIdUsuario();
             pms[4] = new SqlParameter("@dvh", SqlDbType.Int);
-            pms[4].Value = 123;
+            pms[4].Value = ControladorDigitosVerificadores.calcularDVV(row.GetDescripcion());
 
             dataQuery.sqlUpsert(altaRegistro, pms);
 

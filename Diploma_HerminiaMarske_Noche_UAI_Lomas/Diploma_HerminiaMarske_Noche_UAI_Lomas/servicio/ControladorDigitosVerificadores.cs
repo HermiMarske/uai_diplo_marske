@@ -16,14 +16,15 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
 
             char[] entradaParaProcesar = entrada.ToCharArray();
 
-            int[] entradaArray = {0};
+            int[] entradaArray = new int[entrada.Length];
 
-            for(int i=0; i<=entrada.Length; i++)
+            for(int i=0; i<=entrada.Length-1; i++)
             {
-                entradaArray[i] = Convert.ToInt32(new string(entradaParaProcesar[i], 1)) * i;
+                int val = Convert.ToInt32((entradaParaProcesar[i]));
+                entradaArray[i] = val * i;
             }
 
-            for(int i=0; i<=entradaArray.Length; i++)
+            for(int i=0; i<=entradaArray.Length-1; i++)
             { 
                 salida += entradaArray[i];
             }
