@@ -35,7 +35,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
             pms[0] = new SqlParameter("@descripcion", SqlDbType.VarChar);
             pms[0].Value = familia.GetDescripcion();
             pms[1] = new SqlParameter("@dvh", SqlDbType.Int);
-            pms[1].Value = ControladorDigitosVerificadores.calcularDVV(familia.GetDescripcion());
+            pms[1].Value = ControladorDigitosVerificadores.calcularDVH(familia.GetDescripcion());
 
             DataTable dt = dataQuery.sqlExecute(altaFam, pms);
             int familiaCreada = Decimal.ToInt32((decimal)dt.Rows[0][0]);
@@ -75,7 +75,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
                 pms[0] = new SqlParameter("@descNueva", SqlDbType.VarChar);
                 pms[0].Value = familia.GetDescripcion();
                 pms[1] = new SqlParameter("@dvh", SqlDbType.Int);
-                pms[1].Value = ControladorDigitosVerificadores.calcularDVV(familia.GetDescripcion());
+                pms[1].Value = ControladorDigitosVerificadores.calcularDVH(familia.GetDescripcion());
                 pms[2] = new SqlParameter("@idFamilia", SqlDbType.Int);
                 pms[2].Value = familia.GetId();
 
@@ -91,7 +91,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
                 foreach (Patente pat in familia.GetPatentes())
                 {
                     string famPatDVV = pat.GetId().ToString() + familia.GetId().ToString();
-                    int DVV = ControladorDigitosVerificadores.calcularDVV(famPatDVV);
+                    int DVV = ControladorDigitosVerificadores.calcularDVH(famPatDVV);
 
                     valuesPatentes += (!string.IsNullOrEmpty(valuesPatentes) ? "," : "");
                     valuesPatentes += new StringBuilder("(").Append(familia.GetId() + ",")

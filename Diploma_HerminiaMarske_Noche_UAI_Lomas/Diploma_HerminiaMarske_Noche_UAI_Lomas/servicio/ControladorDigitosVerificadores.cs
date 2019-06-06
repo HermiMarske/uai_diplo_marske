@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,7 +10,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
 {
     class ControladorDigitosVerificadores
     {
-        public static int calcularDVV(String entrada)
+        public static int calcularDVH(String entrada)
         {
             int salida = 0;
 
@@ -17,6 +19,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
             char[] entradaParaProcesar = entrada.ToCharArray();
 
             int[] entradaArray = new int[entrada.Length];
+
 
             for(int i=0; i<=entrada.Length-1; i++)
             {
@@ -29,8 +32,15 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
 
 
 
-        public static void calcularDVH()
+        public static void calcularDVV(string tableName)
         {
+            DataConnection.DataConnection dataQuery = new DataConnection.DataConnection();
+            SqlParameter[] pms = new SqlParameter[2];
+            string calculoDVV = "SELECT SUM(dvh) FROM " + tableName;
+
+            string insertDVV = "UPDATE DDVV SET dvv = (SELECT SUM(DVH) FROM " + tableName + ") WHERE tabla = '" + tableName + "'";
+
+            dataQuery.sqlUpsert(insertDVV, null);
 
         }
 

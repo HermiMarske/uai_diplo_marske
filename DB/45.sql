@@ -1,0 +1,30 @@
+USE [UAI_GESTION_AGUILA]
+GO
+
+/****** Object:  Table [dbo].[DDVV]    Script Date: 06/06/2019 0:56:59 ******/
+DROP TABLE [dbo].[DVV]
+GO
+
+USE [UAI_GESTION_AGUILA]
+GO
+
+/****** Object:  Table [dbo].[DDVV]    Script Date: 06/06/2019 0:57:44 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[DDVV](
+	[ID_DVV] [int] IDENTITY(1,1) NOT NULL,
+	[tabla] [varchar](50) NULL,
+	[dvv] [bigint] NULL,
+ CONSTRAINT [PK_DDVV] PRIMARY KEY CLUSTERED 
+(
+	[ID_DVV] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
+
