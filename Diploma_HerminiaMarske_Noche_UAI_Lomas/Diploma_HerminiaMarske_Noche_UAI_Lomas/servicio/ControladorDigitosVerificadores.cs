@@ -21,14 +21,9 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
             for(int i=0; i<=entrada.Length-1; i++)
             {
                 int val = Convert.ToInt32((entradaParaProcesar[i]));
-                entradaArray[i] = val * i;
-            }
-
-            for(int i=0; i<=entradaArray.Length-1; i++)
-            { 
+                entradaArray[i] = val * (i+1);
                 salida += entradaArray[i];
             }
-
             return salida;
         }
 
