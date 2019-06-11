@@ -1,4 +1,5 @@
 ﻿using Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos;
+using Diploma_HerminiaMarske_Noche_UAI_Lomas.Constantes;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -9,12 +10,13 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
     class ControladorUsuario
     {
 
-        static public Persona logIn(string usuario, string clave)
+        static public Usuario logIn(string usuario, string clave)
         {
+            string usuarioEncriptado = ControladorEncriptacion.Encrypt(usuario);
             string sql = "SELECT ID_Usuario, CII, habilitado, clave FROM Usuarios WHERE usuario = @usuario";
             SqlParameter[] pms = new SqlParameter[1];
             pms[0] = new SqlParameter("@usuario", SqlDbType.VarChar);
-            pms[0].Value = usuario;
+            pms[0].Value = usuarioEncriptado;
 
             DataConnection.DataConnection dataQuery = new DataConnection.DataConnection();
             DataTable dt = new DataTable();
@@ -23,10 +25,17 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
 
             if (result == null || (int)result[0] == 0)
             {
+                BitacoraRow bitacora = new BitacoraRow(DateTime.UtcNow, ConstantesBitacora.CRITICIDAD_MEDIA, ConstantesBitacora.INTENTO_INGRESO_DESCONOCIDO, null);
+                ControladorBitacora.grabarRegistro(bitacora);
                 throw new Exception("AUTH_USR_NOT_EXISTS");
+
             }
             else if ((int)result[1] == 3 || !(bool)result[2])
             {
+                Usuario usuarioBitacora = new Usuario(0, usuario);
+
+                BitacoraRow bitacora = new BitacoraRow(DateTime.UtcNow, ConstantesBitacora.CRITICIDAD_MEDIA, ConstantesBitacora.INTENTO_INGRESO_USUARIO_BLOQUEADO, usuarioBitacora);
+                ControladorBitacora.grabarRegistro(bitacora);
                 throw new Exception("USR_BLOCKED");
             }
             else
@@ -36,14 +45,17 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
                 {
                     bool coincide = ControladorEncriptacion.VerificarPass(clave, claveDb);
 
-                    pms = new SqlParameter[1];
-                    pms[0] = new SqlParameter("@usuario", SqlDbType.VarChar);
-                    pms[0].Value = usuario;
-
                     if (coincide)
                     {
-                        string success = "UPDATE Usuarios SET habilitado = 1, CII = 0 WHERE usuario = @usuario; " +
-                            "SELECT p.ID_Persona, p.dni, p.nombre, p.apellido, p.sexo, p.fechaNacimiento FROM Usuarios u, Personas p WHERE p.ID_Persona = u.FK_Persona AND u.usuario = @usuario;";
+                        pms = new SqlParameter[2];
+                        pms[0] = new SqlParameter("@usuario", SqlDbType.VarChar);
+                        pms[0].Value = usuarioEncriptado;
+                        pms[1] = new SqlParameter("@dvh", SqlDbType.Int);
+                        pms[1].Value = ControladorDigitosVerificadores.calcularDVH(usuarioEncriptado + "0");
+
+                        string success = "UPDATE Usuarios SET habilitado = 1, CII = 0, DVH = @dvh WHERE usuario = @usuario; " +
+                          //  "SELECT p.ID_Persona, p.dni, p.nombre, p.apellido, p.sexo, p.fechaNacimiento FROM Usuarios u, Personas p WHERE p.ID_Persona = u.FK_Persona AND u.usuario = @usuario;";
+                          "SELECT u.ID_Usuario, u.usuario FROM Usuarios u WHERE u.usuario = @usuario";
                         string perms = "SELECT p.idPatente, p.codigo FROM Patente p " +
                             "LEFT JOIN Usuario_Patente up ON up.patenteFK = p.idPatente " +
                             "LEFT JOIN Familia_Patente fp ON fp.patenteFK = p.idPatente " +
@@ -55,19 +67,46 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
 
                         pms = new SqlParameter[1];
                         pms[0] = new SqlParameter("@usuario", SqlDbType.VarChar);
-                        pms[0].Value = usuario;
+                        pms[0].Value = usuarioEncriptado;
                         dt = dataQuery.sqlExecute(perms, pms);
                         DataRowCollection usrPerms = dt.Rows;
                         List<Patente> patentes = new List<Patente>();
                         foreach (DataRow row in usrPerms) {
                             patentes.Add(new Patente((int)row[0], row[1].ToString()));
                         }
-                        return new Persona((int)dr[0], (string)dr[1], (string)dr[2], (string)dr[3], (string)dr[4], (DateTime)dr[5], patentes);
+
+                        // return new Persona((int)dr[0], (string)dr[1], (string)dr[2], (string)dr[3], (string)dr[4], (DateTime)dr[5], patentes);
+                        string usuarioDesencriptado = ControladorEncriptacion.Decrypt((string)dr[1]);
+                        return new Usuario((int)dr[0], usuarioDesencriptado, patentes);
                     }
                     else
                     {
+                        pms = new SqlParameter[1];
+                        pms[0] = new SqlParameter("@usuario", SqlDbType.VarChar);
+                        pms[0].Value = usuarioEncriptado;
+
                         string failed = "UPDATE Usuarios SET CII = CII + 1, habilitado = CAST(CASE WHEN CII + 1 = 3 THEN 0 ELSE 1 END AS bit) WHERE usuario = @usuario;";
                         dataQuery.sqlUpsert(failed, pms);
+
+                        pms = new SqlParameter[1];
+                        pms[0] = new SqlParameter("@usuario", SqlDbType.VarChar);
+                        pms[0].Value = usuarioEncriptado;
+                        string queryCII = "SELECT CII FROM Usuarios WHERE usuario = @usuario";
+
+                        DataTable dataTable = dataQuery.sqlExecute(queryCII, pms);
+                        int CII = (int)dataTable.Rows[0][0];
+
+                        string setDVH = "UPDATE Usuarios SET DVH = @dvh WHERE usuario = @usuario";
+
+                        SqlParameter[] pmsDVH = new SqlParameter[2];
+
+                        pmsDVH[0] = new SqlParameter("@dvh", SqlDbType.Int);
+                        pmsDVH[0].Value = ControladorDigitosVerificadores.calcularDVH(usuarioEncriptado + CII.ToString());
+                        pmsDVH[1] = new SqlParameter("@usuario", SqlDbType.VarChar);
+                        pmsDVH[1].Value = usuarioEncriptado;
+
+                        dataQuery.sqlUpsert(setDVH, pmsDVH);
+
                         throw new Exception("AUTH_USR_FAILED");
                     }
                 }

@@ -23,23 +23,27 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
 
         private static void crearUsuario(Usuario usuario, int persona, DataConnection.DataConnection dataQuery)
         {
-            const string altaUsuario = "INSERT INTO Usuarios (usuario, clave, CII, habilitado, FK_Persona, respuesta, FK_Pregunta)" +
-                    " VALUES (@usuario, @clave, 0, 1, @fkPersona, @respuesta, @fkPregunta);" +
+            const string altaUsuario = "INSERT INTO Usuarios (usuario, clave, CII, habilitado, DVH, FK_Persona, respuesta, FK_Pregunta)" +
+                    " VALUES (@usuario, @clave, 0, 1, @dvh, @fkPersona, @respuesta, @fkPregunta);" +
                     " SELECT SCOPE_IDENTITY();";
             const string insertarPatentes = "INSERT INTO Usuario_Patente (patenteFK, usuarioFK, negado) VALUES {0}";
             const string insertarFamilia = "INSERT INTO Usuario_Familia (familiaFK, usuarioFK) VALUES {0}";
 
-            SqlParameter[] pms = new SqlParameter[5];
+            string usuarioEncriptado = ControladorEncriptacion.Encrypt(usuario.GetNombreUsuario());
+
+            SqlParameter[] pms = new SqlParameter[6];
             pms[0] = new SqlParameter("@usuario", SqlDbType.VarChar);
-            pms[0].Value = usuario.GetNombreUsuario();
+            pms[0].Value = usuarioEncriptado;
             pms[1] = new SqlParameter("@clave", SqlDbType.VarChar);
             pms[1].Value = ControladorEncriptacion.Hash(usuario.GetPassword());
-            pms[2] = new SqlParameter("@fkPersona", SqlDbType.Int);
-            pms[2].Value = persona;
-            pms[3] = new SqlParameter("@respuesta", SqlDbType.VarChar);
-            pms[3].Value = usuario.GetRespuesta();
-            pms[4] = new SqlParameter("@fkPregunta", SqlDbType.Int);
-            pms[4].Value = usuario.GetFkPregunta();
+            pms[2] = new SqlParameter("@dvh", SqlDbType.Int);
+            pms[2].Value = ControladorDigitosVerificadores.calcularDVH(usuarioEncriptado + "0");
+            pms[3] = new SqlParameter("@fkPersona", SqlDbType.Int);
+            pms[3].Value = persona;
+            pms[4] = new SqlParameter("@respuesta", SqlDbType.VarChar);
+            pms[4].Value = usuario.GetRespuesta();
+            pms[5] = new SqlParameter("@fkPregunta", SqlDbType.Int);
+            pms[5].Value = usuario.GetFkPregunta();
 
             DataTable dt = dataQuery.sqlExecute(altaUsuario, pms);
             int uCreado = Decimal.ToInt32((decimal)dt.Rows[0][0]);

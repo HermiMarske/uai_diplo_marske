@@ -33,8 +33,8 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             {
                 try
                 {
-                    Persona persona = ControladorUsuario.logIn(user, clave);
-                    MessageBox.Show(string.Format("¡Bienvenido {0} {1}!", persona.GetNombre(), persona.GetApellido()));
+                    Usuario usuario = ControladorUsuario.logIn(user, clave);
+                    MessageBox.Show(string.Format("¡Bienvenido {0}!", usuario.GetNombreUsuario()));
                 } catch (Exception ex)
                 {
                     switch (ex.Message.ToString())

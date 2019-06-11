@@ -72,5 +72,14 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos
             this.descripcion = descripcion;
             this.usuario = usuario;
         }
+
+        public BitacoraRow(DateTime fecha, string criticidad, string descripcion, Usuario usuario)
+        {
+    
+            this.timeStamp = fecha;
+            this.criticidad = criticidad;
+            this.descripcion = descripcion;
+            this.usuario = usuario;
+        }
     }
 }

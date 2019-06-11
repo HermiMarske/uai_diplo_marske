@@ -18,7 +18,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
         public static void grabarRegistro(BitacoraRow row)
         {
             DataConnection.DataConnection dataQuery = new DataConnection.DataConnection();
-            const string altaRegistro = "INSERT INTO Bitacora (timestamp, criticidad, descripcion, FK_Usuario, dvh) values (@timestamp, @criticidad, @descripcion, @idUsuario, @dvh)";
+            const string altaRegistro = "INSERT INTO Bitacora (timestamp, criticidad, descripcion, FK_Usuario, DVH) values (@timestamp, @criticidad, @descripcion, @idUsuario, @dvh)";
 
             SqlParameter[] pms = new SqlParameter[5];
             pms[0] = new SqlParameter("@timestamp", SqlDbType.DateTime);
