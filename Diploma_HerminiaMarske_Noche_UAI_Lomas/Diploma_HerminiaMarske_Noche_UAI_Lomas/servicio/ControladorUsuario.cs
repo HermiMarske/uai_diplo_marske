@@ -25,16 +25,17 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
 
             if (result == null || (int)result[0] == 0)
             {
-                BitacoraRow bitacora = new BitacoraRow(DateTime.UtcNow, ConstantesBitacora.CRITICIDAD_MEDIA, ConstantesBitacora.INTENTO_INGRESO_DESCONOCIDO, null);
+                
+                BitacoraRow bitacora = new BitacoraRow(DateTime.UtcNow, ConstantesBitacora.CRITICIDAD_MEDIA, ConstantesBitacora.INTENTO_INGRESO_DESCONOCIDO, new Usuario());
                 ControladorBitacora.grabarRegistro(bitacora);
                 throw new Exception("AUTH_USR_NOT_EXISTS");
 
             }
             else if ((int)result[1] == 3 || !(bool)result[2])
             {
-                Usuario usuarioBitacora = new Usuario(0, usuario);
+                Usuario usuarioBitacora = new Usuario((int)result[0], usuario);
 
-                BitacoraRow bitacora = new BitacoraRow(DateTime.UtcNow, ConstantesBitacora.CRITICIDAD_MEDIA, ConstantesBitacora.INTENTO_INGRESO_USUARIO_BLOQUEADO, usuarioBitacora);
+                BitacoraRow bitacora = new BitacoraRow(DateTime.UtcNow, ConstantesBitacora.CRITICIDAD_ALTA, ConstantesBitacora.INTENTO_INGRESO_USUARIO_BLOQUEADO, usuarioBitacora);
                 ControladorBitacora.grabarRegistro(bitacora);
                 throw new Exception("USR_BLOCKED");
             }
@@ -76,7 +77,12 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
                         }
 
                         // return new Persona((int)dr[0], (string)dr[1], (string)dr[2], (string)dr[3], (string)dr[4], (DateTime)dr[5], patentes);
+                        ControladorDigitosVerificadores.calcularDVV(ConstantesDDVV.TABLA_USUARIOS);
                         string usuarioDesencriptado = ControladorEncriptacion.Decrypt((string)dr[1]);
+
+                        BitacoraRow bitacora = new BitacoraRow(DateTime.UtcNow, ConstantesBitacora.CRITICIDAD_BAJA, ConstantesBitacora.INGRESO_EXITOSO_USUARIO, new Usuario((int)dr[0], usuarioDesencriptado));
+                        ControladorBitacora.grabarRegistro(bitacora);
+
                         return new Usuario((int)dr[0], usuarioDesencriptado, patentes);
                     }
                     else
@@ -106,6 +112,10 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
                         pmsDVH[1].Value = usuarioEncriptado;
 
                         dataQuery.sqlUpsert(setDVH, pmsDVH);
+                        ControladorDigitosVerificadores.calcularDVV(ConstantesDDVV.TABLA_USUARIOS);
+
+                        BitacoraRow bitacora = new BitacoraRow(DateTime.UtcNow, ConstantesBitacora.CRITICIDAD_MEDIA, ConstantesBitacora.INTENTO_INGRESO_DESCONOCIDO, new Usuario((int)result[0], usuario));
+                        ControladorBitacora.grabarRegistro(bitacora);
 
                         throw new Exception("AUTH_USR_FAILED");
                     }

@@ -267,8 +267,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
 
                 dtTel = dataQuery.getList(SP.OBTENER_TELEFONOS, pms);
                 List<Telefono> telList = new List<Telefono>();
-
-                try
+                if (!dtTel.Rows[0].ItemArray[0].GetType().Equals(typeof(string)))
                 {
                     foreach (DataRow drTel in dtTel.Rows)
                     {
@@ -285,10 +284,6 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
                         dataGridTelefonos.Rows.Add(dataRow);
                     }
                 }
-                catch
-                {
-                    MessageBox.Show(dtTel.Rows[0].ItemArray[0].ToString());
-                }
 
                 // Fill de correos
 
@@ -300,12 +295,11 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
 
                 dtMail = dataQuery.getList(SP.OBTENER_MAILS, pms);
                 List<Mail> mails = new List<Mail>();
-
-                try
+                if (!dtMail.Rows[0].ItemArray[0].GetType().Equals(typeof(string)))
                 {
                     foreach (DataRow drMail in dtMail.Rows)
                     {
-                        Mail mail= new Mail();
+                        Mail mail = new Mail();
                         mail.SetId((int)drMail[0]);
                         mail.SetTipo((string)drMail[1]);
                         mail.SetMail((string)drMail[2]);
@@ -318,11 +312,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
                         dataGridMails.Rows.Add(dataRow);
                     }
                 }
-                catch
-                {
-                    MessageBox.Show(dtTel.Rows[0].ItemArray[0].ToString());
-                }
-
+                
                 // Fill de domicilios
 
                 DataTable dtDom = new DataTable();
@@ -345,7 +335,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
                 }
                 foreach (Domicilio d in domList)
                 {
-                    object[] dataRow = { d.GetTipoDomicilio(), d.GetComentario(), d.GetCalle(), d.GetNumero(), d.GetPiso().ToString(), d.GetDpto(), d.GetCodigoPostal(), d.GetLocalidad(), d.GetProvincia(), d.GetPais() };
+                    object[] dataRow = { d.GetTipoDomicilio(), d.GetComentario(), d.GetCalle(), d.GetNumero(), d.GetPiso(), d.GetDpto(), d.GetCodigoPostal(), d.GetLocalidad(), d.GetProvincia(), d.GetPais() };
                     dataGridDomicilios.Rows.Add(dataRow);
                 }
 
@@ -360,8 +350,11 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
                 groupDomicilioDatos.Enabled = false;
                 groupDomicilioLista.Enabled = false;
 
-                groupPermisosFamilia.Enabled = false;
-                groupPermisosPatentes.Enabled = false;
+                groupPermisosFamilia.Enabled = true;
+                groupPermisosPatentes.Enabled = true;
+
+                groupFamiliasPatentes.Enabled = true;
+                groupPatentesAdquiridas.Enabled = true;
             }
             else
             {
@@ -386,6 +379,9 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
 
                 groupPermisosFamilia.Enabled = true;
                 groupPermisosPatentes.Enabled = true;
+
+                groupFamiliasPatentes.Enabled = true;
+                groupPatentesAdquiridas.Enabled = true;
             }
 
             txtDni.TextChanged += txtDni_TextChanged;
@@ -491,7 +487,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             dataGridDomicilios.Rows.Clear();
 
             groupPermisosFamilia.Enabled = false;
-            groupPermisosPatentes.Enabled = false;
+            groupFamiliasPatentes.Enabled = false;
         }
 
         private void btnAgregarUsuario_Click(object sender, EventArgs e)
@@ -586,7 +582,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             foreach (Familia f in checkedListFamilias.CheckedItems)
             {
                 familiasSeleccionadas.Add(f);
-                listarPatentes += (!string.IsNullOrEmpty(listarPatentes) ? "," : "") + string.Join(",", f.GetPatentes().Select(n => n.GetId().ToString()).ToArray());
+                listarPatentes += (!string.IsNullOrEmpty(listarPatentes) && f.GetPatentes().Count > 0 ? "," : "") + string.Join(",", f.GetPatentes().Select(n => n.GetId().ToString()).ToArray());
             }
 
             listBoxFamiliasAdquiridas.DataSource = familiasSeleccionadas;
@@ -605,8 +601,6 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
                     Patente p = new Patente((int)dr[0], (string)dr[1]);
                     patentes.Add(p);
                 }
-
-
             }
             string sql2 = "SELECT p.idPatente, p.codigo FROM Patente p" + (!string.IsNullOrEmpty(listarPatentes) ? string.Format(" WHERE p.idPatente NOT IN ({0})", listarPatentes) : "" );
             ph = patentesHeredadas.sqlExecute(sql2, null);

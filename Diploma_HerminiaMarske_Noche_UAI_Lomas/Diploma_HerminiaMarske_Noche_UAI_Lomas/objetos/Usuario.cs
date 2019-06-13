@@ -39,6 +39,10 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos
             patentes = value;
         }
 
+        public Usuario()
+        {
+        }
+
         public Usuario(int idUsuario, string nombreUsuario, string password, int cii, bool habilitado, Persona persona)
         {
             this.idUsuario = idUsuario;

@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos;
 using Diploma_HerminiaMarske_Noche_UAI_Lomas.forms;
 using ConstantesData;
+using Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio;
 
 namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
 {
@@ -62,7 +63,8 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
 
             foreach (DataRow dr in dt.Rows)
             {
-                Object[] dataRow = { (Int32)dr[0], (string)dr[1],(string)dr[3], (string)dr[4]};
+                string usuario = ControladorEncriptacion.Decrypt((string)dr[1]);
+                Object[] dataRow = { (Int32)dr[0], usuario, (string)dr[3], (string)dr[4]};
                 datagridUsuarios.Rows.Add(dataRow);
             }
 

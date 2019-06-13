@@ -75,7 +75,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
             {
                 return MISSING_INFO;
 
-            } else if (domicilios.Count == 0 || mails.Count == 0 || telefonos.Count == 0 || string.IsNullOrWhiteSpace(usuario.GetPersona().GetDni()))
+            } else if ((domicilios.Count == 0 && mails.Count == 0 && telefonos.Count == 0) || string.IsNullOrWhiteSpace(usuario.GetPersona().GetDni()))
             {
                 return MISSING_INFO;
             }

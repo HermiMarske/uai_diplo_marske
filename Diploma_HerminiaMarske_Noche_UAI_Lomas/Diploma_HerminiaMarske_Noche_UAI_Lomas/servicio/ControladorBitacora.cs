@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos;
+using Diploma_HerminiaMarske_Noche_UAI_Lomas.Constantes;
 
 namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
 {
@@ -33,7 +34,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
             pms[4].Value = ControladorDigitosVerificadores.calcularDVH(row.GetDescripcion());
 
             dataQuery.sqlUpsert(altaRegistro, pms);
-
+            ControladorDigitosVerificadores.calcularDVV(ConstantesDDVV.TABLA_BITACORA);
         }
 
         public static List<BitacoraRow> getBitacoraRows()
