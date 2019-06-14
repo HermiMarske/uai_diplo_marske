@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="Constantes\ConstantesBitacora.cs" />
     <Compile Include="Constantes\ConstantesDDVV.cs" />
+    <Compile Include="Constantes\ConstantesFamilias.cs" />
     <Compile Include="dataConnection\ConstantesData.cs" />
     <Compile Include="forms\altaActividad.cs">
       <SubType>Form</SubType>

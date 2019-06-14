@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Diploma_HerminiaMarske_Noche_UAI_Lomas.Constantes;
 using Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos;
 
 namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
@@ -102,6 +103,42 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
 
 
                 return FAMILIA_MODIFICADA;
+
+
+            }
+
+        }
+
+        public static string borrarFamilia(Familia familia)
+        {
+            if(familia.GetDescripcion().Equals(ConstantesFamilias.ADMIN_ACTIVIDADES) || 
+                familia.GetDescripcion().Equals(ConstantesFamilias.ADMIN_CLIENTES) ||
+                familia.GetDescripcion().Equals(ConstantesFamilias.ADMIN_EMPLEADOS) ||
+                familia.GetDescripcion().Equals(ConstantesFamilias.ADMIN_RECURSOS) ||
+                familia.GetDescripcion().Equals(ConstantesFamilias.ADMIN_SEGURIDAD) ||
+                familia.GetDescripcion().Equals(ConstantesFamilias.ADMIN_USUARIOS))
+            {
+                return "No es posible eliminar una familia del sistema.";
+            } else
+            {
+                try
+                {
+                    DataConnection.DataConnection dataQuery = new DataConnection.DataConnection();
+                    const string bajaFam = "UPDATE Familia SET borrado = @fechaBorrado WHERE descripcion = @familia";
+                    SqlParameter[] pms = new SqlParameter[2];
+                    pms[0] = new SqlParameter("@fechaBorrado", SqlDbType.DateTime);
+                    pms[0].Value = DateTime.Now;
+                    pms[1] = new SqlParameter("@familia", SqlDbType.VarChar);
+                    pms[1].Value = familia.GetDescripcion();
+
+
+                    dataQuery.sqlUpsert(bajaFam, pms);
+                    return "Familia " + familia.GetDescripcion() + " borrada con exito.";
+             
+                } catch
+                {
+                    return "Error al borrar la familia seleccionada.";
+                }
 
 
             }

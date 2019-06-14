@@ -196,5 +196,21 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
         {
 
         }
+
+        private void btnBorrarFam_Click(object sender, EventArgs e)
+        {
+            Familia fam = new Familia();
+
+            fam = (Familia) listboxFam.SelectedItem;
+
+            string rta = ControladorABMFamilia.borrarFamilia(fam);
+
+            MessageBox.Show(rta);
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
