@@ -1,4 +1,5 @@
-﻿using Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos;
+﻿using ConstantesData;
+using Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -195,11 +196,11 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
             SqlParameter[] pms = new SqlParameter[1];
           
 
-            string getUsuario = "select * from Usuarios where ID_Usuario = @id";
+            string getUsuario = "select ID_Usuario, usuario, clave, CII, habilitado, DVH, FK_Persona, respuesta, FK_Pregunta, deleteTime from Usuarios where ID_Usuario = @id";
             
 
 
-            pms[0] = new SqlParameter("@id", SqlDbType.VarChar);
+            pms[0] = new SqlParameter("@id", SqlDbType.Int);
             pms[0].Value = id;
 
             DataConnection.DataConnection dataQuery = new DataConnection.DataConnection();
@@ -207,30 +208,26 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
             dt = dataQuery.sqlExecute(getUsuario, pms);
             DataRow dr = dt.Rows[0];
 
-            int idPersona = (int)dr[5];
+            int idPersona = (int)dr[6];
 
             usuario.SetIdUsuario((int) dr[0]);
             usuario.SetNombreUsuario(ControladorEncriptacion.Decrypt((string)dr[1]));
             usuario.SetPassword((string)dr[2]);
             usuario.SetCii((int)dr[3]);
             usuario.SetHabilitado((bool)dr[4]);
-            usuario.SetRespuesta((string)dr[6]);
-            usuario.SetFkPregunta((int)dr[7]);
-
-            if (dr[8] != null)
-            {
-                usuario.SetBorrado((DateTime)dr[8]);
-            }
+            usuario.SetRespuesta((string)dr[7]);
+            usuario.SetFkPregunta((int)dr[8]);
 
 
-            string getPersona = "select * from Personas where ID_Persona = @idPersona";
+            string getPersona = "select ID_Persona, dni, nombre,apellido,sexo,fechaNacimiento from Personas where ID_Persona = @idPersona";
             SqlParameter[] pmsPersona = new SqlParameter[1];
-            pmsPersona[0] = new SqlParameter("@idPersona", SqlDbType.VarChar);
+            pmsPersona[0] = new SqlParameter("@idPersona", SqlDbType.Int);
             pmsPersona[0].Value = idPersona;
 
             DataTable dtPersona = new DataTable();
-            dtPersona = dataQuery.sqlExecute(getPersona, pms);
-            DataRow drP = dt.Rows[0];
+            dataQuery = new DataConnection.DataConnection();
+            dtPersona = dataQuery.sqlExecute(getPersona, pmsPersona);
+            DataRow drP = dtPersona.Rows[0];
 
             Persona persona = new Persona();
 
@@ -241,8 +238,85 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
             persona.SetSexo((string)drP[4]);
             persona.SetFechaNacimiento((DateTime)drP[5]);
 
-            usuario.SetPersona(persona);
 
+            DataTable dtTel = new DataTable();
+            SqlParameter[] pmsTel = new SqlParameter[1];
+            pmsTel[0] = new SqlParameter("@id", SqlDbType.Int);
+            pmsTel[0].Value = idPersona;
+
+
+            dtTel = dataQuery.getList(SP.OBTENER_TELEFONOS, pmsTel);
+            List<Telefono> telList = new List<Telefono>();
+
+            foreach (DataRow drTel in dtTel.Rows)
+            {
+                Telefono tel = new Telefono();
+                tel.SetId((int)drTel[0]);
+                tel.SetTipo((string)drTel[1]);
+                tel.SetNumero((string)drTel[2]);
+                telList.Add(tel);
+            }
+
+            persona.SetTelefonos(telList);
+
+            DataTable dtMail = new DataTable();
+            pmsTel[0] = new SqlParameter("@id", SqlDbType.Int);
+            pmsTel[0].Value = idPersona;
+
+
+            dtMail = dataQuery.getList(SP.OBTENER_MAILS, pmsTel);
+            List<Mail> mailList = new List<Mail>();
+
+            try
+            {
+
+                foreach (DataRow drMail in dtMail.Rows)
+                {
+                    Mail mail = new Mail();
+                    mail.SetId((int)drMail[0]);
+                    mail.SetTipo((string)drMail[1]);
+                    mail.SetMail((string)drMail[2]);
+                    mailList.Add(mail);
+                }
+            }
+            catch
+            {
+                mailList.Add(new Mail());
+            }
+
+            persona.SetMails(mailList);
+
+            /** Lleno lista de domicilios **/
+            DataTable dtDom = new DataTable();
+            pmsTel[0] = new SqlParameter("@id", SqlDbType.Int);
+            pmsTel[0].Value = idPersona;
+
+
+            dtDom = dataQuery.getList(SP.OBTENER_DOMICILIOS, pmsTel);
+            List<Domicilio> domList = new List<Domicilio>();
+
+
+            try
+            {
+                foreach (DataRow drDom in dtDom.Rows)
+                {
+                    Localidad lc = new Localidad((string)drDom[10], (int)drDom[9], 0);
+                    Provincia pv = new Provincia((string)drDom[12], (int)drDom[11]);
+                    Pais p = new Pais((int)drDom[13], (string)drDom[14]);
+                    Domicilio dom = new Domicilio((int)drDom[0], (string)drDom[1], (string)drDom[2], (int)drDom[3], (string)drDom[4], (string)drDom[5], (string)drDom[6], (string)drDom[7], lc, p, pv);
+
+                    domList.Add(dom);
+
+                }
+            } catch
+            {
+                domList.Add(new Domicilio());
+            }
+
+            persona.SetDomicilios(domList);
+
+
+            usuario.SetPersona(persona);
 
 
             return usuario;

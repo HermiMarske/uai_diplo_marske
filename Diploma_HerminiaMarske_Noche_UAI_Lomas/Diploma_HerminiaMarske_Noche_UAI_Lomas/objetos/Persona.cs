@@ -12,6 +12,39 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos
         private string sexo;
         private DateTime fechaNacimiento;
         private List<Patente> patentes;
+        private List<Telefono> telefonos;
+        private List<Mail> mails;
+        private List<Domicilio> domicilios;
+
+        internal List<Domicilio> GetDomicilios()
+        {
+            return domicilios;
+        }
+
+        internal void SetDomicilios(List<Domicilio> value)
+        {
+            domicilios = value;
+        }
+
+        internal List<Mail> GetMails()
+        {
+            return mails;
+        }
+
+        internal void SetMails(List<Mail> value)
+        {
+            mails = value;
+        }
+
+        internal List<Telefono> GetTelefonos()
+        {
+            return telefonos;
+        }
+
+        internal void SetTelefonos(List<Telefono> value)
+        {
+            telefonos = value;
+        }
 
         public Persona(int idPersona, string dni, string nombre, string apellido, string sexo)
         {
