@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos;
+using Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,6 +22,11 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
         private void button6_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void modificarUsuario_Load(object sender, EventArgs e)
+        {
+            Usuario usr = ControladorABMUsuario.getUsuario((int)formInicio.idUsuarioModif);
         }
     }
 }

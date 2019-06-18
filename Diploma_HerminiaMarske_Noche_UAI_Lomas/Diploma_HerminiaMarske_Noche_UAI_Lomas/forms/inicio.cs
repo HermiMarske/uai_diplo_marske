@@ -15,12 +15,14 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
     {
         public static Object fkPersonaModif;
         public static Object idClienteModif;
+        public static Object idUsuarioModif;
 
         altaCliente formAltaCliente = new altaCliente();
         altaUsuario formAltaUsuario = new altaUsuario();
         bitacora formBitacora = new bitacora();
         altaFamilia formFamilias = new altaFamilia();
         modificarCliente formModifCliente = new modificarCliente();
+        modificarUsuario modificarUsuario = new modificarUsuario();
 
         DataConnection.DataConnection dataConnection = new DataConnection.DataConnection();
 
@@ -214,6 +216,29 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
         {
             formBitacora = new bitacora();
             formBitacora.Show();
+
+        }
+
+        private void btnModificarUsuario_Click(object sender, EventArgs e)
+        {
+
+            if (datagridUsuarios.SelectedCells.Count > 0)
+            {
+                int rowIndex = datagridUsuarios.SelectedCells[0].RowIndex;
+                idUsuarioModif = datagridUsuarios.Rows[rowIndex].Cells[0].Value;
+             
+                try
+                {
+                    modificarUsuario.Show();
+                }
+                catch
+                {
+                    modificarUsuario modificarUsuario = new modificarUsuario();
+                    modificarUsuario.Show();
+                }
+
+
+            }
 
         }
     }

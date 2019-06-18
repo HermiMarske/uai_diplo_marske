@@ -11,8 +11,6 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
 {
     class ControladorABMUsuario
     {
-        //TODO 
-        //hacer el control de encriptacion para que pueda encriptar y desencriptar el nombre de usuario
 
         private const string USER_CREATED_EXISTING_PERSON = "USER_CREATED_EXISTING_PERSON";
         private const string MISSING_DATA = "MISSING_DATA";
@@ -186,6 +184,71 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
                 }
             }
         }
+
+
+
+        //Metodo de obtener el usuario a modificar, le paso el id del seleccionado.
+
+        public static Usuario getUsuario (int id)
+        {
+            Usuario usuario = new Usuario();
+            SqlParameter[] pms = new SqlParameter[1];
+          
+
+            string getUsuario = "select * from Usuarios where ID_Usuario = @id";
+            
+
+
+            pms[0] = new SqlParameter("@id", SqlDbType.VarChar);
+            pms[0].Value = id;
+
+            DataConnection.DataConnection dataQuery = new DataConnection.DataConnection();
+            DataTable dt = new DataTable();
+            dt = dataQuery.sqlExecute(getUsuario, pms);
+            DataRow dr = dt.Rows[0];
+
+            int idPersona = (int)dr[5];
+
+            usuario.SetIdUsuario((int) dr[0]);
+            usuario.SetNombreUsuario(ControladorEncriptacion.Decrypt((string)dr[1]));
+            usuario.SetPassword((string)dr[2]);
+            usuario.SetCii((int)dr[3]);
+            usuario.SetHabilitado((bool)dr[4]);
+            usuario.SetRespuesta((string)dr[6]);
+            usuario.SetFkPregunta((int)dr[7]);
+
+            if (dr[8] != null)
+            {
+                usuario.SetBorrado((DateTime)dr[8]);
+            }
+
+
+            string getPersona = "select * from Personas where ID_Persona = @idPersona";
+            SqlParameter[] pmsPersona = new SqlParameter[1];
+            pmsPersona[0] = new SqlParameter("@idPersona", SqlDbType.VarChar);
+            pmsPersona[0].Value = idPersona;
+
+            DataTable dtPersona = new DataTable();
+            dtPersona = dataQuery.sqlExecute(getPersona, pms);
+            DataRow drP = dt.Rows[0];
+
+            Persona persona = new Persona();
+
+            persona.SetIdPersona((int)drP[0]);
+            persona.SetDni((string)drP[1]);
+            persona.SetNombre((string)drP[2]);
+            persona.SetApellido((string)drP[3]);
+            persona.SetSexo((string)drP[4]);
+            persona.SetFechaNacimiento((DateTime)drP[5]);
+
+            usuario.SetPersona(persona);
+
+
+
+            return usuario;
+        }
+
+
 
     }
 }

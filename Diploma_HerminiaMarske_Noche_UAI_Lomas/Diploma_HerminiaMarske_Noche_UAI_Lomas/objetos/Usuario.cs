@@ -18,6 +18,17 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos
         private Persona persona;
         private List<Patente> patentes;
         private List<Familia> familias;
+        private DateTime borrado;
+
+        public DateTime GetBorrado()
+        {
+            return borrado;
+        }
+
+        public void SetBorrado(DateTime value)
+        {
+            borrado = value;
+        }
 
         internal List<Familia> GetFamilias()
         {
