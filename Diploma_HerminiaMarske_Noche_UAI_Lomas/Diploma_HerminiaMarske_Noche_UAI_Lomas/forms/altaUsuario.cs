@@ -322,21 +322,27 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
 
                 dtDom = dataQuery.getList(SP.OBTENER_DOMICILIOS, pms);
                 List<Domicilio> domList = new List<Domicilio>();
-
-                foreach (DataRow drDom in dtDom.Rows)
+                try
                 {
-                    Localidad lc = new Localidad((string)drDom[10], (int)drDom[9], 0);
-                    Provincia pv = new Provincia((string)drDom[12], (int)drDom[11]);
-                    Pais p = new Pais((int)drDom[13], (string)drDom[14]);
-                    Domicilio dom = new Domicilio((int)drDom[0], (string)drDom[1], (string)drDom[2], (int)drDom[3], (string)drDom[4], (string)drDom[5], (string)drDom[6], (string)drDom[7], lc, p, pv);
 
-                    domList.Add(dom);
+                    foreach (DataRow drDom in dtDom.Rows)
+                    {
+                        Localidad lc = new Localidad((string)drDom[10], (int)drDom[9], 0);
+                        Provincia pv = new Provincia((string)drDom[12], (int)drDom[11]);
+                        Pais p = new Pais((int)drDom[13], (string)drDom[14]);
+                        Domicilio dom = new Domicilio((int)drDom[0], (string)drDom[1], (string)drDom[2], (int)drDom[3], (string)drDom[4], (string)drDom[5], (string)drDom[6], (string)drDom[7], lc, p, pv);
 
-                }
-                foreach (Domicilio d in domList)
+                        domList.Add(dom);
+
+                    }
+                    foreach (Domicilio d in domList)
+                    {
+                        object[] dataRow = { d.GetTipoDomicilio(), d.GetComentario(), d.GetCalle(), d.GetNumero(), d.GetPiso(), d.GetDpto(), d.GetCodigoPostal(), d.GetLocalidad(), d.GetProvincia(), d.GetPais() };
+                        dataGridDomicilios.Rows.Add(dataRow);
+                    }
+                } catch
                 {
-                    object[] dataRow = { d.GetTipoDomicilio(), d.GetComentario(), d.GetCalle(), d.GetNumero(), d.GetPiso(), d.GetDpto(), d.GetCodigoPostal(), d.GetLocalidad(), d.GetProvincia(), d.GetPais() };
-                    dataGridDomicilios.Rows.Add(dataRow);
+                    MessageBox.Show("Persona sin domicilios.");
                 }
 
                 // Deshabilitar todos los controles y mostrar los datos 
