@@ -16,9 +16,12 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
 {
     public partial class modificarUsuario : Form
     {
+        Usuario usr = new Usuario();
+
         public modificarUsuario()
         {
             InitializeComponent();
+            
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -28,6 +31,47 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
 
         private void modificarUsuario_Load(object sender, EventArgs e)
         {
+            usr = ControladorABMUsuario.getUsuario((int)formInicio.idUsuarioModif);
+
+            //coso de familias
+
+            List<FamiliaFlag> famFlag = ControladorABMUsuario.getFamilias(usr.GetIdUsuario());
+            int c = 0;
+            foreach(FamiliaFlag f in famFlag)
+            {
+                DataConnection.DataConnection dataQueryFamiliasPatentes = new DataConnection.DataConnection();
+                DataTable dtfp = new DataTable();
+                dtfp = dataQueryFamiliasPatentes.getList(SP.LISTAR_PATENTES_FAMILIAS, null);
+                List<Patente> patenteList = new List<Patente>();
+                foreach (DataRow drfp in dtfp.Rows)
+                {
+                    if (f.GetId() == (int)drfp[0])
+                    {
+                        Patente p = new Patente((int)drfp[2], (string)drfp[3], (int)drfp[0]);
+                        patenteList.Add(p);
+                    }
+                }
+                f.SetPatentes(patenteList);
+                checkedListFamilias.Items.Add(f);
+                if(f.GetFlag())
+                {
+                    checkedListFamilias.SetItemChecked(c, true);
+                }
+                c++;
+            }
+
+            //LLENADO COSO DE PATENTES
+            List<Patente> patentes = new List<Patente>();
+            DataConnection.DataConnection dataQueryPatentes = new DataConnection.DataConnection();
+            DataTable dtpat = new DataTable();
+            string sql = "SELECT p.idPatente, p.codigo, up.negado from Patente p left join Usuario_Patente up on p.idPatente = up.patenteFK where up.usuarioFK = @idUsuario;"; 
+            dtpat = dataQueryPatentes.getList(SP.LISTAR_TODAS_PATENTES, null);
+            foreach (DataRow drpat in dtpat.Rows)
+            {
+                Patente patente = new Patente((int)drpat[0], (string)drpat[1]);
+                patentes.Add(patente);
+            }
+            checkedListPatentes.DataSource = patentes;
 
             //Llenado de combo de paises
             List<Pais> paises = new List<Pais>();
@@ -41,11 +85,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             }
             comboPais.DataSource = paises;
 
-
-
             txtUsuario.Enabled = false;
-
-            Usuario usr = ControladorABMUsuario.getUsuario((int)formInicio.idUsuarioModif);
 
             txtNombre.Text = usr.GetPersona().GetNombre();
             txtApellido.Text = usr.GetPersona().GetApellido();
@@ -54,14 +94,12 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             pickerFechaNacimiento.Value = usr.GetPersona().GetFechaNacimiento();
             txtUsuario.Text = usr.GetNombreUsuario();
 
-
             foreach (Mail m in usr.GetPersona().GetMails())
             {
                 String[] dataRow = { m.GetTipo(), m.GetMail() };
                 dataGridMails.Rows.Add(dataRow);
             }
 
-      
             foreach (Domicilio d in usr.GetPersona().GetDomicilios())
             {
                 object[] dataRow = { d.GetTipoDomicilio(), d.GetComentario(), d.GetCalle(), d.GetNumero(), d.GetPiso().ToString(), d.GetDpto(), d.GetCodigoPostal(), d.GetLocalidad(), d.GetProvincia(), d.GetPais() };
@@ -74,8 +112,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
                 dataGridTelefonos.Rows.Add(dataRow);
             }
 
-
-
+            checkedListFamilias_SelectedIndexChanged(sender, e);
         }
 
 
@@ -281,9 +318,103 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
 
         //Fin solapa DOMICILIOS
 
-   
+        private void checkedListFamilias_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            List<FamiliaFlag> familiasSeleccionadas = new List<FamiliaFlag>();
+            string listarPatentes = "";
 
-    
+            foreach (FamiliaFlag f in checkedListFamilias.CheckedItems)
+            {
+                familiasSeleccionadas.Add(f);
+                listarPatentes += (!string.IsNullOrEmpty(listarPatentes) && f.GetPatentes().Count > 0 ? "," : "") + string.Join(",", f.GetPatentes().Select(n => n.GetId().ToString()).ToArray());
+            }
 
+            listBoxFamiliasAdquiridas.DataSource = familiasSeleccionadas;
+
+            List<Patente> patentes = new List<Patente>();
+            List<Patente> patentes2 = new List<Patente>();
+            DataConnection.DataConnection patentesHeredadas = new DataConnection.DataConnection();
+            DataTable ph = new DataTable();
+            if (!string.IsNullOrEmpty(listarPatentes))
+            {
+                string sql = string.Format("SELECT p.idPatente, p.codigo FROM Patente p WHERE p.idPatente IN ({0})", listarPatentes);
+                ph = patentesHeredadas.sqlExecute(sql, null);
+
+                foreach (DataRow dr in ph.Rows)
+                {
+                    Patente p = new Patente((int)dr[0], (string)dr[1]);
+                    patentes.Add(p);
+                }
+            }
+            string sql2 = "SELECT p.idPatente, p.codigo FROM Patente p" + (!string.IsNullOrEmpty(listarPatentes) ? string.Format(" WHERE p.idPatente NOT IN ({0})", listarPatentes) : "");
+            ph = patentesHeredadas.sqlExecute(sql2, null);
+
+            foreach (DataRow dr in ph.Rows)
+            {
+                Patente p = new Patente((int)dr[0], (string)dr[1]);
+                patentes2.Add(p);
+            }
+
+            checkedListPatentesAdquiridas.DataSource = patentes;
+            for (int i = 0; i < checkedListPatentesAdquiridas.Items.Count; i++)
+            {
+                checkedListPatentesAdquiridas.SetItemChecked(i, true);
+            }
+            checkedListPatentes.DataSource = patentes2;
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            List<Domicilio> domicilios = new List<Domicilio>();
+            List<Telefono> telefonos = new List<Telefono>();
+            List<Mail> mails = new List<Mail>();
+
+
+            for (int i = 0; i < dataGridTelefonos.Rows.Count; i++)
+            {
+                Telefono t = new Telefono((string)dataGridTelefonos.Rows.SharedRow(i).Cells[0].Value, (string)dataGridTelefonos.Rows.SharedRow(i).Cells[1].Value);
+                telefonos.Add(t);
+            }
+            for (int i = 0; i < dataGridMails.Rows.Count; i++)
+            {
+                Mail m = new Mail((string)dataGridMails.Rows.SharedRow(i).Cells[0].Value, (string)dataGridMails.Rows.SharedRow(i).Cells[1].Value);
+                mails.Add(m);
+            }
+
+            for (int i = 0; i < dataGridDomicilios.Rows.Count; i++)
+            {
+                Domicilio dom = new Domicilio(0, (string)dataGridDomicilios.Rows.SharedRow(i).Cells[2].Value,
+                    (string)dataGridDomicilios.Rows.SharedRow(i).Cells[3].Value, (int)dataGridDomicilios.Rows.SharedRow(i).Cells[4].Value,
+                    (string)dataGridDomicilios.Rows.SharedRow(i).Cells[5].Value, (string)dataGridDomicilios.Rows.SharedRow(i).Cells[1].Value,
+                    (string)dataGridDomicilios.Rows.SharedRow(i).Cells[6].Value, (string)dataGridDomicilios.Rows.SharedRow(i).Cells[0].Value,
+                    (Localidad)dataGridDomicilios.Rows.SharedRow(i).Cells[7].Value);
+
+                domicilios.Add(dom);
+            }
+
+
+            Usuario u = usr;
+
+            Persona p = usr.GetPersona();
+
+            p.SetDni(txtDni.Text);
+            p.SetNombre(txtNombre.Text);
+            p.SetApellido(txtApellido.Text);
+            p.SetSexo(comboSexo.SelectedItem.ToString());
+            p.SetFechaNacimiento(pickerFechaNacimiento.Value);
+
+            p.SetDomicilios(domicilios);
+            p.SetMails(mails);
+            p.SetTelefonos(telefonos);
+
+            u.SetPersona(p);
+            u.SetPassword(txtClave.Text);
+            u.SetRespuesta(txtRespuesta.Text);
+            u.SetFkPregunta(comboPreguntas.SelectedIndex + 1);
+
+            ControladorABMUsuario.modificarUsuario(u);
+            
+
+        }
     }
 }

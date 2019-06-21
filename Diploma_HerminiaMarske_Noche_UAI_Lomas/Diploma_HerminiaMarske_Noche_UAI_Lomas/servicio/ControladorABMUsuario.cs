@@ -20,6 +20,83 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
         private const string PERSON_HAS_USER = "PERSON_HAS_USER";
         private const string MISSING_INFO = "MISSING_INFO";
 
+
+        public static string modificarUsuario(Usuario usuario)
+        {
+            DataConnection.DataConnection dataQuery = new DataConnection.DataConnection();
+
+            const string modificarUsuario = "update Usuarios set clave = @password, respuesta = @respuesta, FK_Pregunta = @idPregunta where ID_Usuario = @idUsuario";
+            const string borrarPatentes = " delete from Usuario_Patente where usuarioFK = @idUsuario";
+            const string borrarFamilias = " delete from Usuario_Familia where usuarioFK = @idUsuario";
+            const string borrarDomicilios = "delete from Domicilio where FK_Persona = @idPersona";
+            const string borrarMails = "delete from Mails where FK_Persona = @idPersona";
+            const string borrarTels = "delete from Telefono where FK_Persona = @idPersona";
+            const string insertarPatentes = "INSERT INTO Usuario_Patente (patenteFK, usuarioFK, negado) VALUES {0}";
+            const string insertarFamilia = "INSERT INTO Usuario_Familia (familiaFK, usuarioFK) VALUES {0}";
+            const string modificarPersona = " update Personas set dni = @dni, nombre = @nombre, apellido = @apellido, sexo = @sexo, fechaNacimiento = @fechaNacimiento where ID_Persona = @idPersona";
+
+            //Modificar Usuario.
+            SqlParameter[] pmsUsuario = new SqlParameter[4];
+            pmsUsuario[0] = new SqlParameter("@password", SqlDbType.VarChar);
+            pmsUsuario[0].Value = ControladorEncriptacion.Hash(usuario.GetPassword());
+            pmsUsuario[1] = new SqlParameter("@respuesta", SqlDbType.VarChar);
+            pmsUsuario[1].Value = usuario.GetRespuesta();
+            pmsUsuario[2] = new SqlParameter("@idPregunta", SqlDbType.Int);
+            pmsUsuario[2].Value = usuario.GetFkPregunta();
+            pmsUsuario[3] = new SqlParameter("@idUsuario", SqlDbType.VarChar);
+            pmsUsuario[3].Value = usuario.GetIdUsuario();
+
+            //Modificar Persona
+
+            SqlParameter[] pmsPersona = new SqlParameter[5];
+            pmsPersona[0] = new SqlParameter("@dni", SqlDbType.VarChar);
+            pmsPersona[0].Value = usuario.GetPersona().GetDni();
+            pmsPersona[1] = new SqlParameter("@nombre", SqlDbType.VarChar);
+            pmsPersona[1].Value = usuario.GetPersona().GetNombre();
+            pmsPersona[2] = new SqlParameter("@apellido", SqlDbType.VarChar);
+            pmsPersona[2].Value = usuario.GetPersona().GetApellido();
+            pmsPersona[3] = new SqlParameter("@sexo", SqlDbType.VarChar);
+            pmsPersona[3].Value = usuario.GetPersona().GetSexo();
+            pmsPersona[4] = new SqlParameter("@fechaNacimiento", SqlDbType.Date);
+            pmsPersona[4].Value = usuario.GetPersona().GetFechaNacimiento();
+
+            string valuesPatentes = "";
+            foreach (Patente pat in usuario.GetPatentes())
+            {
+                valuesPatentes += (!string.IsNullOrEmpty(valuesPatentes) ? "," : "");
+                valuesPatentes += new StringBuilder("(").Append(pat.GetId() + ",")
+                    .Append(usuario.GetIdUsuario() + ",").Append(pat.GetNegado() ? 1 : 0).Append(")").ToString();
+            }
+
+            string valuesFamilias = "";
+            foreach (Familia fam in usuario.GetFamilias())
+            {
+                valuesFamilias += (!string.IsNullOrEmpty(valuesFamilias) ? "," : "");
+                valuesFamilias += new StringBuilder("(").Append(fam.GetId() + ",")
+                    .Append(usuario.GetIdUsuario()).Append(")").ToString();
+            }
+
+            try
+            {
+                dataQuery.sqlExecute(modificarUsuario, pmsUsuario);
+                dataQuery.sqlExecute(borrarPatentes, null);
+                dataQuery.sqlExecute(borrarFamilias, null);
+                dataQuery.sqlExecute(borrarDomicilios, null);
+                dataQuery.sqlExecute(borrarMails, null);
+                dataQuery.sqlExecute(borrarTels, null);
+                dataQuery.sqlExecute(modificarPersona, pmsPersona);
+                dataQuery.sqlUpsert(string.Format(insertarPatentes, valuesPatentes), null);
+                dataQuery.sqlUpsert(string.Format(insertarFamilia, valuesFamilias), null);
+
+                return "Usuario modificado";
+
+            } catch
+            {
+                return "El usuario no pudo modificarse.";
+            }
+            
+        }
+
         private static void crearUsuario(Usuario usuario, int persona, DataConnection.DataConnection dataQuery)
         {
             const string altaUsuario = "INSERT INTO Usuarios (usuario, clave, CII, habilitado, DVH, FK_Persona, respuesta, FK_Pregunta)" +
@@ -320,6 +397,56 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
 
 
             return usuario;
+        }
+
+        public static string borrarUsuario(int id)
+        {
+
+            try
+            {
+                DataConnection.DataConnection dataQuery = new DataConnection.DataConnection();
+                const string bajaUsuario = "UPDATE Usuarios SET deleteTime = @fechaBorrado WHERE ID_Usuario = @idUsuario";
+                SqlParameter[] pms = new SqlParameter[2];
+                pms[0] = new SqlParameter("@fechaBorrado", SqlDbType.DateTime);
+                pms[0].Value = DateTime.Now;
+                pms[1] = new SqlParameter("@idUsuario", SqlDbType.Int);
+                pms[1].Value = id;
+
+
+                dataQuery.sqlUpsert(bajaUsuario, pms);
+                return "Usuario borrado con exito.";
+
+            }
+            catch
+            {
+                return "Error al borrar el usuario seleccionado.";
+            }
+
+      
+        }
+
+        public static List<FamiliaFlag> getFamilias(int id)
+        {
+            List<FamiliaFlag> familias = new List<FamiliaFlag>();
+
+            string queryFams = "SELECT f.idFamilia, f.descripcion, f.dvh, CAST(CASE WHEN uf.usuarioFK = @idUsuario THEN 1 ELSE 0 END AS bit) AS has_permission " +
+                "FROM Familia f left JOIN Usuario_Familia uf ON uf.familiaFK = f.idFamilia " +
+                "WHERE uf.usuarioFK = @idUsuario OR uf.usuarioFK is null AND f.borrado IS NULL;";
+
+            SqlParameter[] pms = new SqlParameter[1];
+            pms[0] = new SqlParameter("@idUsuario", SqlDbType.Int);
+            pms[0].Value = id;
+            DataConnection.DataConnection dataQuery = new DataConnection.DataConnection();
+
+            DataTable dt = new DataTable();
+            dt = dataQuery.sqlExecute(queryFams, pms);
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                FamiliaFlag famFlag = new FamiliaFlag((int)dr[0], (string)dr[1], (bool)dr[3]);
+                familias.Add(famFlag);
+            }
+            return familias;
         }
 
 

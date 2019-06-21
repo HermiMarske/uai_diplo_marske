@@ -190,19 +190,13 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             if (datagridUsuarios.SelectedCells.Count > 0)
             {
                 int rowIndex = datagridUsuarios.SelectedCells[0].RowIndex;
+
                 Object idUsuario = datagridUsuarios.Rows[rowIndex].Cells[0].Value;
-                SqlParameter[] pms = new SqlParameter[1];
 
-                pms[0] = new SqlParameter("@idUsuario", SqlDbType.Int);
-                pms[0].Value = idUsuario.ToString();
+                string respuesta = ControladorABMUsuario.borrarUsuario((int)idUsuario);
 
-                string respuesta = dataConnection.databaseDelete(pms, SP.BORRAR_USUARIO);
+                MessageBox.Show(respuesta);
 
-                if (respuesta != null)
-                {
-                    MessageBox.Show(respuesta);
-                    listarClientes();
-                }
             }
         }
 

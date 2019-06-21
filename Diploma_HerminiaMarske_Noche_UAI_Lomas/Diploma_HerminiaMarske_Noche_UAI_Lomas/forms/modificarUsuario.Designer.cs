@@ -32,7 +32,7 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.button7 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.btnModificar = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -115,16 +115,20 @@
             this.labelTipoEmail = new System.Windows.Forms.Label();
             this.textBoxMail = new System.Windows.Forms.TextBox();
             this.labelEmail = new System.Windows.Forms.Label();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.groupPatentesAdquiridas = new System.Windows.Forms.GroupBox();
-            this.checkedListPatentesAdquiridas = new System.Windows.Forms.CheckedListBox();
-            this.groupPermisosPatentes = new System.Windows.Forms.GroupBox();
-            this.checkedListPatentes = new System.Windows.Forms.CheckedListBox();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.groupFamiliasPatentes = new System.Windows.Forms.GroupBox();
             this.listBoxFamiliasAdquiridas = new System.Windows.Forms.ListBox();
             this.groupPermisosFamilia = new System.Windows.Forms.GroupBox();
             this.checkedListFamilias = new System.Windows.Forms.CheckedListBox();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.groupPatentesAdquiridas = new System.Windows.Forms.GroupBox();
+            this.checkedListPatentesAdquiridas = new System.Windows.Forms.CheckedListBox();
+            this.groupPermisosPatentes = new System.Windows.Forms.GroupBox();
+            this.checkedListPatentes = new System.Windows.Forms.CheckedListBox();
+            this.comboPreguntas = new System.Windows.Forms.ComboBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.txtRespuesta = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
             this.tableLayoutPanelAltaCliente.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -142,12 +146,12 @@
             this.groupBox9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridMails)).BeginInit();
             this.groupBox10.SuspendLayout();
-            this.tabPage4.SuspendLayout();
-            this.groupPatentesAdquiridas.SuspendLayout();
-            this.groupPermisosPatentes.SuspendLayout();
             this.tabPage6.SuspendLayout();
             this.groupFamiliasPatentes.SuspendLayout();
             this.groupPermisosFamilia.SuspendLayout();
+            this.tabPage4.SuspendLayout();
+            this.groupPatentesAdquiridas.SuspendLayout();
+            this.groupPermisosPatentes.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanelAltaCliente
@@ -158,22 +162,22 @@
             this.tableLayoutPanelAltaCliente.Controls.Add(this.tabControl1, 0, 0);
             this.tableLayoutPanelAltaCliente.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelAltaCliente.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanelAltaCliente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanelAltaCliente.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanelAltaCliente.Name = "tableLayoutPanelAltaCliente";
             this.tableLayoutPanelAltaCliente.RowCount = 2;
             this.tableLayoutPanelAltaCliente.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelAltaCliente.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 58F));
             this.tableLayoutPanelAltaCliente.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelAltaCliente.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelAltaCliente.Size = new System.Drawing.Size(839, 689);
+            this.tableLayoutPanelAltaCliente.Size = new System.Drawing.Size(839, 692);
             this.tableLayoutPanelAltaCliente.TabIndex = 4;
             // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.button7);
             this.groupBox3.Controls.Add(this.button6);
-            this.groupBox3.Controls.Add(this.button5);
-            this.groupBox3.Location = new System.Drawing.Point(3, 634);
+            this.groupBox3.Controls.Add(this.btnModificar);
+            this.groupBox3.Location = new System.Drawing.Point(3, 637);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(829, 51);
             this.groupBox3.TabIndex = 9;
@@ -198,14 +202,15 @@
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
-            // button5
+            // btnModificar
             // 
-            this.button5.Location = new System.Drawing.Point(612, 11);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(205, 35);
-            this.button5.TabIndex = 0;
-            this.button5.Text = "Modificar";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnModificar.Location = new System.Drawing.Point(612, 11);
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.Size = new System.Drawing.Size(205, 35);
+            this.btnModificar.TabIndex = 0;
+            this.btnModificar.Text = "Modificar";
+            this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // tabControl1
             // 
@@ -213,8 +218,8 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage5);
-            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage6);
+            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Location = new System.Drawing.Point(3, 3);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -226,7 +231,7 @@
             this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(825, 596);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Datos Generales";
@@ -234,6 +239,10 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.comboPreguntas);
+            this.groupBox1.Controls.Add(this.label18);
+            this.groupBox1.Controls.Add(this.txtRespuesta);
+            this.groupBox1.Controls.Add(this.label17);
             this.groupBox1.Controls.Add(this.txtUsuario);
             this.groupBox1.Controls.Add(this.txtNombre);
             this.groupBox1.Controls.Add(this.label14);
@@ -250,9 +259,9 @@
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.txtDni);
             this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Location = new System.Drawing.Point(6, 6);
+            this.groupBox1.Location = new System.Drawing.Point(5, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(813, 637);
+            this.groupBox1.Size = new System.Drawing.Size(813, 645);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos de Persona";
@@ -275,7 +284,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Cursor = System.Windows.Forms.Cursors.AppStarting;
-            this.label14.Location = new System.Drawing.Point(6, 389);
+            this.label14.Location = new System.Drawing.Point(6, 386);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(57, 17);
             this.label14.TabIndex = 27;
@@ -284,7 +293,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(6, 458);
+            this.label11.Location = new System.Drawing.Point(6, 434);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(88, 17);
             this.label11.TabIndex = 29;
@@ -300,14 +309,14 @@
             // 
             // txtClave
             // 
-            this.txtClave.Location = new System.Drawing.Point(101, 455);
+            this.txtClave.Location = new System.Drawing.Point(101, 439);
             this.txtClave.Name = "txtClave";
             this.txtClave.Size = new System.Drawing.Size(706, 22);
             this.txtClave.TabIndex = 30;
             // 
             // txtRepetirClave
             // 
-            this.txtRepetirClave.Location = new System.Drawing.Point(101, 521);
+            this.txtRepetirClave.Location = new System.Drawing.Point(101, 489);
             this.txtRepetirClave.Name = "txtRepetirClave";
             this.txtRepetirClave.Size = new System.Drawing.Size(706, 22);
             this.txtRepetirClave.TabIndex = 32;
@@ -324,7 +333,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 524);
+            this.label7.Location = new System.Drawing.Point(6, 484);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(91, 17);
             this.label7.TabIndex = 31;
@@ -397,7 +406,7 @@
             this.tabPage2.Controls.Add(this.groupBox2);
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(825, 596);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Telefonos";
@@ -534,7 +543,7 @@
             this.tabPage3.Controls.Add(this.groupBox5);
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage3.Size = new System.Drawing.Size(825, 596);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Domicilios";
@@ -1033,6 +1042,62 @@
             this.labelEmail.TabIndex = 33;
             this.labelEmail.Text = "E-Mail";
             // 
+            // tabPage6
+            // 
+            this.tabPage6.Controls.Add(this.groupFamiliasPatentes);
+            this.tabPage6.Controls.Add(this.groupPermisosFamilia);
+            this.tabPage6.Location = new System.Drawing.Point(4, 25);
+            this.tabPage6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabPage6.Size = new System.Drawing.Size(825, 596);
+            this.tabPage6.TabIndex = 5;
+            this.tabPage6.Text = "Familias";
+            this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // groupFamiliasPatentes
+            // 
+            this.groupFamiliasPatentes.Controls.Add(this.listBoxFamiliasAdquiridas);
+            this.groupFamiliasPatentes.Location = new System.Drawing.Point(420, 4);
+            this.groupFamiliasPatentes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupFamiliasPatentes.Name = "groupFamiliasPatentes";
+            this.groupFamiliasPatentes.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupFamiliasPatentes.Size = new System.Drawing.Size(406, 591);
+            this.groupFamiliasPatentes.TabIndex = 3;
+            this.groupFamiliasPatentes.TabStop = false;
+            this.groupFamiliasPatentes.Text = "Patentes de Familias Seleccionadas";
+            // 
+            // listBoxFamiliasAdquiridas
+            // 
+            this.listBoxFamiliasAdquiridas.FormattingEnabled = true;
+            this.listBoxFamiliasAdquiridas.ItemHeight = 16;
+            this.listBoxFamiliasAdquiridas.Location = new System.Drawing.Point(6, 31);
+            this.listBoxFamiliasAdquiridas.Name = "listBoxFamiliasAdquiridas";
+            this.listBoxFamiliasAdquiridas.Size = new System.Drawing.Size(393, 532);
+            this.listBoxFamiliasAdquiridas.TabIndex = 0;
+            // 
+            // groupPermisosFamilia
+            // 
+            this.groupPermisosFamilia.Controls.Add(this.checkedListFamilias);
+            this.groupPermisosFamilia.Location = new System.Drawing.Point(0, 4);
+            this.groupPermisosFamilia.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupPermisosFamilia.Name = "groupPermisosFamilia";
+            this.groupPermisosFamilia.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupPermisosFamilia.Size = new System.Drawing.Size(412, 591);
+            this.groupPermisosFamilia.TabIndex = 2;
+            this.groupPermisosFamilia.TabStop = false;
+            this.groupPermisosFamilia.Text = "Seleccionar Familias";
+            // 
+            // checkedListFamilias
+            // 
+            this.checkedListFamilias.FormattingEnabled = true;
+            this.checkedListFamilias.Location = new System.Drawing.Point(14, 31);
+            this.checkedListFamilias.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.checkedListFamilias.Name = "checkedListFamilias";
+            this.checkedListFamilias.Size = new System.Drawing.Size(392, 531);
+            this.checkedListFamilias.TabIndex = 3;
+            this.checkedListFamilias.SelectedIndexChanged += new System.EventHandler(this.checkedListFamilias_SelectedIndexChanged);
+            // 
             // tabPage4
             // 
             this.tabPage4.Controls.Add(this.groupPatentesAdquiridas);
@@ -1089,66 +1154,54 @@
             this.checkedListPatentes.Size = new System.Drawing.Size(392, 531);
             this.checkedListPatentes.TabIndex = 3;
             // 
-            // tabPage6
+            // comboPreguntas
             // 
-            this.tabPage6.Controls.Add(this.groupFamiliasPatentes);
-            this.tabPage6.Controls.Add(this.groupPermisosFamilia);
-            this.tabPage6.Location = new System.Drawing.Point(4, 25);
-            this.tabPage6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage6.Size = new System.Drawing.Size(825, 596);
-            this.tabPage6.TabIndex = 5;
-            this.tabPage6.Text = "Familias";
-            this.tabPage6.UseVisualStyleBackColor = true;
+            this.comboPreguntas.FormattingEnabled = true;
+            this.comboPreguntas.Items.AddRange(new object[] {
+            "Nombre de primer mascota",
+            "Nombre de primer amor",
+            "Profesor favorito",
+            "Personaje historico favorito",
+            "Apellido de soltera de madre",
+            "Dibujo animado favorito",
+            "Deporte favorito",
+            "Comida favorita"});
+            this.comboPreguntas.Location = new System.Drawing.Point(128, 531);
+            this.comboPreguntas.Name = "comboPreguntas";
+            this.comboPreguntas.Size = new System.Drawing.Size(265, 24);
+            this.comboPreguntas.TabIndex = 41;
             // 
-            // groupFamiliasPatentes
+            // label18
             // 
-            this.groupFamiliasPatentes.Controls.Add(this.listBoxFamiliasAdquiridas);
-            this.groupFamiliasPatentes.Location = new System.Drawing.Point(420, 4);
-            this.groupFamiliasPatentes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupFamiliasPatentes.Name = "groupFamiliasPatentes";
-            this.groupFamiliasPatentes.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupFamiliasPatentes.Size = new System.Drawing.Size(406, 591);
-            this.groupFamiliasPatentes.TabIndex = 3;
-            this.groupFamiliasPatentes.TabStop = false;
-            this.groupFamiliasPatentes.Text = "Patentes de Familias Seleccionadas";
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(6, 534);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(117, 17);
+            this.label18.TabIndex = 40;
+            this.label18.Text = "Pregunta secreta";
             // 
-            // listBoxFamiliasAdquiridas
+            // txtRespuesta
             // 
-            this.listBoxFamiliasAdquiridas.FormattingEnabled = true;
-            this.listBoxFamiliasAdquiridas.ItemHeight = 16;
-            this.listBoxFamiliasAdquiridas.Location = new System.Drawing.Point(6, 31);
-            this.listBoxFamiliasAdquiridas.Name = "listBoxFamiliasAdquiridas";
-            this.listBoxFamiliasAdquiridas.Size = new System.Drawing.Size(393, 548);
-            this.listBoxFamiliasAdquiridas.TabIndex = 0;
+            this.txtRespuesta.Location = new System.Drawing.Point(513, 532);
+            this.txtRespuesta.Name = "txtRespuesta";
+            this.txtRespuesta.PasswordChar = '*';
+            this.txtRespuesta.Size = new System.Drawing.Size(295, 22);
+            this.txtRespuesta.TabIndex = 39;
             // 
-            // groupPermisosFamilia
+            // label17
             // 
-            this.groupPermisosFamilia.Controls.Add(this.checkedListFamilias);
-            this.groupPermisosFamilia.Location = new System.Drawing.Point(0, 4);
-            this.groupPermisosFamilia.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupPermisosFamilia.Name = "groupPermisosFamilia";
-            this.groupPermisosFamilia.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupPermisosFamilia.Size = new System.Drawing.Size(412, 591);
-            this.groupPermisosFamilia.TabIndex = 2;
-            this.groupPermisosFamilia.TabStop = false;
-            this.groupPermisosFamilia.Text = "Seleccionar Familias";
-            // 
-            // checkedListFamilias
-            // 
-            this.checkedListFamilias.FormattingEnabled = true;
-            this.checkedListFamilias.Location = new System.Drawing.Point(14, 31);
-            this.checkedListFamilias.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.checkedListFamilias.Name = "checkedListFamilias";
-            this.checkedListFamilias.Size = new System.Drawing.Size(392, 531);
-            this.checkedListFamilias.TabIndex = 3;
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(418, 534);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(76, 17);
+            this.label17.TabIndex = 38;
+            this.label17.Text = "Respuesta";
             // 
             // modificarUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(839, 689);
+            this.ClientSize = new System.Drawing.Size(839, 692);
             this.Controls.Add(this.tableLayoutPanelAltaCliente);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
@@ -1177,12 +1230,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridMails)).EndInit();
             this.groupBox10.ResumeLayout(false);
             this.groupBox10.PerformLayout();
-            this.tabPage4.ResumeLayout(false);
-            this.groupPatentesAdquiridas.ResumeLayout(false);
-            this.groupPermisosPatentes.ResumeLayout(false);
             this.tabPage6.ResumeLayout(false);
             this.groupFamiliasPatentes.ResumeLayout(false);
             this.groupPermisosFamilia.ResumeLayout(false);
+            this.tabPage4.ResumeLayout(false);
+            this.groupPatentesAdquiridas.ResumeLayout(false);
+            this.groupPermisosPatentes.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1193,7 +1246,7 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -1286,5 +1339,9 @@
         private System.Windows.Forms.CheckedListBox checkedListPatentesAdquiridas;
         private System.Windows.Forms.GroupBox groupPermisosPatentes;
         private System.Windows.Forms.CheckedListBox checkedListPatentes;
+        private System.Windows.Forms.ComboBox comboPreguntas;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox txtRespuesta;
+        private System.Windows.Forms.Label label17;
     }
 }

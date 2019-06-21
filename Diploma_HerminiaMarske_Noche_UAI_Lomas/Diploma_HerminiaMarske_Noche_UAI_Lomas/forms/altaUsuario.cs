@@ -560,26 +560,6 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
 
         }
 
-        /*
-        private void comboFamilias_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            List<Patente> patentes = new List<Patente>();
-            Familia familia = (Familia)comboFamilias.SelectedItem;
-            DataConnection.DataConnection dataQuery = new DataConnection.DataConnection();
-            DataTable dt = new DataTable();
-            SqlParameter[] pmsPatentes = new SqlParameter[1];
-            pmsPatentes[0] = new SqlParameter("@idFamilia", SqlDbType.Int);
-            pmsPatentes[0].Value = familia.GetId();
-            dt = dataQuery.getList(SP.LISTAR_PATENTES, pmsPatentes);
-            foreach (DataRow dr in dt.Rows)
-            {
-                Patente patente = new Patente((int)dr[0], (string)dr[1], familia.GetId());
-                patentes.Add(patente);
-            }
-            checkedListFamilias.DataSource = patentes;
-        }
-        */
-
         private void checkedListPatentes_SelectedIndexChanged(object sender, EventArgs e)
         {
             List<Familia> familiasSeleccionadas = new List<Familia>();

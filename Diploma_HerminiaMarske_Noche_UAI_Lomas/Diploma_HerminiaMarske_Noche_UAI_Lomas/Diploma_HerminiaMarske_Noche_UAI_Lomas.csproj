@@ -142,6 +142,7 @@
     <Compile Include="objetos\BitacoraRow.cs" />
     <Compile Include="objetos\Cliente.cs" />
     <Compile Include="objetos\Familia.cs" />
+    <Compile Include="objetos\FamiliaFlag.cs" />
     <Compile Include="objetos\Localidad.cs" />
     <Compile Include="objetos\Patente.cs" />
     <Compile Include="objetos\Persona.cs" />
