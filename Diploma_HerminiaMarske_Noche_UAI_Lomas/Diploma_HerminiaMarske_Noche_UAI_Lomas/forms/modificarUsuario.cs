@@ -21,7 +21,87 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
         public modificarUsuario()
         {
             InitializeComponent();
-            
+            ComponentResourceManager resources = new ComponentResourceManager(typeof(altaCliente));
+            groupBox1.Text = resources.GetString("groupBox1.Text");
+            groupBox2.Text = resources.GetString("groupBox2.Text");
+            groupBox4.Text = resources.GetString("groupBox4.Text");
+            groupBox6.Text = resources.GetString("groupBox6.Text");
+            groupBox5.Text = resources.GetString("groupDomicilioDatos.Text");
+            groupBox10.Text = resources.GetString("groupBox8.Text");
+            groupBox9.Text = resources.GetString("groupBox7.Text");
+            label10.Text = resources.GetString("label10.Text");
+            label6.Text = resources.GetString("label6.Text");
+            label9.Text = resources.GetString("label9.Text");
+            label8.Text = resources.GetString("label8.Text");
+            label9.Text = resources.GetString("label9.Text");
+            label12.Text = resources.GetString("label12.Text");
+            label13.Text = resources.GetString("label13.Text");
+            label5.Text = resources.GetString("label5.Text");
+            label1.Text = resources.GetString("label1.Text");
+            label2.Text = resources.GetString("label2.Text");
+            label3.Text = resources.GetString("label3.Text");
+            comboSexo.Items.AddRange(new object[] {
+                resources.GetString("comboSexo.Items"),
+                resources.GetString("comboSexo.Items1")
+            });
+            comboTipo.Items.AddRange(new object[] {
+                resources.GetString("comboTipo.Items"),
+                resources.GetString("comboTipo.Items1")
+            });
+            comboTipoMails.Items.AddRange(new object[] {
+                resources.GetString("comboTipoMails.Items"),
+                resources.GetString("comboTipoMails.Items1")
+            });
+            buttonAddTelefono.Text = resources.GetString("buttonAddTelefono.Text");
+            btnModificarTel.Text = resources.GetString("btnModificarTel.Text");
+            btnBorrarTel.Text = resources.GetString("btnBorrarTel.Text");
+            btnModificarDom.Text = resources.GetString("btnModificarDom.Text");
+            btnAgregarDireccion.Text = resources.GetString("btnAgregarDireccion.Text");
+            btnBorrarDomicilio.Text = resources.GetString("btnBorrarDomicilio.Text");
+            btnAgregarMail.Text = resources.GetString("btnAgregarMail.Text");
+            btnModificarMail.Text = resources.GetString("btnModificarMail.Text");
+            btnBorrarMail.Text = resources.GetString("btnBorrarMail.Text");
+            button6.Text = resources.GetString("button6.Text");
+            button7.Text = resources.GetString("button7.Text");
+            labelTipoEmail.Text = resources.GetString("labelTipoEmail.Text");
+            labelEmail.Text = resources.GetString("labelEmail.Text");
+            tabPage1.Text = resources.GetString("tabPage1.Text");
+            tabPage2.Text = resources.GetString("tabPage2.Text");
+            tabPage5.Text = resources.GetString("tabPage4.Text");
+            tabPage3.Text = resources.GetString("tabPage3.Text");
+            TipoTelefono.HeaderText = resources.GetString("TipoTelefono.HeaderText");
+            NumeroTelefono.HeaderText = resources.GetString("NumeroTelefono.HeaderText");
+            dataGridViewTextBoxColumn1.HeaderText = resources.GetString("dataGridViewTextBoxColumn1.HeaderText");
+            dataGridViewTextBoxColumn2.HeaderText = resources.GetString("dataGridViewTextBoxColumn2.HeaderText");
+            Tipo.HeaderText = resources.GetString("Tipo.HeaderText");
+            Comentario.HeaderText = resources.GetString("Comentario.HeaderText");
+            Calle.HeaderText = resources.GetString("Calle.HeaderText");
+            Numero.HeaderText = resources.GetString("Numero.HeaderText");
+            Piso.HeaderText = resources.GetString("Piso.HeaderText");
+            DPTO.HeaderText = resources.GetString("DPTO.HeaderText");
+            CP.HeaderText = resources.GetString("CP.HeaderText");
+            Localidad.HeaderText = resources.GetString("Localidad.HeaderText");
+            Provincia.HeaderText = resources.GetString("Provincia.HeaderText");
+            Pais.HeaderText = resources.GetString("Pais.HeaderText");
+            dataGridDomicilios.Text = resources.GetString("dataGridDomicilios.Text");
+            labelCalle.Text = resources.GetString("labelCalle.Text");
+            labelLocalidad.Text = resources.GetString("labelLocalidad.Text");
+            labelDpto.Text = resources.GetString("labelDpto.Text");
+            labelCodigo.Text = resources.GetString("labelCodigo.Text");
+            labelPiso.Text = resources.GetString("labelPiso.Text");
+            labelNumero.Text = resources.GetString("labelNumero.Text");
+
+            resources = new ComponentResourceManager(typeof(altaUsuario));
+            labelUsuario.Text = resources.GetString("labelUsuario.Text");
+            labelClaveRpt.Text = resources.GetString("labelClaveRpt.Text");
+            labelPregunta.Text = resources.GetString("labelPregunta.Text");
+            labelRespuesta.Text = resources.GetString("labelRespuesta.Text");
+            tabPage6.Text = resources.GetString("tabPage4.Text");
+            tabPage4.Text = resources.GetString("tabPage6.Text");
+            groupPermisosFamilia.Text = resources.GetString("groupPermisosFamilia.Text");
+            groupFamiliasPatentes.Text = resources.GetString("groupFamiliasPatentes.Text");
+            groupPermisosPatentes.Text = resources.GetString("groupPermisosPatentes.Text");
+            groupPatentesAdquiridas.Text = resources.GetString("groupPatentesAdquiridas.Text");
         }
 
         private void button6_Click(object sender, EventArgs e)

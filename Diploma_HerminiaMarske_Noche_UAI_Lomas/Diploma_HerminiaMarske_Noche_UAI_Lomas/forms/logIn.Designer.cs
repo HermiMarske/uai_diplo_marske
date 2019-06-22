@@ -43,100 +43,64 @@
             // 
             // panel1
             // 
+            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Controls.Add(this.btnIngresar);
             this.panel1.Controls.Add(this.btnSalir);
             this.panel1.Controls.Add(this.groupBox1);
-            this.panel1.Location = new System.Drawing.Point(6, 6);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(417, 355);
-            this.panel1.TabIndex = 0;
             // 
             // btnIngresar
             // 
-            this.btnIngresar.Location = new System.Drawing.Point(210, 280);
-            this.btnIngresar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            resources.ApplyResources(this.btnIngresar, "btnIngresar");
             this.btnIngresar.Name = "btnIngresar";
-            this.btnIngresar.Size = new System.Drawing.Size(199, 62);
-            this.btnIngresar.TabIndex = 2;
-            this.btnIngresar.Text = "Ingresar";
             this.btnIngresar.UseVisualStyleBackColor = true;
             this.btnIngresar.Click += new System.EventHandler(this.btnIngresar_Click);
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(8, 280);
-            this.btnSalir.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            resources.ApplyResources(this.btnSalir, "btnSalir");
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(199, 62);
-            this.btnSalir.TabIndex = 1;
-            this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // groupBox1
             // 
+            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Controls.Add(this.txtPassword);
             this.groupBox1.Controls.Add(this.lblContra);
             this.groupBox1.Controls.Add(this.txtUsuario);
             this.groupBox1.Controls.Add(this.lblUsr);
-            this.groupBox1.Location = new System.Drawing.Point(8, 9);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox1.Size = new System.Drawing.Size(402, 265);
-            this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Datos de Ingreso";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(11, 185);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            resources.ApplyResources(this.txtPassword, "txtPassword");
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(378, 26);
-            this.txtPassword.TabIndex = 3;
             // 
             // lblContra
             // 
-            this.lblContra.AutoSize = true;
-            this.lblContra.Location = new System.Drawing.Point(7, 160);
+            resources.ApplyResources(this.lblContra, "lblContra");
             this.lblContra.Name = "lblContra";
-            this.lblContra.Size = new System.Drawing.Size(92, 20);
-            this.lblContra.TabIndex = 2;
-            this.lblContra.Text = "Contraseña";
             // 
             // txtUsuario
             // 
-            this.txtUsuario.Location = new System.Drawing.Point(11, 70);
-            this.txtUsuario.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            resources.ApplyResources(this.txtUsuario, "txtUsuario");
             this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(378, 26);
-            this.txtUsuario.TabIndex = 1;
             // 
             // lblUsr
             // 
-            this.lblUsr.AutoSize = true;
-            this.lblUsr.Location = new System.Drawing.Point(7, 45);
+            resources.ApplyResources(this.lblUsr, "lblUsr");
             this.lblUsr.Name = "lblUsr";
-            this.lblUsr.Size = new System.Drawing.Size(64, 20);
-            this.lblUsr.TabIndex = 0;
-            this.lblUsr.Text = "Usuario";
             // 
             // logIn
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(430, 366);
             this.Controls.Add(this.panel1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "logIn";
-            this.Text = "Iniciar Sesion";
             this.panel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

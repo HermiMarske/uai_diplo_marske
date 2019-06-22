@@ -55,8 +55,8 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
                         pms[1].Value = ControladorDigitosVerificadores.calcularDVH(usuarioEncriptado + "0");
 
                         string success = "UPDATE Usuarios SET habilitado = 1, CII = 0, DVH = @dvh WHERE usuario = @usuario; " +
-                          //  "SELECT p.ID_Persona, p.dni, p.nombre, p.apellido, p.sexo, p.fechaNacimiento FROM Usuarios u, Personas p WHERE p.ID_Persona = u.FK_Persona AND u.usuario = @usuario;";
-                          "SELECT u.ID_Usuario, u.usuario FROM Usuarios u WHERE u.usuario = @usuario";
+                          "SELECT p.ID_Persona, p.dni, p.nombre, p.apellido, p.sexo, p.fechaNacimiento, u.ID_Usuario, u.usuario, u.idioma FROM Usuarios u, Personas p WHERE p.ID_Persona = u.FK_Persona AND u.usuario = @usuario;";
+                          //"SELECT u.ID_Usuario, u.usuario FROM Usuarios u WHERE u.usuario = @usuario";
                         string perms = "SELECT p.idPatente, p.codigo FROM Patente p " +
                             "LEFT JOIN Usuario_Patente up ON up.patenteFK = p.idPatente " +
                             "LEFT JOIN Familia_Patente fp ON fp.patenteFK = p.idPatente " +
@@ -75,15 +75,16 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
                         foreach (DataRow row in usrPerms) {
                             patentes.Add(new Patente((int)row[0], row[1].ToString()));
                         }
+                        Persona persona = new Persona((int)dr[0], dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), (DateTime)dr[5]);
 
                         // return new Persona((int)dr[0], (string)dr[1], (string)dr[2], (string)dr[3], (string)dr[4], (DateTime)dr[5], patentes);
                         ControladorDigitosVerificadores.calcularDVV(ConstantesDDVV.TABLA_USUARIOS);
-                        string usuarioDesencriptado = ControladorEncriptacion.Decrypt((string)dr[1]);
+                        string usuarioDesencriptado = ControladorEncriptacion.Decrypt((string)dr[7]);
 
                         BitacoraRow bitacora = new BitacoraRow(DateTime.UtcNow, ConstantesBitacora.CRITICIDAD_BAJA, ConstantesBitacora.INGRESO_EXITOSO_USUARIO, new Usuario((int)dr[0], usuarioDesencriptado));
                         ControladorBitacora.grabarRegistro(bitacora);
 
-                        return new Usuario((int)dr[0], usuarioDesencriptado, patentes);
+                        return new Usuario((int)dr[6], usuarioDesencriptado, dr[8].ToString(), persona, patentes);
                     }
                     else
                     {

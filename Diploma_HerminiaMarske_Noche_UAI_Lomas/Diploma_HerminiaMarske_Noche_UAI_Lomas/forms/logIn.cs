@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Data;
 using System.Windows.Forms;
-using System.Data.SqlClient;
-using ConstantesData;
 using Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio;
 using Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos;
+using Diploma_HerminiaMarske_Noche_UAI_Lomas.Properties;
 
 namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
 {
@@ -22,47 +20,43 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
+            CustomMessageBox messageBox = new CustomMessageBox();
             string user = txtUsuario.Text;
             string clave = txtPassword.Text;
 
             if (user == "" || clave == "")
             {
-                MessageBox.Show("Por favor ingrese sus credenciales.");
+                messageBox.Show(strings.missing_user_data);
                 txtUsuario.Focus();
             } else
             {
                 try
                 {
                     Usuario usuario = ControladorUsuario.logIn(user, clave);
-                    MessageBox.Show(string.Format("¡Bienvenido {0}!", usuario.GetNombreUsuario()));
+                    messageBox.Show(string.Format(strings.welcome, usuario.GetPersona().GetNombre()), true);
                 } catch (Exception ex)
                 {
                     switch (ex.Message.ToString())
                     {
                         case "AUTH_USR_NOT_EXISTS":
-                            MessageBox.Show("El usuario ingresado no existe.");
+                            messageBox.ShowWarning(strings.user_not_exists);
                             txtUsuario.Focus();
                             break;
                         case "USR_BLOCKED":
-                            MessageBox.Show("El usuario se encuentra bloqueado.\nComuníquese con un administrador");
+                            messageBox.ShowWarning(strings.user_blocked);
                             txtUsuario.Focus();
                             break;
                         case "AUTH_USR_FAILED":
-                            MessageBox.Show("¡Contraseña incorrecta!");
+                            messageBox.ShowWarning(strings.user_auth_failed);
                             txtPassword.Focus();
                             break;
                         default:
-                            MessageBox.Show("Existe un problema con su contraseña y no se puede procesar.\nComuníquese con un administrador");
+                            messageBox.ShowError(strings.user_auth_error);
                             break;
                     }
                 }
             }
 
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
 
         }
     }

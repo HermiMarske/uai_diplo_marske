@@ -77,19 +77,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
 
             List<Patente> patentes = new List<Patente>();
             Familia familia = (Familia)listboxFam.SelectedItem;
-            DataConnection.DataConnection dataQuery = new DataConnection.DataConnection();
-            DataTable dt = new DataTable();
-            SqlParameter[] pmsPatentes = new SqlParameter[1];
-            pmsPatentes[0] = new SqlParameter("@idFamilia", SqlDbType.Int);
-            pmsPatentes[0].Value = familia.GetId();
-            dt = dataQuery.getList(SP.LISTAR_PATENTES, pmsPatentes);
-            foreach (DataRow dr in dt.Rows)
-            {
-                Patente patente = new Patente((int)dr[0], (string)dr[1], familia.GetId());
-                patentes.Add(patente);
-            }
-            listBoxPatXFam.DataSource = patentes;
-
+            listBoxPatXFam.DataSource = familia.GetPatentes();
 
             //OBTENER FAMILIA SELECCIONADA Y METERLA EN EL COSO DE MODIFICAR
 

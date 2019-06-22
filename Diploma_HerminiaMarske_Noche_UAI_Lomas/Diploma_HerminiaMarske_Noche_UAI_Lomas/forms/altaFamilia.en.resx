@@ -117,17 +117,81 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="btnModificarFam.Text" xml:space="preserve">
+    <value>Modify selected</value>
+  </data>
+  <data name="btnSalir.Text" xml:space="preserve">
+    <value>Exit</value>
+  </data>
+  <data name="btnBorrarFam.Text" xml:space="preserve">
+    <value>Delete</value>
+  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Airplane_Landing" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Airplane-Landing.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="groupFamsPatentes.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 2, 3, 2</value>
   </data>
-  <data name="icons8_cancel_96" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-cancel-96.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="groupFamsPatentes.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 2, 3, 2</value>
   </data>
-  <data name="icons8_error_96" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-error-96.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="groupFamsPatentes.Size" type="System.Drawing.Size, System.Drawing">
+    <value>435, 732</value>
   </data>
-  <data name="icons8_info_96" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-info-96.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="groupFamsPatentes.Text" xml:space="preserve">
+    <value>Profile roles</value>
+  </data>
+  <data name="groupFams.Text" xml:space="preserve">
+    <value>Profiles</value>
+  </data>
+  <data name="btnSeleccionar.Text" xml:space="preserve">
+    <value>Move selected to granted &gt;&gt;</value>
+  </data>
+  <data name="btnCerrar.Text" xml:space="preserve">
+    <value>Exit</value>
+  </data>
+  <data name="btnCrearFam.Text" xml:space="preserve">
+    <value>Create</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Create Family</value>
+  </data>
+  <data name="btnPasarModif.Text" xml:space="preserve">
+    <value>Move selected to granted &gt;&gt;</value>
+  </data>
+  <data name="btnSalirModif.Text" xml:space="preserve">
+    <value>Exit</value>
+  </data>
+  <data name="btnModificar.Text" xml:space="preserve">
+    <value>Modify</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Profiles editor</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Profile name</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Available roles</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Granted roles</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Profile name</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Granted roles</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Available roles</value>
+  </data>
+  <data name="tabPage1.Text" xml:space="preserve">
+    <value>Profiles</value>
+  </data>
+  <data name="tabPage2.Text" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="tabPage3.Text" xml:space="preserve">
+    <value>Modify</value>
   </data>
 </root>

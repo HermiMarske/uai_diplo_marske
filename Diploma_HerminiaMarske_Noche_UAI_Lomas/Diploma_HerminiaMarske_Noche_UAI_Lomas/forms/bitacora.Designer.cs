@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(bitacora));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dateTimeFechaHasta = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
@@ -59,98 +60,63 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.txtUsuario);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(11, 10);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(1276, 51);
-            this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Busqueda";
             // 
             // dateTimeFechaHasta
             // 
-            this.dateTimeFechaHasta.Location = new System.Drawing.Point(980, 18);
-            this.dateTimeFechaHasta.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dateTimeFechaHasta.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            resources.ApplyResources(this.dateTimeFechaHasta, "dateTimeFechaHasta");
             this.dateTimeFechaHasta.Name = "dateTimeFechaHasta";
-            this.dateTimeFechaHasta.Size = new System.Drawing.Size(185, 22);
-            this.dateTimeFechaHasta.TabIndex = 8;
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(884, 21);
+            resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(86, 17);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Fecha hasta";
             // 
             // btnFiltrar
             // 
-            this.btnFiltrar.Location = new System.Drawing.Point(1182, 13);
-            this.btnFiltrar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            resources.ApplyResources(this.btnFiltrar, "btnFiltrar");
             this.btnFiltrar.Name = "btnFiltrar";
-            this.btnFiltrar.Size = new System.Drawing.Size(89, 34);
-            this.btnFiltrar.TabIndex = 6;
-            this.btnFiltrar.Text = "Filtrar";
             this.btnFiltrar.UseVisualStyleBackColor = true;
             this.btnFiltrar.Click += new System.EventHandler(this.btnFiltrar_Click);
             // 
             // dateTimeFechaDesde
             // 
-            this.dateTimeFechaDesde.Location = new System.Drawing.Point(688, 18);
-            this.dateTimeFechaDesde.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dateTimeFechaDesde.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            resources.ApplyResources(this.dateTimeFechaDesde, "dateTimeFechaDesde");
             this.dateTimeFechaDesde.Name = "dateTimeFechaDesde";
-            this.dateTimeFechaDesde.Size = new System.Drawing.Size(185, 22);
-            this.dateTimeFechaDesde.TabIndex = 5;
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(592, 22);
+            resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(90, 17);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Fecha desde";
             // 
             // comboCriticidad
             // 
             this.comboCriticidad.FormattingEnabled = true;
             this.comboCriticidad.Items.AddRange(new object[] {
-            "ALTA",
-            "MEDIA",
-            "BAJA"});
-            this.comboCriticidad.Location = new System.Drawing.Point(329, 18);
-            this.comboCriticidad.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            resources.GetString("comboCriticidad.Items"),
+            resources.GetString("comboCriticidad.Items1"),
+            resources.GetString("comboCriticidad.Items2")});
+            resources.ApplyResources(this.comboCriticidad, "comboCriticidad");
             this.comboCriticidad.Name = "comboCriticidad";
-            this.comboCriticidad.Size = new System.Drawing.Size(185, 24);
-            this.comboCriticidad.TabIndex = 3;
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(258, 22);
+            resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(66, 17);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Criticidad";
             // 
             // txtUsuario
             // 
-            this.txtUsuario.Location = new System.Drawing.Point(68, 19);
-            this.txtUsuario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            resources.ApplyResources(this.txtUsuario, "txtUsuario");
             this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(185, 22);
-            this.txtUsuario.TabIndex = 1;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(5, 22);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 17);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Usuario";
             // 
             // dataGridBitacora
             // 
@@ -162,62 +128,54 @@
             this.descripcion,
             this.usuario});
             this.dataGridBitacora.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dataGridBitacora.Location = new System.Drawing.Point(10, 69);
-            this.dataGridBitacora.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            resources.ApplyResources(this.dataGridBitacora, "dataGridBitacora");
             this.dataGridBitacora.Name = "dataGridBitacora";
             this.dataGridBitacora.ReadOnly = true;
             this.dataGridBitacora.RowTemplate.Height = 28;
             this.dataGridBitacora.ShowCellToolTips = false;
             this.dataGridBitacora.ShowEditingIcon = false;
-            this.dataGridBitacora.Size = new System.Drawing.Size(1276, 654);
-            this.dataGridBitacora.TabIndex = 1;
             // 
             // fecha
             // 
-            this.fecha.HeaderText = "Fecha";
+            resources.ApplyResources(this.fecha, "fecha");
             this.fecha.Name = "fecha";
             this.fecha.ReadOnly = true;
             // 
             // criticidad
             // 
-            this.criticidad.HeaderText = "Criticidad";
+            resources.ApplyResources(this.criticidad, "criticidad");
             this.criticidad.Name = "criticidad";
             this.criticidad.ReadOnly = true;
             // 
             // descripcion
             // 
-            this.descripcion.HeaderText = "Descripcion";
+            resources.ApplyResources(this.descripcion, "descripcion");
             this.descripcion.Name = "descripcion";
             this.descripcion.ReadOnly = true;
             // 
             // usuario
             // 
-            this.usuario.HeaderText = "Usuario";
+            resources.ApplyResources(this.usuario, "usuario");
             this.usuario.Name = "usuario";
             this.usuario.ReadOnly = true;
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(1018, 727);
-            this.btnSalir.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            resources.ApplyResources(this.btnSalir, "btnSalir");
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(268, 32);
-            this.btnSalir.TabIndex = 2;
-            this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
             // 
             // bitacora
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1296, 769);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.dataGridBitacora);
             this.Controls.Add(this.groupBox1);
+            this.Icon = global::Diploma_HerminiaMarske_Noche_UAI_Lomas.Properties.Resources.Airplane_Landing;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "bitacora";
-            this.Text = "Bitacora de Eventos";
             this.Load += new System.EventHandler(this.bitacora_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

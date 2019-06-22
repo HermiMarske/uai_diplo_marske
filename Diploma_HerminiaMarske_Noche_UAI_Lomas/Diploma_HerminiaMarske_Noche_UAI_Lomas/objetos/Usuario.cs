@@ -13,6 +13,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos
         private string password;
         private int cii;
         private bool habilitado;
+        private string idioma;
         private string respuesta;
         private int fkPregunta;
         private Persona persona;
@@ -82,11 +83,11 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos
             this.persona = persona;
         }
 
-        public Usuario(int idUsuario, string nombreUsuario, List<Patente> patentes)
+        public Usuario(int idUsuario, string nombreUsuario, string idioma, Persona persona, List<Patente> patentes)
         {
             this.idUsuario = idUsuario;
             this.nombreUsuario = nombreUsuario;
-            this.cii = cii;
+            this.idioma = idioma;
             this.persona = persona;
             this.patentes = patentes;
         }

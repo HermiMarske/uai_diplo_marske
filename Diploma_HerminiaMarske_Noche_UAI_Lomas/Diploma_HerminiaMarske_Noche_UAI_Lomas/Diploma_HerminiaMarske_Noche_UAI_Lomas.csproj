@@ -12,6 +12,21 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -97,6 +112,12 @@
     <Compile Include="forms\bitacora.Designer.cs">
       <DependentUpon>bitacora.cs</DependentUpon>
     </Compile>
+    <Compile Include="forms\CustomMessageBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\CustomMessageBox.Designer.cs">
+      <DependentUpon>CustomMessageBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="forms\inicio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -155,6 +176,11 @@
     <Compile Include="objetos\Usuario.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\strings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>strings.resx</DependentUpon>
+    </Compile>
     <Compile Include="servicio\ControladorABMFamilia.cs" />
     <Compile Include="servicio\ControladorABMUsuario.cs" />
     <Compile Include="servicio\ControladorBitacora.cs" />
@@ -162,11 +188,38 @@
     <Compile Include="servicio\ControladorPermisos.cs" />
     <Compile Include="servicio\ControladorEncriptacion.cs" />
     <Compile Include="servicio\ControladorUsuario.cs" />
+    <EmbeddedResource Include="forms\altaActividad.en.resx">
+      <DependentUpon>altaActividad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\altaActividad.resx">
+      <DependentUpon>altaActividad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\altaAvion.en.resx">
+      <DependentUpon>altaAvion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\altaAvion.resx">
+      <DependentUpon>altaAvion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\altaCliente.en.resx">
+      <DependentUpon>altaCliente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="forms\altaCliente.resx">
       <DependentUpon>altaCliente.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="forms\altaFamilia.en.resx">
+      <DependentUpon>altaFamilia.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="forms\altaFamilia.resx">
       <DependentUpon>altaFamilia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\altaPilotos.en.resx">
+      <DependentUpon>altaPilotos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\altaPilotos.resx">
+      <DependentUpon>altaPilotos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\altaUsuario.en.resx">
+      <DependentUpon>altaUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\altaUsuario.resx">
       <DependentUpon>altaUsuario.cs</DependentUpon>
@@ -174,14 +227,35 @@
     <EmbeddedResource Include="forms\bitacora.resx">
       <DependentUpon>bitacora.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="forms\CustomMessageBox.resx">
+      <DependentUpon>CustomMessageBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="forms\inicio.resx">
       <DependentUpon>inicio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\logIn.en.resx">
+      <DependentUpon>logIn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\logIn.resx">
       <DependentUpon>logIn.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="forms\modificacionPiloto.resx">
+      <DependentUpon>modificacionPiloto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\modificarActividad.resx">
+      <DependentUpon>modificarActividad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\modificarAvion.resx">
+      <DependentUpon>modificarAvion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\modificarCliente.en.resx">
+      <DependentUpon>modificarCliente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="forms\modificarCliente.resx">
       <DependentUpon>modificarCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\modificarUsuario.en.resx">
+      <DependentUpon>modificarUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\modificarUsuario.resx">
       <DependentUpon>modificarUsuario.cs</DependentUpon>
@@ -194,7 +268,13 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Properties\strings.en.resx" />
+    <EmbeddedResource Include="Properties\strings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>strings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <None Include="Properties\DataSources\Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos.Telefono.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -213,6 +293,22 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Airplane-Landing.ico" />
+    <Content Include="Resources\icons8-cancel-96.png" />
+    <Content Include="Resources\icons8-error-96.png" />
+    <Content Include="Resources\icons8-info-96.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 y x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

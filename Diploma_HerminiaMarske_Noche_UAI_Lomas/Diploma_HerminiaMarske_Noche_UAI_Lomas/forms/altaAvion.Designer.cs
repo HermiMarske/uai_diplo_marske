@@ -28,10 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(altaAvion));
+            this.SuspendLayout();
+            // 
+            // altaAvion
+            // 
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "altaAvion";
+            this.Name = "altaAvion";
+            this.ResumeLayout(false);
+            this.Icon = Properties.Resources.Airplane_Landing;
         }
 
         #endregion
