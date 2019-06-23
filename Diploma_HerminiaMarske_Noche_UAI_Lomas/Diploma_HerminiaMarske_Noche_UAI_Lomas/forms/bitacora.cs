@@ -25,7 +25,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
 
             foreach (BitacoraRow br in bitacoraRows)
             {
-                String[] dataRow = { br.GetTimeStamp().ToString(), br.GetCriticidad(), br.GetDescripcion(), br.GetUsuario().GetNombreUsuario()};
+                string[] dataRow = { br.GetTimeStamp().ToString(), br.GetCriticidad(), br.GetDescripcion(), br.GetUsuario().GetNombreUsuario()};
                 dataGridBitacora.Rows.Add(dataRow);
             }
 
@@ -39,7 +39,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
 
             foreach (BitacoraRow br in bitacoraRows)
             {
-                String[] dataRow = { br.GetTimeStamp().ToString(), br.GetCriticidad(), br.GetDescripcion(), br.GetUsuario().GetNombreUsuario() };
+                string[] dataRow = { br.GetTimeStamp().ToString(), br.GetCriticidad(), br.GetDescripcion(), br.GetUsuario().GetNombreUsuario() };
                 dataGridBitacora.Rows.Add(dataRow);
             }
         }

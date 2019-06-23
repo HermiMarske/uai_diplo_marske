@@ -83,6 +83,16 @@
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.btnAgregarDireccion = new System.Windows.Forms.Button();
             this.dataGridDomicilios = new System.Windows.Forms.DataGridView();
+            this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Comentario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Calle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Piso = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DPTO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Localidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Provincia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Pais = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnBorrarDomicilio = new System.Windows.Forms.Button();
             this.btnModificarDom = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -106,16 +116,6 @@
             this.labelCodigo = new System.Windows.Forms.Label();
             this.labelNumero = new System.Windows.Forms.Label();
             this.labelCalle = new System.Windows.Forms.Label();
-            this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Comentario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Calle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Piso = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DPTO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Localidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Provincia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Pais = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanelAltaCliente.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -554,6 +554,91 @@
             this.dataGridDomicilios.RowTemplate.Height = 24;
             this.dataGridDomicilios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridDomicilios_CellClick);
             // 
+            // Tipo
+            // 
+            this.Tipo.FillWeight = 50F;
+            resources.ApplyResources(this.Tipo, "Tipo");
+            this.Tipo.MaxInputLength = 20;
+            this.Tipo.Name = "Tipo";
+            this.Tipo.ReadOnly = true;
+            this.Tipo.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // Comentario
+            // 
+            resources.ApplyResources(this.Comentario, "Comentario");
+            this.Comentario.MaxInputLength = 255;
+            this.Comentario.Name = "Comentario";
+            this.Comentario.ReadOnly = true;
+            this.Comentario.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // Calle
+            // 
+            resources.ApplyResources(this.Calle, "Calle");
+            this.Calle.MaxInputLength = 255;
+            this.Calle.Name = "Calle";
+            this.Calle.ReadOnly = true;
+            this.Calle.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // Numero
+            // 
+            this.Numero.FillWeight = 40F;
+            resources.ApplyResources(this.Numero, "Numero");
+            this.Numero.MaxInputLength = 10;
+            this.Numero.Name = "Numero";
+            this.Numero.ReadOnly = true;
+            this.Numero.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // Piso
+            // 
+            this.Piso.FillWeight = 30F;
+            resources.ApplyResources(this.Piso, "Piso");
+            this.Piso.MaxInputLength = 10;
+            this.Piso.Name = "Piso";
+            this.Piso.ReadOnly = true;
+            this.Piso.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // DPTO
+            // 
+            this.DPTO.FillWeight = 30F;
+            resources.ApplyResources(this.DPTO, "DPTO");
+            this.DPTO.MaxInputLength = 10;
+            this.DPTO.Name = "DPTO";
+            this.DPTO.ReadOnly = true;
+            this.DPTO.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // CP
+            // 
+            this.CP.FillWeight = 30F;
+            resources.ApplyResources(this.CP, "CP");
+            this.CP.MaxInputLength = 10;
+            this.CP.Name = "CP";
+            this.CP.ReadOnly = true;
+            this.CP.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // Localidad
+            // 
+            resources.ApplyResources(this.Localidad, "Localidad");
+            this.Localidad.MaxInputLength = 255;
+            this.Localidad.Name = "Localidad";
+            this.Localidad.ReadOnly = true;
+            this.Localidad.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // Provincia
+            // 
+            resources.ApplyResources(this.Provincia, "Provincia");
+            this.Provincia.MaxInputLength = 255;
+            this.Provincia.Name = "Provincia";
+            this.Provincia.ReadOnly = true;
+            this.Provincia.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // Pais
+            // 
+            resources.ApplyResources(this.Pais, "Pais");
+            this.Pais.MaxInputLength = 255;
+            this.Pais.Name = "Pais";
+            this.Pais.ReadOnly = true;
+            this.Pais.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
             // btnBorrarDomicilio
             // 
             resources.ApplyResources(this.btnBorrarDomicilio, "btnBorrarDomicilio");
@@ -703,97 +788,12 @@
             resources.ApplyResources(this.labelCalle, "labelCalle");
             this.labelCalle.Name = "labelCalle";
             // 
-            // Tipo
-            // 
-            this.Tipo.FillWeight = 50F;
-            resources.ApplyResources(this.Tipo, "Tipo");
-            this.Tipo.MaxInputLength = 20;
-            this.Tipo.Name = "Tipo";
-            this.Tipo.ReadOnly = true;
-            this.Tipo.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // Comentario
-            // 
-            resources.ApplyResources(this.Comentario, "Comentario");
-            this.Comentario.MaxInputLength = 255;
-            this.Comentario.Name = "Comentario";
-            this.Comentario.ReadOnly = true;
-            this.Comentario.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // Calle
-            // 
-            resources.ApplyResources(this.Calle, "Calle");
-            this.Calle.MaxInputLength = 255;
-            this.Calle.Name = "Calle";
-            this.Calle.ReadOnly = true;
-            this.Calle.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // Numero
-            // 
-            this.Numero.FillWeight = 40F;
-            resources.ApplyResources(this.Numero, "Numero");
-            this.Numero.MaxInputLength = 10;
-            this.Numero.Name = "Numero";
-            this.Numero.ReadOnly = true;
-            this.Numero.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // Piso
-            // 
-            this.Piso.FillWeight = 30F;
-            resources.ApplyResources(this.Piso, "Piso");
-            this.Piso.MaxInputLength = 10;
-            this.Piso.Name = "Piso";
-            this.Piso.ReadOnly = true;
-            this.Piso.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // DPTO
-            // 
-            this.DPTO.FillWeight = 30F;
-            resources.ApplyResources(this.DPTO, "DPTO");
-            this.DPTO.MaxInputLength = 10;
-            this.DPTO.Name = "DPTO";
-            this.DPTO.ReadOnly = true;
-            this.DPTO.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // CP
-            // 
-            this.CP.FillWeight = 30F;
-            resources.ApplyResources(this.CP, "CP");
-            this.CP.MaxInputLength = 10;
-            this.CP.Name = "CP";
-            this.CP.ReadOnly = true;
-            this.CP.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // Localidad
-            // 
-            resources.ApplyResources(this.Localidad, "Localidad");
-            this.Localidad.MaxInputLength = 255;
-            this.Localidad.Name = "Localidad";
-            this.Localidad.ReadOnly = true;
-            this.Localidad.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // Provincia
-            // 
-            resources.ApplyResources(this.Provincia, "Provincia");
-            this.Provincia.MaxInputLength = 255;
-            this.Provincia.Name = "Provincia";
-            this.Provincia.ReadOnly = true;
-            this.Provincia.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // Pais
-            // 
-            resources.ApplyResources(this.Pais, "Pais");
-            this.Pais.MaxInputLength = 255;
-            this.Pais.Name = "Pais";
-            this.Pais.ReadOnly = true;
-            this.Pais.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
             // modificarCliente
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Icon = global::Diploma_HerminiaMarske_Noche_UAI_Lomas.Properties.Resources.Airplane_Landing;
             this.Controls.Add(this.tableLayoutPanelAltaCliente);
+            this.Icon = global::Diploma_HerminiaMarske_Noche_UAI_Lomas.Properties.Resources.Airplane_Landing;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "modificarCliente";

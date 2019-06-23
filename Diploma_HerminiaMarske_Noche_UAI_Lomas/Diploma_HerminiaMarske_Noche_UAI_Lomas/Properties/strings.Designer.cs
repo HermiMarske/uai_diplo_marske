@@ -70,11 +70,38 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a El cliente fue completamente creado..
+        /// </summary>
+        internal static string client_created_person_created {
+            get {
+                return ResourceManager.GetString("client_created_person_created", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Error.
         /// </summary>
         internal static string error {
             get {
                 return ResourceManager.GetString("error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Error al eliminar el usuario..
+        /// </summary>
+        internal static string error_deleting_user {
+            get {
+                return ResourceManager.GetString("error_deleting_user", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Ha ocurrido un error al modificar el usuario..
+        /// </summary>
+        internal static string error_modifying_user {
+            get {
+                return ResourceManager.GetString("error_modifying_user", resourceCulture);
             }
         }
         
@@ -97,11 +124,56 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Algunos campos requeridos no fueron llenados..
+        /// </summary>
+        internal static string missing_info {
+            get {
+                return ResourceManager.GetString("missing_info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Por favor ingrese sus credenciales..
         /// </summary>
         internal static string missing_user_data {
             get {
                 return ResourceManager.GetString("missing_user_data", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a La persona no tiene domicilios..
+        /// </summary>
+        internal static string no_addresses {
+            get {
+                return ResourceManager.GetString("no_addresses", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a La persona no tiene mails..
+        /// </summary>
+        internal static string no_mails {
+            get {
+                return ResourceManager.GetString("no_mails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a La persona no tiene teléfonos..
+        /// </summary>
+        internal static string no_phones {
+            get {
+                return ResourceManager.GetString("no_phones", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a El usuario no tiene familias ni patentes asignadas..
+        /// </summary>
+        internal static string no_profiles_nor_roles {
+            get {
+                return ResourceManager.GetString("no_profiles_nor_roles", resourceCulture);
             }
         }
         
@@ -115,6 +187,33 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a La contraseña debe ser de al menos 6 carácteres..
+        /// </summary>
+        internal static string password_too_short {
+            get {
+                return ResourceManager.GetString("password_too_short", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Las contraseñas no coinciden..
+        /// </summary>
+        internal static string passwords_dont_match {
+            get {
+                return ResourceManager.GetString("passwords_dont_match", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a La persona ya tiene un usuario..
+        /// </summary>
+        internal static string person_has_user {
+            get {
+                return ResourceManager.GetString("person_has_user", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Éxito.
         /// </summary>
         internal static string success {
@@ -124,7 +223,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Existe un problema con su contraseña y no se puede procesar.
+        ///   Busca una cadena traducida similar a Existe un problema con su contraseña y no se puede procesar
         ///Comuníquese con un administrador..
         /// </summary>
         internal static string user_auth_error {
@@ -143,12 +242,57 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a El usuario se encuentra bloqueado.
+        ///   Busca una cadena traducida similar a El usuario se encuentra bloqueado
         ///Comuníquese con un administrador..
         /// </summary>
         internal static string user_blocked {
             get {
                 return ResourceManager.GetString("user_blocked", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Se creó el usuario para la persona existente..
+        /// </summary>
+        internal static string user_created_existing_person {
+            get {
+                return ResourceManager.GetString("user_created_existing_person", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a El usuario y la persona fueron creados..
+        /// </summary>
+        internal static string user_created_person_created {
+            get {
+                return ResourceManager.GetString("user_created_person_created", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Se eliminó el usuario exitosamente..
+        /// </summary>
+        internal static string user_deleted {
+            get {
+                return ResourceManager.GetString("user_deleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Este usuario ya existe..
+        /// </summary>
+        internal static string user_exists {
+            get {
+                return ResourceManager.GetString("user_exists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a El usuario fue modificado exitosamente..
+        /// </summary>
+        internal static string user_modified {
+            get {
+                return ResourceManager.GetString("user_modified", resourceCulture);
             }
         }
         

@@ -17,6 +17,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
     public partial class modificarUsuario : Form
     {
         Usuario usr = new Usuario();
+        private CustomMessageBox messageBox = new CustomMessageBox();
 
         public modificarUsuario()
         {
@@ -445,6 +446,38 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
+            bool shouldBreak = false;
+            if (dataGridDomicilios.Rows.Count == 0)
+            {
+                messageBox.ShowWarning(Properties.strings.no_addresses);
+                shouldBreak = true;
+            }
+            else if (checkedListFamilias.CheckedItems.Count == 0 && checkedListPatentes.CheckedItems.Count == 0)
+            {
+                messageBox.ShowWarning(Properties.strings.no_profiles_nor_roles);
+                shouldBreak = true;
+            }
+            else if (string.IsNullOrWhiteSpace(txtUsuario.Text) || string.IsNullOrWhiteSpace(txtDni.Text) || string.IsNullOrWhiteSpace(txtClave.Text))
+            {
+                messageBox.ShowWarning(Properties.strings.missing_info);
+                shouldBreak = true;
+            }
+            else if (!txtClave.Text.Equals(txtRepetirClave.Text))
+            {
+                messageBox.ShowWarning(Properties.strings.passwords_dont_match);
+                shouldBreak = true;
+            }
+            else if (txtClave.Text.Length < 6)
+            {
+                messageBox.ShowWarning(Properties.strings.password_too_short);
+                shouldBreak = true;
+            }
+
+            if (shouldBreak)
+            {
+                return;
+            }
+
             List<Domicilio> domicilios = new List<Domicilio>();
             List<Telefono> telefonos = new List<Telefono>();
             List<Mail> mails = new List<Mail>();
@@ -492,7 +525,14 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             u.SetRespuesta(txtRespuesta.Text);
             u.SetFkPregunta(comboPreguntas.SelectedIndex + 1);
 
-            ControladorABMUsuario.modificarUsuario(u);
+            try
+            {
+                messageBox.Show(ControladorABMUsuario.modificarUsuario(u));
+            }
+            catch (Exception ex)
+            {
+                messageBox.Show(ex.Message.ToString());
+            }
             
 
         }

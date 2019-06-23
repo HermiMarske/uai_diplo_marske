@@ -238,6 +238,7 @@
             // 
             // comboPreguntas
             // 
+            resources.ApplyResources(this.comboPreguntas, "comboPreguntas");
             this.comboPreguntas.FormattingEnabled = true;
             this.comboPreguntas.Items.AddRange(new object[] {
             resources.GetString("comboPreguntas.Items"),
@@ -248,7 +249,6 @@
             resources.GetString("comboPreguntas.Items5"),
             resources.GetString("comboPreguntas.Items6"),
             resources.GetString("comboPreguntas.Items7")});
-            resources.ApplyResources(this.comboPreguntas, "comboPreguntas");
             this.comboPreguntas.Name = "comboPreguntas";
             // 
             // labelPregunta

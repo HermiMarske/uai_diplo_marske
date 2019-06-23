@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos
 {
-    class Persona
+    public class Persona
     {
         private int idPersona;
         private string dni;

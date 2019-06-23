@@ -1,6 +1,6 @@
 ﻿namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos
 {
-    class Patente
+    public class Patente
     {
         private int id;
         private string codigo;

@@ -52,7 +52,7 @@
             this.tabUsuarios = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanelListaClientes = new System.Windows.Forms.TableLayoutPanel();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnVerCliente = new System.Windows.Forms.Button();
             this.btnEliminarCliente = new System.Windows.Forms.Button();
             this.btnModificarCliente = new System.Windows.Forms.Button();
             this.btnNuevoCliente = new System.Windows.Forms.Button();
@@ -245,18 +245,18 @@
             // tableLayoutPanelListaClientes
             // 
             resources.ApplyResources(this.tableLayoutPanelListaClientes, "tableLayoutPanelListaClientes");
-            this.tableLayoutPanelListaClientes.Controls.Add(this.button4, 0, 1);
+            this.tableLayoutPanelListaClientes.Controls.Add(this.btnVerCliente, 0, 1);
             this.tableLayoutPanelListaClientes.Controls.Add(this.btnEliminarCliente, 0, 1);
             this.tableLayoutPanelListaClientes.Controls.Add(this.btnModificarCliente, 0, 1);
             this.tableLayoutPanelListaClientes.Controls.Add(this.btnNuevoCliente, 0, 1);
             this.tableLayoutPanelListaClientes.Controls.Add(this.groupBox1, 0, 0);
             this.tableLayoutPanelListaClientes.Name = "tableLayoutPanelListaClientes";
             // 
-            // button4
+            // btnVerCliente
             // 
-            resources.ApplyResources(this.button4, "button4");
-            this.button4.Name = "button4";
-            this.button4.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.btnVerCliente, "btnVerCliente");
+            this.btnVerCliente.Name = "btnVerCliente";
+            this.btnVerCliente.UseVisualStyleBackColor = true;
             // 
             // btnEliminarCliente
             // 
@@ -513,7 +513,7 @@
         private System.Windows.Forms.TabControl tabUsuarios;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelListaClientes;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnVerCliente;
         private System.Windows.Forms.Button btnEliminarCliente;
         private System.Windows.Forms.Button btnModificarCliente;
         private System.Windows.Forms.Button btnNuevoCliente;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos
 {
-    class Usuario
+    public class Usuario
     {
         private int idUsuario;
         private string nombreUsuario;
@@ -20,6 +20,16 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos
         private List<Patente> patentes;
         private List<Familia> familias;
         private DateTime borrado;
+
+        public string GetIdioma()
+        {
+            return idioma;
+        }
+
+        public void SetIdioma(string value)
+        {
+            idioma = value;
+        }
 
         public DateTime GetBorrado()
         {

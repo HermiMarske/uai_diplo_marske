@@ -16,6 +16,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
 {
     public partial class altaUsuario : Form
     {
+        CustomMessageBox messageBox = new CustomMessageBox();
         public altaUsuario()
         {
             InitializeComponent();
@@ -288,7 +289,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
         private void personaFillData()
         {
             string dni = txtDni.Text;
-            if (String.IsNullOrEmpty(dni))
+            if (string.IsNullOrEmpty(dni))
             {
                 return;
             }
@@ -410,7 +411,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
                     }
                 } catch
                 {
-                    MessageBox.Show("Persona sin domicilios.");
+                    messageBox.Show(Properties.strings.no_addresses);
                 }
 
                 // Deshabilitar todos los controles y mostrar los datos 
@@ -566,6 +567,38 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
 
         private void btnAgregarUsuario_Click(object sender, EventArgs e)
         {
+            bool shouldBreak = false;
+            if (dataGridDomicilios.Rows.Count == 0)
+            {
+                messageBox.ShowWarning(Properties.strings.no_addresses);
+                shouldBreak = true;
+            }
+            else if (checkedListFamilias.CheckedItems.Count == 0 && checkedListPatentes.CheckedItems.Count == 0)
+            {
+                messageBox.ShowWarning(Properties.strings.no_profiles_nor_roles);
+                shouldBreak = true;
+            }
+            else if (string.IsNullOrWhiteSpace(txtUsuario.Text) || string.IsNullOrWhiteSpace(txtDni.Text) || string.IsNullOrWhiteSpace(txtClave.Text))
+            {
+                messageBox.ShowWarning(Properties.strings.missing_info);
+                shouldBreak = true;
+            }
+            else if (!txtClave.Text.Equals(txtRptClave.Text))
+            {
+                messageBox.ShowWarning(Properties.strings.passwords_dont_match);
+                shouldBreak = true;
+            }
+            else if (txtClave.Text.Length < 6)
+            {
+                messageBox.ShowWarning(Properties.strings.password_too_short);
+                shouldBreak = true;
+            }
+
+            if (shouldBreak)
+            {
+                return;
+            }
+
             Usuario usuario = new Usuario(0, txtUsuario.Text, txtClave.Text, 0, true, txtRespuesta.Text, comboPreguntas.SelectedIndex + 1, persona: 
                 new Persona(0, txtDni.Text, txtNombre.Text, txtApellido.Text, comboSexo.SelectedItem.ToString(), pickerFechaNacimiento.Value));
             usuario.SetFamilias(new List<Familia>());
@@ -620,10 +653,10 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
 
             try
             {
-                MessageBox.Show(ControladorABMUsuario.alta(usuario, domicilios, mails, telefonos));
+                messageBox.Show(ControladorABMUsuario.alta(usuario, domicilios, mails, telefonos));
             } catch (Exception ex)
             {
-                MessageBox.Show(ex.StackTrace);
+                messageBox.ShowError(ex.Message.ToString());
             }
 
         }

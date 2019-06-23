@@ -160,6 +160,7 @@
     <Compile Include="forms\modificarUsuario.Designer.cs">
       <DependentUpon>modificarUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="objetos\BitacoraRow.cs" />
     <Compile Include="objetos\Cliente.cs" />
     <Compile Include="objetos\Familia.cs" />
@@ -224,11 +225,17 @@
     <EmbeddedResource Include="forms\altaUsuario.resx">
       <DependentUpon>altaUsuario.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="forms\bitacora.en.resx">
+      <DependentUpon>bitacora.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="forms\bitacora.resx">
       <DependentUpon>bitacora.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\CustomMessageBox.resx">
       <DependentUpon>CustomMessageBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\inicio.en.resx">
+      <DependentUpon>inicio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\inicio.resx">
       <DependentUpon>inicio.cs</DependentUpon>

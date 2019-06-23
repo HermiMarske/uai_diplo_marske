@@ -3,10 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos;
 using ConstantesData;
@@ -16,7 +12,8 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
 {
     public partial class modificarCliente : Form
     {
-        public static Object idCliente;
+        public static object idCliente;
+        private CustomMessageBox messageBox = new CustomMessageBox();
         public modificarCliente()
         {
             InitializeComponent();
@@ -106,7 +103,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             }
             comboPais.DataSource = paises;
 
-            int idClienteSelec = Int32.Parse((string)formInicio.idClienteModif);
+            int idClienteSelec = int.Parse((string)formInicio.idClienteModif);
 
             SqlParameter[] pms = new SqlParameter[1];
 
@@ -154,13 +151,13 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
 
                 foreach (Telefono t in telList)
                 {
-                    String[] dataRow = { t.GetTipo(), t.GetNumero() };
+                    string[] dataRow = { t.GetTipo(), t.GetNumero() };
                     dataGridTelefonos.Rows.Add(dataRow);
                 }
             }
             catch
             {
-                MessageBox.Show(dtTel.Rows[0].ItemArray[0].ToString());
+                messageBox.Show(Properties.strings.no_phones);
             }
             
             /** Lleno el grid de correos **/
@@ -185,13 +182,13 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
 
                 foreach (Mail m in mailList)
                 {
-                    String[] dataRow = { m.GetTipo(), m.GetMail() };
+                    string[] dataRow = { m.GetTipo(), m.GetMail() };
                     dataGridMails.Rows.Add(dataRow);
                 }
             }
             catch
             {
-                MessageBox.Show(dtMail.Rows[0].ItemArray[0].ToString());
+                messageBox.Show(Properties.strings.no_mails);
             }
     
             /** Lleno lista de domicilios **/
@@ -203,21 +200,29 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             dtDom = dataQuery.getList(SP.OBTENER_DOMICILIOS, pms);
             List<Domicilio> domList = new List<Domicilio>();
 
-            foreach (DataRow drDom in dtDom.Rows)
+            try
             {
-                Localidad lc = new Localidad((string)drDom[10], (int)drDom[9], 0);
-                Provincia pv = new Provincia((string)drDom[12], (int)drDom[11]);
-                Pais p = new Pais((int)drDom[13], (string)drDom[14]);
-                Domicilio dom = new Domicilio((int)drDom[0], (string)drDom[1], (string)drDom[2], (int)drDom[3], (string)drDom[4], (string)drDom[5], (string)drDom[6], (string)drDom[7], lc, p, pv );
+                foreach (DataRow drDom in dtDom.Rows)
+                {
+                    Localidad lc = new Localidad((string)drDom[10], (int)drDom[9], 0);
+                    Provincia pv = new Provincia((string)drDom[12], (int)drDom[11]);
+                    Pais p = new Pais((int)drDom[13], (string)drDom[14]);
+                    Domicilio dom = new Domicilio((int)drDom[0], (string)drDom[1], (string)drDom[2], (int)drDom[3], (string)drDom[4], (string)drDom[5], (string)drDom[6], (string)drDom[7], lc, p, pv);
 
-                domList.Add(dom);
-           
+                    domList.Add(dom);
+
+                }
+                foreach (Domicilio d in domList)
+                {
+                    object[] dataRow = { d.GetTipoDomicilio(), d.GetComentario(), d.GetCalle(), d.GetNumero(), d.GetPiso().ToString(), d.GetDpto(), d.GetCodigoPostal(), d.GetLocalidad(), d.GetProvincia(), d.GetPais() };
+                    dataGridDomicilios.Rows.Add(dataRow);
+                }
             }
-            foreach (Domicilio d in domList)
+            catch
             {
-                object[] dataRow = { d.GetTipoDomicilio(), d.GetComentario(), d.GetCalle(), d.GetNumero(), d.GetPiso().ToString(), d.GetDpto(), d.GetCodigoPostal(), d.GetLocalidad(), d.GetProvincia(), d.GetPais()};
-                dataGridDomicilios.Rows.Add(dataRow);
+                messageBox.Show(Properties.strings.no_addresses);
             }
+            
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -327,11 +332,20 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
         private void btnModificarCliente_Click(object sender, EventArgs e)
         {
             DataConnection.DataConnection dataConnection = new DataConnection.DataConnection();
+            if (dataGridDomicilios.Rows.Count == 0)
+            {
+                messageBox.ShowWarning(Properties.strings.no_addresses);
+                return;
+            } else if (string.IsNullOrWhiteSpace(txtCuit.Text) || string.IsNullOrWhiteSpace(txtDni.Text))
+            {
+                messageBox.ShowWarning(Properties.strings.missing_info);
+                return;
+            }
 
             SqlParameter[] pms = new SqlParameter[9];
 
             pms[0] = new SqlParameter("@idCliente", SqlDbType.Int);
-            pms[0].Value = Int32.Parse((string)formInicio.idClienteModif);
+            pms[0].Value = int.Parse((string)formInicio.idClienteModif);
 
             pms[1] = new SqlParameter("@razonSocial", SqlDbType.VarChar);
             pms[1].Value = txtRazonSocial.Text;
@@ -363,7 +377,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
            
 
             pmsTel[0] = new SqlParameter("@idPersona", SqlDbType.Int);
-            pmsTel[0].Value = Int32.Parse((string)formInicio.fkPersonaModif);
+            pmsTel[0].Value = int.Parse((string)formInicio.fkPersonaModif);
 
             dataConnection.databaseModifyData(pmsTel, SP.BORRAR_TELEFONOS);
 
@@ -386,10 +400,9 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
                 pmsTelefono[1].Value = t.GetNumero();
 
                 pmsTelefono[2] = new SqlParameter("@fk_persona", SqlDbType.Int);
-                pmsTelefono[2].Value = Int32.Parse((string)formInicio.fkPersonaModif);
+                pmsTelefono[2].Value = int.Parse((string)formInicio.fkPersonaModif);
 
                 dataConnection.databaseInsertAditionalData(pmsTelefono, SP.ALTA_TELEFONO);
-
             }
 
 
@@ -397,7 +410,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
 
 
             pmsMails[0] = new SqlParameter("@idPersona", SqlDbType.Int);
-            pmsMails[0].Value = Int32.Parse((string)formInicio.fkPersonaModif);
+            pmsMails[0].Value = int.Parse((string)formInicio.fkPersonaModif);
 
             dataConnection.databaseModifyData(pmsTel, SP.BORRAR_MAILS);
 
@@ -420,7 +433,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
                 pmsEmails[1].Value = m.GetMail();
 
                 pmsEmails[2] = new SqlParameter("@fk_persona", SqlDbType.Int);
-                pmsEmails[2].Value = Int32.Parse((string)formInicio.fkPersonaModif);
+                pmsEmails[2].Value = int.Parse((string)formInicio.fkPersonaModif);
 
                 dataConnection.databaseInsertAditionalData(pmsEmails, SP.ALTA_MAIL);
 
@@ -432,13 +445,13 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
                 int piso = Convert.ToInt32(pisoString);
 
                 Domicilio dom = new Domicilio();
-                dom.SetTipoDomicilio((String)dataGridDomicilios.Rows.SharedRow(i).Cells[0].Value);
-                dom.SetComentario((String)dataGridDomicilios.Rows.SharedRow(i).Cells[1].Value);
-                dom.SetCalle((String)dataGridDomicilios.Rows.SharedRow(i).Cells[2].Value);
-                dom.SetNumero((String)dataGridDomicilios.Rows.SharedRow(i).Cells[3].Value);
+                dom.SetTipoDomicilio((string)dataGridDomicilios.Rows.SharedRow(i).Cells[0].Value);
+                dom.SetComentario((string)dataGridDomicilios.Rows.SharedRow(i).Cells[1].Value);
+                dom.SetCalle((string)dataGridDomicilios.Rows.SharedRow(i).Cells[2].Value);
+                dom.SetNumero((string)dataGridDomicilios.Rows.SharedRow(i).Cells[3].Value);
                 dom.SetPiso(piso);
-                dom.SetDpto((String)dataGridDomicilios.Rows.SharedRow(i).Cells[5].Value);
-                dom.SetCodigoPostal((String)dataGridDomicilios.Rows.SharedRow(i).Cells[6].Value);
+                dom.SetDpto((string)dataGridDomicilios.Rows.SharedRow(i).Cells[5].Value);
+                dom.SetCodigoPostal((string)dataGridDomicilios.Rows.SharedRow(i).Cells[6].Value);
                 dom.SetLocalidad((Localidad)dataGridDomicilios.Rows.SharedRow(i).Cells[7].Value);
 
                 domicilios.Add(dom);
@@ -447,7 +460,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             SqlParameter[] pmsDom = new SqlParameter[1];
 
             pmsDom[0] = new SqlParameter("@idPersona", SqlDbType.Int);
-            pmsDom[0].Value = Int32.Parse((string)formInicio.fkPersonaModif);
+            pmsDom[0].Value = int.Parse((string)formInicio.fkPersonaModif);
             dataConnection.databaseModifyData(pmsDom, SP.BORRAR_DOMICILIOS);
 
             SqlParameter[] pmsDomicilio = new SqlParameter[9];
@@ -479,7 +492,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
                 pmsDomicilio[7].Value = d.GetLocalidad().GetId();
 
                 pmsDomicilio[8] = new SqlParameter("@fk_persona", SqlDbType.Int);
-                pmsDomicilio[8].Value = Int32.Parse((string)formInicio.fkPersonaModif);
+                pmsDomicilio[8].Value = int.Parse((string)formInicio.fkPersonaModif);
 
                 dataConnection.databaseModifyData(pmsDomicilio, SP.ALTA_DOMICILIO);
             }
@@ -491,7 +504,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             tel.SetNumero(textBoxNumero.Text);
             tel.SetTipo(comboTipoTelefono.SelectedItem.ToString());
 
-            String[] dataRow = { tel.GetTipo(), tel.GetNumero() };
+            string[] dataRow = { tel.GetTipo(), tel.GetNumero() };
             dataGridTelefonos.Rows.Add(dataRow);
         }
 
@@ -516,7 +529,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             dom.SetProvincia((Provincia)comboProvincias.SelectedItem);
             dom.SetPais((Pais)comboPais.SelectedItem);
 
-            Object[] dataRow = { dom.GetTipoDomicilio(), dom.GetComentario(), dom.GetCalle(), dom.GetNumero(), dom.GetPiso(), dom.GetDpto(), dom.GetCodigoPostal(), dom.GetLocalidad() };
+            object[] dataRow = { dom.GetTipoDomicilio(), dom.GetComentario(), dom.GetCalle(), dom.GetNumero(), dom.GetPiso(), dom.GetDpto(), dom.GetCodigoPostal(), dom.GetLocalidad() };
             dataGridDomicilios.Rows.Add(dataRow);
         }
 
@@ -526,7 +539,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             mail.SetMail(textBoxMail.Text);
             mail.SetTipo(comboTipoMails.SelectedItem.ToString());
 
-            String[] dataRow = { mail.GetTipo(), mail.GetMail() };
+            string[] dataRow = { mail.GetTipo(), mail.GetMail() };
             dataGridMails.Rows.Add(dataRow);
         }
 

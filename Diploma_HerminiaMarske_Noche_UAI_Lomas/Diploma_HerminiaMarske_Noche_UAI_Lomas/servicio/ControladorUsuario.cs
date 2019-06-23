@@ -57,7 +57,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
                         string success = "UPDATE Usuarios SET habilitado = 1, CII = 0, DVH = @dvh WHERE usuario = @usuario; " +
                           "SELECT p.ID_Persona, p.dni, p.nombre, p.apellido, p.sexo, p.fechaNacimiento, u.ID_Usuario, u.usuario, u.idioma FROM Usuarios u, Personas p WHERE p.ID_Persona = u.FK_Persona AND u.usuario = @usuario;";
                           //"SELECT u.ID_Usuario, u.usuario FROM Usuarios u WHERE u.usuario = @usuario";
-                        string perms = "SELECT p.idPatente, p.codigo FROM Patente p " +
+                        string perms = "SELECT DISTINCT p.idPatente, p.codigo, up.negado FROM Patente p " +
                             "LEFT JOIN Usuario_Patente up ON up.patenteFK = p.idPatente " +
                             "LEFT JOIN Familia_Patente fp ON fp.patenteFK = p.idPatente " +
                             "LEFT JOIN Usuario_Familia uf ON uf.familiaFK = fp.familiaFK " +
@@ -73,7 +73,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
                         DataRowCollection usrPerms = dt.Rows;
                         List<Patente> patentes = new List<Patente>();
                         foreach (DataRow row in usrPerms) {
-                            patentes.Add(new Patente((int)row[0], row[1].ToString()));
+                            patentes.Add(new Patente((int)row[0], row[1].ToString(), 0, row[2].GetType() == typeof(DBNull) ? false : (bool)row[2]));
                         }
                         Persona persona = new Persona((int)dr[0], dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), (DateTime)dr[5]);
 

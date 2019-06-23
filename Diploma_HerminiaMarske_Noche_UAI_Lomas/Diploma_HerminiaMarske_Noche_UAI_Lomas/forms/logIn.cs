@@ -15,7 +15,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void btnIngresar_Click(object sender, EventArgs e)
@@ -34,6 +34,12 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
                 {
                     Usuario usuario = ControladorUsuario.logIn(user, clave);
                     messageBox.Show(string.Format(strings.welcome, usuario.GetPersona().GetNombre()), true);
+                    txtUsuario.Clear();
+                    txtPassword.Clear();
+                    Hide();
+                    new formInicio(usuario).ShowDialog();
+                    Show();
+                    txtUsuario.Focus();
                 } catch (Exception ex)
                 {
                     switch (ex.Message.ToString())

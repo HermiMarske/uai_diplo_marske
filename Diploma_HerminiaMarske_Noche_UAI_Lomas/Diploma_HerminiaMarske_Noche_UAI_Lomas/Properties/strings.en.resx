@@ -120,8 +120,17 @@
   <data name="cancel" xml:space="preserve">
     <value>Cancel</value>
   </data>
+  <data name="client_created_person_created" xml:space="preserve">
+    <value>The client was completely created.</value>
+  </data>
   <data name="error" xml:space="preserve">
     <value>Error</value>
+  </data>
+  <data name="error_deleting_user" xml:space="preserve">
+    <value>There was an error while processing the user deletion</value>
+  </data>
+  <data name="error_modifying_user" xml:space="preserve">
+    <value>There was an error while processing the user modification.</value>
   </data>
   <data name="failure" xml:space="preserve">
     <value>Failure</value>
@@ -129,11 +138,35 @@
   <data name="message" xml:space="preserve">
     <value>Message</value>
   </data>
+  <data name="missing_info" xml:space="preserve">
+    <value>Some of the required fields are empty.</value>
+  </data>
   <data name="missing_user_data" xml:space="preserve">
     <value>Please provide all the required fields.</value>
   </data>
+  <data name="no_addresses" xml:space="preserve">
+    <value>The person doesn't have any addresses.</value>
+  </data>
+  <data name="no_mails" xml:space="preserve">
+    <value>The person doesn't have any mails</value>
+  </data>
+  <data name="no_phones" xml:space="preserve">
+    <value>The person doesn't have any phones</value>
+  </data>
+  <data name="no_profiles_nor_roles" xml:space="preserve">
+    <value>The user doesn't have any profiles nor roles granted.</value>
+  </data>
   <data name="ok" xml:space="preserve">
     <value>OK</value>
+  </data>
+  <data name="passwords_dont_match" xml:space="preserve">
+    <value>Passwords don't match.</value>
+  </data>
+  <data name="password_too_short" xml:space="preserve">
+    <value>Password must be at least 6 characters long.</value>
+  </data>
+  <data name="person_has_user" xml:space="preserve">
+    <value>The person already haves an user.</value>
   </data>
   <data name="success" xml:space="preserve">
     <value>Success</value>
@@ -148,6 +181,21 @@ Please contact an administrator</value>
   <data name="user_blocked" xml:space="preserve">
     <value>This user is blocked
 Please contact an administrator.</value>
+  </data>
+  <data name="user_created_existing_person" xml:space="preserve">
+    <value>User created for existing person.</value>
+  </data>
+  <data name="user_created_person_created" xml:space="preserve">
+    <value>The user and the person were created.</value>
+  </data>
+  <data name="user_deleted" xml:space="preserve">
+    <value>User deleted successfully.</value>
+  </data>
+  <data name="user_exists" xml:space="preserve">
+    <value>This user already exists.</value>
+  </data>
+  <data name="user_modified" xml:space="preserve">
+    <value>User modified successfully.</value>
   </data>
   <data name="user_not_exists" xml:space="preserve">
     <value>The user does not exist.</value>

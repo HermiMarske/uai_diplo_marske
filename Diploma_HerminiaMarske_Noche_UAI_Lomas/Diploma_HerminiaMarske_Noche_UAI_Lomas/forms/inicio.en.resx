@@ -117,90 +117,136 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="cancel" xml:space="preserve">
-    <value>Cancelar</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Control panel</value>
   </data>
-  <data name="client_created_person_created" xml:space="preserve">
-    <value>El cliente fue completamente creado.</value>
+  <data name="actividadesToolStripMenuItem.Text" xml:space="preserve">
+    <value>Activities</value>
   </data>
-  <data name="error" xml:space="preserve">
-    <value>Error</value>
+  <data name="actividadesToolStripMenuItem1.Text" xml:space="preserve">
+    <value>Airplanes</value>
   </data>
-  <data name="error_deleting_user" xml:space="preserve">
-    <value>Error al eliminar el usuario.</value>
+  <data name="apellido.HeaderText" xml:space="preserve">
+    <value>Last name</value>
   </data>
-  <data name="error_modifying_user" xml:space="preserve">
-    <value>Ha ocurrido un error al modificar el usuario.</value>
+  <data name="bitacoraToolStripMenuItem.Text" xml:space="preserve">
+    <value>Event log</value>
   </data>
-  <data name="failure" xml:space="preserve">
-    <value>Fallido</value>
+  <data name="btnAltaUsuario.Text" xml:space="preserve">
+    <value>New user</value>
   </data>
-  <data name="message" xml:space="preserve">
-    <value>Mensaje</value>
+  <data name="btnDetalleUsuario.Text" xml:space="preserve">
+    <value>View details</value>
   </data>
-  <data name="missing_info" xml:space="preserve">
-    <value>Algunos campos requeridos no fueron llenados.</value>
+  <data name="btnEliminarCliente.Text" xml:space="preserve">
+    <value>Delete client</value>
   </data>
-  <data name="missing_user_data" xml:space="preserve">
-    <value>Por favor ingrese sus credenciales.</value>
+  <data name="btnEliminarUsuario.Text" xml:space="preserve">
+    <value>Delete user</value>
   </data>
-  <data name="no_addresses" xml:space="preserve">
-    <value>La persona no tiene domicilios.</value>
+  <data name="btnModificarCliente.Text" xml:space="preserve">
+    <value>Modify client</value>
   </data>
-  <data name="no_mails" xml:space="preserve">
-    <value>La persona no tiene mails.</value>
+  <data name="btnModificarUsuario.Text" xml:space="preserve">
+    <value>Modify user</value>
   </data>
-  <data name="no_phones" xml:space="preserve">
-    <value>La persona no tiene teléfonos.</value>
+  <data name="btnNuevoCliente.Text" xml:space="preserve">
+    <value>New client</value>
   </data>
-  <data name="no_profiles_nor_roles" xml:space="preserve">
-    <value>El usuario no tiene familias ni patentes asignadas.</value>
+  <data name="btnVerCliente.Text" xml:space="preserve">
+    <value>View details</value>
   </data>
-  <data name="ok" xml:space="preserve">
-    <value>Aceptar</value>
+  <data name="busquedaToolStripMenuItem.Text" xml:space="preserve">
+    <value>Clients list</value>
   </data>
-  <data name="passwords_dont_match" xml:space="preserve">
-    <value>Las contraseñas no coinciden.</value>
+  <data name="clientesToolStripMenuItem.Text" xml:space="preserve">
+    <value>Clients</value>
   </data>
-  <data name="password_too_short" xml:space="preserve">
-    <value>La contraseña debe ser de al menos 6 carácteres.</value>
+  <data name="cuit.HeaderText" xml:space="preserve">
+    <value>CUIT</value>
   </data>
-  <data name="person_has_user" xml:space="preserve">
-    <value>La persona ya tiene un usuario.</value>
+  <data name="dataGridViewTextBoxColumn1.HeaderText" xml:space="preserve">
+    <value>id</value>
   </data>
-  <data name="success" xml:space="preserve">
-    <value>Éxito</value>
+  <data name="dataGridViewTextBoxColumn4.HeaderText" xml:space="preserve">
+    <value>Name</value>
   </data>
-  <data name="user_auth_error" xml:space="preserve">
-    <value>Existe un problema con su contraseña y no se puede procesar
-Comuníquese con un administrador.</value>
+  <data name="dataGridViewTextBoxColumn5.HeaderText" xml:space="preserve">
+    <value>Last name</value>
   </data>
-  <data name="user_auth_failed" xml:space="preserve">
-    <value>¡Contraseña incorrecta!</value>
+  <data name="dni.HeaderText" xml:space="preserve">
+    <value>DNI</value>
   </data>
-  <data name="user_blocked" xml:space="preserve">
-    <value>El usuario se encuentra bloqueado
-Comuníquese con un administrador.</value>
+  <data name="familiasYPermisosToolStripMenuItem.Text" xml:space="preserve">
+    <value>Profiles and roles</value>
   </data>
-  <data name="user_created_existing_person" xml:space="preserve">
-    <value>Se creó el usuario para la persona existente.</value>
+  <data name="fkPersona.HeaderText" xml:space="preserve">
+    <value>fkPersona</value>
   </data>
-  <data name="user_created_person_created" xml:space="preserve">
-    <value>El usuario y la persona fueron creados.</value>
+  <data name="gestionDePaisesToolStripMenuItem.Text" xml:space="preserve">
+    <value>Countries</value>
   </data>
-  <data name="user_deleted" xml:space="preserve">
-    <value>Se eliminó el usuario exitosamente.</value>
+  <data name="gestionToolStripMenuItem.Text" xml:space="preserve">
+    <value>Manage</value>
   </data>
-  <data name="user_exists" xml:space="preserve">
-    <value>Este usuario ya existe.</value>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Clients list</value>
   </data>
-  <data name="user_modified" xml:space="preserve">
-    <value>El usuario fue modificado exitosamente.</value>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>Users list</value>
   </data>
-  <data name="user_not_exists" xml:space="preserve">
-    <value>El usuario ingresado no existe.</value>
+  <data name="id.HeaderText" xml:space="preserve">
+    <value>id</value>
   </data>
-  <data name="welcome" xml:space="preserve">
-    <value>¡Bienvenido {0}!</value>
+  <data name="localidadesToolStripMenuItem.Text" xml:space="preserve">
+    <value>Localities</value>
+  </data>
+  <data name="menuStrip1.Text" xml:space="preserve">
+    <value>Menu strip</value>
+  </data>
+  <data name="nombre.HeaderText" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="nuevoClienteToolStripMenuItem.Text" xml:space="preserve">
+    <value>New client</value>
+  </data>
+  <data name="opcionesToolStripMenuItem.Text" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="pilotosToolStripMenuItem.Text" xml:space="preserve">
+    <value>Pilots</value>
+  </data>
+  <data name="provinciasToolStripMenuItem.Text" xml:space="preserve">
+    <value>States</value>
+  </data>
+  <data name="razonSocial.HeaderText" xml:space="preserve">
+    <value>Company's name</value>
+  </data>
+  <data name="regionesToolStripMenuItem.Text" xml:space="preserve">
+    <value>Regions</value>
+  </data>
+  <data name="seguridadToolStripMenuItem.Text" xml:space="preserve">
+    <value>Security</value>
+  </data>
+  <data name="statusStrip1.Text" xml:space="preserve">
+    <value>Status strip</value>
+  </data>
+  <data name="tabPage1.Text" xml:space="preserve">
+    <value>Clientes</value>
+  </data>
+  <data name="tabPage2.Text" xml:space="preserve">
+    <value>Users</value>
+  </data>
+  <data name="tabPage3.Text" xml:space="preserve">
+    <value>Pilots</value>
+  </data>
+  <data name="tabPage4.Text" xml:space="preserve">
+    <value>Airplanes</value>
+  </data>
+  <data name="tabPage5.Text" xml:space="preserve">
+    <value>Activities</value>
+  </data>
+  <data name="usuario.HeaderText" xml:space="preserve">
+    <value>User</value>
   </data>
 </root>

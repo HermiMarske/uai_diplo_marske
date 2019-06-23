@@ -7,6 +7,8 @@ using Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos;
 using Diploma_HerminiaMarske_Noche_UAI_Lomas.forms;
 using ConstantesData;
 using Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio;
+using System.Globalization;
+using System.Threading;
 
 namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
 {
@@ -23,6 +25,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
         altaFamilia formFamilias = new altaFamilia();
         modificarCliente formModifCliente = new modificarCliente();
         modificarUsuario modificarUsuario = new modificarUsuario();
+        private Usuario usuarioLogueado;
 
         DataConnection.DataConnection dataConnection = new DataConnection.DataConnection();
 
@@ -81,17 +84,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
 
         private void nuevoClienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-
             formAltaCliente.Show();
-
-        }
-
-        private void formInicio_Load(object sender, EventArgs e)
-        {
-            listarClientes();
-            listarUsuarios();
-
         }
 
         private void btnModificarCliente_Click(object sender, EventArgs e)
@@ -110,10 +103,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
                     modificarCliente formModifCliente = new modificarCliente();
                     formModifCliente.Show();
                 }
-                
-               
             }
-     
         }
 
         private void btnEliminarCliente_Click(object sender, EventArgs e)
@@ -131,7 +121,6 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
 
                 if (respuesta != null)
                 {
-                 
                     MessageBox.Show(respuesta);
                     listarClientes();
                 }
@@ -141,9 +130,41 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
 
         /** FIN SOLAPA CLIENTES **/
 
+        private bool hasPermission(string permission) => usuarioLogueado.GetPatentes().Exists(p => p.GetDescripcion().Equals(permission) && !p.GetNegado());
+
+
+        private void formInicio_Load(object sender, EventArgs e)
+        {
+            if (hasPermission("ADM_CLIENTES_VER"))
+                listarClientes();
+            if (hasPermission("ADM_USUARIOS_VER"))
+                listarUsuarios();
+        }
+
         public formInicio()
         {
             InitializeComponent();
+        }
+
+        public formInicio(Usuario usuario)
+        {
+            usuarioLogueado = usuario;
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(usuario.GetIdioma());
+            Controls.Clear();
+            InitializeComponent();
+
+            btnNuevoCliente.Enabled = hasPermission("ADM_CLIENTES_ALTA");
+            btnVerCliente.Enabled = hasPermission("ADM_CLIENTES_VER");
+            dataGridClientes.Enabled = hasPermission("ADM_CLIENTES_VER");
+            btnEliminarCliente.Enabled = hasPermission("ADM_CLIENTES_BAJA");
+            btnModificarCliente.Enabled = hasPermission("ADM_CLIENTES_MODIF");
+
+            datagridUsuarios.Enabled = hasPermission("ADM_USUARIOS_VER");
+            btnDetalleUsuario.Enabled = hasPermission("ADM_USUARIOS_VER");
+            btnAltaUsuario.Enabled = hasPermission("ADM_USUARIOS_ALTA");
+            btnEliminarUsuario.Enabled = hasPermission("ADM_USUARIOS_BAJA");
+            btnModificarUsuario.Enabled = hasPermission("ADM_USUARIOS_MODIF");
+            familiasYPermisosToolStripMenuItem.Enabled = hasPermission("ADM_USUARIOS_PERM");
         }
 
         private void actividadesToolStripMenuItem1_Click(object sender, EventArgs e)

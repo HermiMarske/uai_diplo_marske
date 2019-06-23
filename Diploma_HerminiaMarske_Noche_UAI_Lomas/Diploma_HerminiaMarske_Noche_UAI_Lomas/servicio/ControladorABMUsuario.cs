@@ -4,22 +4,24 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
+using System.Resources;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
 {
     class ControladorABMUsuario
     {
-
         private const string USER_CREATED_EXISTING_PERSON = "USER_CREATED_EXISTING_PERSON";
         private const string MISSING_DATA = "MISSING_DATA";
         private const string USER_EXISTS = "USER_EXISTS";
         private const string USER_CREATED_PERSON_CREATED = "USER_CREATED_PERSON_CREATED";
         private const string PERSON_HAS_USER = "PERSON_HAS_USER";
         private const string MISSING_INFO = "MISSING_INFO";
-
+        private const string USER_MODIFIED = "USER_MODIFIED";
+        private const string ERROR_MODIFYING_USER = "ERROR_MODIFYING_USER";
+        private const string ERROR_DELETING_USER = "ERROR_DELETING_USER";
+        private const string USER_DELETED = "USER_DELETED";
+        private static ResourceManager rm = new ResourceManager(typeof(Properties.strings));
 
         public static string modificarUsuario(Usuario usuario)
         {
@@ -47,7 +49,6 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
             pmsUsuario[3].Value = usuario.GetIdUsuario();
 
             //Modificar Persona
-
             SqlParameter[] pmsPersona = new SqlParameter[5];
             pmsPersona[0] = new SqlParameter("@dni", SqlDbType.VarChar);
             pmsPersona[0].Value = usuario.GetPersona().GetDni();
@@ -88,11 +89,11 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
                 dataQuery.sqlUpsert(string.Format(insertarPatentes, valuesPatentes), null);
                 dataQuery.sqlUpsert(string.Format(insertarFamilia, valuesFamilias), null);
 
-                return "Usuario modificado";
-
-            } catch
+                return rm.GetString(USER_MODIFIED.ToLower());
+            }
+            catch
             {
-                return "El usuario no pudo modificarse.";
+                return rm.GetString(ERROR_MODIFYING_USER.ToLower());
             }
             
         }
@@ -122,7 +123,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
             pms[5].Value = usuario.GetFkPregunta();
 
             DataTable dt = dataQuery.sqlExecute(altaUsuario, pms);
-            int uCreado = Decimal.ToInt32((decimal)dt.Rows[0][0]);
+            int uCreado = decimal.ToInt32((decimal)dt.Rows[0][0]);
 
             string valuesPatentes = "";
             foreach (Patente pat in usuario.GetPatentes())
@@ -146,137 +147,118 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
 
         static public string alta(Usuario usuario, List<Domicilio> domicilios, List<Mail> mails, List<Telefono> telefonos)
         {
-                 
-            if (string.IsNullOrEmpty(usuario.GetPassword()) || string.IsNullOrEmpty(usuario.GetNombreUsuario()) || (usuario.GetPatentes().Count == 0 && usuario.GetFamilias().Count == 0)) 
-            {
-                return MISSING_INFO;
+            string personaExiste = "SELECT TOP 1 ID_Persona FROM Personas WHERE dni = @dniPersona;";
+            string usuarioExiste = "SELECT TOP 1 ID_Usuario FROM Usuarios WHERE {0};";
+            string altaPersona = "INSERT INTO Personas (dni, nombre, apellido, sexo, fechaNacimiento)" +
+                " VALUES (@dni, @nombre, @apellido, @sexo, @fechaNacimiento);" +
+                " SELECT SCOPE_IDENTITY();";
+            string crearDomicilios = "INSERT INTO Domicilio(calle,numero,piso,dpto, comentarios, codPostal,tipoDomicilio, FK_Localidad, FK_Persona) " +
+                "VALUES {0}";
+            string crearMails = "INSERT INTO Mails(tipo, mail, FK_Persona) VALUES {0}";
+            string crearTelefonos = "INSERT INTO Telefono(tipo,numero, FK_Persona) VALUES {0}";
 
-            } else if ((domicilios.Count == 0 && mails.Count == 0 && telefonos.Count == 0) || string.IsNullOrWhiteSpace(usuario.GetPersona().GetDni()))
+            SqlParameter[] pms = new SqlParameter[1];
+            pms[0] = new SqlParameter("@dniPersona", SqlDbType.VarChar);
+            pms[0].Value = usuario.GetPersona().GetDni();
+
+            DataConnection.DataConnection dataQuery = new DataConnection.DataConnection();
+            DataTable dt = new DataTable();
+            dt = dataQuery.sqlExecute(personaExiste, pms);
+            int pExiste = dt.Rows.Count > 0 ? (int)dt.Rows[0][0] : 0;
+
+            pms = new SqlParameter[1];
+            pms[0] = new SqlParameter("@usuario", SqlDbType.VarChar);
+            pms[0].Value = usuario.GetNombreUsuario();
+
+            dt = dataQuery.sqlExecute(string.Format(usuarioExiste, "usuario = @usuario"), pms);
+            int eUsuario = dt.Rows.Count > 0 ? (int)dt.Rows[0][0] : 0;
+   
+            if (eUsuario != 0)
             {
-                return MISSING_INFO;
+                throw new Exception(rm.GetString(USER_EXISTS.ToLower()));
             }
-            else
+            else if (pExiste != 0)
             {
-                string personaExiste = "SELECT TOP 1 ID_Persona FROM Personas WHERE dni = @dniPersona;";
-                string usuarioExiste = "SELECT TOP 1 ID_Usuario FROM Usuarios WHERE {0};";
-                string altaPersona = "INSERT INTO Personas (dni, nombre, apellido, sexo, fechaNacimiento)" +
-                    " VALUES (@dni, @nombre, @apellido, @sexo, @fechaNacimiento);" +
-                    " SELECT SCOPE_IDENTITY();";
-                string crearDomicilios = "INSERT INTO Domicilio(calle,numero,piso,dpto, comentarios, codPostal,tipoDomicilio, FK_Localidad, FK_Persona) " +
-                    "VALUES {0}";
-                string crearMails = "INSERT INTO Mails(tipo, mail, FK_Persona) VALUES {0}";
-                string crearTelefonos = "INSERT INTO Telefono(tipo,numero, FK_Persona) VALUES {0}";
-
-                SqlParameter[] pms = new SqlParameter[1];
-                pms[0] = new SqlParameter("@dniPersona", SqlDbType.VarChar);
-                pms[0].Value = usuario.GetPersona().GetDni();
-
-                DataConnection.DataConnection dataQuery = new DataConnection.DataConnection();
-                DataTable dt = new DataTable();
-                dt = dataQuery.sqlExecute(personaExiste, pms);
-                int pExiste = dt.Rows.Count > 0 ? (int)dt.Rows[0][0] : 0;
-
                 pms = new SqlParameter[1];
-                pms[0] = new SqlParameter("@usuario", SqlDbType.VarChar);
-                pms[0].Value = usuario.GetNombreUsuario();
+                pms[0] = new SqlParameter("@idPersona", SqlDbType.Int);
+                pms[0].Value = pExiste;
 
-                dt = dataQuery.sqlExecute(string.Format(usuarioExiste, "usuario = @usuario"), pms);
-                int eUsuario = dt.Rows.Count > 0 ? (int)dt.Rows[0][0] : 0;
+                dt = dataQuery.sqlExecute(string.Format(usuarioExiste, "FK_Persona = @idPersona"), pms);
+                int pUsuario = dt.Rows.Count > 0 ? (int)dt.Rows[0][0] : 0;
 
-                
-                if (eUsuario != 0)
+                if (pUsuario != 0)
                 {
-                    return USER_EXISTS;
-                }
-                else if (pExiste != 0)
-                {
-                    pms = new SqlParameter[1];
-                    pms[0] = new SqlParameter("@idPersona", SqlDbType.Int);
-                    pms[0].Value = pExiste;
-
-                    dt = dataQuery.sqlExecute(string.Format(usuarioExiste, "FK_Persona = @idPersona"), pms);
-                    int pUsuario = dt.Rows.Count > 0 ? (int)dt.Rows[0][0] : 0;
-
-                    if (pUsuario != 0)
-                    {
-                        return PERSON_HAS_USER;
-                    }
-                    else
-                    {
-                        crearUsuario(usuario, pExiste, dataQuery);
-
-                        return USER_CREATED_EXISTING_PERSON;
-                    }
+                    throw new Exception(rm.GetString(PERSON_HAS_USER.ToLower()));
                 }
                 else
                 {
-                    Persona p = usuario.GetPersona();
-                    pms = new SqlParameter[5];
-                    pms[0] = new SqlParameter("@dni", SqlDbType.VarChar);
-                    pms[0].Value = p.GetDni();
-                    pms[1] = new SqlParameter("@nombre", SqlDbType.VarChar);
-                    pms[1].Value = p.GetNombre();
-                    pms[2] = new SqlParameter("@apellido", SqlDbType.VarChar);
-                    pms[2].Value = p.GetApellido();
-                    pms[3] = new SqlParameter("@sexo", SqlDbType.VarChar);
-                    pms[3].Value = p.GetSexo();
-                    pms[4] = new SqlParameter("@fechaNacimiento", SqlDbType.Date);
-                    pms[4].Value = p.GetFechaNacimiento();
+                    crearUsuario(usuario, pExiste, dataQuery);
 
-                    dt = dataQuery.sqlExecute(altaPersona, pms);
-                    int pCreada = Decimal.ToInt32((decimal)dt.Rows[0][0]);
-
-                    string valuesDomicilios = "";
-                    foreach (Domicilio d in domicilios)
-                    {
-                        valuesDomicilios += (!string.IsNullOrEmpty(valuesDomicilios) ? "," : "");
-                        valuesDomicilios += new StringBuilder("(").Append("'"+d.GetCalle()+"',")
-                            .Append("'"+d.GetNumero()+"',").Append(d.GetPiso()+",").Append("'"+d.GetDpto()+"',")
-                            .Append("'"+d.GetComentario()+"',").Append("'"+d.GetCodigoPostal()+"',").Append("'"+d.GetTipoDomicilio()+"',")
-                            .Append(d.GetLocalidad().GetId()+",").Append(pCreada).Append(")").ToString();
-                    }
-
-                    string valuesMails = "";
-                    foreach (Mail m in mails)
-                    {
-                        valuesMails += (!string.IsNullOrEmpty(valuesMails) ? "," : "");
-                        valuesMails += new StringBuilder("(").Append("'"+m.GetTipo()+"',")
-                            .Append("'"+m.GetMail()+"',").Append(pCreada).Append(")").ToString();
-                    }
-
-                    string valuesTelefonos = "";
-                    foreach (Telefono t in telefonos)
-                    {
-                        valuesTelefonos += (!string.IsNullOrEmpty(valuesTelefonos) ? "," : "");
-                        valuesTelefonos += new StringBuilder("(").Append("'" + t.GetTipo() + "',")
-                            .Append("'" + t.GetNumero() + "',").Append(pCreada).Append(")").ToString();
-                    }
-
-                    dataQuery.sqlUpsert(string.Format(crearDomicilios, valuesDomicilios), null);
-                    dataQuery.sqlUpsert(string.Format(crearMails, valuesMails), null);
-                    dataQuery.sqlUpsert(string.Format(crearTelefonos, valuesTelefonos), null);
-
-                    crearUsuario(usuario, pCreada, dataQuery);
-
-                    return USER_CREATED_PERSON_CREATED;
+                    return rm.GetString(USER_CREATED_EXISTING_PERSON.ToLower());
                 }
             }
+            else
+            {
+                Persona p = usuario.GetPersona();
+                pms = new SqlParameter[5];
+                pms[0] = new SqlParameter("@dni", SqlDbType.VarChar);
+                pms[0].Value = p.GetDni();
+                pms[1] = new SqlParameter("@nombre", SqlDbType.VarChar);
+                pms[1].Value = p.GetNombre();
+                pms[2] = new SqlParameter("@apellido", SqlDbType.VarChar);
+                pms[2].Value = p.GetApellido();
+                pms[3] = new SqlParameter("@sexo", SqlDbType.VarChar);
+                pms[3].Value = p.GetSexo();
+                pms[4] = new SqlParameter("@fechaNacimiento", SqlDbType.Date);
+                pms[4].Value = p.GetFechaNacimiento();
+
+                dt = dataQuery.sqlExecute(altaPersona, pms);
+                int pCreada = decimal.ToInt32((decimal)dt.Rows[0][0]);
+
+                string valuesDomicilios = "";
+                foreach (Domicilio d in domicilios)
+                {
+                    valuesDomicilios += (!string.IsNullOrEmpty(valuesDomicilios) ? "," : "");
+                    valuesDomicilios += new StringBuilder("(").Append("'"+d.GetCalle()+"',")
+                        .Append("'"+d.GetNumero()+"',").Append(d.GetPiso()+",").Append("'"+d.GetDpto()+"',")
+                        .Append("'"+d.GetComentario()+"',").Append("'"+d.GetCodigoPostal()+"',").Append("'"+d.GetTipoDomicilio()+"',")
+                        .Append(d.GetLocalidad().GetId()+",").Append(pCreada).Append(")").ToString();
+                }
+
+                string valuesMails = "";
+                foreach (Mail m in mails)
+                {
+                    valuesMails += (!string.IsNullOrEmpty(valuesMails) ? "," : "");
+                    valuesMails += new StringBuilder("(").Append("'"+m.GetTipo()+"',")
+                        .Append("'"+m.GetMail()+"',").Append(pCreada).Append(")").ToString();
+                }
+
+                string valuesTelefonos = "";
+                foreach (Telefono t in telefonos)
+                {
+                    valuesTelefonos += (!string.IsNullOrEmpty(valuesTelefonos) ? "," : "");
+                    valuesTelefonos += new StringBuilder("(").Append("'" + t.GetTipo() + "',")
+                        .Append("'" + t.GetNumero() + "',").Append(pCreada).Append(")").ToString();
+                }
+
+                dataQuery.sqlUpsert(string.Format(crearDomicilios, valuesDomicilios), null);
+                dataQuery.sqlUpsert(string.Format(crearMails, valuesMails), null);
+                dataQuery.sqlUpsert(string.Format(crearTelefonos, valuesTelefonos), null);
+
+                crearUsuario(usuario, pCreada, dataQuery);
+
+                return rm.GetString(USER_CREATED_PERSON_CREATED.ToLower());
+            }
         }
-
-
-
+        
         //Metodo de obtener el usuario a modificar, le paso el id del seleccionado.
-
         public static Usuario getUsuario (int id)
         {
             Usuario usuario = new Usuario();
             SqlParameter[] pms = new SqlParameter[1];
-          
 
-            string getUsuario = "select ID_Usuario, usuario, clave, CII, habilitado, DVH, FK_Persona, respuesta, FK_Pregunta, deleteTime from Usuarios where ID_Usuario = @id";
+            string getUsuario = "SELECT ID_Usuario, usuario, clave, CII, habilitado, DVH, FK_Persona, respuesta, FK_Pregunta, deleteTime FROM Usuarios WHERE ID_Usuario = @id";
             
-
-
             pms[0] = new SqlParameter("@id", SqlDbType.Int);
             pms[0].Value = id;
 
@@ -295,8 +277,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
             usuario.SetRespuesta((string)dr[7]);
             usuario.SetFkPregunta((int)dr[8]);
 
-
-            string getPersona = "select ID_Persona, dni, nombre,apellido,sexo,fechaNacimiento from Personas where ID_Persona = @idPersona";
+            string getPersona = "SELECT ID_Persona, dni, nombre,apellido,sexo,fechaNacimiento FROM Personas WHERE ID_Persona = @idPersona";
             SqlParameter[] pmsPersona = new SqlParameter[1];
             pmsPersona[0] = new SqlParameter("@idPersona", SqlDbType.Int);
             pmsPersona[0].Value = idPersona;
@@ -315,12 +296,10 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
             persona.SetSexo((string)drP[4]);
             persona.SetFechaNacimiento((DateTime)drP[5]);
 
-
             DataTable dtTel = new DataTable();
             SqlParameter[] pmsTel = new SqlParameter[1];
             pmsTel[0] = new SqlParameter("@id", SqlDbType.Int);
             pmsTel[0].Value = idPersona;
-
 
             dtTel = dataQuery.getList(SP.OBTENER_TELEFONOS, pmsTel);
             List<Telefono> telList = new List<Telefono>();
@@ -340,13 +319,11 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
             pmsTel[0] = new SqlParameter("@id", SqlDbType.Int);
             pmsTel[0].Value = idPersona;
 
-
             dtMail = dataQuery.getList(SP.OBTENER_MAILS, pmsTel);
             List<Mail> mailList = new List<Mail>();
 
             try
             {
-
                 foreach (DataRow drMail in dtMail.Rows)
                 {
                     Mail mail = new Mail();
@@ -368,10 +345,8 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
             pmsTel[0] = new SqlParameter("@id", SqlDbType.Int);
             pmsTel[0].Value = idPersona;
 
-
             dtDom = dataQuery.getList(SP.OBTENER_DOMICILIOS, pmsTel);
             List<Domicilio> domList = new List<Domicilio>();
-
 
             try
             {
@@ -383,25 +358,21 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
                     Domicilio dom = new Domicilio((int)drDom[0], (string)drDom[1], (string)drDom[2], (int)drDom[3], (string)drDom[4], (string)drDom[5], (string)drDom[6], (string)drDom[7], lc, p, pv);
 
                     domList.Add(dom);
-
                 }
-            } catch
+            }
+            catch
             {
                 domList.Add(new Domicilio());
             }
 
             persona.SetDomicilios(domList);
-
-
             usuario.SetPersona(persona);
-
 
             return usuario;
         }
 
         public static string borrarUsuario(int id)
         {
-
             try
             {
                 DataConnection.DataConnection dataQuery = new DataConnection.DataConnection();
@@ -412,17 +383,13 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
                 pms[1] = new SqlParameter("@idUsuario", SqlDbType.Int);
                 pms[1].Value = id;
 
-
                 dataQuery.sqlUpsert(bajaUsuario, pms);
-                return "Usuario borrado con exito.";
-
+                return rm.GetString(USER_DELETED.ToLower());
             }
             catch
             {
-                return "Error al borrar el usuario seleccionado.";
+                throw new Exception(rm.GetString(ERROR_DELETING_USER.ToLower()));
             }
-
-      
         }
 
         public static List<FamiliaFlag> getFamilias(int id)
@@ -448,8 +415,5 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
             }
             return familias;
         }
-
-
-
     }
 }

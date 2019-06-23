@@ -289,7 +289,7 @@
     <value>1</value>
   </data>
   <data name="txtNombre.Location" type="System.Drawing.Point, System.Drawing">
-    <value>80, 68</value>
+    <value>78, 150</value>
   </data>
   <data name="txtNombre.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>
@@ -298,7 +298,7 @@
     <value>828, 26</value>
   </data>
   <data name="txtNombre.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
+    <value>12</value>
   </data>
   <data name="&gt;&gt;txtNombre.Name" xml:space="preserve">
     <value>txtNombre</value>
@@ -469,7 +469,7 @@
     <value>True</value>
   </data>
   <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 71</value>
+    <value>7, 154</value>
   </data>
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
     <value>65, 20</value>
@@ -493,7 +493,7 @@
     <value>9</value>
   </data>
   <data name="txtApellido.Location" type="System.Drawing.Point, System.Drawing">
-    <value>82, 150</value>
+    <value>82, 232</value>
   </data>
   <data name="txtApellido.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>
@@ -502,7 +502,7 @@
     <value>825, 26</value>
   </data>
   <data name="txtApellido.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="&gt;&gt;txtApellido.Name" xml:space="preserve">
     <value>txtApellido</value>
@@ -520,7 +520,7 @@
     <value>True</value>
   </data>
   <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 154</value>
+    <value>7, 236</value>
   </data>
   <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
     <value>65, 20</value>
@@ -601,7 +601,7 @@
     <value>13</value>
   </data>
   <data name="txtDni.Location" type="System.Drawing.Point, System.Drawing">
-    <value>82, 232</value>
+    <value>78, 68</value>
   </data>
   <data name="txtDni.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>
@@ -610,7 +610,7 @@
     <value>825, 26</value>
   </data>
   <data name="txtDni.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
+    <value>11</value>
   </data>
   <data name="&gt;&gt;txtDni.Name" xml:space="preserve">
     <value>txtDni</value>
@@ -628,7 +628,7 @@
     <value>True</value>
   </data>
   <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 236</value>
+    <value>7, 72</value>
   </data>
   <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
     <value>37, 20</value>
@@ -738,15 +738,15 @@
   <data name="&gt;&gt;btnModificarTel.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="TipoTelefono.UserAddedColumn" type="System.Boolean, mscorlib">
+  <metadata name="TipoTelefono.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="TipoTelefono.HeaderText" xml:space="preserve">
     <value>Tipo</value>
   </data>
-  <data name="NumeroTelefono.UserAddedColumn" type="System.Boolean, mscorlib">
+  <metadata name="NumeroTelefono.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="NumeroTelefono.HeaderText" xml:space="preserve">
     <value>Telefono</value>
   </data>
@@ -1056,15 +1056,15 @@
   <data name="&gt;&gt;btnModificarMail.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="dataGridViewTextBoxColumn1.UserAddedColumn" type="System.Boolean, mscorlib">
+  <metadata name="dataGridViewTextBoxColumn1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="dataGridViewTextBoxColumn1.HeaderText" xml:space="preserve">
     <value>Tipo</value>
   </data>
-  <data name="dataGridViewTextBoxColumn2.UserAddedColumn" type="System.Boolean, mscorlib">
+  <metadata name="dataGridViewTextBoxColumn2.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="dataGridViewTextBoxColumn2.HeaderText" xml:space="preserve">
     <value>Mail</value>
   </data>
@@ -1371,72 +1371,72 @@
   <data name="&gt;&gt;btnAgregarDireccion.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="Tipo.UserAddedColumn" type="System.Boolean, mscorlib">
+  <metadata name="Tipo.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="Tipo.HeaderText" xml:space="preserve">
     <value>Tipo</value>
   </data>
-  <data name="Comentario.UserAddedColumn" type="System.Boolean, mscorlib">
+  <metadata name="Comentario.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="Comentario.HeaderText" xml:space="preserve">
     <value>Comentario</value>
   </data>
   <data name="Comentario.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="Calle.UserAddedColumn" type="System.Boolean, mscorlib">
+  <metadata name="Calle.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="Calle.HeaderText" xml:space="preserve">
     <value>Calle</value>
   </data>
-  <data name="Numero.UserAddedColumn" type="System.Boolean, mscorlib">
+  <metadata name="Numero.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="Numero.HeaderText" xml:space="preserve">
     <value>Numero</value>
   </data>
-  <data name="Piso.UserAddedColumn" type="System.Boolean, mscorlib">
+  <metadata name="Piso.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="Piso.HeaderText" xml:space="preserve">
     <value>Piso</value>
   </data>
-  <data name="DPTO.UserAddedColumn" type="System.Boolean, mscorlib">
+  <metadata name="DPTO.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="DPTO.HeaderText" xml:space="preserve">
     <value>DPTO</value>
   </data>
-  <data name="CP.UserAddedColumn" type="System.Boolean, mscorlib">
+  <metadata name="CP.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="CP.HeaderText" xml:space="preserve">
     <value>CP</value>
   </data>
-  <data name="Localidad.UserAddedColumn" type="System.Boolean, mscorlib">
+  <metadata name="Localidad.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="Localidad.HeaderText" xml:space="preserve">
     <value>Localidad</value>
   </data>
   <data name="Localidad.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="Provincia.UserAddedColumn" type="System.Boolean, mscorlib">
+  <metadata name="Provincia.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="Provincia.HeaderText" xml:space="preserve">
     <value>Provincia</value>
   </data>
   <data name="Provincia.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="Pais.UserAddedColumn" type="System.Boolean, mscorlib">
+  <metadata name="Pais.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="Pais.HeaderText" xml:space="preserve">
     <value>País</value>
   </data>
@@ -2184,153 +2184,17 @@
   <data name="tableLayoutPanelAltaCliente.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="groupBox3" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="tabControl1" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Absolute,944" /&gt;&lt;Rows Styles="Percent,100,Absolute,72,Absolute,25,Absolute,25" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
-  <data name="$this.Localizable" type="System.Boolean, mscorlib">
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
-  <data name="$this.Locked" type="System.Boolean, mscorlib">
+  </metadata>
+  <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>9, 20</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>944, 861</value>
-  </data>
-  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        AAABAAMAICAAAAEAIACoEAAANgAAABgYAAABACAAiAkAAN4QAAAQEAAAAQAgAGgEAABmGgAAKAAAACAA
-        AABAAAAAAQAgAAAAAACAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAADIyMs8yMjL/MjIy/zIyMv8yMjL/MjIy/zIyMv8yMjL/MjIy/zIyMv8yMjL/MjIy/zIy
-        Mv8yMjL/MjIy/zIyMv8yMjL/MjIy/zIyMv8yMjL/MjIy/zIyMv8yMjL/MjIy/zIyMv8yMjLPAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAMjIyzzIyMv8yMjL/MjIy/zIyMv8yMjL/MjIy/zIyMv8yMjL/MjIy/zIy
-        Mv8yMjL/MjIy/zIyMv8yMjL/MjIy/zIyMv8yMjL/MjIy/zIyMv8yMjL/MjIy/zIyMv8yMjL/MjIy/zIy
-        Ms8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAyMjIwMjIy3zIyMv8yMjL/MjIynzIyMkAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAADIyMoAyMjL/MjIygAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAyMjKAMjIy/zIyMv8yMjL/MjIy/zIy
-        Mt8yMjJwMjIyEAAAAAAAAAAAAAAAAAAAAAAAAAAAMjIy/zIyMv8yMjL/AAAAAAAAAAAyMjIwMjIyUDIy
-        MnAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAyMjIwMjIy3zIy
-        Mv8yMjL/MjIy/zIyMv8yMjL/MjIyrzIyMlAAAAAAAAAAAAAAAAAyMjKAMjIy/zIyMs8yMjKfMjIy3zIy
-        Mv8yMjL/MjIy/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAyMjIQMjIynzIyMv8yMjL/MjIy/zIyMv8yMjL/MjIy/zIyMt8yMjKAMjIyYDIyMq8yMjL/MjIy/zIy
-        Mv8yMjL/MjIy/zIyMv8yMjLfAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAMjIyUDIyMu8yMjL/MjIy/zIyMv8yMjL/MjIy/zIyMv8yMjL/MjIy/zIy
-        Mv8yMjL/MjIy/zIyMv8yMjL/MjIy/zIyMlAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMjIyIDIyMt8yMjL/MjIy/zIyMv8yMjL/MjIy/zIy
-        Mv8yMjL/MjIy/zIyMv8yMjL/MjIy/zIyMv8yMjJgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMjIyIDIyMo8yMjLfMjIy/zIyMv8yMjL/MjIy/zIy
-        Mv8yMjL/MjIy/zIyMv8yMjL/MjIy/zIyMu8yMjKfMjIyIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMjIyQDIyMr8yMjL/MjIy/zIyMv8yMjL/MjIy/zIy
-        Mv8yMjL/MjIy/zIyMv8yMjL/MjIy/zIyMq8yMjJQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMjIyQDIyMr8yMjL/MjIy/zIyMv8yMjL/MjIy/zIy
-        Mv8yMjL/MjIy/zIyMv8yMjL/MjIyvzIyMmAyMjIQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADIyMo8yMjL/MjIy/zIyMv8yMjL/MjIy/zIy
-        Mv8yMjL/MjIy/zIyMv8yMjLPMjIycDIyMiAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAyMjKfMjIy/zIyMv8yMjL/MjIy/zIy
-        Mv8yMjL/MjIy/zIyMt8yMjKPMjIyQDIyMmAyMjLPMjIyYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADIyMv8yMjL/MjIy/zIy
-        Mv8yMjL/MjIy7zIyMp8yMjJAAAAAADIyMoAyMjL/MjIy/zIyMt8AAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMjIy3zIy
-        Mv8yMjL/MjIy/zIyMmAAAAAAAAAAAAAAAAAAAAAAMjIy3zIyMv8yMjL/MjIyUAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAyMjKPMjIy/zIyMv8yMjLPAAAAAAAAAAAAAAAAAAAAADIyMiAyMjL/MjIy/zIyMr8AAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAADIyMjAyMjL/MjIy/zIyMp8AAAAAAAAAAAAAAAAAAAAAMjIycDIyMv8yMjL/MjIyQAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAADIyMs8yMjL/MjIygAAAAAAAAAAAAAAAAAAAAAAyMjKvMjIy/zIy
-        MmAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMjIycDIyMu8yMjIwAAAAAAAAAAAAAAAAAAAAADIy
-        MjAyMjIgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/////////////
-        ///gAAAH4AAAB/////////////////////////////////wP8f/+AfGP/wBwD/+AAA//4AAP//AAH//A
-        AD//AAH//AAH//gAP//wAD//8Ah///B4f//w8P//8PD///jx///48////////////////////////ygA
-        AAAYAAAAMAAAAAEAIAAAAAAAYAkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADEx
-        MXQyMjK/MTExvzExMb8yMjK/MTExvzExMb8yMjK/MTExvzIyMr8xMTG/MTExvzExMb8yMjK/MTExvzEx
-        Mb8yMjK/MTExvzExMb8yMjJ0AAAAAAAAAAAAAAAAAAAAADIyMnQyMjK/MjIyvzIyMr8yMjK/MjIyvzIy
-        Mr8yMjK/MjIyvzIyMr8yMjK/MjIyvzIyMr8yMjK/MjIyvzIyMr8yMjK/MjIyvzIyMr8yMjJ0AAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMTExEjExMYYyMjK/MTExmzEx
-        MUEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAyMjJ3MTExjzExMRcAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAADIyMkgyMjLWMjIy+zIyMv8yMjLSMjIybzIyMjMyMjIPAAAAAAAA
-        AAAyMjLnMjIy+TIyMloyMjJCMjIybzIyMo0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAyMjIvMTExozExMfIyMjL/MTEx/jIyMuExMTGZMTExVzExMTQyMjKxMTEx8jExMdUyMjLzMTEx/jEx
-        MfIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAyMjIBMjIyFTIyMmYyMjL2MjIy/zIy
-        Mv8yMjL9MjIy6zIyMtkyMjLwMjIy/zIyMv8yMjL/MjIy/zIyMpYAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAMTExBDExMRwyMjJ1MTEx8zIyMv8xMTH+MTEx/jExMf4yMjL/MTEx/jEx
-        MfsyMjLfMTExhzExMREAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAyMjIvMTExdzEx
-        MbkyMjLzMTEx/jIyMv8xMTH+MTEx/jExMf4yMjL1MTExvzExMYMyMjI/MTExBwAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAMTExGDExMXcyMjLXMTEx9jExMf4yMjL/MTEx/jIyMv8xMTH+MTEx5jEx
-        MZkyMjJDMTExHzExMQQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAyMjJIMjIy1TIy
-        Mv8yMjL/MjIy/zIyMv8yMjLyMjIy2TIyMroyMjJxMjIyGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAyMjLbMTEx/jExMf4yMjL9MTEx4jExMasyMjJ1MTExkzIy
-        MqsxMTGtMTExFwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAyMjLtMTEx/jExMf4yMjJ0MTExMTExMRUyMjIxMTEx4zIyMv8xMTFWAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAyMjKZMjIy/zIyMtIAAAAAAAAAAAAA
-        AAAyMjJmMjIy/zIyMrcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAyMjJLMTEx8jExMasAAAAAAAAAAAAAAAAyMjKrMTEx1zIyMkMAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAyMjIiMTExvTEx
-        MW8AAAAAAAAAAAAAAAAyMjJRMTExNzIyMgUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAD///8A////AMAAAwDAAAMA////AP///wD///8A////APB+PwD4BgcA/AAHAPwABwD+AAcA/AAPAPAA
-        PwDgA/8A4AP/AOAH/wDjj/8A44//AOOP/wD///8A////AP///wAoAAAAEAAAACAAAAABACAAAAAAAEAE
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAyMjIzMjIyfzIyMn8yMjJ/MjIyfzIyMn8yMjJ/MjIyfzIy
-        Mn8yMjJ/MjIyfzIyMn8yMjJ/MjIyMwAAAAAAAAAAMjIyMzIyMn8yMjJ/MjIyfzIyMn8yMjJ/MjIyfzIy
-        Mn8yMjJ/MjIyfzIyMn8yMjJ/MjIyfzIyMjMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAyMjJDMjIyfzIy
-        MjcAAAAAAAAAAAAAAAAAAAAAMjIyXzIyMiAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMjIyIDIy
-        MsMyMjL/MjIy0zIyMm8yMjIUAAAAADIyMt8yMjKbMjIygzIyMq8AAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAyMjIEMjIyezIyMvsyMjL/MjIy9zIyMrcyMjLrMjIy/zIyMv8yMjLLAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAADIyMisyMjK3MjIy/zIyMv8yMjL/MjIy/zIyMvsyMjKvMjIyGAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAMjIyPzIyMr8yMjL/MjIy/zIyMv8yMjL/MjIyxzIyMm8yMjIUAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAMjIyizIyMv8yMjL/MjIy/zIyMtsyMjKbMjIybwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAADIyMvcyMjL/MjIykzIyMjcyMjJXMjIy/zIyMksAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAyMjKvMjIy2wAAAAAAAAAAMjIyozIyMr8AAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAMjIyTzIyMqcAAAAAAAAAADIyMn8yMjIYAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAP//AACAAQAAgAEAAP//AAD//wAA488AAOBDAADwAwAA+AMAAOAP
-        AADAfwAAwH8AAMz/AADM/wAA//8AAP//AAA3ODg2
-</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>

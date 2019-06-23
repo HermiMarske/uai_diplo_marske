@@ -1,24 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.Sql;
 using System.Data.SqlClient;
-using DataConnection;
 using Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos;
 using ConstantesData;
-
-
+using Diploma_HerminiaMarske_Noche_UAI_Lomas.forms;
 
 namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
 {
     public partial class altaCliente : Form
     {
+        private CustomMessageBox messageBox = new CustomMessageBox();
+
         public altaCliente()
         {
             InitializeComponent();
@@ -27,6 +21,208 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
         List<Domicilio> domicilios = new List<Domicilio>();
         List<Telefono> telefonos = new List<Telefono>();
         List<Mail> mails = new List<Mail>();
+
+        private void txtDni_Leave(object sender, EventArgs e)
+        {
+            personaFillData();
+        }
+
+        private void txtDni_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                personaFillData();
+            }
+        }
+
+        private void personaFillData()
+        {
+            string dni = txtDni.Text;
+            if (string.IsNullOrEmpty(dni))
+            {
+                return;
+            }
+            DataConnection.DataConnection dataConnection = new DataConnection.DataConnection();
+            DataTable dt = new DataTable();
+
+            SqlParameter[] pms = new SqlParameter[1];
+
+            pms[0] = new SqlParameter("@dniPersona", SqlDbType.VarChar);
+            pms[0].Value = dni;
+
+            dt = dataConnection.getList(SP.OBTENER_PERSONA, pms);
+
+            Persona persona = null;
+            foreach (DataRow dr in dt.Rows)
+            {
+                persona = new Persona((int)dr[0], (string)dr[1], (string)dr[2], (string)dr[3], (string)dr[4], (DateTime)dr[5]);
+            }
+
+            if (persona != null)
+            {
+                txtNombre.Enabled = false;
+                txtNombre.Text = persona.GetNombre();
+                txtApellido.Enabled = false;
+                txtApellido.Text = persona.GetApellido();
+                comboSexo.Enabled = false;
+                comboSexo.Text = persona.GetSexo();
+                pickerFechaNacimiento.Enabled = false;
+                pickerFechaNacimiento.Value = persona.GetFechaNacimiento();
+
+                // Fill de telefonos
+
+                int idPersona = persona.GetIdPersona();
+                DataTable dtTel = new DataTable();
+                pms[0] = new SqlParameter("@id", SqlDbType.Int);
+                pms[0].Value = idPersona;
+
+                DataConnection.DataConnection dataQuery = new DataConnection.DataConnection();
+
+                dtTel = dataQuery.getList(SP.OBTENER_TELEFONOS, pms);
+                List<Telefono> telList = new List<Telefono>();
+                if (!dtTel.Rows[0].ItemArray[0].GetType().Equals(typeof(string)))
+                {
+                    foreach (DataRow drTel in dtTel.Rows)
+                    {
+                        Telefono tel = new Telefono();
+                        tel.SetId((int)drTel[0]);
+                        tel.SetTipo((string)drTel[1]);
+                        tel.SetNumero((string)drTel[2]);
+                        telList.Add(tel);
+                    }
+
+                    foreach (Telefono t in telList)
+                    {
+                        String[] dataRow = { t.GetNumero(), t.GetTipo() };
+                        dataGridTelefonos.Rows.Add(dataRow);
+                    }
+                }
+
+                // Fill de correos
+
+                DataTable dtMail = new DataTable();
+                pms[0] = new SqlParameter("@id", SqlDbType.Int);
+                pms[0].Value = idPersona;
+
+                DataConnection.DataConnection dataQueryMails = new DataConnection.DataConnection();
+
+                dtMail = dataQuery.getList(SP.OBTENER_MAILS, pms);
+                List<Mail> mails = new List<Mail>();
+                if (!dtMail.Rows[0].ItemArray[0].GetType().Equals(typeof(string)))
+                {
+                    foreach (DataRow drMail in dtMail.Rows)
+                    {
+                        Mail mail = new Mail();
+                        mail.SetId((int)drMail[0]);
+                        mail.SetTipo((string)drMail[1]);
+                        mail.SetMail((string)drMail[2]);
+                        mails.Add(mail);
+                    }
+
+                    foreach (Mail m in mails)
+                    {
+                        String[] dataRow = { m.GetMail(), m.GetTipo() };
+                        dataGridMails.Rows.Add(dataRow);
+                    }
+                }
+
+                // Fill de domicilios
+
+                DataTable dtDom = new DataTable();
+                pms[0] = new SqlParameter("@id", SqlDbType.Int);
+                pms[0].Value = idPersona;
+
+
+                dtDom = dataQuery.getList(SP.OBTENER_DOMICILIOS, pms);
+                List<Domicilio> domList = new List<Domicilio>();
+                try
+                {
+
+                    foreach (DataRow drDom in dtDom.Rows)
+                    {
+                        Localidad lc = new Localidad((string)drDom[10], (int)drDom[9], 0);
+                        Provincia pv = new Provincia((string)drDom[12], (int)drDom[11]);
+                        Pais p = new Pais((int)drDom[13], (string)drDom[14]);
+                        Domicilio dom = new Domicilio((int)drDom[0], (string)drDom[1], (string)drDom[2], (int)drDom[3], (string)drDom[4], (string)drDom[5], (string)drDom[6], (string)drDom[7], lc, p, pv);
+
+                        domList.Add(dom);
+
+                    }
+                    foreach (Domicilio d in domList)
+                    {
+                        object[] dataRow = { d.GetTipoDomicilio(), d.GetComentario(), d.GetCalle(), d.GetNumero(), d.GetPiso(), d.GetDpto(), d.GetCodigoPostal(), d.GetLocalidad(), d.GetProvincia(), d.GetPais() };
+                        dataGridDomicilios.Rows.Add(dataRow);
+                    }
+                }
+                catch
+                {
+                    messageBox.Show(Properties.strings.no_addresses);
+                }
+
+                // Deshabilitar todos los controles y mostrar los datos 
+
+                groupBox2.Enabled = false;
+                groupBox4.Enabled = false;
+
+                groupBox7.Enabled = false;
+                groupBox8.Enabled = false;
+
+                groupBox5.Enabled = false;
+                groupBox6.Enabled = false;
+            }
+            else
+            {
+                txtNombre.Enabled = true;
+                txtApellido.Enabled = true;
+                comboSexo.Enabled = true;
+                pickerFechaNacimiento.Enabled = true;
+
+                groupBox2.Enabled = false;
+                groupBox4.Enabled = false;
+
+                groupBox7.Enabled = false;
+                groupBox8.Enabled = false;
+
+                groupBox5.Enabled = false;
+                groupBox6.Enabled = false;
+            }
+
+            txtDni.TextChanged += txtDni_TextChanged;
+        }
+
+        private void txtDni_TextChanged(object sender, EventArgs e)
+        {
+            txtNombre.Enabled = false;
+            txtApellido.Enabled = false;
+            comboSexo.Enabled = false;
+            pickerFechaNacimiento.Enabled = false;
+
+            groupBox2.Enabled = false;
+            txtNumero.Clear();
+            comboTipoTelefono.ResetText();
+            groupBox4.Enabled = false;
+            dataGridTelefonos.Rows.Clear();
+
+            groupBox7.Enabled = false;
+            textBoxMail.Clear();
+            comboTipoMails.ResetText();
+            groupBox8.Enabled = false;
+            dataGridMails.Rows.Clear();
+
+            groupBox5.Enabled = false;
+            txtCalle.Clear();
+            txtNumero.Clear();
+            txtCodigoPostal.Clear();
+            txtDpto.Clear();
+            txtComentario.Clear();
+            txtPiso.ResetText();
+            comboPais.ResetText();
+            comboProvincias.ResetText();
+            comboLocalidades.ResetText();
+            comboTipo.ResetText();
+            groupBox6.Enabled = false;
+            dataGridDomicilios.Rows.Clear();
+        }
 
         private void buttonAddTelefono_Click(object sender, EventArgs e)
         {
@@ -162,6 +358,8 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
                     dataConnection.databaseInsertAditionalData(pmsDomicilio, SP.ALTA_DOMICILIO);
                 }
             }
+
+            new CustomMessageBox().Show(Properties.strings.client_created_person_created);
         }
 
         private void altaCliente_Load(object sender, EventArgs e)

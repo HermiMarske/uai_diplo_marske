@@ -194,7 +194,6 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.txtNombre);
             this.groupBox1.Controls.Add(this.comboTipoCliente);
             this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.label11);
@@ -203,13 +202,14 @@
             this.groupBox1.Controls.Add(this.txtCuit);
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.txtApellido);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.comboSexo);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.txtDni);
             this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.txtNombre);
             resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
@@ -221,11 +221,11 @@
             // 
             // comboTipoCliente
             // 
+            resources.ApplyResources(this.comboTipoCliente, "comboTipoCliente");
             this.comboTipoCliente.FormattingEnabled = true;
             this.comboTipoCliente.Items.AddRange(new object[] {
             resources.GetString("comboTipoCliente.Items"),
             resources.GetString("comboTipoCliente.Items1")});
-            resources.ApplyResources(this.comboTipoCliente, "comboTipoCliente");
             this.comboTipoCliente.Name = "comboTipoCliente";
             // 
             // label14
@@ -240,8 +240,8 @@
             // 
             // pickerFechaNacimiento
             // 
-            this.pickerFechaNacimiento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             resources.ApplyResources(this.pickerFechaNacimiento, "pickerFechaNacimiento");
+            this.pickerFechaNacimiento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.pickerFechaNacimiento.Name = "pickerFechaNacimiento";
             this.pickerFechaNacimiento.Value = new System.DateTime(2019, 1, 21, 0, 0, 0, 0);
             // 
@@ -282,11 +282,11 @@
             // 
             // comboSexo
             // 
+            resources.ApplyResources(this.comboSexo, "comboSexo");
             this.comboSexo.FormattingEnabled = true;
             this.comboSexo.Items.AddRange(new object[] {
             resources.GetString("comboSexo.Items"),
             resources.GetString("comboSexo.Items1")});
-            resources.ApplyResources(this.comboSexo, "comboSexo");
             this.comboSexo.Name = "comboSexo";
             // 
             // label8
@@ -298,6 +298,8 @@
             // 
             resources.ApplyResources(this.txtDni, "txtDni");
             this.txtDni.Name = "txtDni";
+            this.txtDni.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDni_KeyDown);
+            this.txtDni.Leave += new System.EventHandler(this.txtDni_Leave);
             // 
             // label10
             // 

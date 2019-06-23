@@ -140,19 +140,19 @@
     <value>Aviones</value>
   </data>
   <data name="nuevoClienteToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>222, 30</value>
+    <value>219, 30</value>
   </data>
   <data name="nuevoClienteToolStripMenuItem.Text" xml:space="preserve">
-    <value>Nuevo Cliente</value>
+    <value>Nuevo cliente</value>
   </data>
   <data name="toolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>219, 6</value>
+    <value>216, 6</value>
   </data>
   <data name="busquedaToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>222, 30</value>
+    <value>219, 30</value>
   </data>
   <data name="busquedaToolStripMenuItem.Text" xml:space="preserve">
-    <value>Lista de Clientes</value>
+    <value>Lista de clientes</value>
   </data>
   <data name="clientesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>187, 30</value>
@@ -164,7 +164,7 @@
     <value>188, 30</value>
   </data>
   <data name="gestionDePaisesToolStripMenuItem.Text" xml:space="preserve">
-    <value>Paises</value>
+    <value>Países</value>
   </data>
   <data name="provinciasToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>188, 30</value>
@@ -188,19 +188,19 @@
     <value>84, 29</value>
   </data>
   <data name="gestionToolStripMenuItem.Text" xml:space="preserve">
-    <value>Gestion</value>
+    <value>Gestión</value>
   </data>
   <data name="familiasYPermisosToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>248, 30</value>
+    <value>245, 30</value>
   </data>
   <data name="familiasYPermisosToolStripMenuItem.Text" xml:space="preserve">
-    <value>Familias y Permisos</value>
+    <value>Familias y patentes</value>
   </data>
   <data name="toolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>245, 6</value>
+    <value>242, 6</value>
   </data>
   <data name="bitacoraToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>248, 30</value>
+    <value>245, 30</value>
   </data>
   <data name="bitacoraToolStripMenuItem.Text" xml:space="preserve">
     <value>Bitacora</value>
@@ -228,7 +228,7 @@
     <value>0</value>
   </data>
   <data name="menuStrip1.Text" xml:space="preserve">
-    <value>menuStrip1</value>
+    <value>Menú superior</value>
   </data>
   <data name="&gt;&gt;menuStrip1.Name" xml:space="preserve">
     <value>menuStrip1</value>
@@ -259,7 +259,7 @@
     <value>1</value>
   </data>
   <data name="statusStrip1.Text" xml:space="preserve">
-    <value>statusStrip1</value>
+    <value>Barra de estado</value>
   </data>
   <data name="&gt;&gt;statusStrip1.Name" xml:space="preserve">
     <value>statusStrip1</value>
@@ -288,31 +288,31 @@
   <data name="tableLayoutPanelListaClientes.ColumnCount" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="button4.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="btnVerCliente.Location" type="System.Drawing.Point, System.Drawing">
     <value>366, 743</value>
   </data>
-  <data name="button4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="btnVerCliente.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>
   </data>
-  <data name="button4.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="btnVerCliente.Size" type="System.Drawing.Size, System.Drawing">
     <value>218, 50</value>
   </data>
-  <data name="button4.TabIndex" type="System.Int32, mscorlib">
+  <data name="btnVerCliente.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
   </data>
-  <data name="button4.Text" xml:space="preserve">
+  <data name="btnVerCliente.Text" xml:space="preserve">
     <value>Ver detalles</value>
   </data>
-  <data name="&gt;&gt;button4.Name" xml:space="preserve">
-    <value>button4</value>
+  <data name="&gt;&gt;btnVerCliente.Name" xml:space="preserve">
+    <value>btnVerCliente</value>
   </data>
-  <data name="&gt;&gt;button4.Type" xml:space="preserve">
+  <data name="&gt;&gt;btnVerCliente.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;button4.Parent" xml:space="preserve">
+  <data name="&gt;&gt;btnVerCliente.Parent" xml:space="preserve">
     <value>tableLayoutPanelListaClientes</value>
   </data>
-  <data name="&gt;&gt;button4.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;btnVerCliente.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="btnEliminarCliente.Location" type="System.Drawing.Point, System.Drawing">
@@ -328,7 +328,7 @@
     <value>7</value>
   </data>
   <data name="btnEliminarCliente.Text" xml:space="preserve">
-    <value>Eliminar Cliente</value>
+    <value>Eliminar cliente</value>
   </data>
   <data name="&gt;&gt;btnEliminarCliente.Name" xml:space="preserve">
     <value>btnEliminarCliente</value>
@@ -355,7 +355,7 @@
     <value>6</value>
   </data>
   <data name="btnModificarCliente.Text" xml:space="preserve">
-    <value>Modificar Cliente</value>
+    <value>Modificar cliente</value>
   </data>
   <data name="&gt;&gt;btnModificarCliente.Name" xml:space="preserve">
     <value>btnModificarCliente</value>
@@ -382,7 +382,7 @@
     <value>5</value>
   </data>
   <data name="btnNuevoCliente.Text" xml:space="preserve">
-    <value>Nuevo Cliente</value>
+    <value>Nuevo cliente</value>
   </data>
   <data name="&gt;&gt;btnNuevoCliente.Name" xml:space="preserve">
     <value>btnNuevoCliente</value>
@@ -424,7 +424,7 @@
     <value>True</value>
   </metadata>
   <data name="razonSocial.HeaderText" xml:space="preserve">
-    <value>Razon Social</value>
+    <value>Razón social</value>
   </data>
   <metadata name="nombre.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -490,7 +490,7 @@
     <value>0</value>
   </data>
   <data name="groupBox1.Text" xml:space="preserve">
-    <value>Listado de Clientes</value>
+    <value>Listado de clientes</value>
   </data>
   <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
     <value>groupBox1</value>
@@ -535,7 +535,7 @@
     <value>0</value>
   </data>
   <data name="tableLayoutPanelListaClientes.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="button4" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="btnEliminarCliente" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="btnModificarCliente" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="btnNuevoCliente" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="groupBox1" Row="0" RowSpan="1" Column="0" ColumnSpan="4" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,25,Percent,25,Percent,25,Percent,25,Absolute,20" /&gt;&lt;Rows Styles="Percent,100,Absolute,91" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="btnVerCliente" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="btnEliminarCliente" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="btnModificarCliente" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="btnNuevoCliente" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="groupBox1" Row="0" RowSpan="1" Column="0" ColumnSpan="4" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,25,Percent,25,Percent,25,Percent,25,Absolute,20" /&gt;&lt;Rows Styles="Percent,100,Absolute,91" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="tabPage1.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 29</value>
@@ -574,7 +574,7 @@
     <value>4</value>
   </data>
   <data name="btnDetalleUsuario.Location" type="System.Drawing.Point, System.Drawing">
-    <value>366, 736</value>
+    <value>366, 743</value>
   </data>
   <data name="btnDetalleUsuario.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>
@@ -601,7 +601,7 @@
     <value>0</value>
   </data>
   <data name="btnEliminarUsuario.Location" type="System.Drawing.Point, System.Drawing">
-    <value>729, 736</value>
+    <value>729, 743</value>
   </data>
   <data name="btnEliminarUsuario.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>
@@ -613,7 +613,7 @@
     <value>7</value>
   </data>
   <data name="btnEliminarUsuario.Text" xml:space="preserve">
-    <value>Eliminar Usuario</value>
+    <value>Eliminar usuario</value>
   </data>
   <data name="&gt;&gt;btnEliminarUsuario.Name" xml:space="preserve">
     <value>btnEliminarUsuario</value>
@@ -628,7 +628,7 @@
     <value>1</value>
   </data>
   <data name="btnModificarUsuario.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1092, 736</value>
+    <value>1092, 743</value>
   </data>
   <data name="btnModificarUsuario.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>
@@ -640,7 +640,7 @@
     <value>6</value>
   </data>
   <data name="btnModificarUsuario.Text" xml:space="preserve">
-    <value>Modificar Usuario</value>
+    <value>Modificar usuario</value>
   </data>
   <data name="&gt;&gt;btnModificarUsuario.Name" xml:space="preserve">
     <value>btnModificarUsuario</value>
@@ -655,7 +655,7 @@
     <value>2</value>
   </data>
   <data name="btnAltaUsuario.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 736</value>
+    <value>3, 743</value>
   </data>
   <data name="btnAltaUsuario.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>
@@ -667,7 +667,7 @@
     <value>5</value>
   </data>
   <data name="btnAltaUsuario.Text" xml:space="preserve">
-    <value>Nuevo Usuario</value>
+    <value>Nuevo usuario</value>
   </data>
   <data name="&gt;&gt;btnAltaUsuario.Name" xml:space="preserve">
     <value>btnAltaUsuario</value>
@@ -718,7 +718,7 @@
     <value>3, 4, 3, 4</value>
   </data>
   <data name="datagridUsuarios.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1442, 697</value>
+    <value>1442, 704</value>
   </data>
   <data name="datagridUsuarios.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -748,13 +748,13 @@
     <value>3, 4, 3, 4</value>
   </data>
   <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1448, 724</value>
+    <value>1448, 731</value>
   </data>
   <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="groupBox2.Text" xml:space="preserve">
-    <value>Listado de Usuarios</value>
+    <value>Listado de usuarios</value>
   </data>
   <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
     <value>groupBox2</value>
@@ -781,7 +781,7 @@
     <value>2</value>
   </data>
   <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1454, 823</value>
+    <value>1454, 830</value>
   </data>
   <data name="tableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -811,7 +811,7 @@
     <value>3, 4, 3, 4</value>
   </data>
   <data name="tabPage2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1460, 831</value>
+    <value>1460, 838</value>
   </data>
   <data name="tabPage2.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -841,7 +841,7 @@
     <value>3, 4, 3, 4</value>
   </data>
   <data name="tabPage3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1460, 831</value>
+    <value>1460, 832</value>
   </data>
   <data name="tabPage3.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -871,7 +871,7 @@
     <value>3, 4, 3, 4</value>
   </data>
   <data name="tabPage4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1460, 831</value>
+    <value>1460, 832</value>
   </data>
   <data name="tabPage4.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -901,7 +901,7 @@
     <value>3, 4, 3, 4</value>
   </data>
   <data name="tabPage5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1460, 831</value>
+    <value>1460, 832</value>
   </data>
   <data name="tabPage5.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -997,7 +997,7 @@
     <value>CenterScreen</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Inicio</value>
+    <value>Panel de control</value>
   </data>
   <data name="&gt;&gt;gestionToolStripMenuItem.Name" xml:space="preserve">
     <value>gestionToolStripMenuItem</value>
