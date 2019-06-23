@@ -24,7 +24,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
         private static ResourceManager rm = new ResourceManager(typeof(Properties.strings));
 
         public static string modificarUsuario(Usuario usuario)
-        {
+         {
             DataConnection.DataConnection dataQuery = new DataConnection.DataConnection();
 
             const string modificarUsuario = "update Usuarios set clave = @password, respuesta = @respuesta, FK_Pregunta = @idPregunta where ID_Usuario = @idUsuario";
@@ -36,6 +36,10 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
             const string insertarPatentes = "INSERT INTO Usuario_Patente (patenteFK, usuarioFK, negado) VALUES {0}";
             const string insertarFamilia = "INSERT INTO Usuario_Familia (familiaFK, usuarioFK) VALUES {0}";
             const string modificarPersona = " update Personas set dni = @dni, nombre = @nombre, apellido = @apellido, sexo = @sexo, fechaNacimiento = @fechaNacimiento where ID_Persona = @idPersona";
+            string crearDomicilios = "INSERT INTO Domicilio(calle,numero,piso,dpto, comentarios, codPostal,tipoDomicilio, FK_Localidad, FK_Persona) VALUES {0}";
+            string crearMails = "INSERT INTO Mails(tipo, mail, FK_Persona) VALUES {0}";
+            string crearTelefonos = "INSERT INTO Telefono(tipo,numero, FK_Persona) VALUES {0}";
+
 
             //Modificar Usuario.
             SqlParameter[] pmsUsuario = new SqlParameter[4];
@@ -48,8 +52,34 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
             pmsUsuario[3] = new SqlParameter("@idUsuario", SqlDbType.VarChar);
             pmsUsuario[3].Value = usuario.GetIdUsuario();
 
+            //BorrarPats, borrar Fams
+            SqlParameter[] pmsU = new SqlParameter[1];
+            pmsU[0] = new SqlParameter("@idUsuario", SqlDbType.Int);
+            pmsU[0].Value = (usuario.GetIdUsuario());
+
+            //BorrarPats, borrar Fams
+            SqlParameter[] pmsF = new SqlParameter[1];
+            pmsF[0] = new SqlParameter("@idUsuario", SqlDbType.Int);
+            pmsF[0].Value = (usuario.GetIdUsuario());
+
+            //param para tels, mails y demas
+            SqlParameter[] pmsP = new SqlParameter[1];
+            pmsP[0] = new SqlParameter("@idPersona", SqlDbType.Int);
+            pmsP[0].Value = (usuario.GetPersona().GetIdPersona());
+
+            //param para tels, mails y demas
+            SqlParameter[] pmsPer = new SqlParameter[1];
+            pmsPer[0] = new SqlParameter("@idPersona", SqlDbType.Int);
+            pmsPer[0].Value = (usuario.GetPersona().GetIdPersona());
+
+            //param para tels, mails y demas
+            SqlParameter[] pmsPers = new SqlParameter[1];
+            pmsPers[0] = new SqlParameter("@idPersona", SqlDbType.Int);
+            pmsPers[0].Value = (usuario.GetPersona().GetIdPersona());
+
             //Modificar Persona
-            SqlParameter[] pmsPersona = new SqlParameter[5];
+
+            SqlParameter[] pmsPersona = new SqlParameter[6];
             pmsPersona[0] = new SqlParameter("@dni", SqlDbType.VarChar);
             pmsPersona[0].Value = usuario.GetPersona().GetDni();
             pmsPersona[1] = new SqlParameter("@nombre", SqlDbType.VarChar);
@@ -60,38 +90,80 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
             pmsPersona[3].Value = usuario.GetPersona().GetSexo();
             pmsPersona[4] = new SqlParameter("@fechaNacimiento", SqlDbType.Date);
             pmsPersona[4].Value = usuario.GetPersona().GetFechaNacimiento();
+            pmsPersona[5] = new SqlParameter("@idPersona", SqlDbType.Int);
+            pmsPersona[5].Value = (usuario.GetPersona().GetIdPersona());
 
             string valuesPatentes = "";
-            foreach (Patente pat in usuario.GetPatentes())
-            {
-                valuesPatentes += (!string.IsNullOrEmpty(valuesPatentes) ? "," : "");
-                valuesPatentes += new StringBuilder("(").Append(pat.GetId() + ",")
-                    .Append(usuario.GetIdUsuario() + ",").Append(pat.GetNegado() ? 1 : 0).Append(")").ToString();
-            }
-
             string valuesFamilias = "";
-            foreach (Familia fam in usuario.GetFamilias())
-            {
-                valuesFamilias += (!string.IsNullOrEmpty(valuesFamilias) ? "," : "");
-                valuesFamilias += new StringBuilder("(").Append(fam.GetId() + ",")
-                    .Append(usuario.GetIdUsuario()).Append(")").ToString();
-            }
 
             try
             {
-                dataQuery.sqlExecute(modificarUsuario, pmsUsuario);
-                dataQuery.sqlExecute(borrarPatentes, null);
-                dataQuery.sqlExecute(borrarFamilias, null);
-                dataQuery.sqlExecute(borrarDomicilios, null);
-                dataQuery.sqlExecute(borrarMails, null);
-                dataQuery.sqlExecute(borrarTels, null);
-                dataQuery.sqlExecute(modificarPersona, pmsPersona);
-                dataQuery.sqlUpsert(string.Format(insertarPatentes, valuesPatentes), null);
-                dataQuery.sqlUpsert(string.Format(insertarFamilia, valuesFamilias), null);
+                dataQuery.sqlUpsert(modificarUsuario, pmsUsuario);
+                dataQuery.sqlUpsert(borrarPatentes, pmsU);
+                dataQuery.sqlUpsert(borrarFamilias, pmsF);
+                dataQuery.sqlUpsert(borrarDomicilios, pmsP);
+                dataQuery.sqlUpsert(borrarMails, pmsPer);
+                dataQuery.sqlUpsert(borrarTels, pmsPers);
+                dataQuery.sqlUpsert(modificarPersona, pmsPersona);
+                
+                foreach (Patente pat in usuario.GetPatentes())
+                {
+                    valuesPatentes += (!string.IsNullOrEmpty(valuesPatentes) ? "," : "");
+                    valuesPatentes += new StringBuilder("(").Append(pat.GetId() + ",")
+                        .Append(usuario.GetIdUsuario() + ",").Append(pat.GetNegado() ? 1 : 0).Append(")").ToString();
+                }
+
+               
+                foreach (Familia fam in usuario.GetFamilias())
+                {
+                    valuesFamilias += (!string.IsNullOrEmpty(valuesFamilias) ? "," : "");
+                    valuesFamilias += new StringBuilder("(").Append(fam.GetId() + ",")
+                        .Append(usuario.GetIdUsuario()).Append(")").ToString();
+                }
+
+                if (!string.IsNullOrWhiteSpace(valuesPatentes))
+                {
+                    dataQuery.sqlUpsert(string.Format(insertarPatentes, valuesPatentes), null);
+                }
+                if (!string.IsNullOrWhiteSpace(valuesFamilias))
+                {
+                    dataQuery.sqlUpsert(string.Format(insertarFamilia, valuesFamilias), null);
+                }
+
+                string valuesDomicilios = "";
+                foreach (Domicilio d in usuario.GetPersona().GetDomicilios())
+                {
+                    valuesDomicilios += (!string.IsNullOrEmpty(valuesDomicilios) ? "," : "");
+                    valuesDomicilios += new StringBuilder("(").Append("'" + d.GetCalle() + "',")
+                        .Append("'" + d.GetNumero() + "',").Append(d.GetPiso().ToString() + ",").Append("'" + d.GetDpto() + "',")
+                        .Append("'" + d.GetComentario() + "',").Append("'" + d.GetCodigoPostal() + "',").Append("'" + d.GetTipoDomicilio() + "',")
+                        .Append(d.GetLocalidad().GetId() + ",").Append(usuario.GetPersona().GetIdPersona()).Append(")").ToString();
+                }
+
+                string valuesMails = "";
+                foreach (Mail m in usuario.GetPersona().GetMails())
+                {
+                    valuesMails += (!string.IsNullOrEmpty(valuesMails) ? "," : "");
+                    valuesMails += new StringBuilder("(").Append("'" + m.GetTipo() + "',")
+                        .Append("'" + m.GetMail() + "',").Append(usuario.GetPersona().GetIdPersona()).Append(")").ToString();
+                }
+
+                string valuesTelefonos = "";
+                foreach (Telefono t in usuario.GetPersona().GetTelefonos())
+                {
+                    valuesTelefonos += (!string.IsNullOrEmpty(valuesTelefonos) ? "," : "");
+                    valuesTelefonos += new StringBuilder("(").Append("'" + t.GetTipo() + "',")
+                        .Append("'" + t.GetNumero() + "',").Append(usuario.GetPersona().GetIdPersona()).Append(")").ToString();
+                }
+
+                dataQuery.sqlUpsert(string.Format(crearDomicilios, valuesDomicilios), null);
+                dataQuery.sqlUpsert(string.Format(crearMails, valuesMails), null);
+                dataQuery.sqlUpsert(string.Format(crearTelefonos, valuesTelefonos), null);
 
                 return rm.GetString(USER_MODIFIED.ToLower());
+
             }
-            catch
+            catch (Exception ex)
             {
                 return rm.GetString(ERROR_MODIFYING_USER.ToLower());
             }
@@ -304,13 +376,22 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
             dtTel = dataQuery.getList(SP.OBTENER_TELEFONOS, pmsTel);
             List<Telefono> telList = new List<Telefono>();
 
-            foreach (DataRow drTel in dtTel.Rows)
+
+            try
             {
-                Telefono tel = new Telefono();
-                tel.SetId((int)drTel[0]);
-                tel.SetTipo((string)drTel[1]);
-                tel.SetNumero((string)drTel[2]);
-                telList.Add(tel);
+
+                foreach (DataRow drTel in dtTel.Rows)
+                {
+                    Telefono tel = new Telefono();
+                    tel.SetId((int)drTel[0]);
+                    tel.SetTipo((string)drTel[1]);
+                    tel.SetNumero((string)drTel[2]);
+                    telList.Add(tel);
+                }
+            }
+            catch
+            {
+                telList.Add(new Telefono());
             }
 
             persona.SetTelefonos(telList);
@@ -396,9 +477,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
         {
             List<FamiliaFlag> familias = new List<FamiliaFlag>();
 
-            string queryFams = "SELECT f.idFamilia, f.descripcion, f.dvh, CAST(CASE WHEN uf.usuarioFK = @idUsuario THEN 1 ELSE 0 END AS bit) AS has_permission " +
-                "FROM Familia f left JOIN Usuario_Familia uf ON uf.familiaFK = f.idFamilia " +
-                "WHERE uf.usuarioFK = @idUsuario OR uf.usuarioFK is null AND f.borrado IS NULL;";
+            string queryFams = "SELECT f.idFamilia, f.descripcion, f.dvh FROM Familia f WHERE f.borrado IS NULL";
 
             SqlParameter[] pms = new SqlParameter[1];
             pms[0] = new SqlParameter("@idUsuario", SqlDbType.Int);
@@ -406,13 +485,25 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
             DataConnection.DataConnection dataQuery = new DataConnection.DataConnection();
 
             DataTable dt = new DataTable();
-            dt = dataQuery.sqlExecute(queryFams, pms);
+            dt = dataQuery.sqlExecute(queryFams, null);
+
+            string queryFamsUsuario = "SELECT familiaFK FROM Usuario_Familia WHERE usuarioFK = @idUsuario";
+
+            DataTable dtUsuFam = new DataTable();
+            dtUsuFam = dataQuery.sqlExecute(queryFamsUsuario, pms);
+
+            List<int> famsUsuario = new List<int>();
+            foreach (DataRow dr in dtUsuFam.Rows)
+            {
+                famsUsuario.Add((int)dr[0]);
+            }
 
             foreach (DataRow dr in dt.Rows)
             {
-                FamiliaFlag famFlag = new FamiliaFlag((int)dr[0], (string)dr[1], (bool)dr[3]);
+                FamiliaFlag famFlag = new FamiliaFlag((int)dr[0], (string)dr[1], false);
                 familias.Add(famFlag);
             }
+            familias.ForEach(f => f.SetFlag(famsUsuario.Contains(f.GetId())));
             return familias;
         }
     }

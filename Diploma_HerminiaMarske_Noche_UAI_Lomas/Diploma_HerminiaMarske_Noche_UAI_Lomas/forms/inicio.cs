@@ -135,10 +135,19 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
 
         private void formInicio_Load(object sender, EventArgs e)
         {
-            if (hasPermission("ADM_CLIENTES_VER"))
+            if (usuarioLogueado != null)
+            {
+                if (hasPermission("ADM_CLIENTES_VER"))
+                    listarClientes();
+                if (hasPermission("ADM_USUARIOS_VER"))
+                    listarUsuarios();
+
+            }
+            else
+            {
                 listarClientes();
-            if (hasPermission("ADM_USUARIOS_VER"))
                 listarUsuarios();
+            }
         }
 
         public formInicio()

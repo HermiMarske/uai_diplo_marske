@@ -33,10 +33,14 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.button7 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.btnModificarUsuario = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.comboPreguntas = new System.Windows.Forms.ComboBox();
+            this.labelPregunta = new System.Windows.Forms.Label();
+            this.txtRespuesta = new System.Windows.Forms.TextBox();
+            this.labelRespuesta = new System.Windows.Forms.Label();
             this.txtUsuario = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.labelUsuario = new System.Windows.Forms.Label();
@@ -126,10 +130,6 @@
             this.checkedListPatentesAdquiridas = new System.Windows.Forms.CheckedListBox();
             this.groupPermisosPatentes = new System.Windows.Forms.GroupBox();
             this.checkedListPatentes = new System.Windows.Forms.CheckedListBox();
-            this.comboPreguntas = new System.Windows.Forms.ComboBox();
-            this.labelPregunta = new System.Windows.Forms.Label();
-            this.txtRespuesta = new System.Windows.Forms.TextBox();
-            this.labelRespuesta = new System.Windows.Forms.Label();
             this.tableLayoutPanelAltaCliente.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -166,7 +166,7 @@
             // 
             this.groupBox3.Controls.Add(this.button7);
             this.groupBox3.Controls.Add(this.button6);
-            this.groupBox3.Controls.Add(this.button5);
+            this.groupBox3.Controls.Add(this.btnModificarUsuario);
             resources.ApplyResources(this.groupBox3, "groupBox3");
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.TabStop = false;
@@ -184,11 +184,12 @@
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
-            // button5
+            // btnModificarUsuario
             // 
-            resources.ApplyResources(this.button5, "button5");
-            this.button5.Name = "button5";
-            this.button5.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.btnModificarUsuario, "btnModificarUsuario");
+            this.btnModificarUsuario.Name = "btnModificarUsuario";
+            this.btnModificarUsuario.UseVisualStyleBackColor = true;
+            this.btnModificarUsuario.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // tabControl1
             // 
@@ -234,6 +235,36 @@
             resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
+            // 
+            // comboPreguntas
+            // 
+            this.comboPreguntas.FormattingEnabled = true;
+            this.comboPreguntas.Items.AddRange(new object[] {
+            resources.GetString("comboPreguntas.Items"),
+            resources.GetString("comboPreguntas.Items1"),
+            resources.GetString("comboPreguntas.Items2"),
+            resources.GetString("comboPreguntas.Items3"),
+            resources.GetString("comboPreguntas.Items4"),
+            resources.GetString("comboPreguntas.Items5"),
+            resources.GetString("comboPreguntas.Items6"),
+            resources.GetString("comboPreguntas.Items7")});
+            resources.ApplyResources(this.comboPreguntas, "comboPreguntas");
+            this.comboPreguntas.Name = "comboPreguntas";
+            // 
+            // labelPregunta
+            // 
+            resources.ApplyResources(this.labelPregunta, "labelPregunta");
+            this.labelPregunta.Name = "labelPregunta";
+            // 
+            // txtRespuesta
+            // 
+            resources.ApplyResources(this.txtRespuesta, "txtRespuesta");
+            this.txtRespuesta.Name = "txtRespuesta";
+            // 
+            // labelRespuesta
+            // 
+            resources.ApplyResources(this.labelRespuesta, "labelRespuesta");
+            this.labelRespuesta.Name = "labelRespuesta";
             // 
             // txtUsuario
             // 
@@ -716,9 +747,6 @@
             // comboTipo
             // 
             this.comboTipo.FormattingEnabled = true;
-            this.comboTipo.Items.AddRange(new object[] {
-            resources.GetString("comboTipo.Items"),
-            resources.GetString("comboTipo.Items1")});
             resources.ApplyResources(this.comboTipo, "comboTipo");
             this.comboTipo.Name = "comboTipo";
             // 
@@ -743,6 +771,7 @@
             this.comboPais.FormattingEnabled = true;
             resources.ApplyResources(this.comboPais, "comboPais");
             this.comboPais.Name = "comboPais";
+            this.comboPais.SelectedIndexChanged += new System.EventHandler(this.comboPais_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -754,6 +783,7 @@
             this.comboProvincias.FormattingEnabled = true;
             resources.ApplyResources(this.comboProvincias, "comboProvincias");
             this.comboProvincias.Name = "comboProvincias";
+            this.comboProvincias.SelectedIndexChanged += new System.EventHandler(this.comboProvincias_SelectedIndexChanged);
             // 
             // labelLocalidad
             // 
@@ -879,36 +909,6 @@
             resources.ApplyResources(this.checkedListPatentes, "checkedListPatentes");
             this.checkedListPatentes.Name = "checkedListPatentes";
             // 
-            // comboPreguntas
-            // 
-            this.comboPreguntas.FormattingEnabled = true;
-            this.comboPreguntas.Items.AddRange(new object[] {
-            resources.GetString("comboPreguntas.Items"),
-            resources.GetString("comboPreguntas.Items1"),
-            resources.GetString("comboPreguntas.Items2"),
-            resources.GetString("comboPreguntas.Items3"),
-            resources.GetString("comboPreguntas.Items4"),
-            resources.GetString("comboPreguntas.Items5"),
-            resources.GetString("comboPreguntas.Items6"),
-            resources.GetString("comboPreguntas.Items7")});
-            resources.ApplyResources(this.comboPreguntas, "comboPreguntas");
-            this.comboPreguntas.Name = "comboPreguntas";
-            // 
-            // labelPregunta
-            // 
-            resources.ApplyResources(this.labelPregunta, "labelPregunta");
-            this.labelPregunta.Name = "labelPregunta";
-            // 
-            // txtRespuesta
-            // 
-            resources.ApplyResources(this.txtRespuesta, "txtRespuesta");
-            this.txtRespuesta.Name = "txtRespuesta";
-            // 
-            // labelRespuesta
-            // 
-            resources.ApplyResources(this.labelRespuesta, "labelRespuesta");
-            this.labelRespuesta.Name = "labelRespuesta";
-            // 
             // modificarUsuario
             // 
             resources.ApplyResources(this, "$this");
@@ -956,7 +956,7 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btnModificarUsuario;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.GroupBox groupBox1;

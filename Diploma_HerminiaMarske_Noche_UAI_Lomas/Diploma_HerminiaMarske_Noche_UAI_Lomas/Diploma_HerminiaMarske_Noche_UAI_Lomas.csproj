@@ -160,6 +160,7 @@
     <Compile Include="forms\modificarUsuario.Designer.cs">
       <DependentUpon>modificarUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="objetos\Avion.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="objetos\BitacoraRow.cs" />
     <Compile Include="objetos\Cliente.cs" />
@@ -182,6 +183,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>strings.resx</DependentUpon>
     </Compile>
+    <Compile Include="servicio\ControladorABMAvion.cs" />
     <Compile Include="servicio\ControladorABMFamilia.cs" />
     <Compile Include="servicio\ControladorABMUsuario.cs" />
     <Compile Include="servicio\ControladorBitacora.cs" />

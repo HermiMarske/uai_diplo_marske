@@ -141,17 +141,33 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
                 c++;
             }
 
-            //LLENADO COSO DE PATENTES
+            //LLENADO CHECKEDLIST DE PATENTES
             List<Patente> patentes = new List<Patente>();
             DataConnection.DataConnection dataQueryPatentes = new DataConnection.DataConnection();
             DataTable dtpat = new DataTable();
-            string sql = "SELECT p.idPatente, p.codigo, up.negado from Patente p left join Usuario_Patente up on p.idPatente = up.patenteFK where up.usuarioFK = @idUsuario;"; 
-            dtpat = dataQueryPatentes.getList(SP.LISTAR_TODAS_PATENTES, null);
+            string sql = "SELECT p.idPatente, p.codigo, up.negado from Patente p left join Usuario_Patente up on p.idPatente = up.patenteFK where up.usuarioFK = @idUsuario;";
+
+            SqlParameter[] pmsPatentes = new SqlParameter[1];
+            pmsPatentes[0] = new SqlParameter("@idUsuario", SqlDbType.Int);
+            pmsPatentes[0].Value = usr.GetIdUsuario();
+
+
+            dtpat = dataQueryPatentes.sqlExecute(sql, pmsPatentes);
+            int x = 0;
             foreach (DataRow drpat in dtpat.Rows)
             {
+
+
                 Patente patente = new Patente((int)drpat[0], (string)drpat[1]);
                 patentes.Add(patente);
+                checkedListPatentes.Items.Add(patente);
+                if((bool)drpat[2])
+                {
+                    checkedListPatentes.SetItemChecked(x, true);
+                }
+                x++;
             }
+
             checkedListPatentes.DataSource = patentes;
 
             //Llenado de combo de paises
@@ -285,12 +301,20 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
 
         private void btnAgregarMail_Click(object sender, EventArgs e)
         {
-            Mail mail = new Mail();
-            mail.SetMail(textBoxMail.Text);
-            mail.SetTipo(comboTipoMails.SelectedItem.ToString());
+            try
+            {
+                Mail mail = new Mail();
+                mail.SetMail(textBoxMail.Text);
+                mail.SetTipo(comboTipoMails.SelectedItem.ToString());
 
-            String[] dataRow = { mail.GetTipo(), mail.GetMail() };
-            dataGridMails.Rows.Add(dataRow);
+                String[] dataRow = { mail.GetTipo(), mail.GetMail() };
+                dataGridMails.Rows.Add(dataRow);
+
+            }
+            catch
+            {
+                MessageBox.Show("Complete todos los campos.");
+            }
         }
 
         private void btnModificarMail_Click(object sender, EventArgs e)
@@ -340,6 +364,10 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             {
 
             }
+
+            try
+            {
+
             dom.SetTipoDomicilio(comboTipo.SelectedItem.ToString());
             dom.SetComentario(txtComentario.Text);
             dom.SetLocalidad((Localidad)comboLocalidades.SelectedItem);
@@ -348,6 +376,11 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
 
             Object[] dataRow = { dom.GetTipoDomicilio(), dom.GetComentario(), dom.GetCalle(), dom.GetNumero(), dom.GetPiso(), dom.GetDpto(), dom.GetCodigoPostal(), dom.GetLocalidad() };
             dataGridDomicilios.Rows.Add(dataRow);
+            } 
+            catch
+            {
+                MessageBox.Show("Complete todos los campos");
+            }
         }
 
         private void btnModificarDom_Click(object sender, EventArgs e)
@@ -505,10 +538,32 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
                 domicilios.Add(dom);
             }
 
-
             Usuario u = usr;
-
             Persona p = usr.GetPersona();
+
+            u.SetFamilias(new List<Familia>());
+            u.SetPatentes(new List<Patente>());
+
+            for (int i = 0; i < checkedListPatentesAdquiridas.Items.Count; i++)
+            {
+                if (!checkedListPatentesAdquiridas.GetItemChecked(i))
+                {
+                    Patente patente = (Patente)checkedListPatentesAdquiridas.Items[i];
+                    patente.SetNegado(true);
+                    u.GetPatentes().Add(patente);
+                }
+            }
+
+            foreach (Patente pat in checkedListPatentes.CheckedItems)
+            {
+                pat.SetNegado(false);
+                u.GetPatentes().Add(pat);
+            }
+            foreach (Familia f in checkedListFamilias.CheckedItems)
+            {
+                u.GetFamilias().Add(f);
+            }
+
 
             p.SetDni(txtDni.Text);
             p.SetNombre(txtNombre.Text);
@@ -525,14 +580,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             u.SetRespuesta(txtRespuesta.Text);
             u.SetFkPregunta(comboPreguntas.SelectedIndex + 1);
 
-            try
-            {
-                messageBox.Show(ControladorABMUsuario.modificarUsuario(u));
-            }
-            catch (Exception ex)
-            {
-                messageBox.Show(ex.Message.ToString());
-            }
+            messageBox.Show(ControladorABMUsuario.modificarUsuario(u));
             
 
         }
