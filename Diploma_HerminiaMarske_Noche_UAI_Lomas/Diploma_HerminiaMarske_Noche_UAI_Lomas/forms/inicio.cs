@@ -19,12 +19,19 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
         public static Object idClienteModif;
         public static Object idUsuarioModif;
 
+        public static Object av;
+
+        public static Object idAvionModif;
+
         altaCliente formAltaCliente = new altaCliente();
         altaUsuario formAltaUsuario = new altaUsuario();
         bitacora formBitacora = new bitacora();
         altaFamilia formFamilias = new altaFamilia();
         modificarCliente formModifCliente = new modificarCliente();
         modificarUsuario modificarUsuario = new modificarUsuario();
+        modificarAvion modificarAvion = new modificarAvion();
+        altaAvion altaAvion = new altaAvion();
+
         private Usuario usuarioLogueado;
 
         DataConnection.DataConnection dataConnection = new DataConnection.DataConnection();
@@ -71,6 +78,22 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
                 string usuario = ControladorEncriptacion.Decrypt((string)dr[1]);
                 Object[] dataRow = { (Int32)dr[0], usuario, (string)dr[3], (string)dr[4]};
                 datagridUsuarios.Rows.Add(dataRow);
+            }
+
+        }
+
+        public void listarAviones()
+        {
+
+            dataGridAviones.Rows.Clear();
+
+            List<Avion> aviones = ControladorABMAvion.getAviones();
+
+            foreach (Avion av in aviones)
+            {
+                
+                Object[] dataRow = { av.GetId(), av.GetMatricula(), av.GetMarca(), av.GetModelo(), av.GetHabilitado()};
+                dataGridAviones.Rows.Add(dataRow);
             }
 
         }
@@ -147,6 +170,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             {
                 listarClientes();
                 listarUsuarios();
+                listarAviones();
             }
         }
 
@@ -264,6 +288,48 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
 
             }
 
+        }
+
+        private void btnModificarAvion_Click(object sender, EventArgs e)
+        {
+            if (dataGridAviones.SelectedCells.Count > 0)
+            {
+                int rowIndex = dataGridAviones.SelectedCells[0].RowIndex;
+                av = new Avion((int)dataGridAviones.Rows[rowIndex].Cells[0].Value, (string)dataGridAviones.Rows[rowIndex].Cells[1].Value, (string)dataGridAviones.Rows[rowIndex].Cells[2].Value, (string)dataGridAviones.Rows[rowIndex].Cells[3].Value, (bool)dataGridAviones.Rows[rowIndex].Cells[4].Value);
+
+                try
+                {
+                    modificarAvion.Show();
+                }
+                catch
+                {
+                    modificarAvion modificarAvion = new modificarAvion();
+                    modificarAvion.Show();
+                }
+
+
+            }
+        }
+
+        private void btnAddAvion_Click(object sender, EventArgs e)
+        {
+            altaAvion = new altaAvion();
+            altaAvion.Show();
+        }
+
+        private void btnEliminarAvion_Click(object sender, EventArgs e)
+        {
+            if (dataGridAviones.SelectedCells.Count > 0)
+            {
+                int rowIndex = dataGridAviones.SelectedCells[0].RowIndex;
+
+                Object idAvion = datagridUsuarios.Rows[rowIndex].Cells[0].Value;
+
+                string respuesta = ControladorABMAvion.borrarAvion((int)idAvion);
+
+                MessageBox.Show(respuesta);
+
+            }
         }
     }
 }

@@ -47,12 +47,14 @@
             resources.ApplyResources(this.btnCrear, "btnCrear");
             this.btnCrear.Name = "btnCrear";
             this.btnCrear.UseVisualStyleBackColor = true;
+            this.btnCrear.Click += new System.EventHandler(this.btnCrear_Click);
             // 
             // btnSalir
             // 
             resources.ApplyResources(this.btnSalir, "btnSalir");
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // groupBox1
             // 
@@ -114,6 +116,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "modificarAvion";
+            this.Load += new System.EventHandler(this.modificarAvion_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

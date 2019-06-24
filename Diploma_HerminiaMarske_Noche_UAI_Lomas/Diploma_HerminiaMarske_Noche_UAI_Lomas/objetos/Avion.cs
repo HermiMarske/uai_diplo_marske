@@ -8,11 +8,27 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos
 {
     class Avion
     {
+        private int id;
         private string matricula;
         private string modelo;
         private string marca;
         private bool habilitado;
-        private int id;
+
+
+        public Avion(int id, string matricula, string marca, string modelo, bool habilitado)
+        {
+            this.matricula = matricula;
+            this.modelo = modelo;
+            this.marca = marca;
+            this.habilitado = habilitado;
+            this.id = id;
+        }
+
+        public Avion()
+        {
+        }
+
+ 
 
         public int GetId()
         {

@@ -96,5 +96,26 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
                 return AVION_ERROR;
             }
         }
+
+        public static List<Avion> getAviones()
+        {
+            DataConnection.DataConnection dataQuery = new DataConnection.DataConnection();
+            DataTable dt = new DataTable();
+
+            List<Avion> aviones = new List<Avion>();
+
+            string getAviones = "SELECT ID_Avion, matricula, marca, modelo, habilitado FROM Aviones";
+
+            dt = dataQuery.sqlExecute(getAviones, null);
+
+            foreach(DataRow dr in dt.Rows)
+            {
+                Avion av = new Avion((int)dr[0], (string)dr[1], (string)dr[2], (string)dr[3], (bool)dr[4]);
+
+                aviones.Add(av);
+            }
+           
+            return aviones;
+        }
     }
 }
