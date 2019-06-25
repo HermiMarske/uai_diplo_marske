@@ -27,6 +27,7 @@ namespace ConstantesData
             LISTAR_PATENTES_FAMILIAS = "ListarPatentesFamilias",
             LISTAR_PROVINCIAS = "ListarProvincias",
             LISTAR_USUARIOS = "ListarUsuarios",
+            LISTAR_PILOTOS = "ListarPilotos",
             MODIFICAR_CLIENTE = "ModificarCliente",
             OBTENER_CLIENTE = "ObtenerCliente",
             OBTENER_DOMICILIOS = "ObtenerDomicilios",

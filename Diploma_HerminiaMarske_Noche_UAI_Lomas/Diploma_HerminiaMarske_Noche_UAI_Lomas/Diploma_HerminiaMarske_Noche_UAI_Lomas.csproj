@@ -169,6 +169,7 @@
     <Compile Include="objetos\Localidad.cs" />
     <Compile Include="objetos\Patente.cs" />
     <Compile Include="objetos\Persona.cs" />
+    <Compile Include="objetos\Piloto.cs" />
     <Compile Include="objetos\Provincia.cs" />
     <Compile Include="objetos\Dialogo.cs" />
     <Compile Include="objetos\Domicilio.cs" />
@@ -185,6 +186,7 @@
     </Compile>
     <Compile Include="servicio\ControladorABMAvion.cs" />
     <Compile Include="servicio\ControladorABMFamilia.cs" />
+    <Compile Include="servicio\ControladorABMPiloto.cs" />
     <Compile Include="servicio\ControladorABMUsuario.cs" />
     <Compile Include="servicio\ControladorBitacora.cs" />
     <Compile Include="servicio\ControladorDigitosVerificadores.cs" />

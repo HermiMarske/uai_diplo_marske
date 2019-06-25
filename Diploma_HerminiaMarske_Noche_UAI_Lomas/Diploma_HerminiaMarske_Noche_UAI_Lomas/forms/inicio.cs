@@ -18,6 +18,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
         public static Object fkPersonaModif;
         public static Object idClienteModif;
         public static Object idUsuarioModif;
+        public static Object idPilotoModif;
 
         public static Object av;
 
@@ -31,6 +32,8 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
         modificarUsuario modificarUsuario = new modificarUsuario();
         modificarAvion modificarAvion = new modificarAvion();
         altaAvion altaAvion = new altaAvion();
+        altaPilotos altaPilotos = new altaPilotos();
+        modificacionPiloto modificacionPiloto = new modificacionPiloto();
 
         private Usuario usuarioLogueado;
 
@@ -81,6 +84,24 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             }
 
         }
+
+        /** SOLAPA PILOTOS **/
+        public void listarPilotos()
+        {
+            dataGridPilotos.Rows.Clear();
+
+            DataConnection.DataConnection dataQuery = new DataConnection.DataConnection();
+            DataTable dt = new DataTable();
+            dt = dataQuery.getList(SP.LISTAR_PILOTOS, null);
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                Object[] dataRow = { (Int32)dr[0], (string)dr[1], (string)dr[3], (string)dr[4] };
+                dataGridPilotos.Rows.Add(dataRow);
+            }
+
+        }
+
 
         public void listarAviones()
         {
@@ -171,6 +192,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
                 listarClientes();
                 listarUsuarios();
                 listarAviones();
+                listarPilotos();
             }
         }
 
@@ -313,8 +335,15 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
 
         private void btnAddAvion_Click(object sender, EventArgs e)
         {
-            altaAvion = new altaAvion();
-            altaAvion.Show();
+            try
+            {
+                altaAvion.Show();
+            } 
+            catch
+            {
+                altaAvion = new altaAvion();
+                altaAvion.Show();
+            }
         }
 
         private void btnEliminarAvion_Click(object sender, EventArgs e)
@@ -330,6 +359,52 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
                 MessageBox.Show(respuesta);
 
             }
+        }
+
+        private void btnAltaPiloto_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                altaPilotos.Show();
+            }
+            catch
+            {
+                altaPilotos = new altaPilotos();
+                altaPilotos.Show();
+            }
+        }
+
+        private void btnModificarPiloto_Click(object sender, EventArgs e)
+        {
+            int rowIndex = dataGridPilotos.SelectedCells[0].RowIndex;
+            idPilotoModif = dataGridPilotos.Rows[rowIndex].Cells[0].Value;
+
+            try
+            {
+                modificacionPiloto.Show();
+            }
+            catch
+            {
+                modificacionPiloto modificacionPiloto = new modificacionPiloto();
+                modificacionPiloto.Show();
+            }
+        }
+
+        private void borrarPiloto_Click(object sender, EventArgs e)
+        {
+
+            if (dataGridPilotos.SelectedCells.Count > 0)
+            {
+                int rowIndex = dataGridPilotos.SelectedCells[0].RowIndex;
+
+                Object idPiloto = dataGridPilotos.Rows[rowIndex].Cells[0].Value;
+
+                string respuesta = ControladorABMPiloto.borrarPiloto((int)idPiloto);
+
+                MessageBox.Show(respuesta);
+
+            }
+
         }
     }
 }
