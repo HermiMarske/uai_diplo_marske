@@ -102,12 +102,11 @@
             this.Habilitado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
+            this.btnVerActividad = new System.Windows.Forms.Button();
+            this.btnEliminarActividad = new System.Windows.Forms.Button();
+            this.btnAddActividad = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.dataGridActividades = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -134,7 +133,7 @@
             this.tabPage5.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.groupBox5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridActividades)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -672,60 +671,56 @@
             // tableLayoutPanel4
             // 
             resources.ApplyResources(this.tableLayoutPanel4, "tableLayoutPanel4");
-            this.tableLayoutPanel4.Controls.Add(this.button9, 0, 1);
-            this.tableLayoutPanel4.Controls.Add(this.button10, 0, 1);
-            this.tableLayoutPanel4.Controls.Add(this.button11, 0, 1);
-            this.tableLayoutPanel4.Controls.Add(this.button12, 0, 1);
+            this.tableLayoutPanel4.Controls.Add(this.btnVerActividad, 0, 1);
+            this.tableLayoutPanel4.Controls.Add(this.btnEliminarActividad, 0, 1);
+            this.tableLayoutPanel4.Controls.Add(this.btnAddActividad, 0, 1);
             this.tableLayoutPanel4.Controls.Add(this.groupBox5, 0, 0);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             // 
-            // button9
+            // btnVerActividad
             // 
-            resources.ApplyResources(this.button9, "button9");
-            this.button9.Name = "button9";
-            this.button9.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.btnVerActividad, "btnVerActividad");
+            this.btnVerActividad.Name = "btnVerActividad";
+            this.btnVerActividad.UseVisualStyleBackColor = true;
+            this.btnVerActividad.Click += new System.EventHandler(this.btnVerActividad_Click);
             // 
-            // button10
+            // btnEliminarActividad
             // 
-            resources.ApplyResources(this.button10, "button10");
-            this.button10.Name = "button10";
-            this.button10.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.btnEliminarActividad, "btnEliminarActividad");
+            this.btnEliminarActividad.Name = "btnEliminarActividad";
+            this.btnEliminarActividad.UseVisualStyleBackColor = true;
+            this.btnEliminarActividad.Click += new System.EventHandler(this.btnEliminarActividad_Click);
             // 
-            // button11
+            // btnAddActividad
             // 
-            resources.ApplyResources(this.button11, "button11");
-            this.button11.Name = "button11";
-            this.button11.UseVisualStyleBackColor = true;
-            // 
-            // button12
-            // 
-            resources.ApplyResources(this.button12, "button12");
-            this.button12.Name = "button12";
-            this.button12.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.btnAddActividad, "btnAddActividad");
+            this.btnAddActividad.Name = "btnAddActividad";
+            this.btnAddActividad.UseVisualStyleBackColor = true;
+            this.btnAddActividad.Click += new System.EventHandler(this.btnAddActividad_Click);
             // 
             // groupBox5
             // 
             this.tableLayoutPanel4.SetColumnSpan(this.groupBox5, 4);
-            this.groupBox5.Controls.Add(this.dataGridView3);
+            this.groupBox5.Controls.Add(this.dataGridActividades);
             resources.ApplyResources(this.groupBox5, "groupBox5");
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.TabStop = false;
             // 
-            // dataGridView3
+            // dataGridActividades
             // 
-            this.dataGridView3.AllowUserToAddRows = false;
-            this.dataGridView3.AllowUserToDeleteRows = false;
-            this.dataGridView3.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridActividades.AllowUserToAddRows = false;
+            this.dataGridActividades.AllowUserToDeleteRows = false;
+            this.dataGridActividades.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridActividades.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridActividades.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn12,
             this.dataGridViewTextBoxColumn13,
             this.dataGridViewTextBoxColumn14,
             this.dataGridViewTextBoxColumn15});
-            resources.ApplyResources(this.dataGridView3, "dataGridView3");
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.ReadOnly = true;
-            this.dataGridView3.RowTemplate.Height = 24;
+            resources.ApplyResources(this.dataGridActividades, "dataGridActividades");
+            this.dataGridActividades.Name = "dataGridActividades";
+            this.dataGridActividades.ReadOnly = true;
+            this.dataGridActividades.RowTemplate.Height = 24;
             // 
             // dataGridViewTextBoxColumn12
             // 
@@ -792,7 +787,7 @@
             this.tabPage5.PerformLayout();
             this.tableLayoutPanel4.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridActividades)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -864,16 +859,11 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.DataGridView dataGridAviones;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Button btnVerActividad;
+        private System.Windows.Forms.Button btnEliminarActividad;
+        private System.Windows.Forms.Button btnAddActividad;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.DataGridView dataGridView3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
+        private System.Windows.Forms.DataGridView dataGridActividades;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
@@ -883,6 +873,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
     }
 }
 

@@ -28,7 +28,16 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos
         {
         }
 
- 
+        public override string ToString()
+        {
+            return this.matricula;
+        }
+
+        public Avion(int id, string matricula)
+        {
+            this.id = id;
+            this.matricula = matricula;
+        }
 
         public int GetId()
         {

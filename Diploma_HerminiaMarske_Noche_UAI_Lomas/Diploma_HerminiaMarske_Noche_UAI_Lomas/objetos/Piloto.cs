@@ -14,6 +14,21 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos
         private DateTime fechaVencimientoPsicofisico;
         private string licencia;
 
+        public Piloto(int id, Persona persona)
+        {
+            this.id = id;
+            this.persona = persona;
+        }
+
+        public Piloto()
+        {
+        }
+
+        public override string ToString()
+        {
+            return persona.GetApellido() + ", " + persona.GetNombre(); 
+        }
+
         public int GetId()
         {
             return id;

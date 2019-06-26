@@ -19,6 +19,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
         public static Object idClienteModif;
         public static Object idUsuarioModif;
         public static Object idPilotoModif;
+        public static Object idActividad;
 
         public static Object av;
 
@@ -34,6 +35,8 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
         altaAvion altaAvion = new altaAvion();
         altaPilotos altaPilotos = new altaPilotos();
         modificacionPiloto modificacionPiloto = new modificacionPiloto();
+        altaActividad altaActividad = new altaActividad();
+        visualizarActividad visualizarActividad = new visualizarActividad();
 
         private Usuario usuarioLogueado;
 
@@ -98,6 +101,24 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             {
                 Object[] dataRow = { (Int32)dr[0], (string)dr[1], (string)dr[3], (string)dr[4] };
                 dataGridPilotos.Rows.Add(dataRow);
+            }
+
+        }
+
+
+        /** SOLAPA PILOTOS **/
+        public void listarActividades()
+        {
+            dataGridActividades.Rows.Clear();
+
+            DataConnection.DataConnection dataQuery = new DataConnection.DataConnection();
+            DataTable dt = new DataTable();
+            dt = dataQuery.getList(SP.LISTAR_ACTIVIDADES, null);
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                Object[] dataRow = { (Int32)dr[0], (DateTime)dr[1], (string)dr[2], (string)dr[3] };
+                dataGridActividades.Rows.Add(dataRow);
             }
 
         }
@@ -193,6 +214,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
                 listarUsuarios();
                 listarAviones();
                 listarPilotos();
+                listarActividades();
             }
         }
 
@@ -405,6 +427,46 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
 
             }
 
+        }
+
+        private void btnAddActividad_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                altaActividad.Show();
+            }
+            catch
+            {
+                altaActividad altaActividad = new altaActividad();
+                altaActividad.Show();
+            }
+        }
+
+        private void btnEliminarActividad_Click(object sender, EventArgs e)
+        {
+            int rowIndex = dataGridActividades.SelectedCells[0].RowIndex;
+
+            idActividad = dataGridActividades.Rows[rowIndex].Cells[0].Value;
+            string rta = ControladorABMActividad.borrarActividad((int)idActividad);
+
+            MessageBox.Show(rta);
+        }
+
+        private void btnVerActividad_Click(object sender, EventArgs e)
+        {
+
+            int rowIndex = dataGridActividades.SelectedCells[0].RowIndex;
+            idActividad = dataGridActividades.Rows[rowIndex].Cells[0].Value;
+
+            try
+            {
+                visualizarActividad.Show();
+            }
+            catch
+            {
+                visualizarActividad visualizarActividad = new visualizarActividad();
+                visualizarActividad.Show();
+            }
         }
     }
 }

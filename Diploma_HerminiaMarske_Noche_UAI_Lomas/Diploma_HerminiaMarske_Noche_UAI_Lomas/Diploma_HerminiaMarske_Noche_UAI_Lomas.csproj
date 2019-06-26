@@ -136,11 +136,11 @@
     <Compile Include="forms\modificacionPiloto.Designer.cs">
       <DependentUpon>modificacionPiloto.cs</DependentUpon>
     </Compile>
-    <Compile Include="forms\modificarActividad.cs">
+    <Compile Include="forms\visualizarActividad.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="forms\modificarActividad.Designer.cs">
-      <DependentUpon>modificarActividad.cs</DependentUpon>
+    <Compile Include="forms\visualizarActividad.Designer.cs">
+      <DependentUpon>visualizarActividad.cs</DependentUpon>
     </Compile>
     <Compile Include="forms\modificarAvion.cs">
       <SubType>Form</SubType>
@@ -160,6 +160,7 @@
     <Compile Include="forms\modificarUsuario.Designer.cs">
       <DependentUpon>modificarUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="objetos\Actividad.cs" />
     <Compile Include="objetos\Avion.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="objetos\BitacoraRow.cs" />
@@ -184,6 +185,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>strings.resx</DependentUpon>
     </Compile>
+    <Compile Include="servicio\ControladorABMActividad.cs" />
     <Compile Include="servicio\ControladorABMAvion.cs" />
     <Compile Include="servicio\ControladorABMFamilia.cs" />
     <Compile Include="servicio\ControladorABMPiloto.cs" />
@@ -253,8 +255,8 @@
     <EmbeddedResource Include="forms\modificacionPiloto.resx">
       <DependentUpon>modificacionPiloto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="forms\modificarActividad.resx">
-      <DependentUpon>modificarActividad.cs</DependentUpon>
+    <EmbeddedResource Include="forms\visualizarActividad.resx">
+      <DependentUpon>visualizarActividad.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\modificarAvion.resx">
       <DependentUpon>modificarAvion.cs</DependentUpon>

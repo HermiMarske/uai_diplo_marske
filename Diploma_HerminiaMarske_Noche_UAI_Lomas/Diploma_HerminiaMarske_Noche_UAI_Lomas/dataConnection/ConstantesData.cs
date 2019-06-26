@@ -35,6 +35,10 @@ namespace ConstantesData
             OBTENER_PERSONA = "ObtenerPersona",
             OBTENER_TELEFONOS = "ObtenerTelefonos",
             LISTAR_TODAS_PATENTES = "ListarTodasPatentes",
+            LISTAR_PILOTOS_COMBO = "ListarPilotosCombo",
+            LISTAR_CLIENTES_COMBO = "ListarClientesCombo",
+            LISTAR_AVIONES_COMBO = "ListarAvionesCombo",
+            LISTAR_ACTIVIDADES = "ListarActividades",
             ZERO = "0";
     }
 }

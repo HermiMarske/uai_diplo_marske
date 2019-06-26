@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
 {
-    public partial class modificarActividad : Form
+    public partial class visualizarActividad : Form
     {
-        public modificarActividad()
+        public visualizarActividad()
         {
             InitializeComponent();
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

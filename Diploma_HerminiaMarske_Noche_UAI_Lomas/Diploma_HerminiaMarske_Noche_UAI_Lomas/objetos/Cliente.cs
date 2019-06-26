@@ -23,6 +23,16 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos
             this.persona = persona;
         }
 
+        public Cliente(int id, string razonSocial)
+        {
+            this.id = id;
+            this.razonSocial = razonSocial;
+        }
+        public override string ToString()
+        {
+            return this.razonSocial;
+        }
+
         public string GetTipoCliente()
         {
             return tipoCliente;
