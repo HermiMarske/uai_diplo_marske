@@ -3,19 +3,18 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Resources;
 
 namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
 {
     class ControladorABMAvion
     {
 
-        private const string AVION_CREADO = "AVION_CREADO";
-        private const string AVION_ERROR = "AVION_ERROR";
-        private const string AVION_BORRADO = "AVION_BORRADO";
-        private const string AVION_MODIFICADO = "AVION_MODIFICADO";
+        private const string AIRPLANE_CREATED = "AIRPLANE_CREATED";
+        private const string AIRPLANE_ERROR = "AIRPLANE_ERROR";
+        private const string AIRPLANE_DELETED = "AIRPLANE_DELETED";
+        private const string AIRPLANE_MODIFIED = "AIRPLANE_MODIFIED";
+        private static ResourceManager rm = new ResourceManager(typeof(Properties.strings));
 
         public static string crearAvion(Avion avion)
         {
@@ -36,13 +35,12 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
             try
             {
                 dataQuery.sqlExecute(altaAvion, pms);
-                return AVION_CREADO;
+                return rm.GetString(AIRPLANE_CREATED.ToLower());
             }
             catch
             {
-                return AVION_ERROR;
+                throw new Exception(rm.GetString(AIRPLANE_ERROR.ToLower()));
             }
-
         }
 
         public static string modificarAvion(Avion avion)
@@ -66,13 +64,12 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
             try
             {
                 dataQuery.sqlExecute(modificarAvion, pms);
-                return AVION_MODIFICADO;
+                return rm.GetString(AIRPLANE_MODIFIED.ToLower());
             }
             catch
             {
-                return AVION_ERROR;
+                throw new Exception(rm.GetString(AIRPLANE_ERROR.ToLower()));
             }
-
         }
 
         public static string borrarAvion(int id)
@@ -83,17 +80,16 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
             pms[0] = new SqlParameter("@idAvion", SqlDbType.Int);
             pms[0].Value = id;
   
-
             DataConnection.DataConnection dataQuery = new DataConnection.DataConnection();
 
             try
             {
                 dataQuery.sqlExecute(borrarAvion, pms);
-                return AVION_BORRADO;
+                return rm.GetString(AIRPLANE_DELETED.ToLower());
             }
             catch
             {
-                return AVION_ERROR;
+                throw new Exception(rm.GetString(AIRPLANE_ERROR.ToLower()));
             }
         }
 
@@ -104,18 +100,26 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
 
             List<Avion> aviones = new List<Avion>();
 
-            string getAviones = "SELECT ID_Avion, matricula, marca, modelo, habilitado FROM Aviones";
+            const string getAviones = "SELECT ID_Avion, matricula, marca, modelo, habilitado FROM Aviones";
 
-            dt = dataQuery.sqlExecute(getAviones, null);
-
-            foreach(DataRow dr in dt.Rows)
+            try
             {
-                Avion av = new Avion((int)dr[0], (string)dr[1], (string)dr[2], (string)dr[3], (bool)dr[4]);
+                dt = dataQuery.sqlExecute(getAviones, null);
 
-                aviones.Add(av);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    Avion av = new Avion((int)dr[0], (string)dr[1], (string)dr[2], (string)dr[3], (bool)dr[4]);
+
+                    aviones.Add(av);
+                }
+
+                return aviones;
             }
-           
-            return aviones;
+            catch
+            {
+                throw new Exception(rm.GetString(AIRPLANE_ERROR.ToLower()));
+            }
+            
         }
     }
 }

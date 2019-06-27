@@ -123,17 +123,20 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="btnCrear.Location" type="System.Drawing.Point, System.Drawing">
-    <value>568, 280</value>
+    <value>639, 350</value>
+  </data>
+  <data name="btnCrear.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
   </data>
   <data name="btnCrear.Size" type="System.Drawing.Size, System.Drawing">
-    <value>183, 48</value>
+    <value>206, 60</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="btnCrear.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
   <data name="btnCrear.Text" xml:space="preserve">
-    <value>Crear</value>
+    <value>Modificar</value>
   </data>
   <data name="&gt;&gt;btnCrear.Name" xml:space="preserve">
     <value>btnCrear</value>
@@ -151,10 +154,13 @@
     <value>NoControl</value>
   </data>
   <data name="btnSalir.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 280</value>
+    <value>14, 350</value>
+  </data>
+  <data name="btnSalir.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
   </data>
   <data name="btnSalir.Size" type="System.Drawing.Size, System.Drawing">
-    <value>183, 48</value>
+    <value>206, 60</value>
   </data>
   <data name="btnSalir.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -181,10 +187,13 @@
     <value>NoControl</value>
   </data>
   <data name="checkboxHabilitar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 215</value>
+    <value>10, 269</value>
+  </data>
+  <data name="checkboxHabilitar.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
   </data>
   <data name="checkboxHabilitar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>600, 21</value>
+    <value>663, 24</value>
   </data>
   <data name="checkboxHabilitar.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -205,10 +214,13 @@
     <value>0</value>
   </data>
   <data name="txtMarca.Location" type="System.Drawing.Point, System.Drawing">
-    <value>83, 154</value>
+    <value>93, 192</value>
+  </data>
+  <data name="txtMarca.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
   </data>
   <data name="txtMarca.Size" type="System.Drawing.Size, System.Drawing">
-    <value>650, 22</value>
+    <value>708, 26</value>
   </data>
   <data name="txtMarca.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -226,10 +238,13 @@
     <value>1</value>
   </data>
   <data name="txtModelo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>83, 94</value>
+    <value>93, 118</value>
+  </data>
+  <data name="txtModelo.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
   </data>
   <data name="txtModelo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>650, 22</value>
+    <value>708, 26</value>
   </data>
   <data name="txtModelo.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -247,10 +262,13 @@
     <value>2</value>
   </data>
   <data name="txtMatricula.Location" type="System.Drawing.Point, System.Drawing">
-    <value>83, 34</value>
+    <value>93, 42</value>
+  </data>
+  <data name="txtMatricula.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
   </data>
   <data name="txtMatricula.Size" type="System.Drawing.Size, System.Drawing">
-    <value>650, 22</value>
+    <value>708, 26</value>
   </data>
   <data name="txtMatricula.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -274,10 +292,10 @@
     <value>NoControl</value>
   </data>
   <data name="lblMarca.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 157</value>
+    <value>7, 196</value>
   </data>
   <data name="lblMarca.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 17</value>
+    <value>53, 20</value>
   </data>
   <data name="lblMarca.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -304,10 +322,10 @@
     <value>NoControl</value>
   </data>
   <data name="lblModelo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 97</value>
+    <value>7, 121</value>
   </data>
   <data name="lblModelo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 17</value>
+    <value>61, 20</value>
   </data>
   <data name="lblModelo.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -334,16 +352,16 @@
     <value>NoControl</value>
   </data>
   <data name="lblMatricula.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 37</value>
+    <value>7, 46</value>
   </data>
   <data name="lblMatricula.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 17</value>
+    <value>73, 20</value>
   </data>
   <data name="lblMatricula.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="lblMatricula.Text" xml:space="preserve">
-    <value>Matricula</value>
+    <value>Matrícula</value>
   </data>
   <data name="&gt;&gt;lblMatricula.Name" xml:space="preserve">
     <value>lblMatricula</value>
@@ -358,16 +376,22 @@
     <value>6</value>
   </data>
   <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 12</value>
+    <value>14, 15</value>
+  </data>
+  <data name="groupBox1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
+  </data>
+  <data name="groupBox1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
   </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>739, 262</value>
+    <value>831, 328</value>
   </data>
   <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
   <data name="groupBox1.Text" xml:space="preserve">
-    <value>Datos del Avion</value>
+    <value>Datos del avión</value>
   </data>
   <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
     <value>groupBox1</value>
@@ -381,6 +405,9 @@
   <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <metadata name="errProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -388,16 +415,22 @@
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>8, 16</value>
+    <value>9, 20</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>763, 340</value>
+    <value>858, 425</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Modificar avión</value>
+  </data>
+  <data name="&gt;&gt;errProvider.Name" xml:space="preserve">
+    <value>errProvider</value>
+  </data>
+  <data name="&gt;&gt;errProvider.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ErrorProvider, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>modificarAvion</value>

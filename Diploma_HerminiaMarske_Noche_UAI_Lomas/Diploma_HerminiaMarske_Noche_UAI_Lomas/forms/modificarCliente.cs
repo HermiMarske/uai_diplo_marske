@@ -6,7 +6,9 @@ using System.Data.SqlClient;
 using System.Windows.Forms;
 using Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos;
 using ConstantesData;
-
+using System.Text.RegularExpressions;
+using Diploma_HerminiaMarske_Noche_UAI_Lomas.Properties;
+using System.Linq;
 
 namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
 {
@@ -44,6 +46,10 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             comboTipo.Items.AddRange(new object[] {
                 resources.GetString("comboTipo.Items"),
                 resources.GetString("comboTipo.Items1")
+            });
+            comboTipoTelefono.Items.AddRange(new object[] {
+                resources.GetString("comboTipoTelefono.Items"),
+                resources.GetString("comboTipoTelefono.Items1")
             });
             comboTipoMails.Items.AddRange(new object[] {
                 resources.GetString("comboTipoMails.Items"),
@@ -157,7 +163,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             }
             catch
             {
-                messageBox.Show(Properties.strings.no_phones);
+                messageBox.Show(strings.no_phones);
             }
             
             /** Lleno el grid de correos **/
@@ -188,7 +194,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             }
             catch
             {
-                messageBox.Show(Properties.strings.no_mails);
+                messageBox.Show(strings.no_mails);
             }
     
             /** Lleno lista de domicilios **/
@@ -214,13 +220,13 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
                 }
                 foreach (Domicilio d in domList)
                 {
-                    object[] dataRow = { d.GetTipoDomicilio(), d.GetComentario(), d.GetCalle(), d.GetNumero(), d.GetPiso().ToString(), d.GetDpto(), d.GetCodigoPostal(), d.GetLocalidad(), d.GetProvincia(), d.GetPais() };
+                    object[] dataRow = { d.GetTipoDomicilio(), d.GetComentario(), d.GetCalle(), d.GetNumero(), d.GetPiso(), d.GetDpto(), d.GetCodigoPostal(), d.GetLocalidad(), d.GetProvincia(), d.GetPais() };
                     dataGridDomicilios.Rows.Add(dataRow);
                 }
             }
             catch
             {
-                messageBox.Show(Properties.strings.no_addresses);
+                messageBox.Show(strings.no_addresses);
             }
             
         }
@@ -334,11 +340,11 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             DataConnection.DataConnection dataConnection = new DataConnection.DataConnection();
             if (dataGridDomicilios.Rows.Count == 0)
             {
-                messageBox.ShowWarning(Properties.strings.no_addresses);
+                messageBox.ShowWarning(strings.no_addresses);
                 return;
             } else if (string.IsNullOrWhiteSpace(txtCuit.Text) || string.IsNullOrWhiteSpace(txtDni.Text))
             {
-                messageBox.ShowWarning(Properties.strings.missing_info);
+                messageBox.ShowWarning(strings.missing_info);
                 return;
             }
 
@@ -496,6 +502,9 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
 
                 dataConnection.databaseModifyData(pmsDomicilio, SP.ALTA_DOMICILIO);
             }
+
+            new CustomMessageBox().Show(strings.client_modified);
+            Close();
         }
 
         private void buttonAddTelefono_Click(object sender, EventArgs e)
@@ -588,5 +597,280 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
                 dataGridDomicilios.Rows.RemoveAt(rowIndex);
             }
         }
+
+        private void txtDni_Validating(object sender, CancelEventArgs e)
+        {
+            if (txtDni.Text.Length < 8)
+            {
+                e.Cancel = true;
+                errProvider.SetError(txtDni, strings.dni_length_incorrect);
+            }
+            else if (!Regex.Match(txtDni.Text, @"^\d{8}$", RegexOptions.IgnoreCase).Success)
+            {
+                e.Cancel = true;
+                errProvider.SetError(txtDni, strings.dni_format_incorrect);
+            }
+        }
+
+        private void txtDni_Validated(object sender, EventArgs e)
+        {
+            errProvider.Clear();
+        }
+
+        private void txtNombre_Validating(object sender, CancelEventArgs e)
+        {
+            if (!Regex.Match(txtNombre.Text, @"^[a-Z]{1,50}$", RegexOptions.IgnoreCase).Success)
+            {
+                e.Cancel = true;
+                errProvider.SetError(txtNombre, strings.name_text_only);
+            }
+        }
+
+        private void txtNombre_Validated(object sender, EventArgs e) => errProvider.Clear();
+
+        private void txtApellido_Validating(object sender, CancelEventArgs e)
+        {
+            if (!Regex.Match(txtApellido.Text, @"^[a-Z]{1,50}$", RegexOptions.IgnoreCase).Success)
+            {
+                e.Cancel = true;
+                errProvider.SetError(txtApellido, strings.name_text_only);
+            }
+        }
+
+        private void txtApellido_Validated(object sender, EventArgs e) => errProvider.Clear();
+
+        private void comboSexo_Validating(object sender, CancelEventArgs e)
+        {
+            if (!comboSexo.Items.Contains(comboSexo.Text))
+            {
+                e.Cancel = true;
+                errProvider.SetError(comboSexo, strings.select_value_from_combo);
+            }
+        }
+
+        private void comboSexo_Validated(object sender, EventArgs e) => errProvider.Clear();
+
+        private void pickerFechaNacimiento_Validating(object sender, CancelEventArgs e)
+        {
+            if (pickerFechaNacimiento.Value >= DateTime.Now)
+            {
+                e.Cancel = true;
+                errProvider.SetError(pickerFechaNacimiento, strings.date_too_recent);
+            }
+        }
+
+        private void pickerFechaNacimiento_Validated(object sender, EventArgs e) => errProvider.Clear();
+
+        private void comboTipoCliente_Validating(object sender, CancelEventArgs e)
+        {
+            if (!comboTipoCliente.Items.Contains(comboTipoCliente.Text))
+            {
+                e.Cancel = true;
+                errProvider.SetError(comboTipoCliente, strings.select_value_from_combo);
+            }
+        }
+
+        private void comboTipoCliente_Validated(object sender, EventArgs e) => errProvider.Clear();
+
+        private void txtRazonSocial_Validating(object sender, CancelEventArgs e)
+        {
+            if (txtRazonSocial.Text.Length > 50 || txtRazonSocial.Text.Length < 1)
+            {
+                e.Cancel = true;
+                errProvider.SetError(txtRazonSocial, string.Format(strings.text_length_too_short, 1, 50));
+            }
+        }
+
+        private void txtRazonSocial_Validated(object sender, EventArgs e) => errProvider.Clear();
+
+        private void txtCuit_Validating(object sender, CancelEventArgs e)
+        {
+            if (txtCuit.Text.Length < 11)
+            {
+                e.Cancel = true;
+                errProvider.SetError(txtCuit, strings.cuit_length_incorrect);
+            }
+            else if (!Regex.Match(txtCuit.Text, @"^(\d){11}$", RegexOptions.IgnoreCase).Success)
+            {
+                e.Cancel = true;
+                errProvider.SetError(txtCuit, strings.cuit_format_incorrect);
+            }
+        }
+
+        private void txtCuit_Validated(object sender, EventArgs e) => errProvider.Clear();
+
+        private void textBoxNumero_Validating(object sender, CancelEventArgs e)
+        {
+            if (!Regex.Match(textBoxNumero.Text, @"^\+?(\d){1,13}$", RegexOptions.IgnoreCase).Success)
+            {
+                e.Cancel = true;
+                errProvider.SetError(textBoxNumero, strings.phone_format_incorrect);
+            }
+        }
+
+        private void textBoxNumero_Validated(object sender, EventArgs e) => errProvider.Clear();
+
+        private void comboTipoTelefono_Validating(object sender, CancelEventArgs e)
+        {
+            if (!comboTipoTelefono.Items.Contains(comboTipoTelefono.Text))
+            {
+                e.Cancel = true;
+                errProvider.SetError(comboTipoTelefono, strings.select_value_from_combo);
+            }
+        }
+
+        private void comboTipoTelefono_Validated(object sender, EventArgs e) => errProvider.Clear();
+
+        private void textBoxMail_Validating(object sender, CancelEventArgs e)
+        {
+            if (!Regex.Match(textBoxMail.Text, @"^\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b$", RegexOptions.IgnoreCase).Success)
+            {
+                e.Cancel = true;
+                errProvider.SetError(textBoxMail, strings.mail_format_incorrect);
+            }
+        }
+
+        private void textBoxMail_Validated(object sender, EventArgs e) => errProvider.Clear();
+
+        private void comboTipoMails_Validating(object sender, CancelEventArgs e)
+        {
+            if (!comboTipoMails.Items.Contains(comboTipoMails.Text))
+            {
+                e.Cancel = true;
+                errProvider.SetError(comboTipoMails, strings.select_value_from_combo);
+            }
+        }
+
+        private void comboTipoMails_Validated(object sender, EventArgs e) => errProvider.Clear();
+
+        private void txtCalle_Validating(object sender, CancelEventArgs e)
+        {
+            if (txtCalle.Text.Length > 50 || txtCalle.Text.Length < 1)
+            {
+                e.Cancel = true;
+                errProvider.SetError(txtCalle, string.Format(strings.text_length_too_short, 1, 50));
+            }
+            else if (!Regex.Match(txtCalle.Text, @"^[\w &\(\)\\]{1,50}$", RegexOptions.IgnoreCase).Success)
+            {
+                e.Cancel = true;
+                errProvider.SetError(txtCalle, strings.street_format_incorrect);
+            }
+        }
+
+        private void txtCalle_Validated(object sender, EventArgs e) => errProvider.Clear();
+
+        private void txtNumero_Validating(object sender, CancelEventArgs e)
+        {
+            if (txtNumero.Text.Length > 10 || txtCalle.Text.Length < 1)
+            {
+                e.Cancel = true;
+                errProvider.SetError(txtNumero, string.Format(strings.text_length_too_short, 1, 10));
+            }
+            else if (!Regex.Match(txtNumero.Text, @"^\d{1,10}$", RegexOptions.IgnoreCase).Success)
+            {
+                e.Cancel = true;
+                errProvider.SetError(txtNumero, strings.numbers_only);
+            }
+        }
+
+        private void txtNumero_Validated(object sender, EventArgs e) => errProvider.Clear();
+
+        private void comboPais_Validating(object sender, CancelEventArgs e)
+        {
+            if (!comboPais.Items.Cast<Pais>().Select(p => p.GetNombre().Equals(comboPais.Text)).First())
+            {
+                e.Cancel = true;
+                errProvider.SetError(comboPais, strings.select_value_from_combo);
+            }
+        }
+
+        private void comboPais_Validated(object sender, EventArgs e) => errProvider.Clear();
+
+        private void comboProvincias_Validating(object sender, CancelEventArgs e)
+        {
+            if (!comboProvincias.Items.Cast<Provincia>().Select(p => p.GetNombre().Equals(comboProvincias.Text)).First())
+            {
+                e.Cancel = true;
+                errProvider.SetError(comboProvincias, strings.select_value_from_combo);
+            }
+        }
+
+        private void comboProvincias_Validated(object sender, EventArgs e) => errProvider.Clear();
+
+        private void comboLocalidades_Validating(object sender, CancelEventArgs e)
+        {
+            if (!comboLocalidades.Items.Cast<Localidad>().Select(l => l.GetNombre().Equals(comboLocalidades.Text)).First())
+            {
+                e.Cancel = true;
+                errProvider.SetError(comboLocalidades, strings.select_value_from_combo);
+            }
+        }
+
+        private void comboLocalidades_Validated(object sender, EventArgs e) => errProvider.Clear();
+
+        private void txtCodigoPostal_Validating(object sender, CancelEventArgs e)
+        {
+            if (txtCodigoPostal.Text.Length > 10 || txtCodigoPostal.Text.Length < 1)
+            {
+                e.Cancel = true;
+                errProvider.SetError(txtCodigoPostal, string.Format(strings.text_length_too_short, 1, 10));
+            }
+            else if (!Regex.Match(txtCodigoPostal.Text, @"^\d{1,10}$", RegexOptions.IgnoreCase).Success)
+            {
+                e.Cancel = true;
+                errProvider.SetError(txtCodigoPostal, strings.numbers_only);
+            }
+        }
+
+        private void txtCodigoPostal_Validated(object sender, EventArgs e) => errProvider.Clear();
+
+        private void txtDpto_Validating(object sender, CancelEventArgs e)
+        {
+            if (txtDpto.Text.Length > 4 || txtDpto.Text.Length < 1)
+            {
+                e.Cancel = true;
+                errProvider.SetError(txtDpto, string.Format(strings.text_length_too_short, 1, 4));
+            }
+            else if (!Regex.Match(txtDpto.Text, @"^\w{1,4}$", RegexOptions.IgnoreCase).Success)
+            {
+                e.Cancel = true;
+                errProvider.SetError(txtDpto, strings.alphanumeric_only);
+            }
+        }
+
+        private void txtDpto_Validated(object sender, EventArgs e) => errProvider.Clear();
+
+        private void txtPiso_Validating(object sender, CancelEventArgs e)
+        {
+            if (txtPiso.Value < 0 && txtPiso.Value > 100)
+            {
+                e.Cancel = true;
+                errProvider.SetError(txtDpto, string.Format(strings.out_of_range, 1, 100));
+            }
+        }
+
+        private void txtPiso_Validated(object sender, EventArgs e) => errProvider.Clear();
+
+        private void comboTipo_Validating(object sender, CancelEventArgs e)
+        {
+            if (!comboTipo.Items.Contains(comboTipo.Text))
+            {
+                e.Cancel = true;
+                errProvider.SetError(comboTipo, strings.select_value_from_combo);
+            }
+        }
+
+        private void comboTipo_Validated(object sender, EventArgs e) => errProvider.Clear();
+
+        private void txtComentario_Validating(object sender, CancelEventArgs e)
+        {
+            if (txtComentario.Text.Length > 100 || txtDpto.Text.Length < 1)
+            {
+                e.Cancel = true;
+                errProvider.SetError(txtDpto, string.Format(strings.text_length_too_short, 1, 100));
+            }
+        }
+
+        private void txtComentario_Validated(object sender, EventArgs e) => errProvider.Clear();
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
+﻿using System.Windows.Forms;
+
+namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
 {
     partial class formInicio
     {
@@ -47,13 +49,13 @@
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.bitacoraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.opcionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cambiarIdiomaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tabUsuarios = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanelListaClientes = new System.Windows.Forms.TableLayoutPanel();
-            this.btnVerCliente = new System.Windows.Forms.Button();
-            this.btnEliminarCliente = new System.Windows.Forms.Button();
             this.btnModificarCliente = new System.Windows.Forms.Button();
             this.btnNuevoCliente = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -65,34 +67,32 @@
             this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnEliminarCliente = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnDetalleUsuario = new System.Windows.Forms.Button();
-            this.btnEliminarUsuario = new System.Windows.Forms.Button();
-            this.btnModificarUsuario = new System.Windows.Forms.Button();
-            this.btnAltaUsuario = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.datagridUsuarios = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnEliminarUsuario = new System.Windows.Forms.Button();
+            this.btnModificarUsuario = new System.Windows.Forms.Button();
+            this.btnAltaUsuario = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.borrarPiloto = new System.Windows.Forms.Button();
             this.btnModificarPiloto = new System.Windows.Forms.Button();
-            this.btnAltaPiloto = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.dataGridPilotos = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.borrarPiloto = new System.Windows.Forms.Button();
+            this.btnAltaPiloto = new System.Windows.Forms.Button();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnEliminarAvion = new System.Windows.Forms.Button();
             this.btnModificarAvion = new System.Windows.Forms.Button();
-            this.btnAddAvion = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dataGridAviones = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -100,17 +100,19 @@
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Habilitado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnEliminarAvion = new System.Windows.Forms.Button();
+            this.btnAddAvion = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnVerActividad = new System.Windows.Forms.Button();
-            this.btnEliminarActividad = new System.Windows.Forms.Button();
             this.btnAddActividad = new System.Windows.Forms.Button();
+            this.btnVerActividad = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.dataGridActividades = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnEliminarActividad = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabUsuarios.SuspendLayout();
@@ -171,7 +173,6 @@
             // 
             this.actividadesToolStripMenuItem1.Name = "actividadesToolStripMenuItem1";
             resources.ApplyResources(this.actividadesToolStripMenuItem1, "actividadesToolStripMenuItem1");
-            this.actividadesToolStripMenuItem1.Click += new System.EventHandler(this.actividadesToolStripMenuItem1_Click);
             // 
             // clientesToolStripMenuItem
             // 
@@ -181,7 +182,6 @@
             this.busquedaToolStripMenuItem});
             this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
             resources.ApplyResources(this.clientesToolStripMenuItem, "clientesToolStripMenuItem");
-            this.clientesToolStripMenuItem.Click += new System.EventHandler(this.clientesToolStripMenuItem_Click);
             // 
             // nuevoClienteToolStripMenuItem
             // 
@@ -252,8 +252,22 @@
             // 
             // opcionesToolStripMenuItem
             // 
+            this.opcionesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cambiarIdiomaToolStripMenuItem});
             this.opcionesToolStripMenuItem.Name = "opcionesToolStripMenuItem";
             resources.ApplyResources(this.opcionesToolStripMenuItem, "opcionesToolStripMenuItem");
+            // 
+            // cambiarIdiomaToolStripMenuItem
+            // 
+            this.cambiarIdiomaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripComboBox1});
+            this.cambiarIdiomaToolStripMenuItem.Name = "cambiarIdiomaToolStripMenuItem";
+            resources.ApplyResources(this.cambiarIdiomaToolStripMenuItem, "cambiarIdiomaToolStripMenuItem");
+            // 
+            // toolStripComboBox1
+            // 
+            this.toolStripComboBox1.Name = "toolStripComboBox1";
+            resources.ApplyResources(this.toolStripComboBox1, "toolStripComboBox1");
             // 
             // statusStrip1
             // 
@@ -288,25 +302,11 @@
             // tableLayoutPanelListaClientes
             // 
             resources.ApplyResources(this.tableLayoutPanelListaClientes, "tableLayoutPanelListaClientes");
-            this.tableLayoutPanelListaClientes.Controls.Add(this.btnVerCliente, 0, 1);
-            this.tableLayoutPanelListaClientes.Controls.Add(this.btnEliminarCliente, 0, 1);
             this.tableLayoutPanelListaClientes.Controls.Add(this.btnModificarCliente, 0, 1);
             this.tableLayoutPanelListaClientes.Controls.Add(this.btnNuevoCliente, 0, 1);
             this.tableLayoutPanelListaClientes.Controls.Add(this.groupBox1, 0, 0);
+            this.tableLayoutPanelListaClientes.Controls.Add(this.btnEliminarCliente, 2, 1);
             this.tableLayoutPanelListaClientes.Name = "tableLayoutPanelListaClientes";
-            // 
-            // btnVerCliente
-            // 
-            resources.ApplyResources(this.btnVerCliente, "btnVerCliente");
-            this.btnVerCliente.Name = "btnVerCliente";
-            this.btnVerCliente.UseVisualStyleBackColor = true;
-            // 
-            // btnEliminarCliente
-            // 
-            resources.ApplyResources(this.btnEliminarCliente, "btnEliminarCliente");
-            this.btnEliminarCliente.Name = "btnEliminarCliente";
-            this.btnEliminarCliente.UseVisualStyleBackColor = true;
-            this.btnEliminarCliente.Click += new System.EventHandler(this.btnEliminarCliente_Click);
             // 
             // btnModificarCliente
             // 
@@ -324,7 +324,7 @@
             // 
             // groupBox1
             // 
-            this.tableLayoutPanelListaClientes.SetColumnSpan(this.groupBox1, 4);
+            this.tableLayoutPanelListaClientes.SetColumnSpan(this.groupBox1, 3);
             this.groupBox1.Controls.Add(this.dataGridClientes);
             resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
@@ -348,7 +348,6 @@
             this.dataGridClientes.Name = "dataGridClientes";
             this.dataGridClientes.ReadOnly = true;
             this.dataGridClientes.RowTemplate.Height = 24;
-            this.dataGridClientes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridClientes_CellContentClick);
             // 
             // id
             // 
@@ -392,6 +391,13 @@
             this.dni.Name = "dni";
             this.dni.ReadOnly = true;
             // 
+            // btnEliminarCliente
+            // 
+            resources.ApplyResources(this.btnEliminarCliente, "btnEliminarCliente");
+            this.btnEliminarCliente.Name = "btnEliminarCliente";
+            this.btnEliminarCliente.UseVisualStyleBackColor = true;
+            this.btnEliminarCliente.Click += new System.EventHandler(this.btnEliminarCliente_Click);
+            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.tableLayoutPanel1);
@@ -402,43 +408,15 @@
             // tableLayoutPanel1
             // 
             resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
-            this.tableLayoutPanel1.Controls.Add(this.btnDetalleUsuario, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.groupBox2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnEliminarUsuario, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.btnModificarUsuario, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.btnAltaUsuario, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.groupBox2, 0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            // 
-            // btnDetalleUsuario
-            // 
-            resources.ApplyResources(this.btnDetalleUsuario, "btnDetalleUsuario");
-            this.btnDetalleUsuario.Name = "btnDetalleUsuario";
-            this.btnDetalleUsuario.UseVisualStyleBackColor = true;
-            // 
-            // btnEliminarUsuario
-            // 
-            resources.ApplyResources(this.btnEliminarUsuario, "btnEliminarUsuario");
-            this.btnEliminarUsuario.Name = "btnEliminarUsuario";
-            this.btnEliminarUsuario.UseVisualStyleBackColor = true;
-            this.btnEliminarUsuario.Click += new System.EventHandler(this.btnEliminarUsuario_Click);
-            // 
-            // btnModificarUsuario
-            // 
-            resources.ApplyResources(this.btnModificarUsuario, "btnModificarUsuario");
-            this.btnModificarUsuario.Name = "btnModificarUsuario";
-            this.btnModificarUsuario.UseVisualStyleBackColor = true;
-            this.btnModificarUsuario.Click += new System.EventHandler(this.btnModificarUsuario_Click);
-            // 
-            // btnAltaUsuario
-            // 
-            resources.ApplyResources(this.btnAltaUsuario, "btnAltaUsuario");
-            this.btnAltaUsuario.Name = "btnAltaUsuario";
-            this.btnAltaUsuario.UseVisualStyleBackColor = true;
-            this.btnAltaUsuario.Click += new System.EventHandler(this.btnAltaUsuario_Click);
             // 
             // groupBox2
             // 
-            this.tableLayoutPanel1.SetColumnSpan(this.groupBox2, 4);
+            this.tableLayoutPanel1.SetColumnSpan(this.groupBox2, 3);
             this.groupBox2.Controls.Add(this.datagridUsuarios);
             resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Name = "groupBox2";
@@ -484,6 +462,27 @@
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
             // 
+            // btnEliminarUsuario
+            // 
+            resources.ApplyResources(this.btnEliminarUsuario, "btnEliminarUsuario");
+            this.btnEliminarUsuario.Name = "btnEliminarUsuario";
+            this.btnEliminarUsuario.UseVisualStyleBackColor = true;
+            this.btnEliminarUsuario.Click += new System.EventHandler(this.btnEliminarUsuario_Click);
+            // 
+            // btnModificarUsuario
+            // 
+            resources.ApplyResources(this.btnModificarUsuario, "btnModificarUsuario");
+            this.btnModificarUsuario.Name = "btnModificarUsuario";
+            this.btnModificarUsuario.UseVisualStyleBackColor = true;
+            this.btnModificarUsuario.Click += new System.EventHandler(this.btnModificarUsuario_Click);
+            // 
+            // btnAltaUsuario
+            // 
+            resources.ApplyResources(this.btnAltaUsuario, "btnAltaUsuario");
+            this.btnAltaUsuario.Name = "btnAltaUsuario";
+            this.btnAltaUsuario.UseVisualStyleBackColor = true;
+            this.btnAltaUsuario.Click += new System.EventHandler(this.btnAltaUsuario_Click);
+            // 
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.tableLayoutPanel3);
@@ -494,18 +493,11 @@
             // tableLayoutPanel3
             // 
             resources.ApplyResources(this.tableLayoutPanel3, "tableLayoutPanel3");
-            this.tableLayoutPanel3.Controls.Add(this.borrarPiloto, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.btnModificarPiloto, 0, 1);
-            this.tableLayoutPanel3.Controls.Add(this.btnAltaPiloto, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.groupBox4, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.borrarPiloto, 1, 1);
+            this.tableLayoutPanel3.Controls.Add(this.btnAltaPiloto, 0, 1);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            // 
-            // borrarPiloto
-            // 
-            resources.ApplyResources(this.borrarPiloto, "borrarPiloto");
-            this.borrarPiloto.Name = "borrarPiloto";
-            this.borrarPiloto.UseVisualStyleBackColor = true;
-            this.borrarPiloto.Click += new System.EventHandler(this.borrarPiloto_Click);
             // 
             // btnModificarPiloto
             // 
@@ -514,16 +506,9 @@
             this.btnModificarPiloto.UseVisualStyleBackColor = true;
             this.btnModificarPiloto.Click += new System.EventHandler(this.btnModificarPiloto_Click);
             // 
-            // btnAltaPiloto
-            // 
-            resources.ApplyResources(this.btnAltaPiloto, "btnAltaPiloto");
-            this.btnAltaPiloto.Name = "btnAltaPiloto";
-            this.btnAltaPiloto.UseVisualStyleBackColor = true;
-            this.btnAltaPiloto.Click += new System.EventHandler(this.btnAltaPiloto_Click);
-            // 
             // groupBox4
             // 
-            this.tableLayoutPanel3.SetColumnSpan(this.groupBox4, 4);
+            this.tableLayoutPanel3.SetColumnSpan(this.groupBox4, 3);
             this.groupBox4.Controls.Add(this.dataGridPilotos);
             resources.ApplyResources(this.groupBox4, "groupBox4");
             this.groupBox4.Name = "groupBox4";
@@ -569,6 +554,20 @@
             this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
             this.dataGridViewTextBoxColumn11.ReadOnly = true;
             // 
+            // borrarPiloto
+            // 
+            resources.ApplyResources(this.borrarPiloto, "borrarPiloto");
+            this.borrarPiloto.Name = "borrarPiloto";
+            this.borrarPiloto.UseVisualStyleBackColor = true;
+            this.borrarPiloto.Click += new System.EventHandler(this.borrarPiloto_Click);
+            // 
+            // btnAltaPiloto
+            // 
+            resources.ApplyResources(this.btnAltaPiloto, "btnAltaPiloto");
+            this.btnAltaPiloto.Name = "btnAltaPiloto";
+            this.btnAltaPiloto.UseVisualStyleBackColor = true;
+            this.btnAltaPiloto.Click += new System.EventHandler(this.btnAltaPiloto_Click);
+            // 
             // tabPage4
             // 
             this.tabPage4.Controls.Add(this.tableLayoutPanel2);
@@ -579,18 +578,11 @@
             // tableLayoutPanel2
             // 
             resources.ApplyResources(this.tableLayoutPanel2, "tableLayoutPanel2");
-            this.tableLayoutPanel2.Controls.Add(this.btnEliminarAvion, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.btnModificarAvion, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.btnAddAvion, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.groupBox3, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btnEliminarAvion, 1, 1);
+            this.tableLayoutPanel2.Controls.Add(this.btnAddAvion, 0, 1);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            // 
-            // btnEliminarAvion
-            // 
-            resources.ApplyResources(this.btnEliminarAvion, "btnEliminarAvion");
-            this.btnEliminarAvion.Name = "btnEliminarAvion";
-            this.btnEliminarAvion.UseVisualStyleBackColor = true;
-            this.btnEliminarAvion.Click += new System.EventHandler(this.btnEliminarAvion_Click);
             // 
             // btnModificarAvion
             // 
@@ -599,16 +591,9 @@
             this.btnModificarAvion.UseVisualStyleBackColor = true;
             this.btnModificarAvion.Click += new System.EventHandler(this.btnModificarAvion_Click);
             // 
-            // btnAddAvion
-            // 
-            resources.ApplyResources(this.btnAddAvion, "btnAddAvion");
-            this.btnAddAvion.Name = "btnAddAvion";
-            this.btnAddAvion.UseVisualStyleBackColor = true;
-            this.btnAddAvion.Click += new System.EventHandler(this.btnAddAvion_Click);
-            // 
             // groupBox3
             // 
-            this.tableLayoutPanel2.SetColumnSpan(this.groupBox3, 4);
+            this.tableLayoutPanel2.SetColumnSpan(this.groupBox3, 3);
             this.groupBox3.Controls.Add(this.dataGridAviones);
             resources.ApplyResources(this.groupBox3, "groupBox3");
             this.groupBox3.Name = "groupBox3";
@@ -661,6 +646,20 @@
             this.Habilitado.Name = "Habilitado";
             this.Habilitado.ReadOnly = true;
             // 
+            // btnEliminarAvion
+            // 
+            resources.ApplyResources(this.btnEliminarAvion, "btnEliminarAvion");
+            this.btnEliminarAvion.Name = "btnEliminarAvion";
+            this.btnEliminarAvion.UseVisualStyleBackColor = true;
+            this.btnEliminarAvion.Click += new System.EventHandler(this.btnEliminarAvion_Click);
+            // 
+            // btnAddAvion
+            // 
+            resources.ApplyResources(this.btnAddAvion, "btnAddAvion");
+            this.btnAddAvion.Name = "btnAddAvion";
+            this.btnAddAvion.UseVisualStyleBackColor = true;
+            this.btnAddAvion.Click += new System.EventHandler(this.btnAddAvion_Click);
+            // 
             // tabPage5
             // 
             this.tabPage5.Controls.Add(this.tableLayoutPanel4);
@@ -671,25 +670,11 @@
             // tableLayoutPanel4
             // 
             resources.ApplyResources(this.tableLayoutPanel4, "tableLayoutPanel4");
-            this.tableLayoutPanel4.Controls.Add(this.btnVerActividad, 0, 1);
-            this.tableLayoutPanel4.Controls.Add(this.btnEliminarActividad, 0, 1);
-            this.tableLayoutPanel4.Controls.Add(this.btnAddActividad, 0, 1);
             this.tableLayoutPanel4.Controls.Add(this.groupBox5, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.btnAddActividad, 0, 1);
+            this.tableLayoutPanel4.Controls.Add(this.btnEliminarActividad, 2, 1);
+            this.tableLayoutPanel4.Controls.Add(this.btnVerActividad, 1, 1);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            // 
-            // btnVerActividad
-            // 
-            resources.ApplyResources(this.btnVerActividad, "btnVerActividad");
-            this.btnVerActividad.Name = "btnVerActividad";
-            this.btnVerActividad.UseVisualStyleBackColor = true;
-            this.btnVerActividad.Click += new System.EventHandler(this.btnVerActividad_Click);
-            // 
-            // btnEliminarActividad
-            // 
-            resources.ApplyResources(this.btnEliminarActividad, "btnEliminarActividad");
-            this.btnEliminarActividad.Name = "btnEliminarActividad";
-            this.btnEliminarActividad.UseVisualStyleBackColor = true;
-            this.btnEliminarActividad.Click += new System.EventHandler(this.btnEliminarActividad_Click);
             // 
             // btnAddActividad
             // 
@@ -698,9 +683,16 @@
             this.btnAddActividad.UseVisualStyleBackColor = true;
             this.btnAddActividad.Click += new System.EventHandler(this.btnAddActividad_Click);
             // 
+            // btnVerActividad
+            // 
+            resources.ApplyResources(this.btnVerActividad, "btnVerActividad");
+            this.btnVerActividad.Name = "btnVerActividad";
+            this.btnVerActividad.UseVisualStyleBackColor = true;
+            this.btnVerActividad.Click += new System.EventHandler(this.btnVerActividad_Click);
+            // 
             // groupBox5
             // 
-            this.tableLayoutPanel4.SetColumnSpan(this.groupBox5, 4);
+            this.tableLayoutPanel4.SetColumnSpan(this.groupBox5, 3);
             this.groupBox5.Controls.Add(this.dataGridActividades);
             resources.ApplyResources(this.groupBox5, "groupBox5");
             this.groupBox5.Name = "groupBox5";
@@ -746,6 +738,13 @@
             this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
             this.dataGridViewTextBoxColumn15.ReadOnly = true;
             // 
+            // btnEliminarActividad
+            // 
+            resources.ApplyResources(this.btnEliminarActividad, "btnEliminarActividad");
+            this.btnEliminarActividad.Name = "btnEliminarActividad";
+            this.btnEliminarActividad.UseVisualStyleBackColor = true;
+            this.btnEliminarActividad.Click += new System.EventHandler(this.btnEliminarActividad_Click);
+            // 
             // formInicio
             // 
             resources.ApplyResources(this, "$this");
@@ -758,6 +757,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "formInicio";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Activated += new System.EventHandler(this.formInicio_Activated);
             this.Load += new System.EventHandler(this.formInicio_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -815,7 +815,6 @@
         private System.Windows.Forms.TabControl tabUsuarios;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelListaClientes;
-        private System.Windows.Forms.Button btnVerCliente;
         private System.Windows.Forms.Button btnEliminarCliente;
         private System.Windows.Forms.Button btnModificarCliente;
         private System.Windows.Forms.Button btnNuevoCliente;
@@ -823,7 +822,6 @@
         private System.Windows.Forms.DataGridView dataGridClientes;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Button btnDetalleUsuario;
         private System.Windows.Forms.Button btnEliminarUsuario;
         private System.Windows.Forms.Button btnModificarUsuario;
         private System.Windows.Forms.Button btnAltaUsuario;
@@ -877,6 +875,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
+        private System.Windows.Forms.ToolStripMenuItem cambiarIdiomaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripComboBox toolStripComboBox1;
     }
 }
 

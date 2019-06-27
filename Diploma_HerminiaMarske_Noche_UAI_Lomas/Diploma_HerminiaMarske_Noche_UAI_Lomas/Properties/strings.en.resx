@@ -189,7 +189,7 @@ Please contact an administrator.</value>
     <value>The user and the person were created.</value>
   </data>
   <data name="user_deleted" xml:space="preserve">
-    <value>User deleted successfully.</value>
+    <value>The user was deleted.</value>
   </data>
   <data name="user_exists" xml:space="preserve">
     <value>This user already exists.</value>
@@ -202,5 +202,77 @@ Please contact an administrator.</value>
   </data>
   <data name="welcome" xml:space="preserve">
     <value>Welcome {0}!</value>
+  </data>
+  <data name="dni_length_incorrect" xml:space="preserve">
+    <value>DNI length must be 8 digits.</value>
+  </data>
+  <data name="alphanumeric_only" xml:space="preserve">
+    <value>No special characters allowed on this field (nor whitespaces).</value>
+  </data>
+  <data name="cuit_format_incorrect" xml:space="preserve">
+    <value>The CUIL/CUIT must contain 11 numbers (don't include hiphens).</value>
+  </data>
+  <data name="cuit_length_incorrect" xml:space="preserve">
+    <value>The length of the CUIL/CUIT must be 11 digits.</value>
+  </data>
+  <data name="date_too_recent" xml:space="preserve">
+    <value>Date of birth can't be today (nor later).</value>
+  </data>
+  <data name="dni_format_incorrect" xml:space="preserve">
+    <value>The DNI must contain 8 numbers.</value>
+  </data>
+  <data name="mail_format_incorrect" xml:space="preserve">
+    <value>The mail format must be 'name@domain'.</value>
+  </data>
+  <data name="name_text_only" xml:space="preserve">
+    <value>Names only admit text.</value>
+  </data>
+  <data name="numbers_only" xml:space="preserve">
+    <value>Only numbers allowed on this field.</value>
+  </data>
+  <data name="out_of_range" xml:space="preserve">
+    <value>Value must be between {0} and {1}.</value>
+  </data>
+  <data name="phone_format_incorrect" xml:space="preserve">
+    <value>The phone must contain only numbers (a + is allowed at the start).</value>
+  </data>
+  <data name="select_value_from_combo" xml:space="preserve">
+    <value>Select a value from the combo list.</value>
+  </data>
+  <data name="street_format_incorrect" xml:space="preserve">
+    <value>The street format is incorrect.</value>
+  </data>
+  <data name="text_length_too_short" xml:space="preserve">
+    <value>Field length must be between {0} and {1}.</value>
+  </data>
+  <data name="airplane_created" xml:space="preserve">
+    <value>Airplane successfully created.</value>
+  </data>
+  <data name="airplane_deleted" xml:space="preserve">
+    <value>The airplane was deleted.</value>
+  </data>
+  <data name="airplane_error" xml:space="preserve">
+    <value>An unknown error ocurred while processing your request.</value>
+  </data>
+  <data name="airplane_modified" xml:space="preserve">
+    <value>Airplane successfully modified.</value>
+  </data>
+  <data name="client_modified" xml:space="preserve">
+    <value>Client modified succesfully.</value>
+  </data>
+  <data name="question" xml:space="preserve">
+    <value>Confirmation needed</value>
+  </data>
+  <data name="confirm_delete" xml:space="preserve">
+    <value>Are you sure you want to delete this record?</value>
+  </data>
+  <data name="client_deleted" xml:space="preserve">
+    <value>The client was deleted.</value>
+  </data>
+  <data name="english" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="spanish" xml:space="preserve">
+    <value>Spanish</value>
   </data>
 </root>

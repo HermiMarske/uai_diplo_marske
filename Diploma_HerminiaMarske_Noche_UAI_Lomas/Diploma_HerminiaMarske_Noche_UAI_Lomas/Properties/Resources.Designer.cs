@@ -93,6 +93,16 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_help_96 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_help_96", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_info_96 {
             get {
                 object obj = ResourceManager.GetObject("icons8_info_96", resourceCulture);

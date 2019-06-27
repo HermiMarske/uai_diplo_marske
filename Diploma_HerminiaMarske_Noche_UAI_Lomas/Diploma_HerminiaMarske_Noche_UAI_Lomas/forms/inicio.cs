@@ -6,25 +6,31 @@ using System.Windows.Forms;
 using Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos;
 using Diploma_HerminiaMarske_Noche_UAI_Lomas.forms;
 using ConstantesData;
+using System.Linq;
 using Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio;
 using System.Globalization;
 using System.Threading;
+using Diploma_HerminiaMarske_Noche_UAI_Lomas.Properties;
 
 namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
 {
 
     public partial class formInicio : Form
     {
-        public static Object fkPersonaModif;
-        public static Object idClienteModif;
-        public static Object idUsuarioModif;
-        public static Object idPilotoModif;
-        public static Object idActividad;
+        public static object fkPersonaModif;
+        public static object idClienteModif;
+        public static object idUsuarioModif;
+        public static object idPilotoModif;
+        public static object idActividad;
 
-        public static Object av;
+        public static object av;
 
-        public static Object idAvionModif;
+        public static object idAvionModif;
 
+        Idioma[] idiomas = {
+            new Idioma("en", "english"),
+            new Idioma("es-AR", "spanish")
+        };
         altaCliente formAltaCliente = new altaCliente();
         altaUsuario formAltaUsuario = new altaUsuario();
         bitacora formBitacora = new bitacora();
@@ -37,6 +43,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
         modificacionPiloto modificacionPiloto = new modificacionPiloto();
         altaActividad altaActividad = new altaActividad();
         visualizarActividad visualizarActividad = new visualizarActividad();
+        CustomMessageBox messageBox = new CustomMessageBox();
 
         private Usuario usuarioLogueado;
 
@@ -63,7 +70,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
 
             foreach(Cliente c in clientes)
             {
-                String[] dataRow = { c.GetId().ToString(), c.GetPersona().GetIdPersona().ToString(), c.GetCuit(), c.GetRazonSocial(), c.GetPersona().GetNombre(), c.GetPersona().GetApellido(), c.GetPersona().GetDni()};
+                string[] dataRow = { c.GetId().ToString(), c.GetPersona().GetIdPersona().ToString(), c.GetCuit(), c.GetRazonSocial(), c.GetPersona().GetNombre(), c.GetPersona().GetApellido(), c.GetPersona().GetDni()};
                 dataGridClientes.Rows.Add(dataRow);
             }
             
@@ -72,7 +79,6 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
         /** SOLAPA USUARIOS **/
         public void listarUsuarios()
         {
-            
             datagridUsuarios.Rows.Clear();
 
             DataConnection.DataConnection dataQuery = new DataConnection.DataConnection();
@@ -82,7 +88,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             foreach (DataRow dr in dt.Rows)
             {
                 string usuario = ControladorEncriptacion.Decrypt((string)dr[1]);
-                Object[] dataRow = { (Int32)dr[0], usuario, (string)dr[3], (string)dr[4]};
+                object[] dataRow = { (int)dr[0], usuario, (string)dr[3], (string)dr[4]};
                 datagridUsuarios.Rows.Add(dataRow);
             }
 
@@ -99,10 +105,9 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
 
             foreach (DataRow dr in dt.Rows)
             {
-                Object[] dataRow = { (Int32)dr[0], (string)dr[1], (string)dr[3], (string)dr[4] };
+                object[] dataRow = { (int)dr[0], (string)dr[1], (string)dr[3], (string)dr[4] };
                 dataGridPilotos.Rows.Add(dataRow);
             }
-
         }
 
 
@@ -117,7 +122,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
 
             foreach (DataRow dr in dt.Rows)
             {
-                Object[] dataRow = { (Int32)dr[0], (DateTime)dr[1], (string)dr[2], (string)dr[3] };
+                object[] dataRow = { (int)dr[0], (DateTime)dr[1], (string)dr[2], (string)dr[3] };
                 dataGridActividades.Rows.Add(dataRow);
             }
 
@@ -126,29 +131,28 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
 
         public void listarAviones()
         {
-
             dataGridAviones.Rows.Clear();
 
             List<Avion> aviones = ControladorABMAvion.getAviones();
 
             foreach (Avion av in aviones)
             {
-                
-                Object[] dataRow = { av.GetId(), av.GetMatricula(), av.GetMarca(), av.GetModelo(), av.GetHabilitado()};
+                object[] dataRow = { av.GetId(), av.GetMatricula(), av.GetMarca(), av.GetModelo(), av.GetHabilitado()};
                 dataGridAviones.Rows.Add(dataRow);
             }
-
         }
 
 
         private void btnNuevoCliente_Click(object sender, EventArgs e)
         {
+            formAltaCliente = new altaCliente();
             formAltaCliente.Show();
         }
 
 
         private void nuevoClienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            formAltaCliente = new altaCliente();
             formAltaCliente.Show();
         }
 
@@ -159,15 +163,9 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
                 int rowIndex = dataGridClientes.SelectedCells[0].RowIndex;
                 idClienteModif = dataGridClientes.Rows[rowIndex].Cells[0].Value;
                 fkPersonaModif = dataGridClientes.Rows[rowIndex].Cells[1].Value;
-                try
-                {
-                    formModifCliente.Show();
-                }
-                catch
-                {
-                    modificarCliente formModifCliente = new modificarCliente();
-                    formModifCliente.Show();
-                }
+                
+                formModifCliente = new modificarCliente();
+                formModifCliente.Show();
             }
         }
 
@@ -175,23 +173,32 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
         {
             if (dataGridClientes.SelectedCells.Count > 0)
             {
-                int rowIndex = dataGridClientes.SelectedCells[0].RowIndex;
-                Object idCliente = dataGridClientes.Rows[rowIndex].Cells[0].Value;
-                SqlParameter[] pms = new SqlParameter[1];
-
-                pms[0] = new SqlParameter("@idCliente", SqlDbType.Int);
-                pms[0].Value = idCliente.ToString();
-
-                string respuesta = dataConnection.databaseDelete(pms, SP.BORRAR_CLIENTE);
-
-                if (respuesta != null)
+                DialogResult question = messageBox.Show(strings.confirm_delete, MessageBoxButtons.OKCancel);
+                if (question == DialogResult.OK)
                 {
-                    MessageBox.Show(respuesta);
-                    listarClientes();
+                    try
+                    {
+                        int rowIndex = dataGridClientes.SelectedCells[0].RowIndex;
+                        object idCliente = dataGridClientes.Rows[rowIndex].Cells[0].Value;
+                        SqlParameter[] pms = new SqlParameter[1];
+
+                        pms[0] = new SqlParameter("@idCliente", SqlDbType.Int);
+                        pms[0].Value = idCliente.ToString();
+
+                        string respuesta = dataConnection.databaseDelete(pms, SP.BORRAR_CLIENTE);
+
+                        if (respuesta != null)
+                        {
+                            messageBox.Show(strings.client_deleted);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        messageBox.ShowError(ex.Message.ToString());
+                    }
                 }
             }
         }
-
 
         /** FIN SOLAPA CLIENTES **/
 
@@ -206,7 +213,12 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
                     listarClientes();
                 if (hasPermission("ADM_USUARIOS_VER"))
                     listarUsuarios();
-
+                if (hasPermission("ADM_AVIONES_VER"))
+                    listarAviones();
+                if (hasPermission("ADM_PILOTOS_VER"))
+                    listarPilotos();
+                if (hasPermission("ADM_ACTIVIDADES_VER"))
+                    listarActividades();
             }
             else
             {
@@ -218,9 +230,20 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             }
         }
 
-        public formInicio()
+        private void initializer()
         {
             InitializeComponent();
+            toolStripComboBox1.Items.AddRange(idiomas);
+            toolStripComboBox1.AutoCompleteCustomSource.AddRange(idiomas.Select(i => i.GetDescripcion()).ToArray());
+
+            Idioma select = toolStripComboBox1.Items.Cast<Idioma>().Where(i => i.GetCodigo().Equals(Thread.CurrentThread.CurrentUICulture.Name)).FirstOrDefault();
+            toolStripComboBox1.SelectedItem = select ?? idiomas.Where(i => i.GetCodigo().Equals("es-AR")).First();
+            toolStripComboBox1.SelectedIndexChanged += toolStripComboBox1_SelectedIndexChanged;
+        }
+
+        public formInicio()
+        {
+            initializer();
         }
 
         public formInicio(Usuario usuario)
@@ -228,54 +251,24 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             usuarioLogueado = usuario;
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(usuario.GetIdioma());
             Controls.Clear();
-            InitializeComponent();
+            initializer();
 
             btnNuevoCliente.Enabled = hasPermission("ADM_CLIENTES_ALTA");
-            btnVerCliente.Enabled = hasPermission("ADM_CLIENTES_VER");
             dataGridClientes.Enabled = hasPermission("ADM_CLIENTES_VER");
             btnEliminarCliente.Enabled = hasPermission("ADM_CLIENTES_BAJA");
             btnModificarCliente.Enabled = hasPermission("ADM_CLIENTES_MODIF");
 
             datagridUsuarios.Enabled = hasPermission("ADM_USUARIOS_VER");
-            btnDetalleUsuario.Enabled = hasPermission("ADM_USUARIOS_VER");
             btnAltaUsuario.Enabled = hasPermission("ADM_USUARIOS_ALTA");
             btnEliminarUsuario.Enabled = hasPermission("ADM_USUARIOS_BAJA");
             btnModificarUsuario.Enabled = hasPermission("ADM_USUARIOS_MODIF");
             familiasYPermisosToolStripMenuItem.Enabled = hasPermission("ADM_USUARIOS_PERM");
         }
 
-        private void actividadesToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupAltaCliente_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-
-        private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            
-
-        }
-
         private void busquedaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             tableLayoutPanelListaClientes.Show();
         }
-
-        private void dataGridClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
 
         private void btnAltaUsuario_Click(object sender, EventArgs e)
         {
@@ -289,12 +282,20 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             {
                 int rowIndex = datagridUsuarios.SelectedCells[0].RowIndex;
 
-                Object idUsuario = datagridUsuarios.Rows[rowIndex].Cells[0].Value;
+                object idUsuario = datagridUsuarios.Rows[rowIndex].Cells[0].Value;
 
-                string respuesta = ControladorABMUsuario.borrarUsuario((int)idUsuario);
-
-                MessageBox.Show(respuesta);
-
+                DialogResult question = messageBox.Show(strings.confirm_delete, MessageBoxButtons.OKCancel);
+                if (question == DialogResult.OK)
+                {
+                    try
+                    {
+                        messageBox.Show(ControladorABMUsuario.borrarUsuario((int)idUsuario));
+                    }
+                    catch (Exception ex)
+                    {
+                        messageBox.ShowError(ex.Message.ToString());
+                    }
+                }
             }
         }
 
@@ -318,18 +319,9 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             {
                 int rowIndex = datagridUsuarios.SelectedCells[0].RowIndex;
                 idUsuarioModif = datagridUsuarios.Rows[rowIndex].Cells[0].Value;
-             
-                try
-                {
-                    modificarUsuario.Show();
-                }
-                catch
-                {
-                    modificarUsuario modificarUsuario = new modificarUsuario();
-                    modificarUsuario.Show();
-                }
 
-
+                modificarUsuario = new modificarUsuario();
+                modificarUsuario.Show();
             }
 
         }
@@ -341,31 +333,15 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
                 int rowIndex = dataGridAviones.SelectedCells[0].RowIndex;
                 av = new Avion((int)dataGridAviones.Rows[rowIndex].Cells[0].Value, (string)dataGridAviones.Rows[rowIndex].Cells[1].Value, (string)dataGridAviones.Rows[rowIndex].Cells[2].Value, (string)dataGridAviones.Rows[rowIndex].Cells[3].Value, (bool)dataGridAviones.Rows[rowIndex].Cells[4].Value);
 
-                try
-                {
-                    modificarAvion.Show();
-                }
-                catch
-                {
-                    modificarAvion modificarAvion = new modificarAvion();
-                    modificarAvion.Show();
-                }
-
-
+                modificarAvion = new modificarAvion();
+                modificarAvion.Show();
             }
         }
 
         private void btnAddAvion_Click(object sender, EventArgs e)
         {
-            try
-            {
-                altaAvion.Show();
-            } 
-            catch
-            {
-                altaAvion = new altaAvion();
-                altaAvion.Show();
-            }
+            altaAvion = new altaAvion();
+            altaAvion.Show();
         }
 
         private void btnEliminarAvion_Click(object sender, EventArgs e)
@@ -374,59 +350,81 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             {
                 int rowIndex = dataGridAviones.SelectedCells[0].RowIndex;
 
-                Object idAvion = datagridUsuarios.Rows[rowIndex].Cells[0].Value;
+                object idAvion = datagridUsuarios.Rows[rowIndex].Cells[0].Value;
 
-                string respuesta = ControladorABMAvion.borrarAvion((int)idAvion);
+                DialogResult question = messageBox.Show(strings.confirm_delete, MessageBoxButtons.OKCancel);
+                if (question == DialogResult.OK)
+                {
+                    try
+                    {
+                        messageBox.Show(ControladorABMAvion.borrarAvion((int)idAvion));
+                    }
+                    catch (Exception ex)
+                    {
+                        messageBox.ShowError(ex.Message.ToString());
+                    }
+                }
+            }
+        }
 
-                MessageBox.Show(respuesta);
-
+        private void formInicio_Activated(object sender, EventArgs e)
+        {
+            if (usuarioLogueado != null)
+            {
+                if (hasPermission("ADM_CLIENTES_VER"))
+                    listarClientes();
+                if (hasPermission("ADM_USUARIOS_VER"))
+                    listarUsuarios();
+                if (hasPermission("ADM_AVIONES_VER"))
+                    listarAviones();
+                if (hasPermission("ADM_PILOTOS_VER"))
+                    listarPilotos();
+                if (hasPermission("ADM_ACTIVIDADES_VER"))
+                    listarActividades();
+            }
+            else
+            {
+                listarClientes();
+                listarUsuarios();
+                listarAviones();
+                listarPilotos();
+                listarActividades();
             }
         }
 
         private void btnAltaPiloto_Click(object sender, EventArgs e)
         {
-            try
-            {
-                altaPilotos.Show();
-            }
-            catch
-            {
-                altaPilotos = new altaPilotos();
-                altaPilotos.Show();
-            }
+            altaPilotos = new altaPilotos();
+            altaPilotos.Show();
         }
 
         private void btnModificarPiloto_Click(object sender, EventArgs e)
         {
-            int rowIndex = dataGridPilotos.SelectedCells[0].RowIndex;
-            idPilotoModif = dataGridPilotos.Rows[rowIndex].Cells[0].Value;
-
-            try
-            {
-                modificacionPiloto.Show();
-            }
-            catch
-            {
-                modificacionPiloto modificacionPiloto = new modificacionPiloto();
-                modificacionPiloto.Show();
-            }
+            modificacionPiloto modificacionPiloto = new modificacionPiloto();
+            modificacionPiloto.Show();
         }
 
         private void borrarPiloto_Click(object sender, EventArgs e)
         {
-
             if (dataGridPilotos.SelectedCells.Count > 0)
             {
                 int rowIndex = dataGridPilotos.SelectedCells[0].RowIndex;
 
-                Object idPiloto = dataGridPilotos.Rows[rowIndex].Cells[0].Value;
+                object idPiloto = dataGridPilotos.Rows[rowIndex].Cells[0].Value;
 
-                string respuesta = ControladorABMPiloto.borrarPiloto((int)idPiloto);
-
-                MessageBox.Show(respuesta);
-
+                DialogResult question = messageBox.Show(strings.confirm_delete, MessageBoxButtons.OKCancel);
+                if (question == DialogResult.OK)
+                {
+                    try
+                    {
+                        messageBox.Show(ControladorABMPiloto.borrarPiloto((int)idPiloto));
+                    }
+                    catch (Exception ex)
+                    {
+                        messageBox.ShowError(ex.Message.ToString());
+                    }
+                }
             }
-
         }
 
         private void btnAddActividad_Click(object sender, EventArgs e)
@@ -447,26 +445,35 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             int rowIndex = dataGridActividades.SelectedCells[0].RowIndex;
 
             idActividad = dataGridActividades.Rows[rowIndex].Cells[0].Value;
-            string rta = ControladorABMActividad.borrarActividad((int)idActividad);
-
-            MessageBox.Show(rta);
+            DialogResult question = messageBox.Show(strings.confirm_delete, MessageBoxButtons.OKCancel);
+            if (question == DialogResult.OK)
+            {
+                try
+                {
+                    messageBox.Show(ControladorABMActividad.borrarActividad((int)idActividad));
+                }
+                catch (Exception ex)
+                {
+                    messageBox.ShowError(ex.Message.ToString());
+                }
+            }
         }
 
         private void btnVerActividad_Click(object sender, EventArgs e)
         {
-
             int rowIndex = dataGridActividades.SelectedCells[0].RowIndex;
             idActividad = dataGridActividades.Rows[rowIndex].Cells[0].Value;
+            
+            visualizarActividad visualizarActividad = new visualizarActividad();
+            visualizarActividad.Show();
+        }
 
-            try
-            {
-                visualizarActividad.Show();
-            }
-            catch
-            {
-                visualizarActividad visualizarActividad = new visualizarActividad();
-                visualizarActividad.Show();
-            }
+        private void toolStripComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string codigoToolCombo = ((Idioma) ((ToolStripComboBox) sender).SelectedItem).GetCodigo();
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(codigoToolCombo);
+            Controls.Clear();
+            initializer();
         }
     }
 }

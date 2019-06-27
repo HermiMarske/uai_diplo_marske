@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(modificarAvion));
             this.btnCrear = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
@@ -39,7 +40,9 @@
             this.lblMarca = new System.Windows.Forms.Label();
             this.lblModelo = new System.Windows.Forms.Label();
             this.lblMatricula = new System.Windows.Forms.Label();
+            this.errProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCrear
@@ -79,16 +82,22 @@
             // 
             resources.ApplyResources(this.txtMarca, "txtMarca");
             this.txtMarca.Name = "txtMarca";
+            this.txtMarca.Validating += new System.ComponentModel.CancelEventHandler(this.genericTextBox_Validating);
+            this.txtMarca.Validated += new System.EventHandler(this.textBox_Validated);
             // 
             // txtModelo
             // 
             resources.ApplyResources(this.txtModelo, "txtModelo");
             this.txtModelo.Name = "txtModelo";
+            this.txtModelo.Validating += new System.ComponentModel.CancelEventHandler(this.genericTextBox_Validating);
+            this.txtModelo.Validated += new System.EventHandler(this.textBox_Validated);
             // 
             // txtMatricula
             // 
             resources.ApplyResources(this.txtMatricula, "txtMatricula");
             this.txtMatricula.Name = "txtMatricula";
+            this.txtMatricula.Validating += new System.ComponentModel.CancelEventHandler(this.txtMatricula_Validating);
+            this.txtMatricula.Validated += new System.EventHandler(this.textBox_Validated);
             // 
             // lblMarca
             // 
@@ -105,6 +114,10 @@
             resources.ApplyResources(this.lblMatricula, "lblMatricula");
             this.lblMatricula.Name = "lblMatricula";
             // 
+            // errProvider
+            // 
+            this.errProvider.ContainerControl = this;
+            // 
             // modificarAvion
             // 
             resources.ApplyResources(this, "$this");
@@ -119,6 +132,7 @@
             this.Load += new System.EventHandler(this.modificarAvion_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -135,5 +149,6 @@
         private System.Windows.Forms.Label lblMarca;
         private System.Windows.Forms.Label lblModelo;
         private System.Windows.Forms.Label lblMatricula;
+        private System.Windows.Forms.ErrorProvider errProvider;
     }
 }

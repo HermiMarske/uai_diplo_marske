@@ -1,13 +1,7 @@
 ﻿using Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos;
+using Diploma_HerminiaMarske_Noche_UAI_Lomas.Properties;
 using Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
@@ -22,52 +16,56 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
         Avion avion = new Avion();
         private void modificarAvion_Load(object sender, EventArgs e)
         {
-
             avion = (Avion)formInicio.av;
 
             txtMarca.Text = avion.GetMarca();
             txtModelo.Text = avion.GetModelo();
             txtMatricula.Text = avion.GetMatricula();
-
-
-            if(avion.GetHabilitado())
-            {
-                checkboxHabilitar.Checked = true;
-            }
-            else
-            {
-                checkboxHabilitar.Checked = false;
-            }
-
-
-
-                
+            checkboxHabilitar.Checked = avion.GetHabilitado();
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void btnCrear_Click(object sender, EventArgs e)
         {
-
-
             avion.SetMarca(txtMarca.Text);
             avion.SetMatricula(txtMatricula.Text);
             avion.SetModelo(txtModelo.Text);
-            if(checkboxHabilitar.Checked == true)
-            {
-                avion.SetHabilitado(true);
-            }
-            else
-            {
-                avion.SetHabilitado(false);
-            }
+            avion.SetHabilitado(checkboxHabilitar.Checked);
 
-            string rta = ControladorABMAvion.modificarAvion(avion);
+            CustomMessageBox messageBox = new CustomMessageBox();
+            try
+            {
+                messageBox.Show(ControladorABMAvion.modificarAvion(avion), true);
+            }
+            catch (Exception ex)
+            {
+                messageBox.ShowError(ex.Message.ToString());
+            }
+        }
 
-            MessageBox.Show(rta);
+        private void txtMatricula_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (((TextBox)sender).Text.Length < 5 || ((TextBox)sender).Text.Length > 10)
+            {
+                e.Cancel = true;
+                errProvider.SetError(txtMatricula, string.Format(strings.text_length_too_short, 5, 10));
+            }
+        }
+
+        private void textBox_Validated(object sender, EventArgs e) => errProvider.Clear();
+
+        private void genericTextBox_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            TextBox txtBox = (TextBox)sender;
+            if (txtBox.Text.Length < 1 || txtBox.Text.Length > 100)
+            {
+                e.Cancel = true;
+                errProvider.SetError(txtModelo, string.Format(strings.text_length_too_short, 1, 100));
+            }
         }
     }
 }

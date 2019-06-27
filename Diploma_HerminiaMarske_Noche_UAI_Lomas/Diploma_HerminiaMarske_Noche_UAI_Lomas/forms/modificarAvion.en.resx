@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="$this.Text" xml:space="preserve">
-    <value>Create airplane</value>
+    <value>Modify airplane</value>
   </data>
   <data name="btnCrear.Text" xml:space="preserve">
-    <value>Create</value>
+    <value>Modify</value>
   </data>
   <data name="btnSalir.Text" xml:space="preserve">
     <value>Exit</value>

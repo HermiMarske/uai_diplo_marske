@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(altaUsuario));
             this.tableLayoutPanelAltaCliente = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -130,6 +131,7 @@
             this.checkedListPatentesAdquiridas = new System.Windows.Forms.CheckedListBox();
             this.groupPermisosPatentes = new System.Windows.Forms.GroupBox();
             this.checkedListPatentes = new System.Windows.Forms.CheckedListBox();
+            this.errProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.tableLayoutPanelAltaCliente.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -154,6 +156,7 @@
             this.tabPage6.SuspendLayout();
             this.groupPatentesAdquiridas.SuspendLayout();
             this.groupPermisosPatentes.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanelAltaCliente
@@ -275,8 +278,8 @@
             // 
             resources.ApplyResources(this.txtDni, "txtDni");
             this.txtDni.Name = "txtDni";
-            this.txtDni.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDni_KeyDown);
-            this.txtDni.Leave += new System.EventHandler(this.txtDni_Leave);
+            this.txtDni.Validating += new System.ComponentModel.CancelEventHandler(this.txtDni_Validating);
+            this.txtDni.Validated += new System.EventHandler(this.txtDni_Validated);
             // 
             // labelUsuario
             // 
@@ -295,6 +298,8 @@
             this.pickerFechaNacimiento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.pickerFechaNacimiento.Name = "pickerFechaNacimiento";
             this.pickerFechaNacimiento.Value = new System.DateTime(2019, 1, 21, 0, 0, 0, 0);
+            this.pickerFechaNacimiento.Validating += new System.ComponentModel.CancelEventHandler(this.pickerFechaNacimiento_Validating);
+            this.pickerFechaNacimiento.Validated += new System.EventHandler(this.pickerFechaNacimiento_Validated);
             // 
             // txtClave
             // 
@@ -326,6 +331,8 @@
             // 
             resources.ApplyResources(this.txtNombre, "txtNombre");
             this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Validating += new System.ComponentModel.CancelEventHandler(this.txtNombre_Validating);
+            this.txtNombre.Validated += new System.EventHandler(this.txtNombre_Validated);
             // 
             // label9
             // 
@@ -336,10 +343,9 @@
             // 
             resources.ApplyResources(this.comboSexo, "comboSexo");
             this.comboSexo.FormattingEnabled = true;
-            this.comboSexo.Items.AddRange(new object[] {
-            resources.GetString("comboSexo.Items"),
-            resources.GetString("comboSexo.Items1")});
             this.comboSexo.Name = "comboSexo";
+            this.comboSexo.Validating += new System.ComponentModel.CancelEventHandler(this.comboSexo_Validating);
+            this.comboSexo.Validated += new System.EventHandler(this.comboSexo_Validated);
             // 
             // label8
             // 
@@ -350,6 +356,8 @@
             // 
             resources.ApplyResources(this.txtApellido, "txtApellido");
             this.txtApellido.Name = "txtApellido";
+            this.txtApellido.Validating += new System.ComponentModel.CancelEventHandler(this.txtApellido_Validating);
+            this.txtApellido.Validated += new System.EventHandler(this.txtApellido_Validated);
             // 
             // label10
             // 
@@ -438,11 +446,10 @@
             // comboTipoTelefono
             // 
             this.comboTipoTelefono.FormattingEnabled = true;
-            this.comboTipoTelefono.Items.AddRange(new object[] {
-            resources.GetString("comboTipoTelefono.Items"),
-            resources.GetString("comboTipoTelefono.Items1")});
             resources.ApplyResources(this.comboTipoTelefono, "comboTipoTelefono");
             this.comboTipoTelefono.Name = "comboTipoTelefono";
+            this.comboTipoTelefono.Validating += new System.ComponentModel.CancelEventHandler(this.comboTipoTelefono_Validating);
+            this.comboTipoTelefono.Validated += new System.EventHandler(this.comboTipoTelefono_Validated);
             // 
             // label5
             // 
@@ -453,6 +460,8 @@
             // 
             resources.ApplyResources(this.textBoxNumero, "textBoxNumero");
             this.textBoxNumero.Name = "textBoxNumero";
+            this.textBoxNumero.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxNumero_Validating);
+            this.textBoxNumero.Validated += new System.EventHandler(this.textBoxNumero_Validated);
             // 
             // label4
             // 
@@ -541,11 +550,10 @@
             // comboTipoMails
             // 
             this.comboTipoMails.FormattingEnabled = true;
-            this.comboTipoMails.Items.AddRange(new object[] {
-            resources.GetString("comboTipoMails.Items"),
-            resources.GetString("comboTipoMails.Items1")});
             resources.ApplyResources(this.comboTipoMails, "comboTipoMails");
             this.comboTipoMails.Name = "comboTipoMails";
+            this.comboTipoMails.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxMail_Validating);
+            this.comboTipoMails.Validated += new System.EventHandler(this.textBoxMail_Validated);
             // 
             // labelTipoEmail
             // 
@@ -556,6 +564,8 @@
             // 
             resources.ApplyResources(this.textBoxMail, "textBoxMail");
             this.textBoxMail.Name = "textBoxMail";
+            this.textBoxMail.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxMail_Validating);
+            this.textBoxMail.Validated += new System.EventHandler(this.textBoxMail_Validated);
             // 
             // labelEmail
             // 
@@ -741,11 +751,15 @@
             // 
             resources.ApplyResources(this.txtPiso, "txtPiso");
             this.txtPiso.Name = "txtPiso";
+            this.txtPiso.Validating += new System.ComponentModel.CancelEventHandler(this.txtPiso_Validating);
+            this.txtPiso.Validated += new System.EventHandler(this.txtPiso_Validated);
             // 
             // txtComentario
             // 
             resources.ApplyResources(this.txtComentario, "txtComentario");
             this.txtComentario.Name = "txtComentario";
+            this.txtComentario.Validating += new System.ComponentModel.CancelEventHandler(this.txtComentario_Validating);
+            this.txtComentario.Validated += new System.EventHandler(this.txtComentario_Validated);
             // 
             // label13
             // 
@@ -755,11 +769,10 @@
             // comboTipo
             // 
             this.comboTipo.FormattingEnabled = true;
-            this.comboTipo.Items.AddRange(new object[] {
-            resources.GetString("comboTipo.Items"),
-            resources.GetString("comboTipo.Items1")});
             resources.ApplyResources(this.comboTipo, "comboTipo");
             this.comboTipo.Name = "comboTipo";
+            this.comboTipo.Validating += new System.ComponentModel.CancelEventHandler(this.comboTipo_Validating);
+            this.comboTipo.Validated += new System.EventHandler(this.comboTipo_Validated);
             // 
             // label3
             // 
@@ -771,6 +784,8 @@
             this.comboLocalidades.FormattingEnabled = true;
             resources.ApplyResources(this.comboLocalidades, "comboLocalidades");
             this.comboLocalidades.Name = "comboLocalidades";
+            this.comboLocalidades.Validating += new System.ComponentModel.CancelEventHandler(this.comboLocalidades_Validating);
+            this.comboLocalidades.Validated += new System.EventHandler(this.comboLocalidades_Validated);
             // 
             // label2
             // 
@@ -783,6 +798,8 @@
             resources.ApplyResources(this.comboPais, "comboPais");
             this.comboPais.Name = "comboPais";
             this.comboPais.SelectedIndexChanged += new System.EventHandler(this.comboPais_SelectedIndexChanged);
+            this.comboPais.Validating += new System.ComponentModel.CancelEventHandler(this.comboPais_Validating);
+            this.comboPais.Validated += new System.EventHandler(this.comboPais_Validated);
             // 
             // label1
             // 
@@ -795,6 +812,8 @@
             resources.ApplyResources(this.comboProvincias, "comboProvincias");
             this.comboProvincias.Name = "comboProvincias";
             this.comboProvincias.SelectedIndexChanged += new System.EventHandler(this.comboProvincias_SelectedIndexChanged);
+            this.comboProvincias.Validating += new System.ComponentModel.CancelEventHandler(this.comboProvincias_Validating);
+            this.comboProvincias.Validated += new System.EventHandler(this.comboProvincias_Validated);
             // 
             // labelLocalidad
             // 
@@ -805,6 +824,8 @@
             // 
             resources.ApplyResources(this.txtDpto, "txtDpto");
             this.txtDpto.Name = "txtDpto";
+            this.txtDpto.Validating += new System.ComponentModel.CancelEventHandler(this.txtDpto_Validating);
+            this.txtDpto.Validated += new System.EventHandler(this.txtDpto_Validated);
             // 
             // labelDpto
             // 
@@ -820,16 +841,22 @@
             // 
             resources.ApplyResources(this.txtCodigoPostal, "txtCodigoPostal");
             this.txtCodigoPostal.Name = "txtCodigoPostal";
+            this.txtCodigoPostal.Validating += new System.ComponentModel.CancelEventHandler(this.txtCodigoPostal_Validating);
+            this.txtCodigoPostal.Validated += new System.EventHandler(this.txtCodigoPostal_Validated);
             // 
             // txtNumero
             // 
             resources.ApplyResources(this.txtNumero, "txtNumero");
             this.txtNumero.Name = "txtNumero";
+            this.txtNumero.Validating += new System.ComponentModel.CancelEventHandler(this.txtNumero_Validating);
+            this.txtNumero.Validated += new System.EventHandler(this.txtNumero_Validated);
             // 
             // txtCalle
             // 
             resources.ApplyResources(this.txtCalle, "txtCalle");
             this.txtCalle.Name = "txtCalle";
+            this.txtCalle.Validating += new System.ComponentModel.CancelEventHandler(this.txtCalle_Validating);
+            this.txtCalle.Validated += new System.EventHandler(this.txtCalle_Validated);
             // 
             // labelCodigo
             // 
@@ -916,6 +943,10 @@
             resources.ApplyResources(this.checkedListPatentes, "checkedListPatentes");
             this.checkedListPatentes.Name = "checkedListPatentes";
             // 
+            // errProvider
+            // 
+            this.errProvider.ContainerControl = this;
+            // 
             // altaUsuario
             // 
             resources.ApplyResources(this, "$this");
@@ -954,6 +985,7 @@
             this.tabPage6.ResumeLayout(false);
             this.groupPatentesAdquiridas.ResumeLayout(false);
             this.groupPermisosPatentes.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.errProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1061,5 +1093,6 @@
         private System.Windows.Forms.CheckedListBox checkedListPatentesAdquiridas;
         private System.Windows.Forms.GroupBox groupPermisosPatentes;
         private System.Windows.Forms.CheckedListBox checkedListPatentes;
+        private System.Windows.Forms.ErrorProvider errProvider;
     }
 }

@@ -47,9 +47,9 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(115, 125);
+            this.btnCancel.Location = new System.Drawing.Point(95, 125);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(82, 39);
+            this.btnCancel.Size = new System.Drawing.Size(102, 39);
             this.btnCancel.TabIndex = 2;
             this.btnCancel.Text = global::Diploma_HerminiaMarske_Noche_UAI_Lomas.Properties.strings.cancel;
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -60,7 +60,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnOK.Location = new System.Drawing.Point(215, 125);
             this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(82, 39);
+            this.btnOK.Size = new System.Drawing.Size(102, 39);
             this.btnOK.TabIndex = 1;
             this.btnOK.Text = global::Diploma_HerminiaMarske_Noche_UAI_Lomas.Properties.strings.ok;
             this.btnOK.UseVisualStyleBackColor = true;
@@ -91,7 +91,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             this.Name = "CustomMessageBox";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = strings.message;
+            this.Text = "Mensaje";
             this.TopMost = true;
             ((System.ComponentModel.ISupportInitialize)(this.icon)).EndInit();
             this.ResumeLayout(false);

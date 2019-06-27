@@ -61,6 +61,51 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Avión creado con éxito..
+        /// </summary>
+        internal static string airplane_created {
+            get {
+                return ResourceManager.GetString("airplane_created", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a El avión fue eliminado..
+        /// </summary>
+        internal static string airplane_deleted {
+            get {
+                return ResourceManager.GetString("airplane_deleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Ocurrió un error desconocido durante el procesamiento de su solicitud..
+        /// </summary>
+        internal static string airplane_error {
+            get {
+                return ResourceManager.GetString("airplane_error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Avión modificado con éxito.
+        /// </summary>
+        internal static string airplane_modified {
+            get {
+                return ResourceManager.GetString("airplane_modified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a No se permiten carácteres especiales en este campo (ni espacios)..
+        /// </summary>
+        internal static string alphanumeric_only {
+            get {
+                return ResourceManager.GetString("alphanumeric_only", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Cancelar.
         /// </summary>
         internal static string cancel {
@@ -75,6 +120,87 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.Properties {
         internal static string client_created_person_created {
             get {
                 return ResourceManager.GetString("client_created_person_created", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a El cliente fue eliminado..
+        /// </summary>
+        internal static string client_deleted {
+            get {
+                return ResourceManager.GetString("client_deleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a El cliente fue modificado exitosamente..
+        /// </summary>
+        internal static string client_modified {
+            get {
+                return ResourceManager.GetString("client_modified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a ¿Seguro que deseas eliminar este registro?.
+        /// </summary>
+        internal static string confirm_delete {
+            get {
+                return ResourceManager.GetString("confirm_delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a El CUIL/CUIT debe contener 11 números (no incluya guiones)..
+        /// </summary>
+        internal static string cuit_format_incorrect {
+            get {
+                return ResourceManager.GetString("cuit_format_incorrect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a La longitud del CUIL/CUIT debe ser 11 dígitos..
+        /// </summary>
+        internal static string cuit_length_incorrect {
+            get {
+                return ResourceManager.GetString("cuit_length_incorrect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a La fecha no puede ser igual a hoy (ni superior)..
+        /// </summary>
+        internal static string date_too_recent {
+            get {
+                return ResourceManager.GetString("date_too_recent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a El DNI debe contener 8 números..
+        /// </summary>
+        internal static string dni_format_incorrect {
+            get {
+                return ResourceManager.GetString("dni_format_incorrect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a La longitud del DNI debe ser 8 dígitos..
+        /// </summary>
+        internal static string dni_length_incorrect {
+            get {
+                return ResourceManager.GetString("dni_length_incorrect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Inglés.
+        /// </summary>
+        internal static string english {
+            get {
+                return ResourceManager.GetString("english", resourceCulture);
             }
         }
         
@@ -115,6 +241,15 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a El formato del mail debe ser &apos;nombre@dominio&apos;.
+        /// </summary>
+        internal static string mail_format_incorrect {
+            get {
+                return ResourceManager.GetString("mail_format_incorrect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Mensaje.
         /// </summary>
         internal static string message {
@@ -138,6 +273,15 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.Properties {
         internal static string missing_user_data {
             get {
                 return ResourceManager.GetString("missing_user_data", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Los nombres solo admiten texto..
+        /// </summary>
+        internal static string name_text_only {
+            get {
+                return ResourceManager.GetString("name_text_only", resourceCulture);
             }
         }
         
@@ -178,11 +322,29 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Solo se permiten números en este campo..
+        /// </summary>
+        internal static string numbers_only {
+            get {
+                return ResourceManager.GetString("numbers_only", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Aceptar.
         /// </summary>
         internal static string ok {
             get {
                 return ResourceManager.GetString("ok", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a El valor no debe ser menor a {0} ni mayor a {1}..
+        /// </summary>
+        internal static string out_of_range {
+            get {
+                return ResourceManager.GetString("out_of_range", resourceCulture);
             }
         }
         
@@ -214,11 +376,65 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a El teléfono debe contener sólo números (se permite un + al inicio).
+        /// </summary>
+        internal static string phone_format_incorrect {
+            get {
+                return ResourceManager.GetString("phone_format_incorrect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Confirmación requerida.
+        /// </summary>
+        internal static string question {
+            get {
+                return ResourceManager.GetString("question", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Seleccione un valor de la lista desplegable..
+        /// </summary>
+        internal static string select_value_from_combo {
+            get {
+                return ResourceManager.GetString("select_value_from_combo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Español.
+        /// </summary>
+        internal static string spanish {
+            get {
+                return ResourceManager.GetString("spanish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a El formato de la calle es incorrecto..
+        /// </summary>
+        internal static string street_format_incorrect {
+            get {
+                return ResourceManager.GetString("street_format_incorrect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Éxito.
         /// </summary>
         internal static string success {
             get {
                 return ResourceManager.GetString("success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a La longitud del campo debe ser entre {0} y {1}..
+        /// </summary>
+        internal static string text_length_too_short {
+            get {
+                return ResourceManager.GetString("text_length_too_short", resourceCulture);
             }
         }
         
@@ -270,7 +486,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Se eliminó el usuario exitosamente..
+        ///   Busca una cadena traducida similar a El usuario fue eliminado..
         /// </summary>
         internal static string user_deleted {
             get {

@@ -164,6 +164,7 @@
     <Compile Include="objetos\Avion.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="objetos\BitacoraRow.cs" />
+    <Compile Include="objetos\Idioma.cs" />
     <Compile Include="objetos\Cliente.cs" />
     <Compile Include="objetos\Familia.cs" />
     <Compile Include="objetos\FamiliaFlag.cs" />
@@ -245,6 +246,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="forms\inicio.resx">
       <DependentUpon>inicio.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\logIn.en.resx">
       <DependentUpon>logIn.cs</DependentUpon>
@@ -255,8 +257,14 @@
     <EmbeddedResource Include="forms\modificacionPiloto.resx">
       <DependentUpon>modificacionPiloto.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="forms\visualizarActividad.en.resx">
+      <DependentUpon>visualizarActividad.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="forms\visualizarActividad.resx">
       <DependentUpon>visualizarActividad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\modificarAvion.en.resx">
+      <DependentUpon>modificarAvion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\modificarAvion.resx">
       <DependentUpon>modificarAvion.cs</DependentUpon>
@@ -308,6 +316,7 @@
     <Content Include="Airplane-Landing.ico" />
     <Content Include="Resources\icons8-cancel-96.png" />
     <Content Include="Resources\icons8-error-96.png" />
+    <None Include="Resources\icons8-help-96.png" />
     <Content Include="Resources\icons8-info-96.png" />
   </ItemGroup>
   <ItemGroup>

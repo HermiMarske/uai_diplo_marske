@@ -132,11 +132,29 @@
   <data name="bitacoraToolStripMenuItem.Text" xml:space="preserve">
     <value>Event log</value>
   </data>
+  <data name="borrarPiloto.Text" xml:space="preserve">
+    <value>Delete pilot</value>
+  </data>
+  <data name="btnAddActividad.Text" xml:space="preserve">
+    <value>New activity</value>
+  </data>
+  <data name="btnAddAvion.Text" xml:space="preserve">
+    <value>New airplane</value>
+  </data>
+  <data name="btnAltaPiloto.Text" xml:space="preserve">
+    <value>New pilot</value>
+  </data>
   <data name="btnAltaUsuario.Text" xml:space="preserve">
     <value>New user</value>
   </data>
   <data name="btnDetalleUsuario.Text" xml:space="preserve">
     <value>View details</value>
+  </data>
+  <data name="btnEliminarActividad.Text" xml:space="preserve">
+    <value>Delete activity</value>
+  </data>
+  <data name="btnEliminarAvion.Text" xml:space="preserve">
+    <value>Delete airplane</value>
   </data>
   <data name="btnEliminarCliente.Text" xml:space="preserve">
     <value>Delete client</value>
@@ -144,14 +162,26 @@
   <data name="btnEliminarUsuario.Text" xml:space="preserve">
     <value>Delete user</value>
   </data>
+  <data name="btnModificarActividad.Text" xml:space="preserve">
+    <value>Modify activity</value>
+  </data>
+  <data name="btnModificarAvion.Text" xml:space="preserve">
+    <value>Modify airplane</value>
+  </data>
   <data name="btnModificarCliente.Text" xml:space="preserve">
     <value>Modify client</value>
+  </data>
+  <data name="btnModificarPiloto.Text" xml:space="preserve">
+    <value>Modify pilot</value>
   </data>
   <data name="btnModificarUsuario.Text" xml:space="preserve">
     <value>Modify user</value>
   </data>
   <data name="btnNuevoCliente.Text" xml:space="preserve">
     <value>New client</value>
+  </data>
+  <data name="btnVerActividad.Text" xml:space="preserve">
+    <value>View details</value>
   </data>
   <data name="btnVerCliente.Text" xml:space="preserve">
     <value>View details</value>
@@ -168,11 +198,38 @@
   <data name="dataGridViewTextBoxColumn1.HeaderText" xml:space="preserve">
     <value>id</value>
   </data>
+  <data name="dataGridViewTextBoxColumn10.HeaderText" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn11.HeaderText" xml:space="preserve">
+    <value>Last name</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn13.HeaderText" xml:space="preserve">
+    <value>User</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn14.HeaderText" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn15.HeaderText" xml:space="preserve">
+    <value>Last name</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn3.HeaderText" xml:space="preserve">
+    <value>Registration number</value>
+  </data>
   <data name="dataGridViewTextBoxColumn4.HeaderText" xml:space="preserve">
     <value>Name</value>
   </data>
   <data name="dataGridViewTextBoxColumn5.HeaderText" xml:space="preserve">
     <value>Last name</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn6.HeaderText" xml:space="preserve">
+    <value>Brand</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn7.HeaderText" xml:space="preserve">
+    <value>Model</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn9.HeaderText" xml:space="preserve">
+    <value>License</value>
   </data>
   <data name="dni.HeaderText" xml:space="preserve">
     <value>DNI</value>
@@ -194,6 +251,15 @@
   </data>
   <data name="groupBox2.Text" xml:space="preserve">
     <value>Users list</value>
+  </data>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>Pilots list</value>
+  </data>
+  <data name="groupBox4.Text" xml:space="preserve">
+    <value>Airplanes list</value>
+  </data>
+  <data name="groupBox5.Text" xml:space="preserve">
+    <value>Activities list</value>
   </data>
   <data name="id.HeaderText" xml:space="preserve">
     <value>id</value>

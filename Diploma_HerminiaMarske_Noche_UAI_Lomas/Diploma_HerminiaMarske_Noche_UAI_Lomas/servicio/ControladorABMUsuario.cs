@@ -163,9 +163,9 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
                 return rm.GetString(USER_MODIFIED.ToLower());
 
             }
-            catch (Exception ex)
+            catch
             {
-                return rm.GetString(ERROR_MODIFYING_USER.ToLower());
+                throw new Exception(rm.GetString(ERROR_MODIFYING_USER.ToLower()));
             }
             
         }

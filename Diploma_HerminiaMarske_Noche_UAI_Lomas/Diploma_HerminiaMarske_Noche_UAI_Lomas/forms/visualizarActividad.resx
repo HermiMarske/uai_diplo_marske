@@ -295,7 +295,7 @@
     <value>13</value>
   </data>
   <data name="label8.Text" xml:space="preserve">
-    <value>Pais</value>
+    <value>País</value>
   </data>
   <data name="&gt;&gt;label8.Name" xml:space="preserve">
     <value>label8</value>
@@ -430,7 +430,7 @@
     <value>9</value>
   </data>
   <data name="label6.Text" xml:space="preserve">
-    <value>Avion</value>
+    <value>Avión</value>
   </data>
   <data name="&gt;&gt;label6.Name" xml:space="preserve">
     <value>label6</value>
@@ -565,7 +565,7 @@
     <value>17</value>
   </data>
   <data name="groupBox2.Text" xml:space="preserve">
-    <value>Asignacion de Recursos</value>
+    <value>Asignación de recursos</value>
   </data>
   <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
     <value>groupBox2</value>
@@ -616,7 +616,7 @@
     <value>3</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
-    <value>Duracion en horas</value>
+    <value>Duración en horas</value>
   </data>
   <data name="&gt;&gt;label3.Name" xml:space="preserve">
     <value>label3</value>
@@ -735,9 +735,9 @@
   <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="$this.Localizable" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
+  </data>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>8, 16</value>
   </data>

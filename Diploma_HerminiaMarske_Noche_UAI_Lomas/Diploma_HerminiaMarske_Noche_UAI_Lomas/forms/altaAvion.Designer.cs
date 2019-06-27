@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(altaAvion));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.checkboxHabilitar = new System.Windows.Forms.CheckBox();
@@ -39,7 +40,9 @@
             this.lblMatricula = new System.Windows.Forms.Label();
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnCrear = new System.Windows.Forms.Button();
+            this.errProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -65,16 +68,22 @@
             // 
             resources.ApplyResources(this.txtMarca, "txtMarca");
             this.txtMarca.Name = "txtMarca";
+            this.txtMarca.Validating += new System.ComponentModel.CancelEventHandler(this.genericTextBox_Validating);
+            this.txtMarca.Validated += new System.EventHandler(this.textBox_Validated);
             // 
             // txtModelo
             // 
             resources.ApplyResources(this.txtModelo, "txtModelo");
             this.txtModelo.Name = "txtModelo";
+            this.txtModelo.Validating += new System.ComponentModel.CancelEventHandler(this.genericTextBox_Validating);
+            this.txtModelo.Validated += new System.EventHandler(this.textBox_Validated);
             // 
             // txtMatricula
             // 
             resources.ApplyResources(this.txtMatricula, "txtMatricula");
             this.txtMatricula.Name = "txtMatricula";
+            this.txtMatricula.Validating += new System.ComponentModel.CancelEventHandler(this.txtMatricula_Validating);
+            this.txtMatricula.Validated += new System.EventHandler(this.textBox_Validated);
             // 
             // lblMarca
             // 
@@ -105,6 +114,10 @@
             this.btnCrear.UseVisualStyleBackColor = true;
             this.btnCrear.Click += new System.EventHandler(this.btnCrear_Click);
             // 
+            // errProvider
+            // 
+            this.errProvider.ContainerControl = this;
+            // 
             // altaAvion
             // 
             resources.ApplyResources(this, "$this");
@@ -118,6 +131,7 @@
             this.Name = "altaAvion";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -134,5 +148,6 @@
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Button btnCrear;
         private System.Windows.Forms.CheckBox checkboxHabilitar;
+        private System.Windows.Forms.ErrorProvider errProvider;
     }
 }

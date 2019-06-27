@@ -121,9 +121,6 @@
   <data name="tableLayoutPanelAltaCliente.ColumnCount" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="button7.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="button7.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -185,9 +182,6 @@
   </data>
   <data name="&gt;&gt;button6.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="button5.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
   </data>
   <data name="button5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -262,7 +256,7 @@
     <value>3, 4, 3, 4</value>
   </data>
   <data name="comboTipoCliente.Size" type="System.Drawing.Size, System.Drawing">
-    <value>726, 28</value>
+    <value>709, 28</value>
   </data>
   <data name="comboTipoCliente.TabIndex" type="System.Int32, mscorlib">
     <value>28</value>
@@ -349,7 +343,7 @@
     <value>3, 4, 3, 4</value>
   </data>
   <data name="pickerFechaNacimiento.Size" type="System.Drawing.Size, System.Drawing">
-    <value>726, 26</value>
+    <value>709, 26</value>
   </data>
   <data name="pickerFechaNacimiento.TabIndex" type="System.Int32, mscorlib">
     <value>26</value>
@@ -376,7 +370,7 @@
     <value>3, 4, 3, 4</value>
   </data>
   <data name="txtRazonSocial.Size" type="System.Drawing.Size, System.Drawing">
-    <value>792, 26</value>
+    <value>774, 26</value>
   </data>
   <data name="txtRazonSocial.TabIndex" type="System.Int32, mscorlib">
     <value>30</value>
@@ -403,7 +397,7 @@
     <value>3, 4, 3, 4</value>
   </data>
   <data name="txtCuit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>794, 26</value>
+    <value>776, 26</value>
   </data>
   <data name="txtCuit.TabIndex" type="System.Int32, mscorlib">
     <value>32</value>
@@ -490,7 +484,7 @@
     <value>3, 4, 3, 4</value>
   </data>
   <data name="txtApellido.Size" type="System.Drawing.Size, System.Drawing">
-    <value>825, 26</value>
+    <value>808, 26</value>
   </data>
   <data name="txtApellido.TabIndex" type="System.Int32, mscorlib">
     <value>22</value>
@@ -553,7 +547,7 @@
     <value>3, 4, 3, 4</value>
   </data>
   <data name="comboSexo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>828, 28</value>
+    <value>810, 28</value>
   </data>
   <data name="comboSexo.TabIndex" type="System.Int32, mscorlib">
     <value>24</value>
@@ -607,7 +601,7 @@
     <value>3, 4, 3, 4</value>
   </data>
   <data name="txtDni.Size" type="System.Drawing.Size, System.Drawing">
-    <value>825, 26</value>
+    <value>808, 26</value>
   </data>
   <data name="txtDni.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
@@ -694,7 +688,7 @@
     <value>3, 4, 3, 4</value>
   </data>
   <data name="txtNombre.Size" type="System.Drawing.Size, System.Drawing">
-    <value>828, 26</value>
+    <value>810, 26</value>
   </data>
   <data name="txtNombre.TabIndex" type="System.Int32, mscorlib">
     <value>20</value>
@@ -946,7 +940,7 @@
     <value>3, 4, 3, 4</value>
   </data>
   <data name="comboTipoTelefono.Size" type="System.Drawing.Size, System.Drawing">
-    <value>830, 28</value>
+    <value>808, 28</value>
   </data>
   <data name="comboTipoTelefono.TabIndex" type="System.Int32, mscorlib">
     <value>36</value>
@@ -1000,7 +994,7 @@
     <value>3, 4, 3, 4</value>
   </data>
   <data name="textBoxNumero.Size" type="System.Drawing.Size, System.Drawing">
-    <value>830, 26</value>
+    <value>808, 26</value>
   </data>
   <data name="textBoxNumero.TabIndex" type="System.Int32, mscorlib">
     <value>34</value>
@@ -1285,7 +1279,7 @@
     <value>3, 4, 3, 4</value>
   </data>
   <data name="comboTipoMails.Size" type="System.Drawing.Size, System.Drawing">
-    <value>830, 28</value>
+    <value>808, 28</value>
   </data>
   <data name="comboTipoMails.TabIndex" type="System.Int32, mscorlib">
     <value>36</value>
@@ -1339,7 +1333,7 @@
     <value>3, 4, 3, 4</value>
   </data>
   <data name="textBoxMail.Size" type="System.Drawing.Size, System.Drawing">
-    <value>830, 26</value>
+    <value>808, 26</value>
   </data>
   <data name="textBoxMail.TabIndex" type="System.Int32, mscorlib">
     <value>34</value>
@@ -1672,7 +1666,7 @@
     <value>3, 4, 3, 4</value>
   </data>
   <data name="txtComentario.Size" type="System.Drawing.Size, System.Drawing">
-    <value>786, 26</value>
+    <value>767, 26</value>
   </data>
   <data name="txtComentario.TabIndex" type="System.Int32, mscorlib">
     <value>56</value>
@@ -1732,7 +1726,7 @@
     <value>3, 4, 3, 4</value>
   </data>
   <data name="comboTipo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>325, 28</value>
+    <value>306, 28</value>
   </data>
   <data name="comboTipo.TabIndex" type="System.Int32, mscorlib">
     <value>54</value>
@@ -2002,7 +1996,7 @@
     <value>3, 4, 3, 4</value>
   </data>
   <data name="txtPiso.Size" type="System.Drawing.Size, System.Drawing">
-    <value>129, 26</value>
+    <value>110, 26</value>
   </data>
   <data name="txtPiso.TabIndex" type="System.Int32, mscorlib">
     <value>52</value>
@@ -2011,7 +2005,7 @@
     <value>txtPiso</value>
   </data>
   <data name="&gt;&gt;txtPiso.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;txtPiso.Parent" xml:space="preserve">
     <value>groupBox5</value>
@@ -2056,7 +2050,7 @@
     <value>3, 4, 3, 4</value>
   </data>
   <data name="txtCodigoPostal.Size" type="System.Drawing.Size, System.Drawing">
-    <value>325, 26</value>
+    <value>306, 26</value>
   </data>
   <data name="txtCodigoPostal.TabIndex" type="System.Int32, mscorlib">
     <value>42</value>
@@ -2080,7 +2074,7 @@
     <value>3, 4, 3, 4</value>
   </data>
   <data name="txtNumero.Size" type="System.Drawing.Size, System.Drawing">
-    <value>325, 26</value>
+    <value>306, 26</value>
   </data>
   <data name="txtNumero.TabIndex" type="System.Int32, mscorlib">
     <value>40</value>
@@ -2331,7 +2325,7 @@
   <data name="tableLayoutPanelAltaCliente.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="groupBox3" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="tabControl1" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Absolute,944" /&gt;&lt;Rows Styles="Percent,100,Absolute,72,Absolute,25,Absolute,25" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
-  <metadata name="telefonoBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="errProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -2436,11 +2430,11 @@
   <data name="&gt;&gt;Pais.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;telefonoBindingSource.Name" xml:space="preserve">
-    <value>telefonoBindingSource</value>
+  <data name="&gt;&gt;errProvider.Name" xml:space="preserve">
+    <value>errProvider</value>
   </data>
-  <data name="&gt;&gt;telefonoBindingSource.Type" xml:space="preserve">
-    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;errProvider.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ErrorProvider, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>altaCliente</value>

@@ -118,27 +118,45 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="$this.Text" xml:space="preserve">
-    <value>Create airplane</value>
-  </data>
-  <data name="btnCrear.Text" xml:space="preserve">
-    <value>Create</value>
+    <value>Activity viewer</value>
   </data>
   <data name="btnSalir.Text" xml:space="preserve">
     <value>Exit</value>
   </data>
-  <data name="checkboxHabilitar.Text" xml:space="preserve">
-    <value>Available for flight (If this box isn't ticked, the plane won't be available for flight work)</value>
-  </data>
   <data name="groupBox1.Text" xml:space="preserve">
-    <value>Airplane information</value>
+    <value>Time</value>
   </data>
-  <data name="lblMarca.Text" xml:space="preserve">
-    <value>Brand</value>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>Resources asignment</value>
   </data>
-  <data name="lblMatricula.Text" xml:space="preserve">
-    <value>Registration number</value>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>Client's area requested</value>
   </data>
-  <data name="lblModelo.Text" xml:space="preserve">
-    <value>Model</value>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Start date and time</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>Locality</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Duration in hours</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Text</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Pilot</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Airplane</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Client</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>Country</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>State</value>
   </data>
 </root>
