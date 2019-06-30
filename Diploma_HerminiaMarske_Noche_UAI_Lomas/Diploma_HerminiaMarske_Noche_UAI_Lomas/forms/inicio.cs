@@ -202,7 +202,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
 
         /** FIN SOLAPA CLIENTES **/
 
-        private bool hasPermission(string permission) => usuarioLogueado.GetPatentes().Exists(p => p.GetDescripcion().Equals(permission) && !p.GetNegado());
+        private bool hasPermission(string permission) => usuarioLogueado.GetPatentes().Exists(p => p.GetDescripcion().Equals(permission));
 
 
         private void formInicio_Load(object sender, EventArgs e)

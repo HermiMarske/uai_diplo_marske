@@ -104,15 +104,15 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             this.btnAddAvion = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnAddActividad = new System.Windows.Forms.Button();
-            this.btnVerActividad = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.dataGridActividades = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnAddActividad = new System.Windows.Forms.Button();
             this.btnEliminarActividad = new System.Windows.Forms.Button();
+            this.btnVerActividad = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabUsuarios.SuspendLayout();
@@ -642,7 +642,6 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             // 
             // Habilitado
             // 
-            resources.ApplyResources(this.Habilitado, "Habilitado");
             this.Habilitado.Name = "Habilitado";
             this.Habilitado.ReadOnly = true;
             // 
@@ -675,20 +674,6 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             this.tableLayoutPanel4.Controls.Add(this.btnEliminarActividad, 2, 1);
             this.tableLayoutPanel4.Controls.Add(this.btnVerActividad, 1, 1);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            // 
-            // btnAddActividad
-            // 
-            resources.ApplyResources(this.btnAddActividad, "btnAddActividad");
-            this.btnAddActividad.Name = "btnAddActividad";
-            this.btnAddActividad.UseVisualStyleBackColor = true;
-            this.btnAddActividad.Click += new System.EventHandler(this.btnAddActividad_Click);
-            // 
-            // btnVerActividad
-            // 
-            resources.ApplyResources(this.btnVerActividad, "btnVerActividad");
-            this.btnVerActividad.Name = "btnVerActividad";
-            this.btnVerActividad.UseVisualStyleBackColor = true;
-            this.btnVerActividad.Click += new System.EventHandler(this.btnVerActividad_Click);
             // 
             // groupBox5
             // 
@@ -738,12 +723,26 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
             this.dataGridViewTextBoxColumn15.ReadOnly = true;
             // 
+            // btnAddActividad
+            // 
+            resources.ApplyResources(this.btnAddActividad, "btnAddActividad");
+            this.btnAddActividad.Name = "btnAddActividad";
+            this.btnAddActividad.UseVisualStyleBackColor = true;
+            this.btnAddActividad.Click += new System.EventHandler(this.btnAddActividad_Click);
+            // 
             // btnEliminarActividad
             // 
             resources.ApplyResources(this.btnEliminarActividad, "btnEliminarActividad");
             this.btnEliminarActividad.Name = "btnEliminarActividad";
             this.btnEliminarActividad.UseVisualStyleBackColor = true;
             this.btnEliminarActividad.Click += new System.EventHandler(this.btnEliminarActividad_Click);
+            // 
+            // btnVerActividad
+            // 
+            resources.ApplyResources(this.btnVerActividad, "btnVerActividad");
+            this.btnVerActividad.Name = "btnVerActividad";
+            this.btnVerActividad.UseVisualStyleBackColor = true;
+            this.btnVerActividad.Click += new System.EventHandler(this.btnVerActividad_Click);
             // 
             // formInicio
             // 

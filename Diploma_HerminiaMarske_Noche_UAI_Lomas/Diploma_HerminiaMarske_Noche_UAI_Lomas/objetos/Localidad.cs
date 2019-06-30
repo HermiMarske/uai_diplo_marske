@@ -11,8 +11,28 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos
         private int id;
         private int referencia;
         private string nombre;
+        private Provincia provincia;
+        private Pais pais;
 
+        internal Provincia GetProvincia()
+        {
+            return provincia;
+        }
 
+        internal void SetProvincia(Provincia value)
+        {
+            provincia = value;
+        }
+
+        public Pais GetPais()
+        {
+            return pais;
+        }
+
+        public void SetPais(Pais value)
+        {
+            pais = value;
+        }
 
         public Localidad()
         {

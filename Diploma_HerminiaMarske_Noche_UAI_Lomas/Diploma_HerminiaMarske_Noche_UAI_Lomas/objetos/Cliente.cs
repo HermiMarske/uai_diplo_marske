@@ -28,6 +28,11 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos
             this.id = id;
             this.razonSocial = razonSocial;
         }
+
+        public Cliente()
+        {
+        }
+
         public override string ToString()
         {
             return this.razonSocial;
