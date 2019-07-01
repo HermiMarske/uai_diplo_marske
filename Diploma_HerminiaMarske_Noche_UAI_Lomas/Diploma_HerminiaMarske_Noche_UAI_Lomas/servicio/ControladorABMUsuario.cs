@@ -506,5 +506,30 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
             familias.ForEach(f => f.SetFlag(famsUsuario.Contains(f.GetId())));
             return familias;
         }
+
+        public static string desbloquearUsuario(int id)
+        {
+
+            try
+            {
+                string desbloquearUsuario = "update Usuarios set CII=0, habilitado=1 where ID_Usuario = @idUsuario";
+
+                SqlParameter[] pms = new SqlParameter[1];
+                pms[0] = new SqlParameter("@idUsuario", SqlDbType.Int);
+                pms[0].Value = id;
+                DataConnection.DataConnection dataQuery = new DataConnection.DataConnection();
+
+                dataQuery.sqlUpsert(desbloquearUsuario, pms);
+
+                return "USUARIO_DESBLOQUEADO";
+            }
+            catch
+            {
+                return null;
+            }
+
+
+          
+        }
     }
 }

@@ -113,6 +113,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             this.btnAddActividad = new System.Windows.Forms.Button();
             this.btnEliminarActividad = new System.Windows.Forms.Button();
             this.btnVerActividad = new System.Windows.Forms.Button();
+            this.Desbloquear = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabUsuarios.SuspendLayout();
@@ -432,7 +433,8 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             this.dataGridViewTextBoxColumn1,
             this.usuario,
             this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5});
+            this.dataGridViewTextBoxColumn5,
+            this.Desbloquear});
             resources.ApplyResources(this.datagridUsuarios, "datagridUsuarios");
             this.datagridUsuarios.Name = "datagridUsuarios";
             this.datagridUsuarios.ReadOnly = true;
@@ -744,6 +746,12 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             this.btnVerActividad.UseVisualStyleBackColor = true;
             this.btnVerActividad.Click += new System.EventHandler(this.btnVerActividad_Click);
             // 
+            // Desbloquear
+            // 
+            resources.ApplyResources(this.Desbloquear, "Desbloquear");
+            this.Desbloquear.Name = "Desbloquear";
+            this.Desbloquear.ReadOnly = true;
+            // 
             // formInicio
             // 
             resources.ApplyResources(this, "$this");
@@ -876,6 +884,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
         private System.Windows.Forms.ToolStripMenuItem cambiarIdiomaToolStripMenuItem;
         private System.Windows.Forms.ToolStripComboBox toolStripComboBox1;
+        private DataGridViewCheckBoxColumn Desbloquear;
     }
 }
 
