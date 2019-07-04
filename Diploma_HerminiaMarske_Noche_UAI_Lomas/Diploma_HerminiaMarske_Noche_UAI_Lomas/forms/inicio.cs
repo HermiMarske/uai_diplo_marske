@@ -282,7 +282,9 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             btnAddActividad.Enabled = hasPermission("ADM_ACTIVIDADES_ALTA");
             actividadToolStripMenuItem.Enabled = hasPermission("ADM_ACTIVIDADES_ALTA");
             btnEliminarActividad.Enabled = hasPermission("ADM_ACTIVIDADES_BAJA");
-            btnVerActividad.Enabled = hasPermission("ADM_ACTIVIDADES_MODIF");
+            btnVerActividad.Enabled = hasPermission("ADM_ACTIVIDADES_VISUALIZAR");
+
+
         }
 
         private void busquedaToolStripMenuItem_Click(object sender, EventArgs e)

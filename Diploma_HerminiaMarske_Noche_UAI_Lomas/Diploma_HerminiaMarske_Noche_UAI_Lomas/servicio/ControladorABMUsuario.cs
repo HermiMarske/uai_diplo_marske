@@ -213,8 +213,16 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
                     .Append(uCreado).Append(")").ToString();
             }
 
-            dataQuery.sqlUpsert(string.Format(insertarPatentes, valuesPatentes), null);
-            dataQuery.sqlUpsert(string.Format(insertarFamilia, valuesFamilias), null);
+            if (!string.IsNullOrWhiteSpace(valuesPatentes))
+            {
+                dataQuery.sqlUpsert(string.Format(insertarPatentes, valuesPatentes), null);
+            }
+            if(!string.IsNullOrWhiteSpace(valuesFamilias))
+            {
+                dataQuery.sqlUpsert(string.Format(insertarFamilia, valuesFamilias), null);
+            }
+
+
         }
 
         static public string alta(Usuario usuario, List<Domicilio> domicilios, List<Mail> mails, List<Telefono> telefonos)
