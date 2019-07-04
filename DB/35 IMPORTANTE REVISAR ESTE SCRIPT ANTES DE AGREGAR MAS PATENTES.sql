@@ -2,6 +2,10 @@ delete  from Patente
 delete  from Familia
 delete  from Familia_Patente
 
+select * from Patente
+select * from Familia
+select * from Familia_Patente
+
 DBCC CHECKIDENT (Patente, RESEED, 0)
 DBCC CHECKIDENT (Familia, RESEED, 0)
 DBCC CHECKIDENT (Familia_Patente, RESEED, 0)
@@ -16,7 +20,30 @@ INSERT INTO Patente (codigo) VALUES
 ('ADM_USUARIOS_BAJA'),
 ('ADM_USUARIOS_VER'),
 ('ADM_USUARIOS_MODIF'),
-('ADM_USUARIOS_PERM')
+('ADM_USUARIOS_PERM'),
+('ADM_USUARIOS_DESBLOQUEAR'),
+
+('ADM_SEGURIDAD_CREAR_FAMILIA'),
+('ADM_SEGURIDAD_BAJA_FAMILIA'),
+('ADM_SEGURIDAD_MODIFICAR_FAMILIA'),
+('ADM_SEGURIDAD_CONSULTAR_BITACORA'),
+('ADM_SEGURIDAD_CREAR_FAMILIA'),
+('ADM_SEGURIDAD_GENERAR_BACKUP'),
+
+('ADM_EMPLEADOS_ALTA'),
+('ADM_EMPLEADOS_BAJA'),
+('ADM_EMPLEADOS_MODIFICAR'),
+('ADM_EMPLEADOS_VER'),
+
+('ADM_AVIONES_ALTA'),
+('ADM_AVIONES_BAJA'),
+('ADM_AVIONES_MODIFICAR'),
+('ADM_AVIONES_VER'),
+
+('ADM_ACTIVIDADES_ALTA'),
+('ADM_ACTIVIDADES_BAJA'),
+('ADM_ACTIVIDADES_VISUALIZAR'),
+('ADM_ACTIVIDADES_VER_LISTA')
 
 
 INSERT INTO Familia (descripcion) values 
@@ -28,13 +55,44 @@ INSERT INTO Familia (descripcion) values
 ('ADMIN_RECURSOS')    
 
 insert into Familia_Patente (familiaFK, patenteFK) values 
+
 (4,1),
 (4,2),
 (4,3),
 (4,4),
+
 (2,5),
 (2,6),
 (2,7),
 (2,8),
 (2,9),
-(2,10)
+(2,10),
+
+(1,11),
+(1,12),
+(1,13),
+(1,14),
+(1,15),
+(1,16),
+
+(3,17),
+(3,18),
+(3,19),
+(3,20),
+
+(6,21),
+(6,22),
+(6,23),
+(6,24),
+
+(5,25),
+(5,26),
+(5,27),
+(5,28)
+
+
+
+
+
+
+

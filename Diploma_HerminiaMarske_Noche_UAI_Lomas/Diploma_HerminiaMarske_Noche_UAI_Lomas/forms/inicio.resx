@@ -122,112 +122,112 @@
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="clienteToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>170, 30</value>
+    <value>147, 26</value>
   </data>
   <data name="clienteToolStripMenuItem.Text" xml:space="preserve">
     <value>Cliente</value>
   </data>
   <data name="usuarioToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>170, 30</value>
+    <value>147, 26</value>
   </data>
   <data name="usuarioToolStripMenuItem.Text" xml:space="preserve">
     <value>Usuario</value>
   </data>
   <data name="pilotoToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>170, 30</value>
+    <value>147, 26</value>
   </data>
   <data name="pilotoToolStripMenuItem.Text" xml:space="preserve">
     <value>Piloto</value>
   </data>
   <data name="avionToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>170, 30</value>
+    <value>147, 26</value>
   </data>
   <data name="avionToolStripMenuItem.Text" xml:space="preserve">
     <value>Avión</value>
   </data>
   <data name="actividadToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>170, 30</value>
+    <value>147, 26</value>
   </data>
   <data name="actividadToolStripMenuItem.Text" xml:space="preserve">
     <value>Actividad</value>
   </data>
   <data name="nuevoToolStripItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>252, 30</value>
+    <value>216, 26</value>
   </data>
   <data name="nuevoToolStripItem.Text" xml:space="preserve">
     <value>Nuevo</value>
   </data>
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>249, 6</value>
+    <value>213, 6</value>
   </data>
   <data name="cerrarSesionToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>252, 30</value>
+    <value>216, 26</value>
   </data>
   <data name="cerrarSesionToolStripMenuItem.Text" xml:space="preserve">
     <value>Cerrar sesión</value>
   </data>
   <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>249, 6</value>
+    <value>213, 6</value>
   </data>
   <data name="salirToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>252, 30</value>
+    <value>216, 26</value>
   </data>
   <data name="salirToolStripMenuItem.Text" xml:space="preserve">
     <value>Salir</value>
   </data>
   <data name="gestionToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>84, 29</value>
+    <value>71, 24</value>
   </data>
   <data name="gestionToolStripMenuItem.Text" xml:space="preserve">
     <value>Gestión</value>
   </data>
   <data name="familiasYPermisosToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>274, 30</value>
+    <value>233, 26</value>
   </data>
   <data name="familiasYPermisosToolStripMenuItem.Text" xml:space="preserve">
     <value>Familias y patentes</value>
   </data>
   <data name="bitacoraToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>274, 30</value>
+    <value>233, 26</value>
   </data>
   <data name="bitacoraToolStripMenuItem.Text" xml:space="preserve">
     <value>Bitacora</value>
   </data>
   <data name="toolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>271, 6</value>
+    <value>230, 6</value>
   </data>
   <data name="passwordToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>274, 30</value>
+    <value>233, 26</value>
   </data>
   <data name="passwordToolStripMenuItem.Text" xml:space="preserve">
     <value>Cambio de contraseña</value>
   </data>
   <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>271, 6</value>
+    <value>230, 6</value>
   </data>
   <data name="respaldosToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>274, 30</value>
+    <value>233, 26</value>
   </data>
   <data name="respaldosToolStripMenuItem.Text" xml:space="preserve">
     <value>Respaldos</value>
   </data>
   <data name="seguridadToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>105, 29</value>
+    <value>89, 24</value>
   </data>
   <data name="seguridadToolStripMenuItem.Text" xml:space="preserve">
     <value>Seguridad</value>
   </data>
   <data name="toolStripComboBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 33</value>
+    <value>121, 28</value>
   </data>
   <data name="cambiarIdiomaToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>252, 30</value>
+    <value>216, 26</value>
   </data>
   <data name="cambiarIdiomaToolStripMenuItem.Text" xml:space="preserve">
     <value>Cambiar idioma</value>
   </data>
   <data name="opcionesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 29</value>
+    <value>83, 24</value>
   </data>
   <data name="opcionesToolStripMenuItem.Text" xml:space="preserve">
     <value>Opciones</value>
@@ -240,7 +240,7 @@
     <value>4, 2, 0, 2</value>
   </data>
   <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1468, 33</value>
+    <value>1305, 28</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
@@ -265,13 +265,13 @@
     <value>152, 17</value>
   </metadata>
   <data name="statusStrip1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 904</value>
+    <value>0, 719</value>
   </data>
   <data name="statusStrip1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 0, 15, 0</value>
+    <value>1, 0, 13, 0</value>
   </data>
   <data name="statusStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1468, 22</value>
+    <value>1305, 22</value>
   </data>
   <data name="statusStrip1.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -307,13 +307,13 @@
     <value>3</value>
   </data>
   <data name="btnModificarCliente.Location" type="System.Drawing.Point, System.Drawing">
-    <value>487, 764</value>
+    <value>433, 602</value>
   </data>
   <data name="btnModificarCliente.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
   </data>
   <data name="btnModificarCliente.Size" type="System.Drawing.Size, System.Drawing">
-    <value>194, 40</value>
+    <value>172, 32</value>
   </data>
   <data name="btnModificarCliente.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -334,13 +334,13 @@
     <value>0</value>
   </data>
   <data name="btnNuevoCliente.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 764</value>
+    <value>3, 602</value>
   </data>
   <data name="btnNuevoCliente.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
   </data>
   <data name="btnNuevoCliente.Size" type="System.Drawing.Size, System.Drawing">
-    <value>194, 40</value>
+    <value>172, 32</value>
   </data>
   <data name="btnNuevoCliente.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -412,13 +412,13 @@
     <value>Fill</value>
   </data>
   <data name="dataGridClientes.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 21</value>
+    <value>3, 17</value>
   </data>
   <data name="dataGridClientes.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
   </data>
   <data name="dataGridClientes.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1442, 735</value>
+    <value>1279, 577</value>
   </data>
   <data name="dataGridClientes.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -448,7 +448,7 @@
     <value>3, 2, 3, 2</value>
   </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1448, 758</value>
+    <value>1285, 596</value>
   </data>
   <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -469,13 +469,13 @@
     <value>2</value>
   </data>
   <data name="btnEliminarCliente.Location" type="System.Drawing.Point, System.Drawing">
-    <value>971, 764</value>
+    <value>863, 602</value>
   </data>
   <data name="btnEliminarCliente.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
   </data>
   <data name="btnEliminarCliente.Size" type="System.Drawing.Size, System.Drawing">
-    <value>194, 40</value>
+    <value>172, 32</value>
   </data>
   <data name="btnEliminarCliente.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -508,7 +508,7 @@
     <value>2</value>
   </data>
   <data name="tableLayoutPanelListaClientes.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1454, 834</value>
+    <value>1291, 658</value>
   </data>
   <data name="tableLayoutPanelListaClientes.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -526,19 +526,16 @@
     <value>0</value>
   </data>
   <data name="tableLayoutPanelListaClientes.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="btnModificarCliente" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="btnNuevoCliente" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="groupBox1" Row="0" RowSpan="1" Column="0" ColumnSpan="3" /&gt;&lt;Control Name="btnEliminarCliente" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,33,33333,Percent,33,33333,Percent,33,33333,Absolute,20" /&gt;&lt;Rows Styles="Percent,100,Absolute,72" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="btnModificarCliente" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="btnNuevoCliente" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="groupBox1" Row="0" RowSpan="1" Column="0" ColumnSpan="3" /&gt;&lt;Control Name="btnEliminarCliente" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,33,33333,Percent,33,33333,Percent,33,33333,Absolute,18" /&gt;&lt;Rows Styles="Percent,100,Absolute,58" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="tabPage1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 29</value>
-  </data>
-  <data name="tabPage1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
+    <value>4, 25</value>
   </data>
   <data name="tabPage1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
   </data>
   <data name="tabPage1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1460, 838</value>
+    <value>1297, 662</value>
   </data>
   <data name="tabPage1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -601,13 +598,13 @@
     <value>Fill</value>
   </data>
   <data name="datagridUsuarios.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 21</value>
+    <value>3, 17</value>
   </data>
   <data name="datagridUsuarios.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
   </data>
   <data name="datagridUsuarios.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1442, 735</value>
+    <value>1279, 577</value>
   </data>
   <data name="datagridUsuarios.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -637,7 +634,7 @@
     <value>3, 2, 3, 2</value>
   </data>
   <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1448, 758</value>
+    <value>1285, 596</value>
   </data>
   <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -658,13 +655,10 @@
     <value>0</value>
   </data>
   <data name="btnEliminarUsuario.Location" type="System.Drawing.Point, System.Drawing">
-    <value>971, 766</value>
-  </data>
-  <data name="btnEliminarUsuario.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
+    <value>863, 603</value>
   </data>
   <data name="btnEliminarUsuario.Size" type="System.Drawing.Size, System.Drawing">
-    <value>218, 50</value>
+    <value>194, 40</value>
   </data>
   <data name="btnEliminarUsuario.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -685,13 +679,10 @@
     <value>1</value>
   </data>
   <data name="btnModificarUsuario.Location" type="System.Drawing.Point, System.Drawing">
-    <value>487, 766</value>
-  </data>
-  <data name="btnModificarUsuario.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
+    <value>433, 603</value>
   </data>
   <data name="btnModificarUsuario.Size" type="System.Drawing.Size, System.Drawing">
-    <value>218, 50</value>
+    <value>194, 40</value>
   </data>
   <data name="btnModificarUsuario.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -712,13 +703,10 @@
     <value>2</value>
   </data>
   <data name="btnAltaUsuario.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 766</value>
-  </data>
-  <data name="btnAltaUsuario.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
+    <value>3, 603</value>
   </data>
   <data name="btnAltaUsuario.Size" type="System.Drawing.Size, System.Drawing">
-    <value>218, 50</value>
+    <value>194, 40</value>
   </data>
   <data name="btnAltaUsuario.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -751,7 +739,7 @@
     <value>2</value>
   </data>
   <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1454, 834</value>
+    <value>1291, 658</value>
   </data>
   <data name="tableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -769,19 +757,16 @@
     <value>0</value>
   </data>
   <data name="tableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="groupBox2" Row="0" RowSpan="1" Column="0" ColumnSpan="3" /&gt;&lt;Control Name="btnEliminarUsuario" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="btnModificarUsuario" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="btnAltaUsuario" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,33,33333,Percent,33,33333,Percent,33,33333,Absolute,20" /&gt;&lt;Rows Styles="Percent,100,Absolute,72,Absolute,25" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="groupBox2" Row="0" RowSpan="1" Column="0" ColumnSpan="3" /&gt;&lt;Control Name="btnEliminarUsuario" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="btnModificarUsuario" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="btnAltaUsuario" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,33,33333,Percent,33,33333,Percent,33,33333,Absolute,18" /&gt;&lt;Rows Styles="Percent,100,Absolute,58,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="tabPage2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 29</value>
-  </data>
-  <data name="tabPage2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
+    <value>4, 25</value>
   </data>
   <data name="tabPage2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
   </data>
   <data name="tabPage2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1460, 838</value>
+    <value>1297, 662</value>
   </data>
   <data name="tabPage2.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -811,13 +796,13 @@
     <value>NoControl</value>
   </data>
   <data name="btnModificarPiloto.Location" type="System.Drawing.Point, System.Drawing">
-    <value>487, 764</value>
+    <value>433, 608</value>
   </data>
   <data name="btnModificarPiloto.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
   </data>
   <data name="btnModificarPiloto.Size" type="System.Drawing.Size, System.Drawing">
-    <value>194, 40</value>
+    <value>172, 32</value>
   </data>
   <data name="btnModificarPiloto.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -868,13 +853,13 @@
     <value>Fill</value>
   </data>
   <data name="dataGridPilotos.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 23</value>
+    <value>3, 18</value>
   </data>
   <data name="dataGridPilotos.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
   </data>
   <data name="dataGridPilotos.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1442, 731</value>
+    <value>1279, 581</value>
   </data>
   <data name="dataGridPilotos.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -900,11 +885,8 @@
   <data name="groupBox4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
   </data>
-  <data name="groupBox4.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
   <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1448, 758</value>
+    <value>1285, 602</value>
   </data>
   <data name="groupBox4.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -928,13 +910,13 @@
     <value>NoControl</value>
   </data>
   <data name="borrarPiloto.Location" type="System.Drawing.Point, System.Drawing">
-    <value>971, 764</value>
+    <value>863, 608</value>
   </data>
   <data name="borrarPiloto.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
   </data>
   <data name="borrarPiloto.Size" type="System.Drawing.Size, System.Drawing">
-    <value>194, 40</value>
+    <value>172, 32</value>
   </data>
   <data name="borrarPiloto.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -958,13 +940,13 @@
     <value>NoControl</value>
   </data>
   <data name="btnAltaPiloto.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 764</value>
+    <value>3, 608</value>
   </data>
   <data name="btnAltaPiloto.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
   </data>
   <data name="btnAltaPiloto.Size" type="System.Drawing.Size, System.Drawing">
-    <value>194, 40</value>
+    <value>172, 32</value>
   </data>
   <data name="btnAltaPiloto.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -997,7 +979,7 @@
     <value>2</value>
   </data>
   <data name="tableLayoutPanel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1454, 834</value>
+    <value>1291, 664</value>
   </data>
   <data name="tableLayoutPanel3.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -1015,10 +997,10 @@
     <value>0</value>
   </data>
   <data name="tableLayoutPanel3.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="btnModificarPiloto" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="groupBox4" Row="0" RowSpan="1" Column="0" ColumnSpan="3" /&gt;&lt;Control Name="borrarPiloto" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="btnAltaPiloto" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,33,33333,Percent,33,33333,Percent,33,33333,Absolute,20" /&gt;&lt;Rows Styles="Percent,100,Absolute,72" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="btnModificarPiloto" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="groupBox4" Row="0" RowSpan="1" Column="0" ColumnSpan="3" /&gt;&lt;Control Name="borrarPiloto" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="btnAltaPiloto" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,33,33333,Percent,33,33333,Percent,33,33333,Absolute,18" /&gt;&lt;Rows Styles="Percent,100,Absolute,58" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="tabPage3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 29</value>
+    <value>4, 25</value>
   </data>
   <data name="tabPage3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
@@ -1027,7 +1009,7 @@
     <value>3, 2, 3, 2</value>
   </data>
   <data name="tabPage3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1460, 838</value>
+    <value>1297, 668</value>
   </data>
   <data name="tabPage3.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1057,13 +1039,10 @@
     <value>NoControl</value>
   </data>
   <data name="btnModificarAvion.Location" type="System.Drawing.Point, System.Drawing">
-    <value>487, 766</value>
-  </data>
-  <data name="btnModificarAvion.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
+    <value>433, 609</value>
   </data>
   <data name="btnModificarAvion.Size" type="System.Drawing.Size, System.Drawing">
-    <value>218, 50</value>
+    <value>194, 40</value>
   </data>
   <data name="btnModificarAvion.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -1117,13 +1096,10 @@
     <value>Fill</value>
   </data>
   <data name="dataGridAviones.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 21</value>
-  </data>
-  <data name="dataGridAviones.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
+    <value>3, 17</value>
   </data>
   <data name="dataGridAviones.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1442, 735</value>
+    <value>1279, 583</value>
   </data>
   <data name="dataGridAviones.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1153,7 +1129,7 @@
     <value>3, 2, 3, 2</value>
   </data>
   <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1448, 758</value>
+    <value>1285, 602</value>
   </data>
   <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1177,13 +1153,10 @@
     <value>NoControl</value>
   </data>
   <data name="btnEliminarAvion.Location" type="System.Drawing.Point, System.Drawing">
-    <value>971, 766</value>
-  </data>
-  <data name="btnEliminarAvion.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
+    <value>863, 609</value>
   </data>
   <data name="btnEliminarAvion.Size" type="System.Drawing.Size, System.Drawing">
-    <value>218, 50</value>
+    <value>194, 40</value>
   </data>
   <data name="btnEliminarAvion.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -1207,13 +1180,13 @@
     <value>NoControl</value>
   </data>
   <data name="btnAddAvion.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 764</value>
+    <value>3, 608</value>
   </data>
   <data name="btnAddAvion.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
   </data>
   <data name="btnAddAvion.Size" type="System.Drawing.Size, System.Drawing">
-    <value>194, 40</value>
+    <value>172, 32</value>
   </data>
   <data name="btnAddAvion.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -1246,7 +1219,7 @@
     <value>2</value>
   </data>
   <data name="tableLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1454, 834</value>
+    <value>1291, 664</value>
   </data>
   <data name="tableLayoutPanel2.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -1264,10 +1237,10 @@
     <value>0</value>
   </data>
   <data name="tableLayoutPanel2.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="btnModificarAvion" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="groupBox3" Row="0" RowSpan="1" Column="0" ColumnSpan="3" /&gt;&lt;Control Name="btnEliminarAvion" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="btnAddAvion" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,25,Percent,25,Percent,25,Percent,25,Absolute,18" /&gt;&lt;Rows Styles="Percent,100,Absolute,72" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="btnModificarAvion" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="groupBox3" Row="0" RowSpan="1" Column="0" ColumnSpan="3" /&gt;&lt;Control Name="btnEliminarAvion" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="btnAddAvion" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,25,Percent,25,Percent,25,Percent,25,Absolute,16" /&gt;&lt;Rows Styles="Percent,100,Absolute,58" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="tabPage4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 29</value>
+    <value>4, 25</value>
   </data>
   <data name="tabPage4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
@@ -1276,7 +1249,7 @@
     <value>3, 2, 3, 2</value>
   </data>
   <data name="tabPage4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1460, 838</value>
+    <value>1297, 668</value>
   </data>
   <data name="tabPage4.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -1333,13 +1306,13 @@
     <value>Fill</value>
   </data>
   <data name="dataGridActividades.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 21</value>
+    <value>3, 17</value>
   </data>
   <data name="dataGridActividades.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
   </data>
   <data name="dataGridActividades.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1442, 735</value>
+    <value>1279, 583</value>
   </data>
   <data name="dataGridActividades.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1369,7 +1342,7 @@
     <value>3, 2, 3, 2</value>
   </data>
   <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1448, 758</value>
+    <value>1285, 602</value>
   </data>
   <data name="groupBox5.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -1393,13 +1366,13 @@
     <value>NoControl</value>
   </data>
   <data name="btnAddActividad.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 764</value>
+    <value>3, 608</value>
   </data>
   <data name="btnAddActividad.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
   </data>
   <data name="btnAddActividad.Size" type="System.Drawing.Size, System.Drawing">
-    <value>194, 40</value>
+    <value>172, 32</value>
   </data>
   <data name="btnAddActividad.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -1423,13 +1396,13 @@
     <value>NoControl</value>
   </data>
   <data name="btnEliminarActividad.Location" type="System.Drawing.Point, System.Drawing">
-    <value>971, 764</value>
+    <value>863, 608</value>
   </data>
   <data name="btnEliminarActividad.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
   </data>
   <data name="btnEliminarActividad.Size" type="System.Drawing.Size, System.Drawing">
-    <value>194, 40</value>
+    <value>172, 32</value>
   </data>
   <data name="btnEliminarActividad.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -1453,13 +1426,13 @@
     <value>NoControl</value>
   </data>
   <data name="btnVerActividad.Location" type="System.Drawing.Point, System.Drawing">
-    <value>487, 764</value>
+    <value>433, 608</value>
   </data>
   <data name="btnVerActividad.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
   </data>
   <data name="btnVerActividad.Size" type="System.Drawing.Size, System.Drawing">
-    <value>194, 40</value>
+    <value>172, 32</value>
   </data>
   <data name="btnVerActividad.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -1492,7 +1465,7 @@
     <value>2</value>
   </data>
   <data name="tableLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1454, 834</value>
+    <value>1291, 664</value>
   </data>
   <data name="tableLayoutPanel4.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -1510,19 +1483,16 @@
     <value>0</value>
   </data>
   <data name="tableLayoutPanel4.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="groupBox5" Row="0" RowSpan="1" Column="0" ColumnSpan="3" /&gt;&lt;Control Name="btnAddActividad" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="btnEliminarActividad" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="btnVerActividad" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,33,33333,Percent,33,33333,Percent,33,33333,Absolute,20" /&gt;&lt;Rows Styles="Percent,100,Absolute,72" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="groupBox5" Row="0" RowSpan="1" Column="0" ColumnSpan="3" /&gt;&lt;Control Name="btnAddActividad" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="btnEliminarActividad" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="btnVerActividad" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,33,33333,Percent,33,33333,Percent,33,33333,Absolute,18" /&gt;&lt;Rows Styles="Percent,100,Absolute,58" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="tabPage5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 29</value>
-  </data>
-  <data name="tabPage5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
+    <value>4, 25</value>
   </data>
   <data name="tabPage5.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
   </data>
   <data name="tabPage5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1460, 838</value>
+    <value>1297, 668</value>
   </data>
   <data name="tabPage5.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -1552,7 +1522,7 @@
     <value>3, 2, 3, 2</value>
   </data>
   <data name="tabUsuarios.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1468, 871</value>
+    <value>1305, 691</value>
   </data>
   <data name="tabUsuarios.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -1573,13 +1543,13 @@
     <value>Fill</value>
   </data>
   <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 33</value>
+    <value>0, 28</value>
   </data>
   <data name="panel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
   </data>
   <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1468, 871</value>
+    <value>1305, 691</value>
   </data>
   <data name="panel1.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1603,13 +1573,13 @@
     <value>25</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>9, 20</value>
+    <value>8, 16</value>
   </data>
   <data name="$this.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1468, 926</value>
+    <value>1305, 741</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
@@ -1714,6 +1684,18 @@
     <value>passwordToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;passwordToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator3.Name" xml:space="preserve">
+    <value>toolStripSeparator3</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;respaldosToolStripMenuItem.Name" xml:space="preserve">
+    <value>respaldosToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;respaldosToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;opcionesToolStripMenuItem.Name" xml:space="preserve">
@@ -1883,18 +1865,6 @@
   </data>
   <data name="&gt;&gt;dataGridViewTextBoxColumn15.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator3.Name" xml:space="preserve">
-    <value>toolStripSeparator3</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;respaldosToolStripMenuItem.Name" xml:space="preserve">
-    <value>respaldosToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;respaldosToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>formInicio</value>

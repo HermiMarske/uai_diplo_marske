@@ -48,6 +48,8 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             this.bitacoraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.passwordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.respaldosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.opcionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cambiarIdiomaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
@@ -114,8 +116,6 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             this.btnAddActividad = new System.Windows.Forms.Button();
             this.btnEliminarActividad = new System.Windows.Forms.Button();
             this.btnVerActividad = new System.Windows.Forms.Button();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.respaldosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabUsuarios.SuspendLayout();
@@ -253,6 +253,16 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             // 
             this.passwordToolStripMenuItem.Name = "passwordToolStripMenuItem";
             resources.ApplyResources(this.passwordToolStripMenuItem, "passwordToolStripMenuItem");
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            resources.ApplyResources(this.toolStripSeparator3, "toolStripSeparator3");
+            // 
+            // respaldosToolStripMenuItem
+            // 
+            this.respaldosToolStripMenuItem.Name = "respaldosToolStripMenuItem";
+            resources.ApplyResources(this.respaldosToolStripMenuItem, "respaldosToolStripMenuItem");
             // 
             // opcionesToolStripMenuItem
             // 
@@ -754,16 +764,6 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             this.btnVerActividad.Name = "btnVerActividad";
             this.btnVerActividad.UseVisualStyleBackColor = true;
             this.btnVerActividad.Click += new System.EventHandler(this.btnVerActividad_Click);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            resources.ApplyResources(this.toolStripSeparator3, "toolStripSeparator3");
-            // 
-            // respaldosToolStripMenuItem
-            // 
-            this.respaldosToolStripMenuItem.Name = "respaldosToolStripMenuItem";
-            resources.ApplyResources(this.respaldosToolStripMenuItem, "respaldosToolStripMenuItem");
             // 
             // formInicio
             // 
