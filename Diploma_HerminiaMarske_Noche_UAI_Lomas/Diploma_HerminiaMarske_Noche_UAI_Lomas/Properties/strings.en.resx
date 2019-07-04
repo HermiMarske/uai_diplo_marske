@@ -275,4 +275,10 @@ Please contact an administrator.</value>
   <data name="spanish" xml:space="preserve">
     <value>Spanish</value>
   </data>
+  <data name="confirm_exit" xml:space="preserve">
+    <value>Exit program?</value>
+  </data>
+  <data name="confirm_logout" xml:space="preserve">
+    <value>Logout from system?</value>
+  </data>
 </root>

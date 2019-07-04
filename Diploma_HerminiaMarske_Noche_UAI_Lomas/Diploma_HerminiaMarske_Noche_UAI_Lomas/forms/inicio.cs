@@ -202,7 +202,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
 
         /** FIN SOLAPA CLIENTES **/
 
-        private bool hasPermission(string permission) => usuarioLogueado.GetPatentes().Exists(p => p.GetDescripcion().Equals(permission));
+        private bool hasPermission(string permission) => usuarioLogueado.GetPatentes().Where(p => !p.GetNegado()).ToList().Exists(p => p.GetDescripcion().Equals(permission));
 
 
         private void formInicio_Load(object sender, EventArgs e)
@@ -253,16 +253,36 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             Controls.Clear();
             initializer();
 
-            btnNuevoCliente.Enabled = hasPermission("ADM_CLIENTES_ALTA");
             dataGridClientes.Enabled = hasPermission("ADM_CLIENTES_VER");
+            btnNuevoCliente.Enabled = hasPermission("ADM_CLIENTES_ALTA");
+            clienteToolStripMenuItem.Enabled = hasPermission("ADM_CLIENTES_ALTA");
             btnEliminarCliente.Enabled = hasPermission("ADM_CLIENTES_BAJA");
             btnModificarCliente.Enabled = hasPermission("ADM_CLIENTES_MODIF");
 
             datagridUsuarios.Enabled = hasPermission("ADM_USUARIOS_VER");
             btnAltaUsuario.Enabled = hasPermission("ADM_USUARIOS_ALTA");
+            usuarioToolStripMenuItem.Enabled = hasPermission("ADM_USUARIOS_ALTA");
             btnEliminarUsuario.Enabled = hasPermission("ADM_USUARIOS_BAJA");
             btnModificarUsuario.Enabled = hasPermission("ADM_USUARIOS_MODIF");
             familiasYPermisosToolStripMenuItem.Enabled = hasPermission("ADM_USUARIOS_PERM");
+
+            dataGridPilotos.Enabled = hasPermission("ADM_PILOTOS_VER");
+            btnAltaPiloto.Enabled = hasPermission("ADM_PILOTOS_ALTA");
+            pilotoToolStripMenuItem.Enabled = hasPermission("ADM_PILOTOS_ALTA");
+            borrarPiloto.Enabled = hasPermission("ADM_PILOTOS_BAJA");
+            btnModificarPiloto.Enabled = hasPermission("ADM_PILOTOS_MODIF");
+
+            dataGridAviones.Enabled = hasPermission("ADM_AVIONES_VER");
+            btnAddAvion.Enabled = hasPermission("ADM_AVIONES_ALTA");
+            avionToolStripMenuItem.Enabled = hasPermission("ADM_AVIONES_ALTA");
+            btnEliminarAvion.Enabled = hasPermission("ADM_AVIONES_BAJA");
+            btnModificarAvion.Enabled = hasPermission("ADM_AVIONES_MODIF");
+
+            dataGridActividades.Enabled = hasPermission("ADM_ACTIVIDADES_VER");
+            btnAddActividad.Enabled = hasPermission("ADM_ACTIVIDADES_ALTA");
+            actividadToolStripMenuItem.Enabled = hasPermission("ADM_ACTIVIDADES_ALTA");
+            btnEliminarActividad.Enabled = hasPermission("ADM_ACTIVIDADES_BAJA");
+            btnVerActividad.Enabled = hasPermission("ADM_ACTIVIDADES_MODIF");
         }
 
         private void busquedaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -470,10 +490,39 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
 
         private void toolStripComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string codigoToolCombo = ((Idioma) ((ToolStripComboBox) sender).SelectedItem).GetCodigo();
+            ToolStripComboBox comboBox = (ToolStripComboBox)sender;
+            string codigoToolCombo = ((Idioma) comboBox.SelectedItem).GetCodigo();
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(codigoToolCombo);
+            comboBox.Owner.Hide();
             Controls.Clear();
             initializer();
+        }
+
+        private void salirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult question = messageBox.Show(strings.confirm_exit, MessageBoxButtons.OKCancel);
+            if (question == DialogResult.OK)
+            {
+                if (Application.MessageLoop)
+                {
+                    // Use this since we are a WinForms app
+                    Application.Exit();
+                }
+                else
+                {
+                    // Use this since we are a console app
+                    Environment.Exit(0);
+                }
+            }
+        }
+
+        private void cerrarSesiónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult question = messageBox.Show(strings.confirm_logout, MessageBoxButtons.OKCancel);
+            if (question == DialogResult.OK)
+            {
+                Close();
+            }
         }
     }
 }

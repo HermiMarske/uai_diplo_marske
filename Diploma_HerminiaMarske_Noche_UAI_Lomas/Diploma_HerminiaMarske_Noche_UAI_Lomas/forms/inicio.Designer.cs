@@ -33,21 +33,21 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formInicio));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.gestionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.actividadesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pilotosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.actividadesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.nuevoClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
-            this.busquedaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.regionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.gestionDePaisesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.provinciasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.localidadesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nuevoToolStripItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.usuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pilotoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.avionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.actividadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.cerrarSesionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.seguridadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.familiasYPermisosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.bitacoraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+            this.passwordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.opcionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cambiarIdiomaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
@@ -76,6 +76,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             this.usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Desbloquear = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.btnEliminarUsuario = new System.Windows.Forms.Button();
             this.btnModificarUsuario = new System.Windows.Forms.Button();
             this.btnAltaUsuario = new System.Windows.Forms.Button();
@@ -113,7 +114,8 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             this.btnAddActividad = new System.Windows.Forms.Button();
             this.btnEliminarActividad = new System.Windows.Forms.Button();
             this.btnVerActividad = new System.Windows.Forms.Button();
-            this.Desbloquear = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.respaldosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabUsuarios.SuspendLayout();
@@ -152,85 +154,81 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             // gestionToolStripMenuItem
             // 
             this.gestionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.actividadesToolStripMenuItem,
-            this.pilotosToolStripMenuItem,
-            this.actividadesToolStripMenuItem1,
-            this.clientesToolStripMenuItem,
-            this.regionesToolStripMenuItem});
+            this.nuevoToolStripItem,
+            this.toolStripSeparator1,
+            this.cerrarSesionToolStripMenuItem,
+            this.toolStripSeparator2,
+            this.salirToolStripMenuItem});
             this.gestionToolStripMenuItem.Name = "gestionToolStripMenuItem";
             resources.ApplyResources(this.gestionToolStripMenuItem, "gestionToolStripMenuItem");
             // 
-            // actividadesToolStripMenuItem
+            // nuevoToolStripItem
             // 
-            this.actividadesToolStripMenuItem.Name = "actividadesToolStripMenuItem";
-            resources.ApplyResources(this.actividadesToolStripMenuItem, "actividadesToolStripMenuItem");
+            this.nuevoToolStripItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.clienteToolStripMenuItem,
+            this.usuarioToolStripMenuItem,
+            this.pilotoToolStripMenuItem,
+            this.avionToolStripMenuItem,
+            this.actividadToolStripMenuItem});
+            this.nuevoToolStripItem.Name = "nuevoToolStripItem";
+            resources.ApplyResources(this.nuevoToolStripItem, "nuevoToolStripItem");
             // 
-            // pilotosToolStripMenuItem
+            // clienteToolStripMenuItem
             // 
-            this.pilotosToolStripMenuItem.Name = "pilotosToolStripMenuItem";
-            resources.ApplyResources(this.pilotosToolStripMenuItem, "pilotosToolStripMenuItem");
+            this.clienteToolStripMenuItem.Name = "clienteToolStripMenuItem";
+            resources.ApplyResources(this.clienteToolStripMenuItem, "clienteToolStripMenuItem");
             // 
-            // actividadesToolStripMenuItem1
+            // usuarioToolStripMenuItem
             // 
-            this.actividadesToolStripMenuItem1.Name = "actividadesToolStripMenuItem1";
-            resources.ApplyResources(this.actividadesToolStripMenuItem1, "actividadesToolStripMenuItem1");
+            this.usuarioToolStripMenuItem.Name = "usuarioToolStripMenuItem";
+            resources.ApplyResources(this.usuarioToolStripMenuItem, "usuarioToolStripMenuItem");
             // 
-            // clientesToolStripMenuItem
+            // pilotoToolStripMenuItem
             // 
-            this.clientesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.nuevoClienteToolStripMenuItem,
-            this.toolStripMenuItem1,
-            this.busquedaToolStripMenuItem});
-            this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
-            resources.ApplyResources(this.clientesToolStripMenuItem, "clientesToolStripMenuItem");
+            this.pilotoToolStripMenuItem.Name = "pilotoToolStripMenuItem";
+            resources.ApplyResources(this.pilotoToolStripMenuItem, "pilotoToolStripMenuItem");
             // 
-            // nuevoClienteToolStripMenuItem
+            // avionToolStripMenuItem
             // 
-            this.nuevoClienteToolStripMenuItem.Name = "nuevoClienteToolStripMenuItem";
-            resources.ApplyResources(this.nuevoClienteToolStripMenuItem, "nuevoClienteToolStripMenuItem");
-            this.nuevoClienteToolStripMenuItem.Click += new System.EventHandler(this.nuevoClienteToolStripMenuItem_Click);
+            this.avionToolStripMenuItem.Name = "avionToolStripMenuItem";
+            resources.ApplyResources(this.avionToolStripMenuItem, "avionToolStripMenuItem");
             // 
-            // toolStripMenuItem1
+            // actividadToolStripMenuItem
             // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            resources.ApplyResources(this.toolStripMenuItem1, "toolStripMenuItem1");
+            this.actividadToolStripMenuItem.Name = "actividadToolStripMenuItem";
+            resources.ApplyResources(this.actividadToolStripMenuItem, "actividadToolStripMenuItem");
             // 
-            // busquedaToolStripMenuItem
+            // toolStripSeparator1
             // 
-            this.busquedaToolStripMenuItem.Name = "busquedaToolStripMenuItem";
-            resources.ApplyResources(this.busquedaToolStripMenuItem, "busquedaToolStripMenuItem");
-            this.busquedaToolStripMenuItem.Click += new System.EventHandler(this.busquedaToolStripMenuItem_Click);
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
             // 
-            // regionesToolStripMenuItem
+            // cerrarSesionToolStripMenuItem
             // 
-            this.regionesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.gestionDePaisesToolStripMenuItem,
-            this.provinciasToolStripMenuItem,
-            this.localidadesToolStripMenuItem});
-            this.regionesToolStripMenuItem.Name = "regionesToolStripMenuItem";
-            resources.ApplyResources(this.regionesToolStripMenuItem, "regionesToolStripMenuItem");
+            this.cerrarSesionToolStripMenuItem.Name = "cerrarSesionToolStripMenuItem";
+            resources.ApplyResources(this.cerrarSesionToolStripMenuItem, "cerrarSesionToolStripMenuItem");
+            this.cerrarSesionToolStripMenuItem.Click += new System.EventHandler(this.cerrarSesiónToolStripMenuItem_Click);
             // 
-            // gestionDePaisesToolStripMenuItem
+            // toolStripSeparator2
             // 
-            this.gestionDePaisesToolStripMenuItem.Name = "gestionDePaisesToolStripMenuItem";
-            resources.ApplyResources(this.gestionDePaisesToolStripMenuItem, "gestionDePaisesToolStripMenuItem");
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
             // 
-            // provinciasToolStripMenuItem
+            // salirToolStripMenuItem
             // 
-            this.provinciasToolStripMenuItem.Name = "provinciasToolStripMenuItem";
-            resources.ApplyResources(this.provinciasToolStripMenuItem, "provinciasToolStripMenuItem");
-            // 
-            // localidadesToolStripMenuItem
-            // 
-            this.localidadesToolStripMenuItem.Name = "localidadesToolStripMenuItem";
-            resources.ApplyResources(this.localidadesToolStripMenuItem, "localidadesToolStripMenuItem");
+            this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
+            resources.ApplyResources(this.salirToolStripMenuItem, "salirToolStripMenuItem");
+            this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
             // seguridadToolStripMenuItem
             // 
             this.seguridadToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.familiasYPermisosToolStripMenuItem,
+            this.bitacoraToolStripMenuItem,
             this.toolStripMenuItem2,
-            this.bitacoraToolStripMenuItem});
+            this.passwordToolStripMenuItem,
+            this.toolStripSeparator3,
+            this.respaldosToolStripMenuItem});
             this.seguridadToolStripMenuItem.Name = "seguridadToolStripMenuItem";
             resources.ApplyResources(this.seguridadToolStripMenuItem, "seguridadToolStripMenuItem");
             // 
@@ -240,16 +238,21 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             resources.ApplyResources(this.familiasYPermisosToolStripMenuItem, "familiasYPermisosToolStripMenuItem");
             this.familiasYPermisosToolStripMenuItem.Click += new System.EventHandler(this.familiasYPermisosToolStripMenuItem_Click);
             // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            resources.ApplyResources(this.toolStripMenuItem2, "toolStripMenuItem2");
-            // 
             // bitacoraToolStripMenuItem
             // 
             this.bitacoraToolStripMenuItem.Name = "bitacoraToolStripMenuItem";
             resources.ApplyResources(this.bitacoraToolStripMenuItem, "bitacoraToolStripMenuItem");
             this.bitacoraToolStripMenuItem.Click += new System.EventHandler(this.bitacoraToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            resources.ApplyResources(this.toolStripMenuItem2, "toolStripMenuItem2");
+            // 
+            // passwordToolStripMenuItem
+            // 
+            this.passwordToolStripMenuItem.Name = "passwordToolStripMenuItem";
+            resources.ApplyResources(this.passwordToolStripMenuItem, "passwordToolStripMenuItem");
             // 
             // opcionesToolStripMenuItem
             // 
@@ -463,6 +466,12 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             resources.ApplyResources(this.dataGridViewTextBoxColumn5, "dataGridViewTextBoxColumn5");
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // Desbloquear
+            // 
+            resources.ApplyResources(this.Desbloquear, "Desbloquear");
+            this.Desbloquear.Name = "Desbloquear";
+            this.Desbloquear.ReadOnly = true;
             // 
             // btnEliminarUsuario
             // 
@@ -746,11 +755,15 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             this.btnVerActividad.UseVisualStyleBackColor = true;
             this.btnVerActividad.Click += new System.EventHandler(this.btnVerActividad_Click);
             // 
-            // Desbloquear
+            // toolStripSeparator3
             // 
-            resources.ApplyResources(this.Desbloquear, "Desbloquear");
-            this.Desbloquear.Name = "Desbloquear";
-            this.Desbloquear.ReadOnly = true;
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            resources.ApplyResources(this.toolStripSeparator3, "toolStripSeparator3");
+            // 
+            // respaldosToolStripMenuItem
+            // 
+            this.respaldosToolStripMenuItem.Name = "respaldosToolStripMenuItem";
+            resources.ApplyResources(this.respaldosToolStripMenuItem, "respaldosToolStripMenuItem");
             // 
             // formInicio
             // 
@@ -805,19 +818,9 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripMenuItem gestionToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem actividadesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem pilotosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem actividadesToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem nuevoToolStripItem;
         private System.Windows.Forms.ToolStripMenuItem seguridadToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem opcionesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem clientesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem nuevoClienteToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem busquedaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem regionesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem gestionDePaisesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem provinciasToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem localidadesToolStripMenuItem;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TabControl tabUsuarios;
         private System.Windows.Forms.TabPage tabPage1;
@@ -885,6 +888,18 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
         private System.Windows.Forms.ToolStripMenuItem cambiarIdiomaToolStripMenuItem;
         private System.Windows.Forms.ToolStripComboBox toolStripComboBox1;
         private DataGridViewCheckBoxColumn Desbloquear;
+        private ToolStripMenuItem clienteToolStripMenuItem;
+        private ToolStripMenuItem usuarioToolStripMenuItem;
+        private ToolStripMenuItem pilotoToolStripMenuItem;
+        private ToolStripMenuItem avionToolStripMenuItem;
+        private ToolStripMenuItem actividadToolStripMenuItem;
+        private ToolStripSeparator toolStripSeparator1;
+        private ToolStripMenuItem cerrarSesionToolStripMenuItem;
+        private ToolStripSeparator toolStripSeparator2;
+        private ToolStripMenuItem salirToolStripMenuItem;
+        private ToolStripMenuItem passwordToolStripMenuItem;
+        private ToolStripSeparator toolStripSeparator3;
+        private ToolStripMenuItem respaldosToolStripMenuItem;
     }
 }
 

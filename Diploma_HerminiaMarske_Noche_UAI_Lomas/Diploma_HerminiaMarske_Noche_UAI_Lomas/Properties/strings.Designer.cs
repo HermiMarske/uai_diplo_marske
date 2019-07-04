@@ -151,6 +151,24 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a ¿Deseas salir del sistema?.
+        /// </summary>
+        internal static string confirm_exit {
+            get {
+                return ResourceManager.GetString("confirm_exit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a ¿Deseas cerrar la sesión?.
+        /// </summary>
+        internal static string confirm_logout {
+            get {
+                return ResourceManager.GetString("confirm_logout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a El CUIL/CUIT debe contener 11 números (no incluya guiones)..
         /// </summary>
         internal static string cuit_format_incorrect {

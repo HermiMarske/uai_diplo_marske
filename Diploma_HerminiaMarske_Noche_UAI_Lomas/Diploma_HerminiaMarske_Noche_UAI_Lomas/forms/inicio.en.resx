@@ -126,8 +126,14 @@
   <data name="actividadesToolStripMenuItem1.Text" xml:space="preserve">
     <value>Airplanes</value>
   </data>
+  <data name="actividadToolStripMenuItem.Text" xml:space="preserve">
+    <value>Actvity</value>
+  </data>
   <data name="apellido.HeaderText" xml:space="preserve">
     <value>Last name</value>
+  </data>
+  <data name="avionToolStripMenuItem.Text" xml:space="preserve">
+    <value>Airplane</value>
   </data>
   <data name="bitacoraToolStripMenuItem.Text" xml:space="preserve">
     <value>Event log</value>
@@ -189,8 +195,17 @@
   <data name="busquedaToolStripMenuItem.Text" xml:space="preserve">
     <value>Clients list</value>
   </data>
+  <data name="cambiarIdiomaToolStripMenuItem.Text" xml:space="preserve">
+    <value>Change language</value>
+  </data>
+  <data name="cerrarSesionToolStripMenuItem.Text" xml:space="preserve">
+    <value>Logout</value>
+  </data>
   <data name="clientesToolStripMenuItem.Text" xml:space="preserve">
     <value>Clients</value>
+  </data>
+  <data name="clienteToolStripMenuItem.Text" xml:space="preserve">
+    <value>Client</value>
   </data>
   <data name="cuit.HeaderText" xml:space="preserve">
     <value>CUIT</value>
@@ -231,6 +246,9 @@
   <data name="dataGridViewTextBoxColumn9.HeaderText" xml:space="preserve">
     <value>License</value>
   </data>
+  <data name="Desbloquear.HeaderText" xml:space="preserve">
+    <value>Is locked?</value>
+  </data>
   <data name="dni.HeaderText" xml:space="preserve">
     <value>DNI</value>
   </data>
@@ -253,10 +271,10 @@
     <value>Users list</value>
   </data>
   <data name="groupBox3.Text" xml:space="preserve">
-    <value>Pilots list</value>
+    <value>Airplanes list</value>
   </data>
   <data name="groupBox4.Text" xml:space="preserve">
-    <value>Airplanes list</value>
+    <value>Pilots list</value>
   </data>
   <data name="groupBox5.Text" xml:space="preserve">
     <value>Activities list</value>
@@ -276,11 +294,20 @@
   <data name="nuevoClienteToolStripMenuItem.Text" xml:space="preserve">
     <value>New client</value>
   </data>
+  <data name="nuevoToolStripItem.Text" xml:space="preserve">
+    <value>New</value>
+  </data>
   <data name="opcionesToolStripMenuItem.Text" xml:space="preserve">
     <value>Settings</value>
   </data>
+  <data name="passwordToolStripMenuItem.Text" xml:space="preserve">
+    <value>Change password</value>
+  </data>
   <data name="pilotosToolStripMenuItem.Text" xml:space="preserve">
     <value>Pilots</value>
+  </data>
+  <data name="pilotoToolStripMenuItem.Text" xml:space="preserve">
+    <value>Pilot</value>
   </data>
   <data name="provinciasToolStripMenuItem.Text" xml:space="preserve">
     <value>States</value>
@@ -290,6 +317,9 @@
   </data>
   <data name="regionesToolStripMenuItem.Text" xml:space="preserve">
     <value>Regions</value>
+  </data>
+  <data name="salirToolStripMenuItem.Text" xml:space="preserve">
+    <value>Exit</value>
   </data>
   <data name="seguridadToolStripMenuItem.Text" xml:space="preserve">
     <value>Security</value>
@@ -313,6 +343,9 @@
     <value>Activities</value>
   </data>
   <data name="usuario.HeaderText" xml:space="preserve">
+    <value>User</value>
+  </data>
+  <data name="usuarioToolStripMenuItem.Text" xml:space="preserve">
     <value>User</value>
   </data>
 </root>

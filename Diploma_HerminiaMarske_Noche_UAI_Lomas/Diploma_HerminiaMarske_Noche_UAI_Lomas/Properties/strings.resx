@@ -275,4 +275,10 @@ Comuníquese con un administrador.</value>
   <data name="spanish" xml:space="preserve">
     <value>Español</value>
   </data>
+  <data name="confirm_exit" xml:space="preserve">
+    <value>¿Deseas salir del sistema?</value>
+  </data>
+  <data name="confirm_logout" xml:space="preserve">
+    <value>¿Deseas cerrar la sesión?</value>
+  </data>
 </root>
