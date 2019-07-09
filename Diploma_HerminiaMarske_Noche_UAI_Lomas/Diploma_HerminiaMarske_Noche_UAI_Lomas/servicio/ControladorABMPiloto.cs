@@ -108,6 +108,9 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
 
 
                 }
+
+                BitacoraRow bitacora = new BitacoraRow(DateTime.UtcNow, ConstantesBitacora.CRITICIDAD_BAJA, ConstantesBitacora.ALTA_PILOTO, new Usuario());
+                ControladorBitacora.grabarRegistro(bitacora);
                 return PILOTO_CREADO;
 
             }
@@ -215,6 +218,9 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
                 dataQuery.sqlUpsert(string.Format(crearMails, valuesMails), null);
                 dataQuery.sqlUpsert(string.Format(crearTelefonos, valuesTelefonos), null);
 
+                BitacoraRow bitacora = new BitacoraRow(DateTime.UtcNow, ConstantesBitacora.CRITICIDAD_MEDIA, ConstantesBitacora.MODIFICAR_PILOTO, new Usuario());
+                ControladorBitacora.grabarRegistro(bitacora);
+
                 return PILOTO_MODIFICADO;
 
             }
@@ -242,6 +248,10 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
             {
                 dataQuery.sqlExecute(borrarPiloto, pms);
                 ControladorDigitosVerificadores.calcularDVV(ConstantesDDVV.TABLA_PILOTOS);
+
+                BitacoraRow bitacora = new BitacoraRow(DateTime.UtcNow, ConstantesBitacora.CRITICIDAD_ALTA, ConstantesBitacora.BAJA_PILOTO, new Usuario());
+                ControladorBitacora.grabarRegistro(bitacora);
+
                 return PILOTO_BORRADO;
             }
             catch

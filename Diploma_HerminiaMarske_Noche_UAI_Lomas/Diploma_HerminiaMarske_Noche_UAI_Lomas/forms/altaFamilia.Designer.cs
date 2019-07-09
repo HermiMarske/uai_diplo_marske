@@ -180,6 +180,7 @@
             resources.ApplyResources(this.btnCerrar, "btnCerrar");
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.UseVisualStyleBackColor = true;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // btnCrearFam
             // 
@@ -254,6 +255,7 @@
             resources.ApplyResources(this.btnSalirModif, "btnSalirModif");
             this.btnSalirModif.Name = "btnSalirModif";
             this.btnSalirModif.UseVisualStyleBackColor = true;
+            this.btnSalirModif.Click += new System.EventHandler(this.btnSalirModif_Click);
             // 
             // btnModificar
             // 

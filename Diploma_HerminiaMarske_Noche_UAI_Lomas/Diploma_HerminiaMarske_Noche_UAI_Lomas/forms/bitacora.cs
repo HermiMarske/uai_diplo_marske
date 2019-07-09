@@ -43,5 +43,10 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
                 dataGridBitacora.Rows.Add(dataRow);
             }
         }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

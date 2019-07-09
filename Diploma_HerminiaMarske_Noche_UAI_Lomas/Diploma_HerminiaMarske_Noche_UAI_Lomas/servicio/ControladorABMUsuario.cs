@@ -1,4 +1,5 @@
 ﻿using ConstantesData;
+using Diploma_HerminiaMarske_Noche_UAI_Lomas.Constantes;
 using Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos;
 using System;
 using System.Collections.Generic;
@@ -33,8 +34,8 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
             const string borrarDomicilios = "delete from Domicilio where FK_Persona = @idPersona";
             const string borrarMails = "delete from Mails where FK_Persona = @idPersona";
             const string borrarTels = "delete from Telefono where FK_Persona = @idPersona";
-            const string insertarPatentes = "INSERT INTO Usuario_Patente (patenteFK, usuarioFK, negado) VALUES {0}";
-            const string insertarFamilia = "INSERT INTO Usuario_Familia (familiaFK, usuarioFK) VALUES {0}";
+            const string insertarPatentes = "INSERT INTO Usuario_Patente (patenteFK, usuarioFK, negado, dvh) VALUES {0}";
+            const string insertarFamilia = "INSERT INTO Usuario_Familia (familiaFK, usuarioFK, dvh) VALUES {0}";
             const string modificarPersona = " update Personas set dni = @dni, nombre = @nombre, apellido = @apellido, sexo = @sexo, fechaNacimiento = @fechaNacimiento where ID_Persona = @idPersona";
             string crearDomicilios = "INSERT INTO Domicilio(calle,numero,piso,dpto, comentarios, codPostal,tipoDomicilio, FK_Localidad, FK_Persona) VALUES {0}";
             string crearMails = "INSERT INTO Mails(tipo, mail, FK_Persona) VALUES {0}";
@@ -108,26 +109,32 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
                 
                 foreach (Patente pat in usuario.GetPatentes())
                 {
+                    int dvh = ControladorDigitosVerificadores.calcularDVH(pat.GetId().ToString() + usuario.GetIdUsuario().ToString() + pat.GetNegado().ToString());
                     valuesPatentes += (!string.IsNullOrEmpty(valuesPatentes) ? "," : "");
                     valuesPatentes += new StringBuilder("(").Append(pat.GetId() + ",")
-                        .Append(usuario.GetIdUsuario() + ",").Append(pat.GetNegado() ? 1 : 0).Append(")").ToString();
+                        .Append(usuario.GetIdUsuario() + ",").Append(pat.GetNegado() ? 1 : 0).Append("," + dvh).Append(")").ToString();
                 }
 
                
                 foreach (Familia fam in usuario.GetFamilias())
                 {
+                    int dvh = ControladorDigitosVerificadores.calcularDVH(fam.GetId().ToString() + usuario.GetIdUsuario().ToString());
+
                     valuesFamilias += (!string.IsNullOrEmpty(valuesFamilias) ? "," : "");
                     valuesFamilias += new StringBuilder("(").Append(fam.GetId() + ",")
-                        .Append(usuario.GetIdUsuario()).Append(")").ToString();
+                        .Append(usuario.GetIdUsuario() + ",").Append(dvh).Append(")").ToString();
                 }
 
                 if (!string.IsNullOrWhiteSpace(valuesPatentes))
                 {
                     dataQuery.sqlUpsert(string.Format(insertarPatentes, valuesPatentes), null);
+                    ControladorDigitosVerificadores.calcularDVV(ConstantesDDVV.TABLA_USUARIO_PATENTE);
                 }
                 if (!string.IsNullOrWhiteSpace(valuesFamilias))
                 {
                     dataQuery.sqlUpsert(string.Format(insertarFamilia, valuesFamilias), null);
+                    ControladorDigitosVerificadores.calcularDVV(ConstantesDDVV.TABLA_USUARIO_FAMILIA);
+
                 }
 
                 string valuesDomicilios = "";
@@ -160,6 +167,10 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
                 dataQuery.sqlUpsert(string.Format(crearMails, valuesMails), null);
                 dataQuery.sqlUpsert(string.Format(crearTelefonos, valuesTelefonos), null);
 
+
+                BitacoraRow bitacora = new BitacoraRow(DateTime.UtcNow, ConstantesBitacora.CRITICIDAD_ALTA, ConstantesBitacora.MODIFICACION_USUARIO, new Usuario());
+                ControladorBitacora.grabarRegistro(bitacora);
+
                 return rm.GetString(USER_MODIFIED.ToLower());
 
             }
@@ -175,8 +186,8 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
             const string altaUsuario = "INSERT INTO Usuarios (usuario, clave, CII, habilitado, DVH, FK_Persona, respuesta, FK_Pregunta)" +
                     " VALUES (@usuario, @clave, 0, 1, @dvh, @fkPersona, @respuesta, @fkPregunta);" +
                     " SELECT SCOPE_IDENTITY();";
-            const string insertarPatentes = "INSERT INTO Usuario_Patente (patenteFK, usuarioFK, negado) VALUES {0}";
-            const string insertarFamilia = "INSERT INTO Usuario_Familia (familiaFK, usuarioFK) VALUES {0}";
+            const string insertarPatentes = "INSERT INTO Usuario_Patente (patenteFK, usuarioFK, negado, dvh) VALUES {0}";
+            const string insertarFamilia = "INSERT INTO Usuario_Familia (familiaFK, usuarioFK, dvh) VALUES {0}";
 
             string usuarioEncriptado = ControladorEncriptacion.Encrypt(usuario.GetNombreUsuario());
 
@@ -195,32 +206,51 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
             pms[5].Value = usuario.GetFkPregunta();
 
             DataTable dt = dataQuery.sqlExecute(altaUsuario, pms);
+
+            ControladorDigitosVerificadores.calcularDVV(ConstantesDDVV.TABLA_USUARIOS);
+
             int uCreado = decimal.ToInt32((decimal)dt.Rows[0][0]);
 
             string valuesPatentes = "";
             foreach (Patente pat in usuario.GetPatentes())
             {
+                int dvh = ControladorDigitosVerificadores.calcularDVH(pat.GetId().ToString() + uCreado.ToString() + pat.GetNegado().ToString());
+                //POR SI TIRA ERROR, ES ACA
+
                 valuesPatentes += (!string.IsNullOrEmpty(valuesPatentes) ? "," : "");
                 valuesPatentes += new StringBuilder("(").Append(pat.GetId() + ",")
-                    .Append(uCreado + ",").Append(pat.GetNegado() ? 1 : 0).Append(")").ToString();
+                    .Append(uCreado + ",").Append(pat.GetNegado() ? 1 : 0).Append("," + dvh).Append(")").ToString();
             }
 
             string valuesFamilias = "";
             foreach (Familia fam in usuario.GetFamilias())
             {
+
+                //LO MISMO ACA SI TIRA ERROR ES POR EL DVH
+
+                int dvh = ControladorDigitosVerificadores.calcularDVH(fam.GetId().ToString() + uCreado.ToString());
+
                 valuesFamilias += (!string.IsNullOrEmpty(valuesFamilias) ? "," : "");
                 valuesFamilias += new StringBuilder("(").Append(fam.GetId() + ",")
-                    .Append(uCreado).Append(")").ToString();
+                    .Append(uCreado + ",").Append(dvh).Append(")").ToString();
             }
 
             if (!string.IsNullOrWhiteSpace(valuesPatentes))
             {
                 dataQuery.sqlUpsert(string.Format(insertarPatentes, valuesPatentes), null);
+
+                ControladorDigitosVerificadores.calcularDVV(ConstantesDDVV.TABLA_USUARIO_PATENTE);
+
             }
             if(!string.IsNullOrWhiteSpace(valuesFamilias))
             {
                 dataQuery.sqlUpsert(string.Format(insertarFamilia, valuesFamilias), null);
+
+                ControladorDigitosVerificadores.calcularDVV(ConstantesDDVV.TABLA_USUARIO_FAMILIA);
             }
+
+            BitacoraRow bitacora = new BitacoraRow(DateTime.UtcNow, ConstantesBitacora.CRITICIDAD_MEDIA, ConstantesBitacora.ALTA_NUEVO_USUARIO, new Usuario());
+            ControladorBitacora.grabarRegistro(bitacora);
 
 
         }
@@ -473,6 +503,9 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
                 pms[1].Value = id;
 
                 dataQuery.sqlUpsert(bajaUsuario, pms);
+            
+                BitacoraRow bitacora = new BitacoraRow(DateTime.UtcNow, ConstantesBitacora.CRITICIDAD_ALTA, ConstantesBitacora.USUARIO_BORRADO, new Usuario());
+                ControladorBitacora.grabarRegistro(bitacora);
                 return rm.GetString(USER_DELETED.ToLower());
             }
             catch
@@ -485,7 +518,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
         {
             List<FamiliaFlag> familias = new List<FamiliaFlag>();
 
-            string queryFams = "SELECT f.idFamilia, f.descripcion, f.dvh FROM Familia f WHERE f.borrado IS NULL";
+            string queryFams = "SELECT f.idFamilia, f.descripcion FROM Familia f WHERE f.borrado IS NULL";
 
             SqlParameter[] pms = new SqlParameter[1];
             pms[0] = new SqlParameter("@idUsuario", SqlDbType.Int);
@@ -508,7 +541,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
 
             foreach (DataRow dr in dt.Rows)
             {
-                FamiliaFlag famFlag = new FamiliaFlag((int)dr[0], (string)dr[1], false);
+                FamiliaFlag famFlag = new FamiliaFlag((int)dr[0], ControladorEncriptacion.Decrypt((string)dr[1]), false);
                 familias.Add(famFlag);
             }
             familias.ForEach(f => f.SetFlag(famsUsuario.Contains(f.GetId())));

@@ -38,7 +38,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             dtf = dataQueryFamilias.getList(SP.LISTAR_FAMILIAS, null);
             foreach (DataRow drf in dtf.Rows)
             {
-                Familia familia = new Familia((int)drf[0], (string)drf[1]);
+                Familia familia = new Familia((int)drf[0], ControladorEncriptacion.Decrypt((string)drf[1]));
                 DataConnection.DataConnection dataQueryFamiliasPatentes = new DataConnection.DataConnection();
                 DataTable dtfp = new DataTable();
                 dtfp = dataQueryFamiliasPatentes.getList(SP.LISTAR_PATENTES_FAMILIAS, null);
@@ -47,7 +47,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
                 {
                     if (familia.GetId() == (int)drfp[0])
                     {
-                        Patente p = new Patente((int)drfp[2], (string)drfp[3], (int)drfp[0]);
+                        Patente p = new Patente((int)drfp[2], ControladorEncriptacion.Decrypt((string)drfp[3]), (int)drfp[0]);
                         patentes.Add(p);
                     }
                 }
@@ -63,7 +63,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             dtpat = dataQueryPatentes.getList(SP.LISTAR_TODAS_PATENTES, null);
             foreach (DataRow drpat in dtpat.Rows)
             {
-                Patente patente = new Patente((int)drpat[0], (string)drpat[1]);
+                Patente patente = new Patente((int)drpat[0], ControladorEncriptacion.Decrypt((string)drpat[1]));
                 patentes.Add(patente);
             }
             checkedListPatentes.DataSource = patentes;
@@ -197,6 +197,16 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnSalirModif_Click(object sender, EventArgs e)
         {
             this.Close();
         }

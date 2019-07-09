@@ -1,4 +1,5 @@
-﻿using Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos;
+﻿using Diploma_HerminiaMarske_Noche_UAI_Lomas.Constantes;
+using Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -35,6 +36,9 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
             try
             {
                 dataQuery.sqlExecute(altaAvion, pms);
+                BitacoraRow bitacora = new BitacoraRow(DateTime.UtcNow, ConstantesBitacora.CRITICIDAD_BAJA, ConstantesBitacora.AVION_CREADO, new Usuario());
+                ControladorBitacora.grabarRegistro(bitacora);
+
                 return rm.GetString(AIRPLANE_CREATED.ToLower());
             }
             catch
@@ -64,6 +68,10 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
             try
             {
                 dataQuery.sqlExecute(modificarAvion, pms);
+
+                BitacoraRow bitacora = new BitacoraRow(DateTime.UtcNow, ConstantesBitacora.CRITICIDAD_MEDIA, ConstantesBitacora.AVION_MODIFICADO, new Usuario());
+                ControladorBitacora.grabarRegistro(bitacora);
+
                 return rm.GetString(AIRPLANE_MODIFIED.ToLower());
             }
             catch
@@ -85,6 +93,10 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
             try
             {
                 dataQuery.sqlExecute(borrarAvion, pms);
+
+                BitacoraRow bitacora = new BitacoraRow(DateTime.UtcNow, ConstantesBitacora.CRITICIDAD_ALTA, ConstantesBitacora.AVION_BORRADO, new Usuario());
+                ControladorBitacora.grabarRegistro(bitacora);
+
                 return rm.GetString(AIRPLANE_DELETED.ToLower());
             }
             catch

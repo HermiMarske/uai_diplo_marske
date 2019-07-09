@@ -1,4 +1,5 @@
-﻿using Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos;
+﻿using Diploma_HerminiaMarske_Noche_UAI_Lomas.Constantes;
+using Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -150,6 +151,10 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
             try
             {
                 dataQuery.sqlExecute(borrarActividad, pms);
+
+                BitacoraRow bitacora = new BitacoraRow(DateTime.UtcNow, ConstantesBitacora.CRITICIDAD_ALTA, ConstantesBitacora.BAJA_ACTIVIDAD, new Usuario());
+                ControladorBitacora.grabarRegistro(bitacora);
+
                 return ACTIVIDAD_BORRADA;
             }
             catch
@@ -184,6 +189,10 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
             try
             {
                 dataQuery.sqlExecute(alta, pms);
+
+                BitacoraRow bitacora = new BitacoraRow(DateTime.UtcNow, ConstantesBitacora.CRITICIDAD_BAJA, ConstantesBitacora.ALTA_ACTIVIDAD, new Usuario());
+                ControladorBitacora.grabarRegistro(bitacora);
+
                 return ACTIVIDAD_CREADA;
             }
             catch

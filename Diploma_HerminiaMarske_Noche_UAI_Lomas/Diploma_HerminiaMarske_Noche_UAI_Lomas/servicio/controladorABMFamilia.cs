@@ -27,16 +27,15 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
             else
             {
 
-            const string altaFam = "INSERT INTO Familia (descripcion, dvh)" +
-                    " VALUES (@descripcion, @dvh);" +
+            const string altaFam = "INSERT INTO Familia (descripcion)" +
+                    " VALUES (@descripcion);" +
                     " SELECT SCOPE_IDENTITY();";
             const string insertarFamPat = "INSERT INTO Familia_Patente (familiaFK, patenteFK, dvh) VALUES {0}";
 
-            SqlParameter[] pms = new SqlParameter[2];
+            SqlParameter[] pms = new SqlParameter[1];
             pms[0] = new SqlParameter("@descripcion", SqlDbType.VarChar);
-            pms[0].Value = familia.GetDescripcion();
-            pms[1] = new SqlParameter("@dvh", SqlDbType.Int);
-            pms[1].Value = ControladorDigitosVerificadores.calcularDVH(familia.GetDescripcion());
+            pms[0].Value =  ControladorEncriptacion.Encrypt(familia.GetDescripcion());
+       
 
             DataTable dt = dataQuery.sqlExecute(altaFam, pms);
             int familiaCreada = Decimal.ToInt32((decimal)dt.Rows[0][0]);
@@ -44,12 +43,24 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
             string valuesPatentes = "";
             foreach (Patente pat in familia.GetPatentes())
             {
+
+                    int dvh = ControladorDigitosVerificadores.calcularDVH(familiaCreada.ToString() + pat.GetId().ToString());
+
                 valuesPatentes += (!string.IsNullOrEmpty(valuesPatentes) ? "," : "");
                 valuesPatentes += new StringBuilder("(").Append(familiaCreada + ",")
-                    .Append(pat.GetId() + ",").Append(123).Append(")").ToString();
+                    .Append(pat.GetId() + ",").Append(dvh).Append(")").ToString();
             }
 
             dataQuery.sqlUpsert(string.Format(insertarFamPat, valuesPatentes), null);
+
+                ControladorDigitosVerificadores.calcularDVV(ConstantesDDVV.TABLA_FAMILIA_PATENTE);
+
+                //BitacoraRow rowBitacora = new BitacoraRow()
+                //ControladorBitacora.grabarRegistro()
+
+                BitacoraRow bitacora = new BitacoraRow(DateTime.UtcNow, ConstantesBitacora.CRITICIDAD_MEDIA, ConstantesBitacora.ALTA_FAMILIA, new Usuario());
+                ControladorBitacora.grabarRegistro(bitacora);
+
                 return FAMILIA_CREADA;
             }
 
@@ -59,53 +70,70 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
         public static string modificarFam(Familia familia)
         {
 
-            DataConnection.DataConnection dataQuery = new DataConnection.DataConnection();
-
-            DataConnection.DataConnection dataQueryBP = new DataConnection.DataConnection();
-            if (string.IsNullOrEmpty(familia.GetDescripcion()))
+            if (familia.GetDescripcion().Equals(ConstantesFamilias.ADMIN_ACTIVIDADES) ||
+               familia.GetDescripcion().Equals(ConstantesFamilias.ADMIN_CLIENTES) ||
+               familia.GetDescripcion().Equals(ConstantesFamilias.ADMIN_EMPLEADOS) ||
+               familia.GetDescripcion().Equals(ConstantesFamilias.ADMIN_RECURSOS) ||
+               familia.GetDescripcion().Equals(ConstantesFamilias.ADMIN_SEGURIDAD) ||
+               familia.GetDescripcion().Equals(ConstantesFamilias.ADMIN_USUARIOS))
             {
-                return MISSING_DATA;
+                return "No es posible modificar una familia del sistema.";
             }
             else
             {
-                const string modifFam = "UPDATE Familia SET descripcion = @descNueva, dvh = @dvh WHERE idFamilia = @idFamilia";
-                const string borrarPat = "DELETE FROM Familia_Patente WHERE familiaFK = @idFamilia";
-                const string insertarFamPat = "INSERT INTO Familia_Patente (familiaFK, patenteFK, dvh) VALUES {0}";
 
-                SqlParameter[] pms = new SqlParameter[3];
-                pms[0] = new SqlParameter("@descNueva", SqlDbType.VarChar);
-                pms[0].Value = familia.GetDescripcion();
-                pms[1] = new SqlParameter("@dvh", SqlDbType.Int);
-                pms[1].Value = ControladorDigitosVerificadores.calcularDVH(familia.GetDescripcion());
-                pms[2] = new SqlParameter("@idFamilia", SqlDbType.Int);
-                pms[2].Value = familia.GetId();
+                DataConnection.DataConnection dataQuery = new DataConnection.DataConnection();
 
-                dataQuery.sqlUpsert(modifFam, pms);
-
-                SqlParameter[] pmsBP = new SqlParameter[1];
-                pmsBP[0] = new SqlParameter("@idFamilia", SqlDbType.Int);
-                pmsBP[0].Value = familia.GetId();
-
-                dataQuery.sqlUpsert(borrarPat, pmsBP);
-
-                string valuesPatentes = "";
-                foreach (Patente pat in familia.GetPatentes())
+                DataConnection.DataConnection dataQueryBP = new DataConnection.DataConnection();
+                if (string.IsNullOrEmpty(familia.GetDescripcion()))
                 {
-                    string famPatDVV = pat.GetId().ToString() + familia.GetId().ToString();
-                    int DVV = ControladorDigitosVerificadores.calcularDVH(famPatDVV);
-
-                    valuesPatentes += (!string.IsNullOrEmpty(valuesPatentes) ? "," : "");
-                    valuesPatentes += new StringBuilder("(").Append(familia.GetId() + ",")
-                        .Append(pat.GetId() + ",").Append(DVV).Append(")").ToString();
+                    return MISSING_DATA;
                 }
+                else
+                {
+                    const string modifFam = "UPDATE Familia SET descripcion = @descNueva, dvh = @dvh WHERE idFamilia = @idFamilia";
+                    const string borrarPat = "DELETE FROM Familia_Patente WHERE familiaFK = @idFamilia";
+                    const string insertarFamPat = "INSERT INTO Familia_Patente (familiaFK, patenteFK, dvh) VALUES {0}";
 
-                dataQuery.sqlUpsert(string.Format(insertarFamPat, valuesPatentes), null);
+                    SqlParameter[] pms = new SqlParameter[3];
+                    pms[0] = new SqlParameter("@descNueva", SqlDbType.VarChar);
+                    pms[0].Value = ControladorEncriptacion.Encrypt(familia.GetDescripcion());
+                    pms[1] = new SqlParameter("@dvh", SqlDbType.Int);
+                    pms[1].Value = ControladorDigitosVerificadores.calcularDVH(familia.GetDescripcion());
+                    pms[2] = new SqlParameter("@idFamilia", SqlDbType.Int);
+                    pms[2].Value = familia.GetId();
+
+                    dataQuery.sqlUpsert(modifFam, pms);
+
+                    SqlParameter[] pmsBP = new SqlParameter[1];
+                    pmsBP[0] = new SqlParameter("@idFamilia", SqlDbType.Int);
+                    pmsBP[0].Value = familia.GetId();
+
+                    dataQuery.sqlUpsert(borrarPat, pmsBP);
+
+                    string valuesPatentes = "";
+                    foreach (Patente pat in familia.GetPatentes())
+                    {
+                        string famPatDVV = pat.GetId().ToString() + familia.GetId().ToString();
+                        int DVV = ControladorDigitosVerificadores.calcularDVH(famPatDVV);
+
+                        valuesPatentes += (!string.IsNullOrEmpty(valuesPatentes) ? "," : "");
+                        valuesPatentes += new StringBuilder("(").Append(familia.GetId() + ",")
+                            .Append(pat.GetId() + ",").Append(DVV).Append(")").ToString();
+                    }
+
+                    dataQuery.sqlUpsert(string.Format(insertarFamPat, valuesPatentes), null);
+                    ControladorDigitosVerificadores.calcularDVV(ConstantesDDVV.TABLA_FAMILIA_PATENTE);
+
+                    BitacoraRow bitacora = new BitacoraRow(DateTime.UtcNow, ConstantesBitacora.CRITICIDAD_ALTA, ConstantesBitacora.MODIFICAR_FAMILIA, new Usuario());
+                    ControladorBitacora.grabarRegistro(bitacora);
+
+                    return FAMILIA_MODIFICADA;
 
 
-                return FAMILIA_MODIFICADA;
-
-
+                }
             }
+
 
         }
 
@@ -133,6 +161,10 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
 
 
                     dataQuery.sqlUpsert(bajaFam, pms);
+
+                    BitacoraRow bitacora = new BitacoraRow(DateTime.UtcNow, ConstantesBitacora.CRITICIDAD_ALTA, ConstantesBitacora.BAJA_FAMILIA, new Usuario());
+                    ControladorBitacora.grabarRegistro(bitacora);
+
                     return "Familia " + familia.GetDescripcion() + " borrada con exito.";
              
                 } catch

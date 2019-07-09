@@ -196,6 +196,12 @@
     <Compile Include="servicio\ControladorPermisos.cs" />
     <Compile Include="servicio\ControladorEncriptacion.cs" />
     <Compile Include="servicio\ControladorUsuario.cs" />
+    <Compile Include="tests\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="tests\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="forms\altaActividad.en.resx">
       <DependentUpon>altaActividad.cs</DependentUpon>
     </EmbeddedResource>
@@ -295,6 +301,9 @@
     <EmbeddedResource Include="Properties\strings.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>strings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="tests\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\DataSources\Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos.Telefono.datasource" />
     <None Include="Properties\Settings.settings">

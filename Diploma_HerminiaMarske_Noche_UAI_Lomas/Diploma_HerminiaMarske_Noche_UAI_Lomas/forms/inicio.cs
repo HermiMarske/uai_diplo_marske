@@ -11,6 +11,7 @@ using Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio;
 using System.Globalization;
 using System.Threading;
 using Diploma_HerminiaMarske_Noche_UAI_Lomas.Properties;
+using Diploma_HerminiaMarske_Noche_UAI_Lomas.Constantes;
 
 namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
 {
@@ -45,7 +46,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
         visualizarActividad visualizarActividad = new visualizarActividad();
         CustomMessageBox messageBox = new CustomMessageBox();
 
-        private Usuario usuarioLogueado;
+        public static Usuario usuarioLogueado;
 
         DataConnection.DataConnection dataConnection = new DataConnection.DataConnection();
 
@@ -191,6 +192,10 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
                         {
                             messageBox.Show(strings.client_deleted);
                         }
+
+                        BitacoraRow bitacora = new BitacoraRow(DateTime.UtcNow, ConstantesBitacora.CRITICIDAD_ALTA, ConstantesBitacora.CLIENTE_BORRADO, new Usuario());
+                        ControladorBitacora.grabarRegistro(bitacora);
+
                     }
                     catch (Exception ex)
                     {
@@ -202,7 +207,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
 
         /** FIN SOLAPA CLIENTES **/
 
-        private bool hasPermission(string permission) => usuarioLogueado.GetPatentes().Where(p => !p.GetNegado()).ToList().Exists(p => p.GetDescripcion().Equals(permission));
+        private bool hasPermission(string permission) => usuarioLogueado.GetPatentes().Where(p => !p.GetNegado()).ToList().Exists(p => p.GetDescripcion().Equals(ControladorEncriptacion.Encrypt(permission)));
 
 
         private void formInicio_Load(object sender, EventArgs e)

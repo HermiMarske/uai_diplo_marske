@@ -9,6 +9,8 @@ using ConstantesData;
 using System.Text.RegularExpressions;
 using Diploma_HerminiaMarske_Noche_UAI_Lomas.Properties;
 using System.Linq;
+using Diploma_HerminiaMarske_Noche_UAI_Lomas.Constantes;
+using Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio;
 
 namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
 {
@@ -502,6 +504,9 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
 
                 dataConnection.databaseModifyData(pmsDomicilio, SP.ALTA_DOMICILIO);
             }
+
+            BitacoraRow bitacora = new BitacoraRow(DateTime.UtcNow, ConstantesBitacora.CRITICIDAD_MEDIA, ConstantesBitacora.CLIENTE_MODIFICADO, new Usuario());
+            ControladorBitacora.grabarRegistro(bitacora);
 
             new CustomMessageBox().Show(strings.client_modified);
             Close();

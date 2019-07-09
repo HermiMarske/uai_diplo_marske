@@ -18,8 +18,12 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
 
         public static void grabarRegistro(BitacoraRow row)
         {
+            Usuario usuario = formInicio.usuarioLogueado;
+
             DataConnection.DataConnection dataQuery = new DataConnection.DataConnection();
             const string altaRegistro = "INSERT INTO Bitacora (timestamp, criticidad, descripcion, FK_Usuario, DVH) values (@timestamp, @criticidad, @descripcion, @idUsuario, @dvh)";
+
+            string descripcionEncriptada = ControladorEncriptacion.Encrypt(row.GetDescripcion());
 
             SqlParameter[] pms = new SqlParameter[5];
             pms[0] = new SqlParameter("@timestamp", SqlDbType.DateTime);
@@ -27,9 +31,9 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
             pms[1] = new SqlParameter("@criticidad", SqlDbType.VarChar);
             pms[1].Value = row.GetCriticidad();
             pms[2] = new SqlParameter("@descripcion", SqlDbType.VarChar);
-            pms[2].Value = row.GetDescripcion();
+            pms[2].Value = descripcionEncriptada;
             pms[3] = new SqlParameter("@idUsuario", SqlDbType.Int);
-            pms[3].Value = row.GetUsuario().GetIdUsuario();
+            pms[3].Value = usuario != null ? usuario.GetIdUsuario() : row.GetUsuario().GetIdUsuario();
             pms[4] = new SqlParameter("@dvh", SqlDbType.Int);
             pms[4].Value = ControladorDigitosVerificadores.calcularDVH(row.GetDescripcion());
 
@@ -48,8 +52,10 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
                 dt = dataQuery.sqlExecute(getBitacora, null);
                 foreach (DataRow dr in dt.Rows)
                 {
-                    Usuario usuario = new Usuario((int)dr[4], (string)dr[5]);
-                    BitacoraRow bRow = new BitacoraRow((int)dr[0], (DateTime)dr[1], (string)dr[2], (string)dr[3], usuario);
+                    string descripcionDesencriptada = ControladorEncriptacion.Decrypt((string)dr[3]);
+
+                    Usuario usuario = new Usuario((int)dr[4], ControladorEncriptacion.Decrypt((string)dr[5]));
+                    BitacoraRow bRow = new BitacoraRow((int)dr[0], (DateTime)dr[1], (string)dr[2], descripcionDesencriptada, usuario);
 
                     bitacoraList.Add(bRow);
                 }
@@ -74,7 +80,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
 
             if(!String.IsNullOrEmpty(nombreUsuario))
             {
-                bitacoraFiltrada += " AND u.usuario LIKE '" + nombreUsuario + "'";
+                bitacoraFiltrada += " AND u.usuario LIKE '" + ControladorEncriptacion.Decrypt(nombreUsuario) + "'";
             }
             if (!String.IsNullOrEmpty(criticidad))
             {
@@ -92,8 +98,10 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
                 dt = dataQuery.sqlExecute(bitacoraFiltrada, null);
                 foreach (DataRow dr in dt.Rows)
                 {
+                    string descripcionDesencriptada = ControladorEncriptacion.Decrypt((string)dr[3]);
+
                     Usuario usuario = new Usuario((int)dr[4], (string)dr[5]);
-                    BitacoraRow bRow = new BitacoraRow((int)dr[0], (DateTime)dr[1], (string)dr[2], (string)dr[3], usuario);
+                    BitacoraRow bRow = new BitacoraRow((int)dr[0], (DateTime)dr[1], (string)dr[2], descripcionDesencriptada, usuario);
 
                     bitacoraList.Add(bRow);
                 }

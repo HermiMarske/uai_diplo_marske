@@ -131,7 +131,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
                 {
                     if (f.GetId() == (int)drfp[0])
                     {
-                        Patente p = new Patente((int)drfp[2], (string)drfp[3], (int)drfp[0]);
+                        Patente p = new Patente((int)drfp[2], ControladorEncriptacion.Decrypt((string)drfp[3]), (int)drfp[0]);
                         patenteList.Add(p);
                     }
                 }
@@ -161,7 +161,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             {
 
 
-                Patente patente = new Patente((int)drpat[0], (string)drpat[1]);
+                Patente patente = new Patente((int)drpat[0], ControladorEncriptacion.Decrypt((string)drpat[1]));
                 patentes.Add(patente);
                 checkedListPatentes.Items.Add(patente);
                 if((bool)drpat[2])
@@ -459,7 +459,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
 
                 foreach (DataRow dr in ph.Rows)
                 {
-                    Patente p = new Patente((int)dr[0], (string)dr[1]);
+                    Patente p = new Patente((int)dr[0], ControladorEncriptacion.Decrypt((string)dr[1]));
                     patentes.Add(p);
                 }
             }
@@ -468,7 +468,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
 
             foreach (DataRow dr in ph.Rows)
             {
-                Patente p = new Patente((int)dr[0], (string)dr[1]);
+                Patente p = new Patente((int)dr[0], ControladorEncriptacion.Decrypt((string)dr[1]));
                 patentes2.Add(p);
             }
 

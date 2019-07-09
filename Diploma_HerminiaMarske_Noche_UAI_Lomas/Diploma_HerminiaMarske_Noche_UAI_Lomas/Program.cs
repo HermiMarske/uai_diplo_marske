@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Diploma_HerminiaMarske_Noche_UAI_Lomas.forms;
+using Diploma_HerminiaMarske_Noche_UAI_Lomas.tests;
 
 namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
 {
@@ -18,6 +19,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new formInicio());
+            //Application.Run(new Form1());
             Application.Run(new logIn());
         }
     }
