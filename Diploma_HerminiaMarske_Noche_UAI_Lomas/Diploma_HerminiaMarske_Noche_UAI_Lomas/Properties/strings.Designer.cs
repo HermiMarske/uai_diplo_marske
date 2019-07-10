@@ -106,6 +106,24 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Respaldo en proceso, por favor espere....
+        /// </summary>
+        internal static string backup_in_process {
+            get {
+                return ResourceManager.GetString("backup_in_process", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a El respaldo de base de datos se realizó éxitosamente.
+        /// </summary>
+        internal static string backup_is_ready {
+            get {
+                return ResourceManager.GetString("backup_is_ready", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Cancelar.
         /// </summary>
         internal static string cancel {
@@ -165,6 +183,15 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.Properties {
         internal static string confirm_logout {
             get {
                 return ResourceManager.GetString("confirm_logout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Hubo un error al validar el backup seleccionado.
+        /// </summary>
+        internal static string couldn_verify_backup {
+            get {
+                return ResourceManager.GetString("couldn_verify_backup", resourceCulture);
             }
         }
         
@@ -313,6 +340,24 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a No hay conexión a la base de datos.
+        /// </summary>
+        internal static string no_connection_database {
+            get {
+                return ResourceManager.GetString("no_connection_database", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a No seleccionó ningún archivo.
+        /// </summary>
+        internal static string no_file_selected {
+            get {
+                return ResourceManager.GetString("no_file_selected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a La persona no tiene mails..
         /// </summary>
         internal static string no_mails {
@@ -336,6 +381,15 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.Properties {
         internal static string no_profiles_nor_roles {
             get {
                 return ResourceManager.GetString("no_profiles_nor_roles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a La extensión de archivo seleccionado no es válida.
+        /// </summary>
+        internal static string no_valid_extension {
+            get {
+                return ResourceManager.GetString("no_valid_extension", resourceCulture);
             }
         }
         
@@ -408,6 +462,24 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.Properties {
         internal static string question {
             get {
                 return ResourceManager.GetString("question", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Recuperación en proceso, por favor espere....
+        /// </summary>
+        internal static string restore_in_process {
+            get {
+                return ResourceManager.GetString("restore_in_process", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a La restauración de base de datos se realizó éxitosamente.
+        /// </summary>
+        internal static string restore_is_ready {
+            get {
+                return ResourceManager.GetString("restore_is_ready", resourceCulture);
             }
         }
         

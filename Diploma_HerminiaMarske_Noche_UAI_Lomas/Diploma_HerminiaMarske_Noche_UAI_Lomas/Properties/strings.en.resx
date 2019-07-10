@@ -281,4 +281,28 @@ Please contact an administrator.</value>
   <data name="confirm_logout" xml:space="preserve">
     <value>Logout from system?</value>
   </data>
+  <data name="backup_in_process" xml:space="preserve">
+    <value>Backup in process, please wait...</value>
+  </data>
+  <data name="restore_in_process" xml:space="preserve">
+    <value>Restore in process, please wait...</value>
+  </data>
+  <data name="couldn_verify_backup" xml:space="preserve">
+    <value>There was an error while validating the selected backup</value>
+  </data>
+  <data name="no_connection_database" xml:space="preserve">
+    <value>There is no connection to the database</value>
+  </data>
+  <data name="no_file_selected" xml:space="preserve">
+    <value>No file was selected</value>
+  </data>
+  <data name="no_valid_extension" xml:space="preserve">
+    <value>The extension for the selected file is invalid</value>
+  </data>
+  <data name="backup_is_ready" xml:space="preserve">
+    <value>The database backup was completed successfully</value>
+  </data>
+  <data name="restore_is_ready" xml:space="preserve">
+    <value>The database restore was completed successfully</value>
+  </data>
 </root>

@@ -281,4 +281,28 @@ Comuníquese con un administrador.</value>
   <data name="confirm_logout" xml:space="preserve">
     <value>¿Deseas cerrar la sesión?</value>
   </data>
+  <data name="backup_in_process" xml:space="preserve">
+    <value>Respaldo en proceso, por favor espere...</value>
+  </data>
+  <data name="restore_in_process" xml:space="preserve">
+    <value>Recuperación en proceso, por favor espere...</value>
+  </data>
+  <data name="couldn_verify_backup" xml:space="preserve">
+    <value>Hubo un error al validar el backup seleccionado</value>
+  </data>
+  <data name="no_connection_database" xml:space="preserve">
+    <value>No hay conexión a la base de datos</value>
+  </data>
+  <data name="no_file_selected" xml:space="preserve">
+    <value>No seleccionó ningún archivo</value>
+  </data>
+  <data name="no_valid_extension" xml:space="preserve">
+    <value>La extensión de archivo seleccionado no es válida</value>
+  </data>
+  <data name="backup_is_ready" xml:space="preserve">
+    <value>El respaldo de base de datos se realizó éxitosamente</value>
+  </data>
+  <data name="restore_is_ready" xml:space="preserve">
+    <value>La restauración de base de datos se realizó éxitosamente</value>
+  </data>
 </root>
