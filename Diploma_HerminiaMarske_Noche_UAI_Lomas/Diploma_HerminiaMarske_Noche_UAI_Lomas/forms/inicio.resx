@@ -122,55 +122,55 @@
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="clienteToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 26</value>
+    <value>147, 26</value>
   </data>
   <data name="clienteToolStripMenuItem.Text" xml:space="preserve">
     <value>Cliente</value>
   </data>
   <data name="usuarioToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 26</value>
+    <value>147, 26</value>
   </data>
   <data name="usuarioToolStripMenuItem.Text" xml:space="preserve">
     <value>Usuario</value>
   </data>
   <data name="pilotoToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 26</value>
+    <value>147, 26</value>
   </data>
   <data name="pilotoToolStripMenuItem.Text" xml:space="preserve">
     <value>Piloto</value>
   </data>
   <data name="avionToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 26</value>
+    <value>147, 26</value>
   </data>
   <data name="avionToolStripMenuItem.Text" xml:space="preserve">
     <value>Avión</value>
   </data>
   <data name="actividadToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 26</value>
+    <value>147, 26</value>
   </data>
   <data name="actividadToolStripMenuItem.Text" xml:space="preserve">
     <value>Actividad</value>
   </data>
   <data name="nuevoToolStripItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 26</value>
+    <value>169, 26</value>
   </data>
   <data name="nuevoToolStripItem.Text" xml:space="preserve">
     <value>Nuevo</value>
   </data>
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>213, 6</value>
+    <value>166, 6</value>
   </data>
   <data name="cerrarSesionToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 26</value>
+    <value>169, 26</value>
   </data>
   <data name="cerrarSesionToolStripMenuItem.Text" xml:space="preserve">
     <value>Cerrar sesión</value>
   </data>
   <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>213, 6</value>
+    <value>166, 6</value>
   </data>
   <data name="salirToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 26</value>
+    <value>169, 26</value>
   </data>
   <data name="salirToolStripMenuItem.Text" xml:space="preserve">
     <value>Salir</value>
@@ -182,34 +182,40 @@
     <value>Gestión</value>
   </data>
   <data name="familiasYPermisosToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>233, 26</value>
+    <value>294, 26</value>
   </data>
   <data name="familiasYPermisosToolStripMenuItem.Text" xml:space="preserve">
     <value>Familias y patentes</value>
   </data>
   <data name="bitacoraToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>233, 26</value>
+    <value>294, 26</value>
   </data>
   <data name="bitacoraToolStripMenuItem.Text" xml:space="preserve">
     <value>Bitacora</value>
   </data>
   <data name="toolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>230, 6</value>
+    <value>291, 6</value>
   </data>
   <data name="passwordToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>233, 26</value>
+    <value>294, 26</value>
   </data>
   <data name="passwordToolStripMenuItem.Text" xml:space="preserve">
     <value>Cambio de contraseña</value>
   </data>
   <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>230, 6</value>
+    <value>291, 6</value>
   </data>
   <data name="respaldosToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>233, 26</value>
+    <value>294, 26</value>
   </data>
   <data name="respaldosToolStripMenuItem.Text" xml:space="preserve">
     <value>Respaldos</value>
+  </data>
+  <data name="recalcularDigitosVerificadoresToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>294, 26</value>
+  </data>
+  <data name="recalcularDigitosVerificadoresToolStripMenuItem.Text" xml:space="preserve">
+    <value>Recalcular Digitos Verificadores</value>
   </data>
   <data name="seguridadToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>89, 24</value>
@@ -221,7 +227,7 @@
     <value>121, 28</value>
   </data>
   <data name="cambiarIdiomaToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 26</value>
+    <value>191, 26</value>
   </data>
   <data name="cambiarIdiomaToolStripMenuItem.Text" xml:space="preserve">
     <value>Cambiar idioma</value>
@@ -1865,6 +1871,12 @@
   </data>
   <data name="&gt;&gt;dataGridViewTextBoxColumn15.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;recalcularDigitosVerificadoresToolStripMenuItem.Name" xml:space="preserve">
+    <value>recalcularDigitosVerificadoresToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;recalcularDigitosVerificadoresToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>formInicio</value>

@@ -531,5 +531,10 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
                 Close();
             }
         }
+
+        private void recalcularDigitosVerificadoresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ControladorDigitosVerificadores.recalcularDV();
+        }
     }
 }

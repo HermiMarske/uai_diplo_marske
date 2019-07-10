@@ -116,6 +116,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             this.btnAddActividad = new System.Windows.Forms.Button();
             this.btnEliminarActividad = new System.Windows.Forms.Button();
             this.btnVerActividad = new System.Windows.Forms.Button();
+            this.recalcularDigitosVerificadoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabUsuarios.SuspendLayout();
@@ -228,7 +229,8 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             this.toolStripMenuItem2,
             this.passwordToolStripMenuItem,
             this.toolStripSeparator3,
-            this.respaldosToolStripMenuItem});
+            this.respaldosToolStripMenuItem,
+            this.recalcularDigitosVerificadoresToolStripMenuItem});
             this.seguridadToolStripMenuItem.Name = "seguridadToolStripMenuItem";
             resources.ApplyResources(this.seguridadToolStripMenuItem, "seguridadToolStripMenuItem");
             // 
@@ -765,6 +767,12 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             this.btnVerActividad.UseVisualStyleBackColor = true;
             this.btnVerActividad.Click += new System.EventHandler(this.btnVerActividad_Click);
             // 
+            // recalcularDigitosVerificadoresToolStripMenuItem
+            // 
+            this.recalcularDigitosVerificadoresToolStripMenuItem.Name = "recalcularDigitosVerificadoresToolStripMenuItem";
+            resources.ApplyResources(this.recalcularDigitosVerificadoresToolStripMenuItem, "recalcularDigitosVerificadoresToolStripMenuItem");
+            this.recalcularDigitosVerificadoresToolStripMenuItem.Click += new System.EventHandler(this.recalcularDigitosVerificadoresToolStripMenuItem_Click);
+            // 
             // formInicio
             // 
             resources.ApplyResources(this, "$this");
@@ -900,6 +908,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
         private ToolStripMenuItem passwordToolStripMenuItem;
         private ToolStripSeparator toolStripSeparator3;
         private ToolStripMenuItem respaldosToolStripMenuItem;
+        private ToolStripMenuItem recalcularDigitosVerificadoresToolStripMenuItem;
     }
 }
 
