@@ -10,6 +10,8 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
     {
         public logIn()
         {
+            ProgressBar progressBar = new ProgressBar(true);
+            progressBar.ShowValidateIntegrity();
             InitializeComponent();
         }
 

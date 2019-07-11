@@ -305,4 +305,22 @@ Comuníquese con un administrador.</value>
   <data name="restore_is_ready" xml:space="preserve">
     <value>La restauración de base de datos se realizó éxitosamente</value>
   </data>
+  <data name="backup_extensions" xml:space="preserve">
+    <value>Respaldo de base de datos|*.bak</value>
+  </data>
+  <data name="user_unlocked" xml:space="preserve">
+    <value>El usuario ha sido desbloqueado</value>
+  </data>
+  <data name="recalculate_in_progress" xml:space="preserve">
+    <value>Recalculando dígitos verificadores</value>
+  </data>
+  <data name="recalculation_success" xml:space="preserve">
+    <value>Recálculo completado</value>
+  </data>
+  <data name="validation_finished" xml:space="preserve">
+    <value>Validación terminada</value>
+  </data>
+  <data name="validation_in_progress" xml:space="preserve">
+    <value>Validación en progreso</value>
+  </data>
 </root>

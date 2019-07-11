@@ -50,6 +50,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             this.passwordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.respaldosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.recalcularDigitosVerificadoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.opcionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cambiarIdiomaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
@@ -116,7 +117,6 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             this.btnAddActividad = new System.Windows.Forms.Button();
             this.btnEliminarActividad = new System.Windows.Forms.Button();
             this.btnVerActividad = new System.Windows.Forms.Button();
-            this.recalcularDigitosVerificadoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabUsuarios.SuspendLayout();
@@ -208,7 +208,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             // 
             this.cerrarSesionToolStripMenuItem.Name = "cerrarSesionToolStripMenuItem";
             resources.ApplyResources(this.cerrarSesionToolStripMenuItem, "cerrarSesionToolStripMenuItem");
-            this.cerrarSesionToolStripMenuItem.Click += new System.EventHandler(this.cerrarSesiónToolStripMenuItem_Click);
+            this.cerrarSesionToolStripMenuItem.Click += new System.EventHandler(this.cerrarSesionToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
@@ -265,6 +265,13 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             // 
             this.respaldosToolStripMenuItem.Name = "respaldosToolStripMenuItem";
             resources.ApplyResources(this.respaldosToolStripMenuItem, "respaldosToolStripMenuItem");
+            this.respaldosToolStripMenuItem.Click += new System.EventHandler(this.respaldosToolStripMenuItem_Click);
+            // 
+            // recalcularDigitosVerificadoresToolStripMenuItem
+            // 
+            this.recalcularDigitosVerificadoresToolStripMenuItem.Name = "recalcularDigitosVerificadoresToolStripMenuItem";
+            resources.ApplyResources(this.recalcularDigitosVerificadoresToolStripMenuItem, "recalcularDigitosVerificadoresToolStripMenuItem");
+            this.recalcularDigitosVerificadoresToolStripMenuItem.Click += new System.EventHandler(this.recalcularDigitosVerificadoresToolStripMenuItem_Click);
             // 
             // opcionesToolStripMenuItem
             // 
@@ -452,38 +459,45 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             this.Desbloquear});
             resources.ApplyResources(this.datagridUsuarios, "datagridUsuarios");
             this.datagridUsuarios.Name = "datagridUsuarios";
-            this.datagridUsuarios.ReadOnly = true;
             this.datagridUsuarios.RowTemplate.Height = 24;
+            this.datagridUsuarios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagridUsuarios_CellContentClick);
             // 
             // dataGridViewTextBoxColumn1
             // 
             resources.ApplyResources(this.dataGridViewTextBoxColumn1, "dataGridViewTextBoxColumn1");
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // usuario
             // 
             resources.ApplyResources(this.usuario, "usuario");
             this.usuario.Name = "usuario";
             this.usuario.ReadOnly = true;
+            this.usuario.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // dataGridViewTextBoxColumn4
             // 
             resources.ApplyResources(this.dataGridViewTextBoxColumn4, "dataGridViewTextBoxColumn4");
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // dataGridViewTextBoxColumn5
             // 
             resources.ApplyResources(this.dataGridViewTextBoxColumn5, "dataGridViewTextBoxColumn5");
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // Desbloquear
             // 
+            this.Desbloquear.FalseValue = "F";
             resources.ApplyResources(this.Desbloquear, "Desbloquear");
             this.Desbloquear.Name = "Desbloquear";
             this.Desbloquear.ReadOnly = true;
+            this.Desbloquear.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Desbloquear.TrueValue = "T";
             // 
             // btnEliminarUsuario
             // 
@@ -767,12 +781,6 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             this.btnVerActividad.UseVisualStyleBackColor = true;
             this.btnVerActividad.Click += new System.EventHandler(this.btnVerActividad_Click);
             // 
-            // recalcularDigitosVerificadoresToolStripMenuItem
-            // 
-            this.recalcularDigitosVerificadoresToolStripMenuItem.Name = "recalcularDigitosVerificadoresToolStripMenuItem";
-            resources.ApplyResources(this.recalcularDigitosVerificadoresToolStripMenuItem, "recalcularDigitosVerificadoresToolStripMenuItem");
-            this.recalcularDigitosVerificadoresToolStripMenuItem.Click += new System.EventHandler(this.recalcularDigitosVerificadoresToolStripMenuItem_Click);
-            // 
             // formInicio
             // 
             resources.ApplyResources(this, "$this");
@@ -845,10 +853,6 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
         private System.Windows.Forms.Button btnAltaUsuario;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DataGridView datagridUsuarios;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn usuario;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn fkPersona;
         private System.Windows.Forms.DataGridViewTextBoxColumn cuit;
@@ -895,7 +899,6 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
         private System.Windows.Forms.ToolStripMenuItem cambiarIdiomaToolStripMenuItem;
         private System.Windows.Forms.ToolStripComboBox toolStripComboBox1;
-        private DataGridViewCheckBoxColumn Desbloquear;
         private ToolStripMenuItem clienteToolStripMenuItem;
         private ToolStripMenuItem usuarioToolStripMenuItem;
         private ToolStripMenuItem pilotoToolStripMenuItem;
@@ -909,6 +912,11 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
         private ToolStripSeparator toolStripSeparator3;
         private ToolStripMenuItem respaldosToolStripMenuItem;
         private ToolStripMenuItem recalcularDigitosVerificadoresToolStripMenuItem;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn usuario;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private DataGridViewCheckBoxColumn Desbloquear;
     }
 }
 

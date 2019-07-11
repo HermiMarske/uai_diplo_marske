@@ -305,4 +305,22 @@ Please contact an administrator.</value>
   <data name="restore_is_ready" xml:space="preserve">
     <value>The database restore was completed successfully</value>
   </data>
+  <data name="backup_extensions" xml:space="preserve">
+    <value>Database backup|*.bak</value>
+  </data>
+  <data name="user_unlocked" xml:space="preserve">
+    <value>User was unlocked</value>
+  </data>
+  <data name="recalculate_in_progress" xml:space="preserve">
+    <value>Recalculating verifying digits...</value>
+  </data>
+  <data name="recalculation_success" xml:space="preserve">
+    <value>Recalculation completed</value>
+  </data>
+  <data name="validation_finished" xml:space="preserve">
+    <value>Validation finished</value>
+  </data>
+  <data name="validation_in_progress" xml:space="preserve">
+    <value>Validation in progress</value>
+  </data>
 </root>

@@ -106,6 +106,15 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Respaldo de base de datos|*.bak.
+        /// </summary>
+        internal static string backup_extensions {
+            get {
+                return ResourceManager.GetString("backup_extensions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Respaldo en proceso, por favor espere....
         /// </summary>
         internal static string backup_in_process {
@@ -466,6 +475,24 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Recalculando dígitos verificadores.
+        /// </summary>
+        internal static string recalculate_in_progress {
+            get {
+                return ResourceManager.GetString("recalculate_in_progress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Recálculo completado.
+        /// </summary>
+        internal static string recalculation_success {
+            get {
+                return ResourceManager.GetString("recalculation_success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Recuperación en proceso, por favor espere....
         /// </summary>
         internal static string restore_in_process {
@@ -608,6 +635,33 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.Properties {
         internal static string user_not_exists {
             get {
                 return ResourceManager.GetString("user_not_exists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a El usuario ha sido desbloqueado.
+        /// </summary>
+        internal static string user_unlocked {
+            get {
+                return ResourceManager.GetString("user_unlocked", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Validación terminada.
+        /// </summary>
+        internal static string validation_finished {
+            get {
+                return ResourceManager.GetString("validation_finished", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Validación en progreso.
+        /// </summary>
+        internal static string validation_in_progress {
+            get {
+                return ResourceManager.GetString("validation_in_progress", resourceCulture);
             }
         }
         

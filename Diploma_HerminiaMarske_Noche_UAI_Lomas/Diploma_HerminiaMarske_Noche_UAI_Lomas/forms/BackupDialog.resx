@@ -1,0 +1,429 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="&gt;&gt;btnRespaldar.Name" xml:space="preserve">
+    <value>btnRespaldar</value>
+  </data>
+  <data name="&gt;&gt;btnRespaldar.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnRespaldar.Parent" xml:space="preserve">
+    <value>grpRespaldo</value>
+  </data>
+  <data name="&gt;&gt;btnRespaldar.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;btnBuscarRespaldo.Name" xml:space="preserve">
+    <value>btnBuscarRespaldo</value>
+  </data>
+  <data name="&gt;&gt;btnBuscarRespaldo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnBuscarRespaldo.Parent" xml:space="preserve">
+    <value>grpRespaldo</value>
+  </data>
+  <data name="&gt;&gt;btnBuscarRespaldo.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;txtRespaldo.Name" xml:space="preserve">
+    <value>txtRespaldo</value>
+  </data>
+  <data name="&gt;&gt;txtRespaldo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtRespaldo.Parent" xml:space="preserve">
+    <value>grpRespaldo</value>
+  </data>
+  <data name="&gt;&gt;txtRespaldo.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="grpRespaldo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="grpRespaldo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>625, 202</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="grpRespaldo.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="grpRespaldo.Text" xml:space="preserve">
+    <value>Respaldar</value>
+  </data>
+  <data name="&gt;&gt;grpRespaldo.Name" xml:space="preserve">
+    <value>grpRespaldo</value>
+  </data>
+  <data name="&gt;&gt;grpRespaldo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grpRespaldo.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;grpRespaldo.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="btnRespaldar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>254, 137</value>
+  </data>
+  <data name="btnRespaldar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>111, 34</value>
+  </data>
+  <data name="btnRespaldar.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="btnRespaldar.Text" xml:space="preserve">
+    <value>¡Empezar!</value>
+  </data>
+  <data name="&gt;&gt;btnRespaldar.Name" xml:space="preserve">
+    <value>btnRespaldar</value>
+  </data>
+  <data name="&gt;&gt;btnRespaldar.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnRespaldar.Parent" xml:space="preserve">
+    <value>grpRespaldo</value>
+  </data>
+  <data name="&gt;&gt;btnRespaldar.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btnBuscarRespaldo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>485, 75</value>
+  </data>
+  <data name="btnBuscarRespaldo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>84, 34</value>
+  </data>
+  <data name="btnBuscarRespaldo.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="btnBuscarRespaldo.Text" xml:space="preserve">
+    <value>Buscar...</value>
+  </data>
+  <data name="&gt;&gt;btnBuscarRespaldo.Name" xml:space="preserve">
+    <value>btnBuscarRespaldo</value>
+  </data>
+  <data name="&gt;&gt;btnBuscarRespaldo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnBuscarRespaldo.Parent" xml:space="preserve">
+    <value>grpRespaldo</value>
+  </data>
+  <data name="&gt;&gt;btnBuscarRespaldo.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="txtRespaldo.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="txtRespaldo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>59, 77</value>
+  </data>
+  <data name="txtRespaldo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>426, 26</value>
+  </data>
+  <data name="txtRespaldo.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;txtRespaldo.Name" xml:space="preserve">
+    <value>txtRespaldo</value>
+  </data>
+  <data name="&gt;&gt;txtRespaldo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtRespaldo.Parent" xml:space="preserve">
+    <value>grpRespaldo</value>
+  </data>
+  <data name="&gt;&gt;txtRespaldo.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;btnRestaurar.Name" xml:space="preserve">
+    <value>btnRestaurar</value>
+  </data>
+  <data name="&gt;&gt;btnRestaurar.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnRestaurar.Parent" xml:space="preserve">
+    <value>grpRestaurar</value>
+  </data>
+  <data name="&gt;&gt;btnRestaurar.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;btnAbrirBackup.Name" xml:space="preserve">
+    <value>btnAbrirBackup</value>
+  </data>
+  <data name="&gt;&gt;btnAbrirBackup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnAbrirBackup.Parent" xml:space="preserve">
+    <value>grpRestaurar</value>
+  </data>
+  <data name="&gt;&gt;btnAbrirBackup.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;txtRestauracion.Name" xml:space="preserve">
+    <value>txtRestauracion</value>
+  </data>
+  <data name="&gt;&gt;txtRestauracion.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtRestauracion.Parent" xml:space="preserve">
+    <value>grpRestaurar</value>
+  </data>
+  <data name="&gt;&gt;txtRestauracion.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="grpRestaurar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 208</value>
+  </data>
+  <data name="grpRestaurar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>625, 202</value>
+  </data>
+  <data name="grpRestaurar.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="grpRestaurar.Text" xml:space="preserve">
+    <value>Restaurar</value>
+  </data>
+  <data name="&gt;&gt;grpRestaurar.Name" xml:space="preserve">
+    <value>grpRestaurar</value>
+  </data>
+  <data name="&gt;&gt;grpRestaurar.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grpRestaurar.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;grpRestaurar.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="btnRestaurar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnRestaurar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>252, 115</value>
+  </data>
+  <data name="btnRestaurar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>111, 34</value>
+  </data>
+  <data name="btnRestaurar.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="btnRestaurar.Text" xml:space="preserve">
+    <value>¡Empezar!</value>
+  </data>
+  <data name="&gt;&gt;btnRestaurar.Name" xml:space="preserve">
+    <value>btnRestaurar</value>
+  </data>
+  <data name="&gt;&gt;btnRestaurar.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnRestaurar.Parent" xml:space="preserve">
+    <value>grpRestaurar</value>
+  </data>
+  <data name="&gt;&gt;btnRestaurar.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btnAbrirBackup.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnAbrirBackup.Location" type="System.Drawing.Point, System.Drawing">
+    <value>483, 53</value>
+  </data>
+  <data name="btnAbrirBackup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>84, 34</value>
+  </data>
+  <data name="btnAbrirBackup.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="btnAbrirBackup.Text" xml:space="preserve">
+    <value>Buscar...</value>
+  </data>
+  <data name="&gt;&gt;btnAbrirBackup.Name" xml:space="preserve">
+    <value>btnAbrirBackup</value>
+  </data>
+  <data name="&gt;&gt;btnAbrirBackup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnAbrirBackup.Parent" xml:space="preserve">
+    <value>grpRestaurar</value>
+  </data>
+  <data name="&gt;&gt;btnAbrirBackup.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="txtRestauracion.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="txtRestauracion.Location" type="System.Drawing.Point, System.Drawing">
+    <value>57, 55</value>
+  </data>
+  <data name="txtRestauracion.Size" type="System.Drawing.Size, System.Drawing">
+    <value>426, 26</value>
+  </data>
+  <data name="txtRestauracion.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;txtRestauracion.Name" xml:space="preserve">
+    <value>txtRestauracion</value>
+  </data>
+  <data name="&gt;&gt;txtRestauracion.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtRestauracion.Parent" xml:space="preserve">
+    <value>grpRestaurar</value>
+  </data>
+  <data name="&gt;&gt;txtRestauracion.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <metadata name="guardarRespaldo.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>21, 14</value>
+  </metadata>
+  <metadata name="buscarRespaldo.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>205, 17</value>
+  </metadata>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>9, 20</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>625, 410</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Administrador de respaldos</value>
+  </data>
+  <data name="&gt;&gt;guardarRespaldo.Name" xml:space="preserve">
+    <value>guardarRespaldo</value>
+  </data>
+  <data name="&gt;&gt;guardarRespaldo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SaveFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buscarRespaldo.Name" xml:space="preserve">
+    <value>buscarRespaldo</value>
+  </data>
+  <data name="&gt;&gt;buscarRespaldo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.OpenFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>BackupDialog</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+</root>

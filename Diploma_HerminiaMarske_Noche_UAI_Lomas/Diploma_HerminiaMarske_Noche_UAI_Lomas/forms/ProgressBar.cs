@@ -1,7 +1,10 @@
 ﻿using Diploma_HerminiaMarske_Noche_UAI_Lomas.Properties;
+using Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio;
 using Microsoft.SqlServer.Management.Common;
 using Microsoft.SqlServer.Management.Smo;
+using System;
 using System.Drawing;
+using System.Timers;
 using System.Windows.Forms;
 using Timer = System.Timers.Timer;
 
@@ -13,9 +16,17 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
         private Backup backup;
         private Restore restore;
         private Server server;
+        private bool dispatch;
 
         public ProgressBar()
         {
+            InitializeComponent();
+            CheckForIllegalCrossThreadCalls = false;
+        }
+
+        public ProgressBar(bool dispatch)
+        {
+            this.dispatch = dispatch;
             InitializeComponent();
             CheckForIllegalCrossThreadCalls = false;
         }
@@ -89,7 +100,57 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             return ShowDialog();
         }
 
-        private void Timer_Restore(object sender, System.Timers.ElapsedEventArgs e)
+        internal DialogResult ShowRecalculate()
+        {
+            lblMessage.Text = strings.recalculate_in_progress;
+            progBar.Style = ProgressBarStyle.Marquee;
+            timer = new Timer();
+            timer.Elapsed += Timer_Recalculate;
+            timer.AutoReset = false;
+            timer.Interval = 100;
+            timer.Start();
+
+            return ShowDialog();
+        }
+
+        internal DialogResult ShowValidateIntegrity()
+        {
+            lblMessage.Text = strings.validation_in_progress;
+            progBar.Style = ProgressBarStyle.Marquee;
+            timer = new Timer();
+            timer.Elapsed += Timer_ValidateIntegrity;
+            timer.AutoReset = false;
+            timer.Interval = 200;
+            timer.Start();
+
+            return ShowDialog();
+        }
+
+
+
+        private void Timer_Recalculate(object sender, ElapsedEventArgs e)
+        {
+            ControladorDigitosVerificadores.recalcularDV();
+            SetLabel(strings.recalculation_success);
+            SetProgress(100);
+            if (dispatch)
+            {
+                Close();
+            }
+        }
+
+        private void Timer_ValidateIntegrity(object sender, ElapsedEventArgs e)
+        {
+            ControladorDigitosVerificadores.verificarIntegridad();
+            SetLabel(strings.validation_finished);
+            System.Threading.Thread.Sleep(2000);
+            if (dispatch)
+            {
+                Close();
+            }
+        }
+
+        private void Timer_Restore(object sender, ElapsedEventArgs e)
         {
             if (restore.AsyncStatus.ExecutionStatus == ExecutionStatus.Failed)
             {
@@ -105,7 +166,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             }
         }
 
-        private void Timer_Backup(object sender, System.Timers.ElapsedEventArgs e)
+        private void Timer_Backup(object sender, ElapsedEventArgs e)
         {
             if (backup.AsyncStatus.ExecutionStatus == ExecutionStatus.Failed)
             {

@@ -89,7 +89,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             foreach (DataRow dr in dt.Rows)
             {
                 string usuario = ControladorEncriptacion.Decrypt((string)dr[1]);
-                object[] dataRow = { (int)dr[0], usuario, (string)dr[3], (string)dr[4]};
+                object[] dataRow = { (int)dr[0], usuario, (string)dr[3], (string)dr[4], !(bool)dr[5]};
                 datagridUsuarios.Rows.Add(dataRow);
             }
 
@@ -244,6 +244,9 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             Idioma select = toolStripComboBox1.Items.Cast<Idioma>().Where(i => i.GetCodigo().Equals(Thread.CurrentThread.CurrentUICulture.Name)).FirstOrDefault();
             toolStripComboBox1.SelectedItem = select ?? idiomas.Where(i => i.GetCodigo().Equals("es-AR")).First();
             toolStripComboBox1.SelectedIndexChanged += toolStripComboBox1_SelectedIndexChanged;
+
+            ((DataGridViewCheckBoxColumn)datagridUsuarios.Columns[4]).TrueValue = true;
+            ((DataGridViewCheckBoxColumn)datagridUsuarios.Columns[4]).FalseValue = false;
         }
 
         public formInicio()
@@ -289,7 +292,8 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             btnEliminarActividad.Enabled = hasPermission("ADM_ACTIVIDADES_BAJA");
             btnVerActividad.Enabled = hasPermission("ADM_ACTIVIDADES_VISUALIZAR");
 
-
+            respaldosToolStripMenuItem.Enabled = hasPermission("ADM_SEGURIDAD_RESTORE");
+            recalcularDigitosVerificadoresToolStripMenuItem.Enabled = hasPermission("ADM_SEGURIDAD_RECALCULAR_DV");
         }
 
         private void busquedaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -512,18 +516,16 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             {
                 if (Application.MessageLoop)
                 {
-                    // Use this since we are a WinForms app
                     Application.Exit();
                 }
                 else
                 {
-                    // Use this since we are a console app
                     Environment.Exit(0);
                 }
             }
         }
 
-        private void cerrarSesiónToolStripMenuItem_Click(object sender, EventArgs e)
+        private void cerrarSesionToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DialogResult question = messageBox.Show(strings.confirm_logout, MessageBoxButtons.OKCancel);
             if (question == DialogResult.OK)
@@ -534,7 +536,30 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
 
         private void recalcularDigitosVerificadoresToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ControladorDigitosVerificadores.recalcularDV();
+            forms.ProgressBar progressBar = new forms.ProgressBar();
+            progressBar.ShowRecalculate();
+        }
+
+        private void respaldosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BackupDialog backupDialog = new BackupDialog();
+            backupDialog.ShowDialog();
+        }
+
+        private void datagridUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridView view = sender as DataGridView;
+            if (view.SelectedCells.Count > 0)
+            {
+                if (view.SelectedCells[0].ColumnIndex == 4 && (bool)view.SelectedCells[0].Value)
+                {
+                    messageBox.Show(ControladorABMUsuario.desbloquearUsuario((int)view.Rows[view.SelectedCells[0].RowIndex].Cells[0].Value));
+                }
+                else
+                {
+                    view.SelectedCells[0].Value = false;
+                }
+            }
         }
     }
 }

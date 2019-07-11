@@ -22,6 +22,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
         private const string ERROR_MODIFYING_USER = "ERROR_MODIFYING_USER";
         private const string ERROR_DELETING_USER = "ERROR_DELETING_USER";
         private const string USER_DELETED = "USER_DELETED";
+        private const string USER_UNLOCKED = "USER_UNLOCKED";
         private static ResourceManager rm = new ResourceManager(typeof(Properties.strings));
 
         public static string modificarUsuario(Usuario usuario)
@@ -562,7 +563,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
 
                 dataQuery.sqlUpsert(desbloquearUsuario, pms);
 
-                return "USUARIO_DESBLOQUEADO";
+                return rm.GetString(USER_UNLOCKED.ToLower());
             }
             catch
             {

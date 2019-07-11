@@ -12,7 +12,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
 {
     class ControladorDigitosVerificadores
     {
-        public static int calcularDVH(String entrada)
+        public static int calcularDVH(string entrada)
         {
             int salida = 0;
 
@@ -131,7 +131,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
 
             //Tabla Usuario_Patente
 
-            string getUsuarioPatente = "select idUsuarioPatente, patenteFK, usuarioFK, negado from Usuario_Patente";
+            string getUsuarioPatente = "select idUsuarioPatente, patenteFK, usuarioFK, ISNULL(negado, 0) from Usuario_Patente";
             string setNuevoDVHUsuarioPatente = "update Usuario_Patente set dvh = @dvh where idUsuarioPatente = @id";
 
             DataTable dtUsuPat = dataQuery.sqlExecute(getUsuarioPatente, null);
@@ -265,7 +265,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
 
             //Tabla Usuario_Patente
 
-            string getUsuarioPatente = "select idUsuarioPatente, patenteFK, usuarioFK, negado, dvh from Usuario_Patente";
+            string getUsuarioPatente = "select idUsuarioPatente, patenteFK, usuarioFK, ISNULL(negado, 0), dvh from Usuario_Patente";
 
             DataTable dtUsuPat = dataQuery.sqlExecute(getUsuarioPatente, null);
 

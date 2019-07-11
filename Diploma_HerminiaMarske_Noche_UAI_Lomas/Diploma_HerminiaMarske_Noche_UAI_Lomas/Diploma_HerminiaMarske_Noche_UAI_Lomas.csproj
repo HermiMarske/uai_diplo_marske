@@ -143,6 +143,7 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -194,6 +195,12 @@
     </Compile>
     <Compile Include="forms\altaUsuario.Designer.cs">
       <DependentUpon>altaUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\BackupDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\BackupDialog.Designer.cs">
+      <DependentUpon>BackupDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="forms\bitacora.cs">
       <SubType>Form</SubType>
@@ -333,6 +340,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="forms\altaUsuario.resx">
       <DependentUpon>altaUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\BackupDialog.en.resx">
+      <DependentUpon>BackupDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\BackupDialog.resx">
+      <DependentUpon>BackupDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\bitacora.en.resx">
       <DependentUpon>bitacora.cs</DependentUpon>

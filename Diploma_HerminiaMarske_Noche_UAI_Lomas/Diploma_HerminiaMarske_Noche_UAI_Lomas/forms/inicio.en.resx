@@ -247,7 +247,7 @@
     <value>License</value>
   </data>
   <data name="Desbloquear.HeaderText" xml:space="preserve">
-    <value>Is locked?</value>
+    <value>Unlock</value>
   </data>
   <data name="dni.HeaderText" xml:space="preserve">
     <value>DNI</value>
@@ -347,5 +347,11 @@
   </data>
   <data name="usuarioToolStripMenuItem.Text" xml:space="preserve">
     <value>User</value>
+  </data>
+  <data name="recalcularDigitosVerificadoresToolStripMenuItem.Text" xml:space="preserve">
+    <value>Recalculate verifying digits</value>
+  </data>
+  <data name="respaldosToolStripMenuItem.Text" xml:space="preserve">
+    <value>Manage backups</value>
   </data>
 </root>
