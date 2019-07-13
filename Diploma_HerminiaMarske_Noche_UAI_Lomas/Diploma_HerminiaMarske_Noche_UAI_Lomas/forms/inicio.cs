@@ -60,21 +60,21 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             
             DataConnection.DataConnection dataQuery = new DataConnection.DataConnection();
             DataTable dt = new DataTable();
-            dt = dataQuery.getList(SP.LISTAR_CLIENTES, null);
-
-            foreach (DataRow dr in dt.Rows)
+            using (dt = dataQuery.getList(SP.LISTAR_CLIENTES, null))
             {
-                Persona persona = new Persona((int)dr[4], (string)dr[5], (string)dr[6], (string)dr[7], (string)dr[8]);
-                Cliente cliente = new Cliente((int)dr[0], (string)dr[1], (string)dr[2], (string)dr[3], persona);
-                clientes.Add(cliente);
-            }
+                foreach (DataRow dr in dt.Rows)
+                {
+                    Persona persona = new Persona((int)dr[4], (string)dr[5], (string)dr[6], (string)dr[7], (string)dr[8]);
+                    Cliente cliente = new Cliente((int)dr[0], (string)dr[1], (string)dr[2], (string)dr[3], persona);
+                    clientes.Add(cliente);
+                }
 
-            foreach(Cliente c in clientes)
-            {
-                string[] dataRow = { c.GetId().ToString(), c.GetPersona().GetIdPersona().ToString(), c.GetCuit(), c.GetRazonSocial(), c.GetPersona().GetNombre(), c.GetPersona().GetApellido(), c.GetPersona().GetDni()};
-                dataGridClientes.Rows.Add(dataRow);
+                foreach(Cliente c in clientes)
+                {
+                    string[] dataRow = { c.GetId().ToString(), c.GetPersona().GetIdPersona().ToString(), c.GetCuit(), c.GetRazonSocial(), c.GetPersona().GetNombre(), c.GetPersona().GetApellido(), c.GetPersona().GetDni()};
+                    dataGridClientes.Rows.Add(dataRow);
+                }
             }
-            
         }
 
         /** SOLAPA USUARIOS **/
@@ -84,15 +84,15 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
 
             DataConnection.DataConnection dataQuery = new DataConnection.DataConnection();
             DataTable dt = new DataTable();
-            dt = dataQuery.getList(SP.LISTAR_USUARIOS, null);
-
-            foreach (DataRow dr in dt.Rows)
+            using (dt = dataQuery.getList(SP.LISTAR_USUARIOS, null))
             {
-                string usuario = ControladorEncriptacion.Decrypt((string)dr[1]);
-                object[] dataRow = { (int)dr[0], usuario, (string)dr[3], (string)dr[4], !(bool)dr[5]};
-                datagridUsuarios.Rows.Add(dataRow);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    string usuario = ControladorEncriptacion.Decrypt((string)dr[1]);
+                    object[] dataRow = { (int)dr[0], usuario, (string)dr[3], (string)dr[4], !(bool)dr[5]};
+                    datagridUsuarios.Rows.Add(dataRow);
+                }
             }
-
         }
 
         /** SOLAPA PILOTOS **/
@@ -102,12 +102,13 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
 
             DataConnection.DataConnection dataQuery = new DataConnection.DataConnection();
             DataTable dt = new DataTable();
-            dt = dataQuery.getList(SP.LISTAR_PILOTOS, null);
-
-            foreach (DataRow dr in dt.Rows)
+            using (dt = dataQuery.getList(SP.LISTAR_PILOTOS, null))
             {
-                object[] dataRow = { (int)dr[0], (string)dr[1], (string)dr[3], (string)dr[4] };
-                dataGridPilotos.Rows.Add(dataRow);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    object[] dataRow = { (int)dr[0], (string)dr[1], (string)dr[3], (string)dr[4] };
+                    dataGridPilotos.Rows.Add(dataRow);
+                }
             }
         }
 
@@ -119,14 +120,14 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
 
             DataConnection.DataConnection dataQuery = new DataConnection.DataConnection();
             DataTable dt = new DataTable();
-            dt = dataQuery.getList(SP.LISTAR_ACTIVIDADES, null);
-
-            foreach (DataRow dr in dt.Rows)
+            using (dt = dataQuery.getList(SP.LISTAR_ACTIVIDADES, null))
             {
-                object[] dataRow = { (int)dr[0], (DateTime)dr[1], (string)dr[2], (string)dr[3] };
-                dataGridActividades.Rows.Add(dataRow);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    object[] dataRow = { (int)dr[0], (DateTime)dr[1], (string)dr[2], (string)dr[3] };
+                    dataGridActividades.Rows.Add(dataRow);
+                }
             }
-
         }
 
 

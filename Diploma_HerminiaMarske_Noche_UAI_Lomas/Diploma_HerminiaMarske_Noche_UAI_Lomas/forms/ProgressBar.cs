@@ -1,8 +1,6 @@
 ﻿using Diploma_HerminiaMarske_Noche_UAI_Lomas.Properties;
 using Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio;
-using Microsoft.SqlServer.Management.Common;
-using Microsoft.SqlServer.Management.Smo;
-using System;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Timers;
 using System.Windows.Forms;
@@ -12,10 +10,9 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
 {
     public partial class ProgressBar : Form
     {
+        private const string defaultDatabase = "UAI_GESTION_AGUILA";
+        private string address;
         private Timer timer;
-        private Backup backup;
-        private Restore restore;
-        private Server server;
         private bool dispatch;
 
         public ProgressBar()
@@ -24,25 +21,16 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             CheckForIllegalCrossThreadCalls = false;
         }
 
+        public ProgressBar(string address)
+        {
+            this.address = address;
+            InitializeComponent();
+            CheckForIllegalCrossThreadCalls = false;
+        }
+
         public ProgressBar(bool dispatch)
         {
             this.dispatch = dispatch;
-            InitializeComponent();
-            CheckForIllegalCrossThreadCalls = false;
-        }
-
-        public ProgressBar(Restore restoreDB, Server tempConn)
-        {
-            restore = restoreDB;
-            server = tempConn;
-            InitializeComponent();
-            CheckForIllegalCrossThreadCalls = false;
-        }
-
-        public ProgressBar(Backup backupDB, Server tempConn)
-        {
-            backup = backupDB;
-            server = tempConn;
             InitializeComponent();
             CheckForIllegalCrossThreadCalls = false;
         }
@@ -71,14 +59,12 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
         internal DialogResult ShowRestore()
         {
             lblMessage.Text = strings.restore_in_process;
+            progBar.Style = ProgressBarStyle.Marquee;
 
-            restore.PercentComplete += CompletionStatusInPercent;
-            restore.Complete += Restore_Completed;
-            restore.SqlRestoreAsync(server);
             timer = new Timer();
             timer.Elapsed += Timer_Restore;
-            timer.AutoReset = true;
-            timer.Interval = 2000;
+            timer.AutoReset = false;
+            timer.Interval = 100;
             timer.Start();
 
             return ShowDialog();
@@ -87,14 +73,12 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
         internal DialogResult ShowBackup()
         {
             lblMessage.Text = strings.backup_in_process;
+            progBar.Style = ProgressBarStyle.Marquee;
 
-            backup.PercentComplete += CompletionStatusInPercent;
-            backup.Complete += Backup_Completed;
-            backup.SqlBackupAsync(server);
             timer = new Timer();
             timer.Elapsed += Timer_Backup;
-            timer.AutoReset = true;
-            timer.Interval = 2000;
+            timer.AutoReset = false;
+            timer.Interval = 100;
             timer.Start();
 
             return ShowDialog();
@@ -133,6 +117,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             ControladorDigitosVerificadores.recalcularDV();
             SetLabel(strings.recalculation_success);
             SetProgress(100);
+
             if (dispatch)
             {
                 Close();
@@ -142,8 +127,10 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
         private void Timer_ValidateIntegrity(object sender, ElapsedEventArgs e)
         {
             ControladorDigitosVerificadores.verificarIntegridad();
-            SetLabel(strings.validation_finished);
             System.Threading.Thread.Sleep(2000);
+            SetLabel(strings.validation_finished);
+            System.Threading.Thread.Sleep(500);
+
             if (dispatch)
             {
                 Close();
@@ -152,49 +139,48 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
 
         private void Timer_Restore(object sender, ElapsedEventArgs e)
         {
-            if (restore.AsyncStatus.ExecutionStatus == ExecutionStatus.Failed)
+            DataConnection.DataConnection restoreQuery = new DataConnection.DataConnection();
+            string restoreSQL = string.Format("USE master; RESTORE DATABASE {0} FROM DISK = '{1}' WITH REPLACE;", defaultDatabase, address);
+            try
             {
-                SetExtra(restore.AsyncStatus.LastException.Message, KnownColor.Red);
-                server.ConnectionContext.Disconnect();
-                timer.Stop();
+                restoreQuery.sqlCommand(string.Format("ALTER DATABASE {0} SET SINGLE_USER WITH ROLLBACK IMMEDIATE; ", defaultDatabase), null);
+                restoreQuery.sqlCommand(restoreSQL, null);
+                restoreQuery.sqlCommand(string.Format("ALTER DATABASE {0} SET MULTI_USER; ", defaultDatabase), null);
+                SetLabel(strings.restore_is_ready);
             }
-            else if (restore.AsyncStatus.ExecutionStatus == ExecutionStatus.Succeeded)
+            catch (SqlException ex)
             {
-                SetProgress(100);
-                server.ConnectionContext.Disconnect();
-                timer.Stop();
+                SetExtra(ex.Message, KnownColor.Red);
+            }
+            SetProgress(100);
+
+            if (dispatch)
+            {
+                Close();
             }
         }
 
         private void Timer_Backup(object sender, ElapsedEventArgs e)
         {
-            if (backup.AsyncStatus.ExecutionStatus == ExecutionStatus.Failed)
+            DataConnection.DataConnection backupQuery = new DataConnection.DataConnection();
+            string backupSQL = string.Format("BACKUP DATABASE [{0}] TO DISK = '{1}'" +
+                "WITH FORMAT, COMPRESSION, MEDIANAME = 'AGUILA_BACKUP', " +
+                "NAME = 'BACKUP COMPLETO DE BASE DE DATOS';", defaultDatabase, address);
+            try
             {
-                SetExtra(backup.AsyncStatus.LastException.Message, KnownColor.Red);
-                server.ConnectionContext.Disconnect();
-                timer.Stop();
+                backupQuery.sqlCommand(backupSQL, null);
+                SetLabel(strings.backup_is_ready);
             }
-            else if (backup.AsyncStatus.ExecutionStatus == ExecutionStatus.Succeeded)
+            catch (SqlException ex) 
             {
-                SetProgress(100);
-                server.ConnectionContext.Disconnect();
-                timer.Stop();
+                SetExtra(ex.Message, KnownColor.Red);
             }
-        }
+            SetProgress(100);
 
-        private void CompletionStatusInPercent(object sender, PercentCompleteEventArgs args)
-        {
-            SetProgress(args.Percent);
-        }
-        private void Backup_Completed(object sender, ServerMessageEventArgs args)
-        {
-            SetLabel(strings.backup_is_ready);
-            SetProgress(100);
-        }
-        private void Restore_Completed(object sender, ServerMessageEventArgs args)
-        {
-            SetLabel(strings.restore_is_ready);
-            SetProgress(100);
+            if (dispatch)
+            {
+                Close();
+            }
         }
     }
 }

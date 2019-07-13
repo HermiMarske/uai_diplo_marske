@@ -116,16 +116,16 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
 
             try
             {
-                dt = dataQuery.sqlExecute(getAviones, null);
-
-                foreach (DataRow dr in dt.Rows)
+                using (dt = dataQuery.sqlExecute(getAviones, null))
                 {
-                    Avion av = new Avion((int)dr[0], (string)dr[1], (string)dr[2], (string)dr[3], (bool)dr[4]);
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        Avion av = new Avion((int)dr[0], (string)dr[1], (string)dr[2], (string)dr[3], (bool)dr[4]);
 
-                    aviones.Add(av);
+                        aviones.Add(av);
+                    }
+                    return aviones;
                 }
-
-                return aviones;
             }
             catch
             {
