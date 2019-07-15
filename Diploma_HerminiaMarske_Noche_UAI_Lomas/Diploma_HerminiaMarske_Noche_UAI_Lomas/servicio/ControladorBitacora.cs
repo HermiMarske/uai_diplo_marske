@@ -112,7 +112,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
 
             if (fechaDesde != null && fechaHasta != null) 
             {
-                bitacoraFiltrada += " AND b.timeStamp BETWEEN '" + fechaDesde.ToString("MM/dd/yyyy HH:mm:ss") + "' AND '" + fechaHasta.ToString("MM/dd/yyyy HH:mm:ss") + "'";
+                bitacoraFiltrada += " AND b.timeStamp BETWEEN '" + fechaDesde.ToString("dd/MM/yyyy HH:mm:ss") + "' AND '" + fechaHasta.ToString("dd/MM/yyyy HH:mm:ss") + "'";
             }
 
             List<BitacoraRow> bitacoraList = new List<BitacoraRow>();
@@ -122,8 +122,9 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
                 foreach (DataRow dr in dt.Rows)
                 {
                     string descripcionDesencriptada = ControladorEncriptacion.Decrypt((string)dr[3]);
+                    string usuarioDesencriptado = ControladorEncriptacion.Decrypt((string)dr[5]);
 
-                    Usuario usuario = new Usuario((int)dr[4], (string)dr[5]);
+                    Usuario usuario = new Usuario((int)dr[4], usuarioDesencriptado);
                     BitacoraRow bRow = new BitacoraRow((int)dr[0], (DateTime)dr[1], (string)dr[2], descripcionDesencriptada, usuario);
 
                     bitacoraList.Add(bRow);
