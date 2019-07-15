@@ -103,7 +103,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
 
             if(!String.IsNullOrEmpty(nombreUsuario))
             {
-                bitacoraFiltrada += " AND u.usuario LIKE '" + ControladorEncriptacion.Decrypt(nombreUsuario) + "'";
+                bitacoraFiltrada += " AND u.usuario LIKE '" + ControladorEncriptacion.Encrypt(nombreUsuario) + "'";
             }
             if (!String.IsNullOrEmpty(criticidad))
             {
@@ -112,7 +112,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
 
             if (fechaDesde != null && fechaHasta != null) 
             {
-                bitacoraFiltrada += " AND b.timeStamp BETWEEN '" + fechaDesde.ToString("yyyy-MM-dd") + "' AND '" + fechaHasta.ToString("yyyy-MM-dd") + "'";
+                bitacoraFiltrada += " AND b.timeStamp BETWEEN '" + fechaDesde.ToString("MM/dd/yyyy HH:mm:ss") + "' AND '" + fechaHasta.ToString("MM/dd/yyyy HH:mm:ss") + "'";
             }
 
             List<BitacoraRow> bitacoraList = new List<BitacoraRow>();
@@ -129,7 +129,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
                     bitacoraList.Add(bRow);
                 }
             }
-            catch
+            catch (Exception e)
             {
                 return bitacoraList;
             }
