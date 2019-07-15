@@ -12,9 +12,11 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
 {
     class ControladorBitacora
     {
-        const string getBitacora = "select b.ID_Bitacora, b.timeStamp, b.criticidad, b.descripcion, b.FK_Usuario, u.usuario " +
+        const string getBitacoraFiltradaQuery = "select b.ID_Bitacora, b.timeStamp, b.criticidad, b.descripcion, b.FK_Usuario, u.usuario " +
            "from Bitacora b, Usuarios u " +
            "where b.FK_Usuario = u.ID_Usuario";
+
+        const string getBitacora = "select b.ID_Bitacora, b.timeStamp, b.criticidad, b.descripcion, b.FK_Usuario, u.usuario from Bitacora b left join Usuarios u ON b.FK_Usuario = u.ID_Usuario";
 
         public static void grabarRegistro(BitacoraRow row)
         {
@@ -41,7 +43,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
             ControladorDigitosVerificadores.calcularDVV(ConstantesDDVV.TABLA_BITACORA);
         }
 
-        public static List<BitacoraRow> getBitacoraRows()
+        public static List<BitacoraRow> getBitacoraRows() 
         {
             DataTable dt = new DataTable();
             DataConnection.DataConnection dataQuery = new DataConnection.DataConnection();
@@ -52,17 +54,38 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
                 dt = dataQuery.sqlExecute(getBitacora, null);
                 foreach (DataRow dr in dt.Rows)
                 {
-                    string descripcionDesencriptada = ControladorEncriptacion.Decrypt((string)dr[3]);
+                    Object usuario = dr[5];
+                    Usuario usuarioDesencriptado = new Usuario();
+                    string descripcionDesencriptada;
+                    if (!string.IsNullOrEmpty(usuario.ToString()))
+                    {
+                        string usuarioD = ControladorEncriptacion.Decrypt(usuario.ToString());
+                        usuarioDesencriptado.SetIdUsuario((int)dr[4]);
+                        usuarioDesencriptado.SetNombreUsuario(usuarioD);
+                    }
+                    else
+                    {
+                        usuarioDesencriptado.SetIdUsuario(0);
+                        usuarioDesencriptado.SetNombreUsuario("SISTEMA");
+                    }
+                    try
+                    {
+                        descripcionDesencriptada = ControladorEncriptacion.Decrypt((string)dr[3]);
 
-                    Usuario usuario = new Usuario((int)dr[4], ControladorEncriptacion.Decrypt((string)dr[5]));
-                    BitacoraRow bRow = new BitacoraRow((int)dr[0], (DateTime)dr[1], (string)dr[2], descripcionDesencriptada, usuario);
+                    }
+                    catch
+                    {
+                        descripcionDesencriptada = "DESCRIPCION NO COMPATIBLE";
+                    }
+
+                    BitacoraRow bRow = new BitacoraRow((int)dr[0], (DateTime)dr[1], (string)dr[2], descripcionDesencriptada, usuarioDesencriptado);
 
                     bitacoraList.Add(bRow);
                 }
             }
-            catch
+            catch (Exception e)
             {
-                return bitacoraList;
+                return null;
             }
 
             return bitacoraList;
@@ -76,7 +99,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
             DataTable dt = new DataTable();
             DataConnection.DataConnection dataQuery = new DataConnection.DataConnection();
 
-            string bitacoraFiltrada = getBitacora;
+            string bitacoraFiltrada = getBitacoraFiltradaQuery;
 
             if(!String.IsNullOrEmpty(nombreUsuario))
             {
