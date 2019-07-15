@@ -195,6 +195,9 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
 
             DataConnection.DataConnection dataQuery = new DataConnection.DataConnection();
 
+
+
+
             //Tabla bitacora.
             string getBitacora = "select ID_Bitacora, descripcion, dvh from Bitacora";
           

@@ -117,7 +117,9 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             this.btnAddActividad = new System.Windows.Forms.Button();
             this.btnEliminarActividad = new System.Windows.Forms.Button();
             this.btnVerActividad = new System.Windows.Forms.Button();
+            this.toolStripStatusLabelUsuario = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabUsuarios.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -295,6 +297,8 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             // statusStrip1
             // 
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabelUsuario});
             resources.ApplyResources(this.statusStrip1, "statusStrip1");
             this.statusStrip1.Name = "statusStrip1";
             // 
@@ -781,6 +785,12 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             this.btnVerActividad.UseVisualStyleBackColor = true;
             this.btnVerActividad.Click += new System.EventHandler(this.btnVerActividad_Click);
             // 
+            // toolStripStatusLabelUsuario
+            // 
+            resources.ApplyResources(this.toolStripStatusLabelUsuario, "toolStripStatusLabelUsuario");
+            this.toolStripStatusLabelUsuario.ForeColor = System.Drawing.Color.DarkGreen;
+            this.toolStripStatusLabelUsuario.Name = "toolStripStatusLabelUsuario";
+            // 
             // formInicio
             // 
             resources.ApplyResources(this, "$this");
@@ -797,6 +807,8 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             this.Load += new System.EventHandler(this.formInicio_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.tabUsuarios.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -917,6 +929,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private DataGridViewCheckBoxColumn Desbloquear;
+        private ToolStripStatusLabel toolStripStatusLabelUsuario;
     }
 }
 
