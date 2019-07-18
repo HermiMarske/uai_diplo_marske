@@ -113,7 +113,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
                         dataQuery.sqlUpsert(setDVH, pmsDVH);
                         ControladorDigitosVerificadores.calcularDVV(ConstantesDDVV.TABLA_USUARIOS);
 
-                        BitacoraRow bitacora = new BitacoraRow(DateTime.UtcNow, ConstantesBitacora.CRITICIDAD_MEDIA, ConstantesBitacora.INTENTO_INGRESO_DESCONOCIDO, new Usuario((int)result[0], usuario));
+                        BitacoraRow bitacora = new BitacoraRow(DateTime.UtcNow, ConstantesBitacora.CRITICIDAD_MEDIA, "El usuario " + ControladorEncriptacion.Decrypt(usuarioEncriptado) + " intento ingresar con una clave erronea.", new Usuario((int)result[0], usuario));
                         ControladorBitacora.grabarRegistro(bitacora);
 
                         throw new Exception("AUTH_USR_FAILED");

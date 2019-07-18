@@ -195,8 +195,100 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
 
             DataConnection.DataConnection dataQuery = new DataConnection.DataConnection();
 
+            //ver si se borro un registro en bitacora
+
+            string getSumBitacora = "SELECT SUM(DVH) FROM Bitacora";
+            DataTable dtSumBitacora = dataQuery.sqlExecute(getSumBitacora, null);
+            int dvvCalculadoBitacora = (int)dtSumBitacora.Rows[0][0];
+            string getDVVBitacora = "select dvv from DDVV where tabla = 'Bitacora'";
+            DataTable dtDDVVBitacora = dataQuery.sqlExecute(getDVVBitacora, null);
+            long dvvBitacora = (long)dtDDVVBitacora.Rows[0][0];
+
+            if(dvvBitacora != dvvCalculadoBitacora)
+            {
+                error = true;
+
+                BitacoraRow bitacora = new BitacoraRow(DateTime.UtcNow, ConstantesBitacora.CRITICIDAD_ALTA, "Se elimino un registro en la tabla de Bitacora, error grave.", new Usuario());
+                ControladorBitacora.grabarRegistro(bitacora);
+            }
+
+            //verificar si se borro uno o mas registros en familiaPatente
 
 
+            string getSumFamPat = "SELECT SUM(dvh) FROM Familia_Patente";
+            DataTable dtSumFamPat = dataQuery.sqlExecute(getSumFamPat, null);
+            int dvvCalculadoFamPat = (int)dtSumFamPat.Rows[0][0];
+            string getDVVFamPat = "select dvv from DDVV where tabla = 'Familia_Patente'";
+            DataTable dtDDVVFamPat = dataQuery.sqlExecute(getDVVFamPat, null);
+            long dvvFamPat = (long)dtDDVVFamPat.Rows[0][0];
+
+            if (dvvFamPat != dvvCalculadoFamPat)
+            {
+                error = true;
+
+                BitacoraRow bitacora = new BitacoraRow(DateTime.UtcNow, ConstantesBitacora.CRITICIDAD_ALTA, "Se elimino un registro en la tabla Familia_Patente, error grave.", new Usuario());
+                ControladorBitacora.grabarRegistro(bitacora);
+            }
+
+
+            //verificar si se borro uno o mas registros en familiaUsuario
+
+
+            string getSumUsuFam = "SELECT SUM(dvh) FROM Usuario_Familia";
+            DataTable dtSumUsuFam = dataQuery.sqlExecute(getSumUsuFam, null);
+            int dvvCalculadoUsuFam = (int)dtSumUsuFam.Rows[0][0];
+            string getDVVUsuFam = "select dvv from DDVV where tabla = 'Usuario_Familia'";
+            DataTable dtDDVVUsuFam = dataQuery.sqlExecute(getDVVUsuFam, null);
+            long dvvUsuFam = (long)dtDDVVUsuFam.Rows[0][0];
+
+            if (dvvUsuFam != dvvCalculadoUsuFam)
+            {
+                error = true;
+
+                BitacoraRow bitacora = new BitacoraRow(DateTime.UtcNow, ConstantesBitacora.CRITICIDAD_ALTA, "Se elimino un registro en la tabla Usuario_Familia, error grave.", new Usuario());
+                ControladorBitacora.grabarRegistro(bitacora);
+            }
+
+
+            //verificar si se borro uno o mas registros en usuariopatente
+
+
+            string getSumUsuPat = "SELECT SUM(dvh) FROM Usuario_Patente";
+            DataTable dtSumUsuPat = dataQuery.sqlExecute(getSumUsuPat, null);
+            int dvvCalculadoUsuPat = (int)dtSumUsuPat.Rows[0][0];
+            string getDVVUsuPat = "select dvv from DDVV where tabla = 'Usuario_Patente'";
+            DataTable dtDDVVUsuPat = dataQuery.sqlExecute(getDVVUsuPat, null);
+            long dvvUsuPat = (long)dtDDVVUsuPat.Rows[0][0];
+
+            if (dvvUsuPat != dvvCalculadoUsuPat)
+            {
+                error = true;
+
+                BitacoraRow bitacora = new BitacoraRow(DateTime.UtcNow, ConstantesBitacora.CRITICIDAD_ALTA, "Se elimino un registro en la tabla Usuario_Patente, error grave.", new Usuario());
+                ControladorBitacora.grabarRegistro(bitacora);
+            }
+
+
+            //verificar si se borro uno o mas registros en usuario
+
+
+            string getSumUsu = "SELECT SUM(DVH) FROM Usuarios";
+            DataTable dtSumUsu = dataQuery.sqlExecute(getSumUsu, null);
+            int dvvCalculadoUsu = (int)dtSumUsu.Rows[0][0];
+            string getDVVUsu = "select dvv from DDVV where tabla = 'Usuarios'";
+            DataTable dtDDVVUsu = dataQuery.sqlExecute(getDVVUsu, null);
+            long dvvUsu = (long)dtDDVVUsu.Rows[0][0];
+
+            if (dvvUsu != dvvCalculadoUsu)
+            {
+                error = true;
+
+                BitacoraRow bitacora = new BitacoraRow(DateTime.UtcNow, ConstantesBitacora.CRITICIDAD_ALTA, "Se elimino un registro en la tabla Usuarios, error grave.", new Usuario());
+                ControladorBitacora.grabarRegistro(bitacora);
+            }
+
+
+            /* SI SE MODIFICO UN REGISTRO PERO NO SE BORRO, TAMBIEN SE VALIDA */
 
             //Tabla bitacora.
             string getBitacora = "select ID_Bitacora, descripcion, dvh from Bitacora";
@@ -214,6 +306,9 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
                 if(dvhCalculado != dvhBase)
                 {
                     error = true;
+
+                    BitacoraRow bitacora = new BitacoraRow(DateTime.UtcNow, ConstantesBitacora.CRITICIDAD_ALTA, "Se modifico un registro en la tabla Bitacora, error grave.", new Usuario());
+                    ControladorBitacora.grabarRegistro(bitacora);
                 }
 
             }
@@ -237,6 +332,8 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
                 if (dvhBase != dvhCalculado)
                 {
                     error = true;
+                    BitacoraRow bitacora = new BitacoraRow(DateTime.UtcNow, ConstantesBitacora.CRITICIDAD_ALTA, "Se modifico un registro en la tabla Familia_Patente, error grave.", new Usuario());
+                    ControladorBitacora.grabarRegistro(bitacora);
                 }
 
             }
@@ -261,6 +358,8 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
                 if (dvhBase != dvhCalculado)
                 {
                     error = true;
+                    BitacoraRow bitacora = new BitacoraRow(DateTime.UtcNow, ConstantesBitacora.CRITICIDAD_ALTA, "Se modifico un registro en la tabla Usuario_Familia, error grave.", new Usuario());
+                    ControladorBitacora.grabarRegistro(bitacora);
                 }
 
             }
@@ -285,6 +384,8 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
                 if (dvhBase != dvhCalculado)
                 {
                     error = true;
+                    BitacoraRow bitacora = new BitacoraRow(DateTime.UtcNow, ConstantesBitacora.CRITICIDAD_ALTA, "Se modifico un registro en la tabla Usuario_Patente, error grave.", new Usuario());
+                    ControladorBitacora.grabarRegistro(bitacora);
                 }
 
             }
@@ -308,6 +409,8 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
                 if (dvhBase != dvhCalculado)
                 {
                     error = true;
+                    BitacoraRow bitacora = new BitacoraRow(DateTime.UtcNow, ConstantesBitacora.CRITICIDAD_ALTA, "Se modifico un registro en la tabla Usuario, error grave.", new Usuario());
+                    ControladorBitacora.grabarRegistro(bitacora);
                 }
             }
 
