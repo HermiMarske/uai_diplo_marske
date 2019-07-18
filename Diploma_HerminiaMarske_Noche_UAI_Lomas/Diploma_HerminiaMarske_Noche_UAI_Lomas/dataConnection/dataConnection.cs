@@ -3,6 +3,7 @@ using System.Data.SqlClient;
 using System.Data;
 
 using System.Configuration;
+using System.Text.RegularExpressions;
 
 namespace DataConnection
 {
@@ -10,6 +11,26 @@ namespace DataConnection
     class DataConnection
     {
         private static string Sql = ConfigurationManager.ConnectionStrings["Diploma_HerminiaMarske_Noche_UAI_Lomas.Properties"].ConnectionString;
+        private static bool userStringSet = false;
+
+        public DataConnection()
+        {
+            if (!userStringSet)
+            {
+                Configuration configFile = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                ConnectionStringsSection settings = configFile.ConnectionStrings;
+
+                string conn = settings.ConnectionStrings["Diploma_HerminiaMarske_Noche_UAI_Lomas.Properties"].ConnectionString;
+
+                settings.ConnectionStrings["Diploma_HerminiaMarske_Noche_UAI_Lomas.Properties"].ConnectionString = 
+                    Regex.Replace(conn, "(Data Source=)[A-z\\-\\.\\,\\\\0-9\\/\\(\\)]+;", "$1=" + Environment.MachineName);
+
+                configFile.Save(ConfigurationSaveMode.Modified);
+                ConfigurationManager.RefreshSection("connectionStrings");
+
+                userStringSet = true;
+            }
+        }
 
         public int databaseInsert(SqlParameter[] pms, string storedProcedureName)
         {

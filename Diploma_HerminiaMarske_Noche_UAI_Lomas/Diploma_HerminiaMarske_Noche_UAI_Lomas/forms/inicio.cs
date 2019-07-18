@@ -213,10 +213,9 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
 
         private void formInicio_Load(object sender, EventArgs e)
         {
-            toolStripStatusLabelUsuario.Text = "Logged as: " + usuarioLogueado.GetNombreUsuario();
-
             if (usuarioLogueado != null)
             {
+                toolStripStatusLabelUsuario.Text = string.Format(strings.welcome_user, usuarioLogueado.GetNombreUsuario());
                 if (hasPermission("ADM_CLIENTES_VER"))
                     listarClientes();
                 if (hasPermission("ADM_USUARIOS_VER"))

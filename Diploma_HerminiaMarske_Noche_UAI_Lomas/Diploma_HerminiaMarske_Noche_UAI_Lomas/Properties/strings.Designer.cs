@@ -673,5 +673,14 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.Properties {
                 return ResourceManager.GetString("welcome", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Bienvenido/a {0}.
+        /// </summary>
+        internal static string welcome_user {
+            get {
+                return ResourceManager.GetString("welcome_user", resourceCulture);
+            }
+        }
     }
 }

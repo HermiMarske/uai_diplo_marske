@@ -323,4 +323,7 @@ Please contact an administrator.</value>
   <data name="validation_in_progress" xml:space="preserve">
     <value>Validation in progress</value>
   </data>
+  <data name="welcome_user" xml:space="preserve">
+    <value>Welcome {0}</value>
+  </data>
 </root>

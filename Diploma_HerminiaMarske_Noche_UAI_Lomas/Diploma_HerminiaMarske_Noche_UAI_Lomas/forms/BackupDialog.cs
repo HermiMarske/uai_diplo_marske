@@ -21,7 +21,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
         private void button1_Click(object sender, EventArgs e)
         {
             guardarRespaldo.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            guardarRespaldo.FileName = string.Format("Respaldo_UAI_GESTION_AGUILA_{0}", DateTimeOffset.UtcNow.ToUnixTimeSeconds());
+            guardarRespaldo.FileName = string.Format("Respaldo_UAI_GESTION_AGUILA_{0}", (DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0)).TotalSeconds);
             guardarRespaldo.Filter = strings.backup_extensions;
             guardarRespaldo.ShowDialog();
             txtRespaldo.Text = guardarRespaldo.FileName;
