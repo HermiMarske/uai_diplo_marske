@@ -10,26 +10,30 @@ namespace DataConnection
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Security", "CA2100:Revisar consultas SQL para comprobar si tienen vulnerabilidades de seguridad")]
     class DataConnection
     {
-        private static string Sql = ConfigurationManager.ConnectionStrings["Diploma_HerminiaMarske_Noche_UAI_Lomas.Properties"].ConnectionString;
-        private static bool userStringSet = false;
+        private static string Sql;
 
         public DataConnection()
         {
-            if (!userStringSet)
+            // Si el programa se ejecuta por primera vez, validar si ya se actualizó su Data Source. Solo se ejecuta una vez.
+
+            Configuration configFile = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            KeyValueConfigurationElement dataSourceChanged = configFile.AppSettings.Settings["DataSourceChanged"];
+            if (dataSourceChanged.Value.Equals(bool.FalseString))
             {
-                Configuration configFile = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
                 ConnectionStringsSection settings = configFile.ConnectionStrings;
 
                 string conn = settings.ConnectionStrings["Diploma_HerminiaMarske_Noche_UAI_Lomas.Properties"].ConnectionString;
 
                 settings.ConnectionStrings["Diploma_HerminiaMarske_Noche_UAI_Lomas.Properties"].ConnectionString = 
-                    Regex.Replace(conn, "(Data Source=)[A-z\\-\\.\\,\\\\0-9\\/\\(\\)]+;", "$1=" + Environment.MachineName);
+                    Regex.Replace(conn, "(Data Source)=[A-z\\-\\.\\,\\\\0-9\\/\\(\\)]+;", string.Format("$1={0}; ", Environment.MachineName));
 
+                dataSourceChanged.Value = bool.TrueString;
                 configFile.Save(ConfigurationSaveMode.Modified);
                 ConfigurationManager.RefreshSection("connectionStrings");
-
-                userStringSet = true;
+                ConfigurationManager.RefreshSection("appSettings");
             }
+
+            Sql = ConfigurationManager.ConnectionStrings["Diploma_HerminiaMarske_Noche_UAI_Lomas.Properties"].ConnectionString;
         }
 
         public int databaseInsert(SqlParameter[] pms, string storedProcedureName)

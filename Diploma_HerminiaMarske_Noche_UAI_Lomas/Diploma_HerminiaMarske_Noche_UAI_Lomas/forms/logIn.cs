@@ -3,8 +3,6 @@ using System.Windows.Forms;
 using Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio;
 using Diploma_HerminiaMarske_Noche_UAI_Lomas.objetos;
 using Diploma_HerminiaMarske_Noche_UAI_Lomas.Properties;
-using System.Configuration;
-using System.Text.RegularExpressions;
 
 namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
 {
