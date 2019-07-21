@@ -29,7 +29,17 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
          {
             DataConnection.DataConnection dataQuery = new DataConnection.DataConnection();
 
-            const string modificarUsuario = "update Usuarios set clave = @password, respuesta = @respuesta, FK_Pregunta = @idPregunta where ID_Usuario = @idUsuario";
+            string sqlUpdate = "";
+            if (!string.IsNullOrWhiteSpace(usuario.GetPassword()))
+            {
+                sqlUpdate += (string.IsNullOrEmpty(sqlUpdate) ? ", " : "") + string.Format("clave = {0}", ControladorEncriptacion.Hash(usuario.GetPassword()));
+            }
+            if (usuario.GetFkPregunta() != 0 && !string.IsNullOrWhiteSpace(usuario.GetRespuesta()))
+            {
+                sqlUpdate += (string.IsNullOrEmpty(sqlUpdate) ? ", " : "") + string.Format("respuesta = {0}", usuario.GetRespuesta());
+                sqlUpdate += (string.IsNullOrEmpty(sqlUpdate) ? ", " : "") + string.Format("FK_Pregunta = {0}", usuario.GetFkPregunta());
+            }
+            string modificarUsuario = string.Format("update Usuarios set " + sqlUpdate + " where ID_Usuario = {0}", usuario.GetIdUsuario());
             const string borrarPatentes = " delete from Usuario_Patente where usuarioFK = @idUsuario";
             const string borrarFamilias = " delete from Usuario_Familia where usuarioFK = @idUsuario";
             const string borrarDomicilios = "delete from Domicilio where FK_Persona = @idPersona";
@@ -41,18 +51,6 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
             string crearDomicilios = "INSERT INTO Domicilio(calle,numero,piso,dpto, comentarios, codPostal,tipoDomicilio, FK_Localidad, FK_Persona) VALUES {0}";
             string crearMails = "INSERT INTO Mails(tipo, mail, FK_Persona) VALUES {0}";
             string crearTelefonos = "INSERT INTO Telefono(tipo,numero, FK_Persona) VALUES {0}";
-
-
-            //Modificar Usuario.
-            SqlParameter[] pmsUsuario = new SqlParameter[4];
-            pmsUsuario[0] = new SqlParameter("@password", SqlDbType.VarChar);
-            pmsUsuario[0].Value = ControladorEncriptacion.Hash(usuario.GetPassword());
-            pmsUsuario[1] = new SqlParameter("@respuesta", SqlDbType.VarChar);
-            pmsUsuario[1].Value = usuario.GetRespuesta();
-            pmsUsuario[2] = new SqlParameter("@idPregunta", SqlDbType.Int);
-            pmsUsuario[2].Value = usuario.GetFkPregunta();
-            pmsUsuario[3] = new SqlParameter("@idUsuario", SqlDbType.VarChar);
-            pmsUsuario[3].Value = usuario.GetIdUsuario();
 
             //BorrarPats, borrar Fams
             SqlParameter[] pmsU = new SqlParameter[1];
@@ -100,7 +98,8 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
 
             try
             {
-                dataQuery.sqlUpsert(modificarUsuario, pmsUsuario);
+                if (!string.IsNullOrWhiteSpace(sqlUpdate))
+                    dataQuery.sqlUpsert(modificarUsuario, null);
                 dataQuery.sqlUpsert(borrarPatentes, pmsU);
                 dataQuery.sqlUpsert(borrarFamilias, pmsF);
                 dataQuery.sqlUpsert(borrarDomicilios, pmsP);
@@ -496,7 +495,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
             try
             {
                 DataConnection.DataConnection dataQuery = new DataConnection.DataConnection();
-                const string bajaUsuario = "UPDATE Usuarios SET deleteTime = @fechaBorrado WHERE ID_Usuario = @idUsuario";
+                string bajaUsuario = "UPDATE Usuarios SET deleteTime = @fechaBorrado WHERE ID_Usuario = @idUsuario";
                 SqlParameter[] pms = new SqlParameter[2];
                 pms[0] = new SqlParameter("@fechaBorrado", SqlDbType.DateTime);
                 pms[0].Value = DateTime.Now;

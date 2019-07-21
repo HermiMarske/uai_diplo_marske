@@ -296,6 +296,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
 
             respaldosToolStripMenuItem.Enabled = hasPermission("ADM_SEGURIDAD_RESTORE");
             recalcularDigitosVerificadoresToolStripMenuItem.Enabled = hasPermission("ADM_SEGURIDAD_RECALCULAR_DV");
+            bitacoraToolStripMenuItem.Enabled = hasPermission("ADM_SEGURIDAD_CONSULTAR_BITACORA");
         }
 
         private void busquedaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -320,13 +321,19 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
                 DialogResult question = messageBox.Show(strings.confirm_delete, MessageBoxButtons.OKCancel);
                 if (question == DialogResult.OK)
                 {
-                    try
+                    if (usuarioLogueado != null && usuarioLogueado.GetIdUsuario() == (int)idUsuario)
                     {
-                        messageBox.Show(ControladorABMUsuario.borrarUsuario((int)idUsuario));
-                    }
-                    catch (Exception ex)
+                        messageBox.ShowError(strings.current_user_no_delete);
+                    } else
                     {
-                        messageBox.ShowError(ex.Message.ToString());
+                        try
+                        {
+                            messageBox.Show(ControladorABMUsuario.borrarUsuario((int)idUsuario));
+                        }
+                        catch (Exception ex)
+                        {
+                            messageBox.ShowError(ex.Message.ToString());
+                        }
                     }
                 }
             }
@@ -347,14 +354,20 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
 
         private void btnModificarUsuario_Click(object sender, EventArgs e)
         {
-
             if (datagridUsuarios.SelectedCells.Count > 0)
             {
                 int rowIndex = datagridUsuarios.SelectedCells[0].RowIndex;
                 idUsuarioModif = datagridUsuarios.Rows[rowIndex].Cells[0].Value;
 
-                modificarUsuario = new modificarUsuario();
-                modificarUsuario.Show();
+                if (usuarioLogueado != null && usuarioLogueado.GetIdUsuario() == (int)idUsuarioModif)
+                {
+                    messageBox.ShowError(strings.current_user_no_edit);
+                } else
+                {
+                    modificarUsuario = new modificarUsuario();
+                    modificarUsuario.Show();
+                }
+
             }
 
         }
@@ -540,6 +553,9 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
         {
             forms.ProgressBar progressBar = new forms.ProgressBar();
             progressBar.ShowRecalculate();
+
+            BitacoraRow bitacora = new BitacoraRow(DateTime.UtcNow, ConstantesBitacora.CRITICIDAD_ALTA, "Se recalcularon los digitos verificadores", usuarioLogueado);
+            ControladorBitacora.grabarRegistro(bitacora);
         }
 
         private void respaldosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -557,7 +573,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
                 {
                     messageBox.Show(ControladorABMUsuario.desbloquearUsuario((int)view.Rows[view.SelectedCells[0].RowIndex].Cells[0].Value));
                 }
-                else
+                else if (view.SelectedCells[0].ColumnIndex == 4)
                 {
                     view.SelectedCells[0].Value = false;
                 }

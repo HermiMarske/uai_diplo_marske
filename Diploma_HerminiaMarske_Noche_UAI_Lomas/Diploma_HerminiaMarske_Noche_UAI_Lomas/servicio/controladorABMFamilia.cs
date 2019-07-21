@@ -91,17 +91,15 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
                 }
                 else
                 {
-                    const string modifFam = "UPDATE Familia SET descripcion = @descNueva, dvh = @dvh WHERE idFamilia = @idFamilia";
+                    const string modifFam = "UPDATE Familia SET descripcion = @descNueva WHERE idFamilia = @idFamilia";
                     const string borrarPat = "DELETE FROM Familia_Patente WHERE familiaFK = @idFamilia";
                     const string insertarFamPat = "INSERT INTO Familia_Patente (familiaFK, patenteFK, dvh) VALUES {0}";
 
-                    SqlParameter[] pms = new SqlParameter[3];
+                    SqlParameter[] pms = new SqlParameter[2];
                     pms[0] = new SqlParameter("@descNueva", SqlDbType.VarChar);
                     pms[0].Value = ControladorEncriptacion.Encrypt(familia.GetDescripcion());
-                    pms[1] = new SqlParameter("@dvh", SqlDbType.Int);
-                    pms[1].Value = ControladorDigitosVerificadores.calcularDVH(familia.GetDescripcion());
-                    pms[2] = new SqlParameter("@idFamilia", SqlDbType.Int);
-                    pms[2].Value = familia.GetId();
+                    pms[1] = new SqlParameter("@idFamilia", SqlDbType.Int);
+                    pms[1].Value = familia.GetId();
 
                     dataQuery.sqlUpsert(modifFam, pms);
 
@@ -157,10 +155,16 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
                     pms[0] = new SqlParameter("@fechaBorrado", SqlDbType.DateTime);
                     pms[0].Value = DateTime.Now;
                     pms[1] = new SqlParameter("@familia", SqlDbType.VarChar);
-                    pms[1].Value = familia.GetDescripcion();
-
+                    pms[1].Value = ControladorEncriptacion.Encrypt(familia.GetDescripcion());
 
                     dataQuery.sqlUpsert(bajaFam, pms);
+
+                    const string deleteFamUsuarios = "DELETE Usuario_Familia WHERE familiaFK IN (SELECT idFamilia FROM Familia WHERE descripcion = @familia)";
+                    pms = new SqlParameter[1];
+                    pms[0] = new SqlParameter("@familia", SqlDbType.VarChar);
+                    pms[0].Value = ControladorEncriptacion.Encrypt(familia.GetDescripcion());
+
+                    dataQuery.sqlUpsert(deleteFamUsuarios, pms);
 
                     BitacoraRow bitacora = new BitacoraRow(DateTime.UtcNow, ConstantesBitacora.CRITICIDAD_ALTA, ConstantesBitacora.BAJA_FAMILIA, new Usuario());
                     ControladorBitacora.grabarRegistro(bitacora);

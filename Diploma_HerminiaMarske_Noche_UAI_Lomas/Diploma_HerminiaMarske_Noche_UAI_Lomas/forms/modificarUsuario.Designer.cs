@@ -903,6 +903,7 @@
             this.checkedListFamilias.FormattingEnabled = true;
             resources.ApplyResources(this.checkedListFamilias, "checkedListFamilias");
             this.checkedListFamilias.Name = "checkedListFamilias";
+            this.checkedListFamilias.SelectedIndexChanged += new System.EventHandler(this.checkedListFamilias_SelectedIndexChanged);
             // 
             // tabPage4
             // 

@@ -498,6 +498,9 @@
   <data name="txtClave.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>
   </data>
+  <data name="txtClave.PasswordChar" type="System.Char, mscorlib" xml:space="preserve">
+    <value>*</value>
+  </data>
   <data name="txtClave.Size" type="System.Drawing.Size, System.Drawing">
     <value>794, 26</value>
   </data>
@@ -521,6 +524,9 @@
   </data>
   <data name="txtRepetirClave.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>
+  </data>
+  <data name="txtRepetirClave.PasswordChar" type="System.Char, mscorlib" xml:space="preserve">
+    <value>*</value>
   </data>
   <data name="txtRepetirClave.Size" type="System.Drawing.Size, System.Drawing">
     <value>794, 26</value>

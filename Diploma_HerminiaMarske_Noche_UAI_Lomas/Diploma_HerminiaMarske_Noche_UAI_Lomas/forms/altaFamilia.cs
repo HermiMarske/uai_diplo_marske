@@ -32,6 +32,11 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
 
         private void altaFamilia_Load(object sender, EventArgs e)
         {
+            cargarData();
+        }
+
+        private void cargarData()
+        {
             List<Familia> familias = new List<Familia>();
             DataConnection.DataConnection dataQueryFamilias = new DataConnection.DataConnection();
             DataTable dtf = new DataTable();
@@ -68,8 +73,6 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             }
             checkedListPatentes.DataSource = patentes;
             checkedDisponibles.DataSource = patentes;
-
-
         }
 
         private void listboxFam_SelectedIndexChanged(object sender, EventArgs e)
@@ -127,8 +130,9 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
                 {
                     MessageBox.Show("Familia creada exitosamente.");
                 }
-
+                cargarData();
             }
+
 
 
         }
@@ -178,6 +182,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
                 }
 
             }
+            cargarData();
         }
 
         private void btnModificarFam_Click(object sender, EventArgs e)
@@ -194,6 +199,9 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
             string rta = ControladorABMFamilia.borrarFamilia(fam);
 
             MessageBox.Show(rta);
+
+            cargarData();
+
         }
 
         private void btnSalir_Click(object sender, EventArgs e)

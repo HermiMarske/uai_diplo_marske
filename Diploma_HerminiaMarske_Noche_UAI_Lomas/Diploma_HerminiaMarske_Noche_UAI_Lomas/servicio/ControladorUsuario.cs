@@ -13,7 +13,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
         static public Usuario logIn(string usuario, string clave)
         {
             string usuarioEncriptado = ControladorEncriptacion.Encrypt(usuario);
-            string sql = "SELECT ID_Usuario, CII, habilitado, clave FROM Usuarios WHERE usuario = @usuario";
+            string sql = "SELECT ID_Usuario, CII, habilitado, clave FROM Usuarios WHERE usuario = @usuario AND deleteTime IS NULL";
             SqlParameter[] pms = new SqlParameter[1];
             pms[0] = new SqlParameter("@usuario", SqlDbType.VarChar);
             pms[0].Value = usuarioEncriptado;

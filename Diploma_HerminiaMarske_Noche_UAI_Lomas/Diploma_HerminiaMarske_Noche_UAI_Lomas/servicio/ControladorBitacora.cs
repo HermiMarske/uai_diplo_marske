@@ -13,8 +13,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
     class ControladorBitacora
     {
         const string getBitacoraFiltradaQuery = "select b.ID_Bitacora, b.timeStamp, b.criticidad, b.descripcion, b.FK_Usuario, u.usuario " +
-           "from Bitacora b, Usuarios u " +
-           "where b.FK_Usuario = u.ID_Usuario";
+           "from Bitacora b LEFT JOIN Usuarios u ON b.FK_Usuario = u.ID_Usuario WHERE 1";
 
         const string getBitacora = "select b.ID_Bitacora, b.timeStamp, b.criticidad, b.descripcion, b.FK_Usuario, u.usuario from Bitacora b left join Usuarios u ON b.FK_Usuario = u.ID_Usuario";
 
@@ -54,7 +53,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
                 dt = dataQuery.sqlExecute(getBitacora, null);
                 foreach (DataRow dr in dt.Rows)
                 {
-                    Object usuario = dr[5];
+                    object usuario = dr[5];
                     Usuario usuarioDesencriptado = new Usuario();
                     string descripcionDesencriptada;
                     if (!string.IsNullOrEmpty(usuario.ToString()))
@@ -101,11 +100,11 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
 
             string bitacoraFiltrada = getBitacoraFiltradaQuery;
 
-            if(!String.IsNullOrEmpty(nombreUsuario))
+            if(!string.IsNullOrEmpty(nombreUsuario))
             {
                 bitacoraFiltrada += " AND u.usuario LIKE '" + ControladorEncriptacion.Encrypt(nombreUsuario) + "'";
             }
-            if (!String.IsNullOrEmpty(criticidad))
+            if (!string.IsNullOrEmpty(criticidad))
             {
                 bitacoraFiltrada += " AND b.criticidad = '" + criticidad + "'";
             }

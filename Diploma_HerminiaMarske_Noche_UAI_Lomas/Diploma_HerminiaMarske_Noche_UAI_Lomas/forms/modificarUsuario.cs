@@ -110,7 +110,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
 
         private void button6_Click(object sender, EventArgs e)
         {
-
+            Close();
         }
 
         private void modificarUsuario_Load(object sender, EventArgs e)
@@ -488,22 +488,17 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
                 messageBox.ShowWarning(strings.no_addresses);
                 shouldBreak = true;
             }
-            else if (checkedListFamilias.CheckedItems.Count == 0 && checkedListPatentes.CheckedItems.Count == 0)
-            {
-                messageBox.ShowWarning(strings.no_profiles_nor_roles);
-                shouldBreak = true;
-            }
-            else if (string.IsNullOrWhiteSpace(txtUsuario.Text) || string.IsNullOrWhiteSpace(txtDni.Text) || string.IsNullOrWhiteSpace(txtClave.Text))
+            else if (string.IsNullOrWhiteSpace(txtUsuario.Text) || string.IsNullOrWhiteSpace(txtDni.Text))
             {
                 messageBox.ShowWarning(strings.missing_info);
                 shouldBreak = true;
             }
-            else if (!txtClave.Text.Equals(txtRepetirClave.Text))
+            else if (!string.IsNullOrWhiteSpace(txtClave.Text) && !txtClave.Text.Equals(txtRepetirClave.Text))
             {
                 messageBox.ShowWarning(strings.passwords_dont_match);
                 shouldBreak = true;
             }
-            else if (txtClave.Text.Length < 6)
+            else if (!string.IsNullOrWhiteSpace(txtClave.Text) && txtClave.Text.Length < 6)
             {
                 messageBox.ShowWarning(strings.password_too_short);
                 shouldBreak = true;

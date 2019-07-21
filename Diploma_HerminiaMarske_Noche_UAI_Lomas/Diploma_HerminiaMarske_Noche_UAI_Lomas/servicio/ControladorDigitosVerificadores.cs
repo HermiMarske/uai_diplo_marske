@@ -38,9 +38,9 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
         {
             DataConnection.DataConnection dataQuery = new DataConnection.DataConnection();
             SqlParameter[] pms = new SqlParameter[2];
-            string calculoDVV = "SELECT SUM(dvh) FROM " + tableName;
+            string calculoDVV = "SELECT SUM(CAST(dvh AS bigint)) FROM " + tableName;
 
-            string insertDVV = "UPDATE DDVV SET dvv = (SELECT SUM(DVH) FROM " + tableName + ") WHERE tabla = '" + tableName + "'";
+            string insertDVV = "UPDATE DDVV SET dvv = (SELECT SUM(CAST(dvh AS bigint)) FROM " + tableName + ") WHERE tabla = '" + tableName + "'";
 
             dataQuery.sqlUpsert(insertDVV, null);
 
@@ -197,9 +197,9 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
 
             //ver si se borro un registro en bitacora
 
-            string getSumBitacora = "SELECT SUM(DVH) FROM Bitacora";
+            string getSumBitacora = "SELECT SUM(CAST(dvh AS bigint)) FROM Bitacora";
             DataTable dtSumBitacora = dataQuery.sqlExecute(getSumBitacora, null);
-            int dvvCalculadoBitacora = (int)dtSumBitacora.Rows[0][0];
+            long dvvCalculadoBitacora = (long)dtSumBitacora.Rows[0][0];
             string getDVVBitacora = "select dvv from DDVV where tabla = 'Bitacora'";
             DataTable dtDDVVBitacora = dataQuery.sqlExecute(getDVVBitacora, null);
             long dvvBitacora = (long)dtDDVVBitacora.Rows[0][0];
@@ -215,9 +215,9 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
             //verificar si se borro uno o mas registros en familiaPatente
 
 
-            string getSumFamPat = "SELECT SUM(dvh) FROM Familia_Patente";
+            string getSumFamPat = "SELECT SUM(CAST(dvh AS bigint)) FROM Familia_Patente";
             DataTable dtSumFamPat = dataQuery.sqlExecute(getSumFamPat, null);
-            int dvvCalculadoFamPat = (int)dtSumFamPat.Rows[0][0];
+            long dvvCalculadoFamPat = (long)dtSumFamPat.Rows[0][0];
             string getDVVFamPat = "select dvv from DDVV where tabla = 'Familia_Patente'";
             DataTable dtDDVVFamPat = dataQuery.sqlExecute(getDVVFamPat, null);
             long dvvFamPat = (long)dtDDVVFamPat.Rows[0][0];
@@ -234,9 +234,9 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
             //verificar si se borro uno o mas registros en familiaUsuario
 
 
-            string getSumUsuFam = "SELECT SUM(dvh) FROM Usuario_Familia";
+            string getSumUsuFam = "SELECT SUM(CAST(dvh AS bigint)) FROM Usuario_Familia";
             DataTable dtSumUsuFam = dataQuery.sqlExecute(getSumUsuFam, null);
-            int dvvCalculadoUsuFam = (int)dtSumUsuFam.Rows[0][0];
+            long dvvCalculadoUsuFam = (long)dtSumUsuFam.Rows[0][0];
             string getDVVUsuFam = "select dvv from DDVV where tabla = 'Usuario_Familia'";
             DataTable dtDDVVUsuFam = dataQuery.sqlExecute(getDVVUsuFam, null);
             long dvvUsuFam = (long)dtDDVVUsuFam.Rows[0][0];
@@ -252,15 +252,24 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
 
             //verificar si se borro uno o mas registros en usuariopatente
 
+            try
+            {
 
-            string getSumUsuPat = "SELECT SUM(dvh) FROM Usuario_Patente";
-            DataTable dtSumUsuPat = dataQuery.sqlExecute(getSumUsuPat, null);
-            int dvvCalculadoUsuPat = (int)dtSumUsuPat.Rows[0][0];
-            string getDVVUsuPat = "select dvv from DDVV where tabla = 'Usuario_Patente'";
-            DataTable dtDDVVUsuPat = dataQuery.sqlExecute(getDVVUsuPat, null);
-            long dvvUsuPat = (long)dtDDVVUsuPat.Rows[0][0];
+                string getSumUsuPat = "SELECT SUM(CAST(dvh AS bigint)) FROM Usuario_Patente";
+                DataTable dtSumUsuPat = dataQuery.sqlExecute(getSumUsuPat, null);
+                long dvvCalculadoUsuPat = (long)dtSumUsuPat.Rows[0][0];
+                string getDVVUsuPat = "select dvv from DDVV where tabla = 'Usuario_Patente'";
+                DataTable dtDDVVUsuPat = dataQuery.sqlExecute(getDVVUsuPat, null);
+                long dvvUsuPat = (long)dtDDVVUsuPat.Rows[0][0];
 
-            if (dvvUsuPat != dvvCalculadoUsuPat)
+                if (dvvUsuPat != dvvCalculadoUsuPat)
+                {
+                    error = true;
+
+                    BitacoraRow bitacora = new BitacoraRow(DateTime.UtcNow, ConstantesBitacora.CRITICIDAD_ALTA, "Se elimino un registro en la tabla Usuario_Patente, error grave.", new Usuario());
+                    ControladorBitacora.grabarRegistro(bitacora);
+                }
+            } catch
             {
                 error = true;
 
@@ -272,9 +281,9 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
             //verificar si se borro uno o mas registros en usuario
 
 
-            string getSumUsu = "SELECT SUM(DVH) FROM Usuarios";
+            string getSumUsu = "SELECT SUM(CAST(dvh AS bigint)) FROM Usuarios";
             DataTable dtSumUsu = dataQuery.sqlExecute(getSumUsu, null);
-            int dvvCalculadoUsu = (int)dtSumUsu.Rows[0][0];
+            long dvvCalculadoUsu = (long)dtSumUsu.Rows[0][0];
             string getDVVUsu = "select dvv from DDVV where tabla = 'Usuarios'";
             DataTable dtDDVVUsu = dataQuery.sqlExecute(getDVVUsu, null);
             long dvvUsu = (long)dtDDVVUsu.Rows[0][0];
@@ -351,16 +360,26 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.servicio
                 int id = (int)dr[0];
                 int fkFamilia = (int)dr[1];
                 int fkUsuario = (int)dr[2];
-                int dvhBase = (int)dr[3];
+            
+                try
+                {
+                    int dvhBase = (int)dr[3];
+                    int dvhCalculado = calcularDVH(fkFamilia.ToString() + fkUsuario.ToString());
 
-                int dvhCalculado = calcularDVH(fkFamilia.ToString() + fkUsuario.ToString());
-
-                if (dvhBase != dvhCalculado)
+                    if (dvhBase != dvhCalculado)
+                    {
+                        error = true;
+                        BitacoraRow bitacora = new BitacoraRow(DateTime.UtcNow, ConstantesBitacora.CRITICIDAD_ALTA, "Se modifico un registro en la tabla Usuario_Familia, error grave.", new Usuario());
+                        ControladorBitacora.grabarRegistro(bitacora);
+                    }
+                }
+                catch
                 {
                     error = true;
                     BitacoraRow bitacora = new BitacoraRow(DateTime.UtcNow, ConstantesBitacora.CRITICIDAD_ALTA, "Se modifico un registro en la tabla Usuario_Familia, error grave.", new Usuario());
                     ControladorBitacora.grabarRegistro(bitacora);
                 }
+
 
             }
 

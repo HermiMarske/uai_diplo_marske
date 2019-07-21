@@ -576,11 +576,11 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.forms
                 messageBox.ShowWarning(strings.no_addresses);
                 shouldBreak = true;
             }
-            else if (checkedListFamilias.CheckedItems.Count == 0 && checkedListPatentes.CheckedItems.Count == 0)
-            {
-                messageBox.ShowWarning(strings.no_profiles_nor_roles);
-                shouldBreak = true;
-            }
+            //else if (checkedListFamilias.CheckedItems.Count == 0 && checkedListPatentes.CheckedItems.Count == 0)
+            //{
+            //    messageBox.ShowWarning(strings.no_profiles_nor_roles);
+            //    shouldBreak = true;
+            //}
             else if (string.IsNullOrWhiteSpace(txtUsuario.Text) || string.IsNullOrWhiteSpace(txtDni.Text) || string.IsNullOrWhiteSpace(txtClave.Text))
             {
                 messageBox.ShowWarning(strings.missing_info);

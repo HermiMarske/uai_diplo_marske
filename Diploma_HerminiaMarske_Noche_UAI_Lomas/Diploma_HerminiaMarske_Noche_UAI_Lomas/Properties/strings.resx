@@ -326,4 +326,10 @@ Comuníquese con un administrador.</value>
   <data name="welcome_user" xml:space="preserve">
     <value>Bienvenido/a {0}</value>
   </data>
+  <data name="current_user_no_delete" xml:space="preserve">
+    <value>¡No se puede borrar el usuario en uso!</value>
+  </data>
+  <data name="current_user_no_edit" xml:space="preserve">
+    <value>¡No se puede editar al usuario en uso!</value>
+  </data>
 </root>

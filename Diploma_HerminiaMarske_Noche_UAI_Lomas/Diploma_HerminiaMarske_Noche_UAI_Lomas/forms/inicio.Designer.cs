@@ -55,6 +55,7 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             this.cambiarIdiomaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabelUsuario = new System.Windows.Forms.ToolStripStatusLabel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tabUsuarios = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -117,7 +118,6 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             this.btnAddActividad = new System.Windows.Forms.Button();
             this.btnEliminarActividad = new System.Windows.Forms.Button();
             this.btnVerActividad = new System.Windows.Forms.Button();
-            this.toolStripStatusLabelUsuario = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -301,6 +301,12 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             this.toolStripStatusLabelUsuario});
             resources.ApplyResources(this.statusStrip1, "statusStrip1");
             this.statusStrip1.Name = "statusStrip1";
+            // 
+            // toolStripStatusLabelUsuario
+            // 
+            resources.ApplyResources(this.toolStripStatusLabelUsuario, "toolStripStatusLabelUsuario");
+            this.toolStripStatusLabelUsuario.ForeColor = System.Drawing.Color.DarkGreen;
+            this.toolStripStatusLabelUsuario.Name = "toolStripStatusLabelUsuario";
             // 
             // panel1
             // 
@@ -784,12 +790,6 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas
             this.btnVerActividad.Name = "btnVerActividad";
             this.btnVerActividad.UseVisualStyleBackColor = true;
             this.btnVerActividad.Click += new System.EventHandler(this.btnVerActividad_Click);
-            // 
-            // toolStripStatusLabelUsuario
-            // 
-            resources.ApplyResources(this.toolStripStatusLabelUsuario, "toolStripStatusLabelUsuario");
-            this.toolStripStatusLabelUsuario.ForeColor = System.Drawing.Color.DarkGreen;
-            this.toolStripStatusLabelUsuario.Name = "toolStripStatusLabelUsuario";
             // 
             // formInicio
             // 

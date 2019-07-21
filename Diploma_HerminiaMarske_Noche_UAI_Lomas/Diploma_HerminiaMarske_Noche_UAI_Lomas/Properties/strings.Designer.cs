@@ -223,6 +223,24 @@ namespace Diploma_HerminiaMarske_Noche_UAI_Lomas.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a ¡No se puede borrar el usuario en uso!.
+        /// </summary>
+        internal static string current_user_no_delete {
+            get {
+                return ResourceManager.GetString("current_user_no_delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a ¡No se puede editar al usuario en uso!.
+        /// </summary>
+        internal static string current_user_no_edit {
+            get {
+                return ResourceManager.GetString("current_user_no_edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a La fecha no puede ser igual a hoy (ni superior)..
         /// </summary>
         internal static string date_too_recent {

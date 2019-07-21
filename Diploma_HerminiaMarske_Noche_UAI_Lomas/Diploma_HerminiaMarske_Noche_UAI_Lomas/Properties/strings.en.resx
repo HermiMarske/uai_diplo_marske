@@ -326,4 +326,10 @@ Please contact an administrator.</value>
   <data name="welcome_user" xml:space="preserve">
     <value>Welcome {0}</value>
   </data>
+  <data name="current_user_no_delete" xml:space="preserve">
+    <value>Can't delete currently logged user!</value>
+  </data>
+  <data name="current_user_no_edit" xml:space="preserve">
+    <value>Can't edit currently logged user!</value>
+  </data>
 </root>
